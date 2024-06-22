@@ -1,7 +1,14 @@
 {
   "dependencies": {
+    "com.agava.webutility": "https://github.com/forcepusher/com.agava.webutility.git#3.1.0",
+    "com.agava.yandexgames": "https://github.com/forcepusher/com.agava.yandexgames.git#16.0.0",
+    "com.febucci.custom-hierarchy": "https://github.com/febucci/unitypackage-custom-hierarchy.git",
+    "com.unity.cinemachine": "2.9.7",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.inputsystem": "1.6.3",
+    "com.unity.memoryprofiler": "1.0.0",
+    "com.unity.recorder": "4.0.3",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.5",
     "com.unity.ugui": "1.0.0",
