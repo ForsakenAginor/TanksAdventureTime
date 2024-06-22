@@ -5437,9 +5437,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cae02b7672fdc6458c0328f44583695, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _smallBuildingSpots: []
-  _mediumBuildingSpots: []
-  _largeBuildingSpots: []
+  _smallBuildingSpots:
+  - {fileID: 6057530092138324282}
+  - {fileID: 812777352}
+  - {fileID: 719092380}
+  - {fileID: 715685261}
+  - {fileID: 757425512}
+  - {fileID: 2131539825}
+  - {fileID: 247580325}
+  - {fileID: 28366681}
+  - {fileID: 457778769}
+  - {fileID: 132045905}
+  - {fileID: 835176230}
+  - {fileID: 1583911281}
+  - {fileID: 629612939}
+  - {fileID: 1886968560}
+  - {fileID: 250361222}
+  - {fileID: 1075277931}
+  - {fileID: 1242822454}
+  - {fileID: 571182116}
+  - {fileID: 1622523910}
+  - {fileID: 1573582990}
+  - {fileID: 982146889}
+  - {fileID: 9981085}
+  - {fileID: 1514992065}
+  - {fileID: 534716180}
+  - {fileID: 619957101}
+  - {fileID: 613400638}
+  - {fileID: 877540100}
+  - {fileID: 1747613607}
+  - {fileID: 253881268}
+  - {fileID: 1026931860}
+  - {fileID: 1274210626}
+  - {fileID: 1684042113}
+  - {fileID: 496363105}
+  - {fileID: 220161474}
+  - {fileID: 1072830965}
+  - {fileID: 793430219}
+  - {fileID: 1188743195}
+  - {fileID: 1413274736}
+  - {fileID: 1502164028}
+  - {fileID: 1551282667}
+  - {fileID: 925153801}
+  - {fileID: 73481007}
+  _mediumBuildingSpots:
+  - {fileID: 7775757847992337624}
+  - {fileID: 802026655}
+  - {fileID: 1754679551}
+  - {fileID: 703382558}
+  - {fileID: 1621964446}
+  - {fileID: 1437750752}
+  - {fileID: 128504429}
+  - {fileID: 377220708}
+  - {fileID: 720628520}
+  - {fileID: 1391462154}
+  - {fileID: 690425005}
+  - {fileID: 370492463}
+  - {fileID: 1607792110}
+  - {fileID: 913943220}
+  _largeBuildingSpots:
+  - {fileID: 1528248314}
+  - {fileID: 98704028}
+  - {fileID: 208224038}
+  - {fileID: 1763938805}
+  - {fileID: 678808110}
+  - {fileID: 1031184006}
+  - {fileID: 596165882}
+  - {fileID: 1021290767}
+  - {fileID: 1937558868}
+  - {fileID: 861255332}
+  - {fileID: 1767822031}
+  - {fileID: 652031525}
 --- !u!114 &1714307930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6628,6 +6696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2112200515}
+  - component: {fileID: 2112200516}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -6651,6 +6720,24 @@ Transform:
   - {fileID: 1714307927}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2112200516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112200514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a521e74af820e0547943854f3679e009, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _smallMilitarySpots: 10
+  _mediumMilitarySpots: 5
+  _largeMilitarySpots: 3
+  _spawner: {fileID: 1714307930}
+  _buildingPresets: {fileID: 1714307928}
+  _buildingSpots: {fileID: 1714307929}
 --- !u!1 &2117524356
 GameObject:
   m_ObjectHideFlags: 0
