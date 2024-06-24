@@ -14,12 +14,25 @@
       "dependencies": {},
       "hash": "faf20595c0f18f4a471e6b27fbd5fbf5fd05d7a2"
     },
+    "com.cysharp.unitask": {
+      "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "fbe0bf85155f42f8832205f7b3ac3df571ada33e"
+    },
     "com.febucci.custom-hierarchy": {
       "version": "https://github.com/febucci/unitypackage-custom-hierarchy.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "093baf4e09c2cd21c284303a977ec112a43041a7"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.cinemachine": {
       "version": "2.9.7",
