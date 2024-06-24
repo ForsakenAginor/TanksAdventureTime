@@ -1,34 +1,33 @@
-﻿using UnityEngine;
-
-namespace Enemies
+﻿namespace Enemies
 {
     public class EnemyAttackState : EnemyState
     {
+        private readonly EnemyRotator Rotator;
+
         public EnemyAttackState(
             FiniteStateMachine<EnemyState> machine,
             EnemyAnimation animation,
-            TargetTest target,
-            Transform transform,
-            float attackRadius,
-            float rotationSpeed)
-            : base(machine, animation, target, transform, attackRadius, rotationSpeed)
+            IFieldOfView fieldOfView,
+            EnemyRotator rotator)
+            : base(machine, animation, fieldOfView)
         {
+            Rotator = rotator;
         }
 
         public override void Enter()
         {
             PlayAnimation(EnemyAnimations.Fire);
+            Rotator.StartRotation();
         }
 
         public override void Exit()
         {
+            Rotator.StopRotation();
         }
 
         public override void Update()
         {
-            Rotate();
-
-            if (Vector3.Distance(Position, TargetPosition) > AttackRadius)
+            if (FieldOfView.IsPlayerInRadius() == false || FieldOfView.IsBlockingByWall() == true)
                 SetState<EnemyIdleState>();
         }
     }

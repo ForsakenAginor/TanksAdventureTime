@@ -1,17 +1,12 @@
-﻿using UnityEngine;
-
-namespace Enemies
+﻿namespace Enemies
 {
     public class EnemyIdleState : EnemyState
     {
         public EnemyIdleState(
             FiniteStateMachine<EnemyState> machine,
             EnemyAnimation animation,
-            TargetTest target,
-            Transform transform,
-            float attackRadius,
-            float rotationSpeed)
-            : base(machine, animation, target, transform, attackRadius, rotationSpeed)
+            IFieldOfView fieldOfView)
+            : base(machine, animation, fieldOfView)
         {
         }
 
@@ -22,7 +17,10 @@ namespace Enemies
 
         public override void Update()
         {
-            if (Vector3.Distance(Position, TargetPosition) > AttackRadius)
+            if (FieldOfView.IsPlayerInRadius() == false)
+                return;
+
+            if (FieldOfView.IsBlockingByWall() == true)
                 return;
 
             SetState<EnemyAttackState>();
