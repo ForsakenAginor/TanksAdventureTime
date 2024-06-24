@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.Menu.LevelSystem
@@ -10,33 +7,20 @@ namespace Assets.Scripts.UI.Menu.LevelSystem
     {
         private const string LevelsVariableName = "Levels";
 
-        public IEnumerable<Scenes> GetLevels()
+        public int GetLevel()
         {
             if (PlayerPrefs.HasKey(LevelsVariableName) == false)
-                return null;
+                return 0;
 
-            char divider = ' ';
-            return PlayerPrefs.GetString(LevelsVariableName).Trim().Split(divider).Select(o => (Scenes)Convert.ToInt32(o)).ToList();
+            return PlayerPrefs.GetInt(LevelsVariableName);
         }
 
-        public void SaveLevels(IEnumerable<Scenes> levelsList)
+        public void SaveLevel(int level)
         {
-            if (levelsList == null)
-                throw new ArgumentNullException(nameof(levelsList));
+            if (level <= 0)
+                throw new ArgumentOutOfRangeException(nameof(level));
 
-            List<Scenes> list = new ();
-
-            foreach (var scene in levelsList)
-                if (list.Contains(scene) == false)
-                    list.Add(scene);
-
-            StringBuilder builder = new ();
-            char divider = ' ';
-
-            foreach (var level in list)
-                builder.Append($"{(int)level}{divider}");
-
-            PlayerPrefs.SetString(LevelsVariableName, builder.ToString());
+            PlayerPrefs.SetInt(LevelsVariableName, level);
             PlayerPrefs.Save();
         }
     }
