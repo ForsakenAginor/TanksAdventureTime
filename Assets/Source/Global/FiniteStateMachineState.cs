@@ -9,6 +9,7 @@
     }
 
     public void SetState<TU>()
+        where TU : T
     {
         Machine.SetState(typeof(TU));
     }
