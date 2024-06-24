@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TargetTest : MonoBehaviour
+public class TargetTest : MonoBehaviour, ITarget
 {
     private Transform _transform;
 

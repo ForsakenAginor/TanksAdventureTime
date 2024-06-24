@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Enemies
 {
@@ -12,71 +11,69 @@ namespace Enemies
     {
         [SerializeField] private TargetTest _target;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Transform _head;
         [SerializeField] private float _attackRadius;
         [SerializeField] private float _rotationSpeed;
-        [SerializeField] private float _delay;
-        [SerializeField] private Button _button;
+        [SerializeField] private float _fsmUpdateDelay;
+        [SerializeField] private LayerMask _walls;
 
         private Transform _transform;
         private EnemyAnimation _animation;
 
         private FiniteStateMachine<EnemyState> _machine;
-        private WaitForSeconds _wait;
+        private IFieldOfView _fieldOfView;
+        private EnemyRotator _rotator;
+        private CancellationToken _token;
 
         private void OnDrawGizmos()
         {
+            if (_head == null)
+                return;
+
             if (_target == null)
                 return;
 
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _attackRadius);
+            Gizmos.DrawWireSphere(_head.position, _attackRadius);
             Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(transform.position, _target.transform.position);
+            Gizmos.DrawLine(_head.position, _target.transform.position);
         }
 
-        private void OnEnable()
+        private void OnDestroy()
         {
-            _button.onClick.AddListener(PPP);
+            _machine.Exit();
         }
 
-        private void OnDisable()
+        private void Start()
         {
-            _button.onClick.RemoveListener(PPP);
-        }
-
-        private void PPP()
-        {
-            print("Я в порядке");
-        }
-
-        private async void Start()
-        {
-            _transform = transform;
             _animation = GetComponent<EnemyAnimation>();
 
             _machine = new FiniteStateMachine<EnemyState>();
-            _wait = new WaitForSeconds(_delay);
+            _fieldOfView = new EnemyFieldOfView(_target, _head, _attackRadius, _walls);
+            _rotator = new EnemyRotator(_rotationSpeed, _transform, _target);
+            _token = destroyCancellationToken;
             _machine.AddStates(
                 new Dictionary<Type, FiniteStateMachineState<EnemyState>>()
                 {
                     {
                         typeof(EnemyIdleState),
-                        new EnemyIdleState(_machine, _animation, _target, _transform, _attackRadius, _rotationSpeed)
+                        new EnemyIdleState(_machine, _animation, _fieldOfView)
                     },
                     {
                         typeof(EnemyAttackState),
-                        new EnemyAttackState(_machine, _animation, _target, _transform, _attackRadius, _rotationSpeed)
+                        new EnemyAttackState(_machine, _animation, _fieldOfView, _rotator)
                     },
                 });
 
             _animation.Init(_animator, () => _machine.SetState(typeof(EnemyIdleState)));
+            UpdateRoutine().Forget();
         }
 
-        private async UniTask UpdateRoutine()
+        private async UniTaskVoid UpdateRoutine()
         {
-            while (true)
+            while (_token.IsCancellationRequested == false)
             {
-                await UniTask.Delay(1);
+                await UniTask.Delay(TimeSpan.FromSeconds(_fsmUpdateDelay), cancellationToken: _token);
                 _machine.Update();
             }
         }
