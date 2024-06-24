@@ -29,7 +29,12 @@ namespace Assets.Scripts.UI.Menu.Leaderboard
 
         private void ShowLeaderboard()
         {
+#if UNITY_EDITOR
+            _leaderboardOpener.ShowPanel();
+            _holderPanel.SetActive(false);
+#else
             PlayerAccount.Authorize(OnSuccessAutorize);
+#endif
         }
 
         private void OnSuccessAutorize()

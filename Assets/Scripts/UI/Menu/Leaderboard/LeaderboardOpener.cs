@@ -28,11 +28,13 @@ namespace Assets.Scripts.UI.Menu.Leaderboard
         public void OpenLeaderboard()
         {
             bool isAuthorized;
+
 #if UNITY_EDITOR
             isAuthorized = false;
 #else
         isAuthorized = PlayerAccount.IsAuthorized;
 #endif
+
             if (isAuthorized)
                 PlayerAccount.RequestPersonalProfileDataPermission(OnSuccessCallback, OnErrorCallback);
             else
@@ -40,6 +42,13 @@ namespace Assets.Scripts.UI.Menu.Leaderboard
 
             _holderPanel.SetActive(false);
         }
+
+#if UNITY_EDITOR
+        public void ShowPanel()
+        {
+            _leaderboardPanel.SetActive(true);
+        }
+#endif
 
         private void OnErrorCallback(string nonmatterValue)
         {

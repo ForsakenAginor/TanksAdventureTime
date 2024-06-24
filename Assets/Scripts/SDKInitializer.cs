@@ -16,10 +16,17 @@ namespace Assets.Scripts
 
         private IEnumerator Start()
         {
+            string language;
+
+#if UNITY_WEBGL && !UNITY_EDITOR
             while (YandexGamesSdk.IsInitialized == false)
                 yield return YandexGamesSdk.Initialize();
-
-            string language = YandexGamesSdk.Environment.i18n.lang;
+            
+            language = YandexGamesSdk.Environment.i18n.lang;
+#else
+            yield return null;
+            language = "en";
+#endif
 
             LocalizationInitializer localizationInitializer = new ();
             localizationInitializer.ApplyLocalization(language);
