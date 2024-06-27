@@ -7,7 +7,7 @@ namespace Assets.Scripts.UI
     {
         [SerializeField] private Button _playButton;
         [SerializeField] private GameObject _buttonHolder;
-        [SerializeField] private Canvas[] _canvasesThatWillBeEnabled;
+        [SerializeField] private GameObject[] _gameObjectsThatWillBeEnabled;
 
         private void OnEnable()
         {
@@ -23,8 +23,8 @@ namespace Assets.Scripts.UI
         {
             _buttonHolder.SetActive(false);
 
-            foreach (Canvas canvas in _canvasesThatWillBeEnabled)
-                canvas.gameObject.SetActive(true);
+            foreach (GameObject gameObject in _gameObjectsThatWillBeEnabled)
+                gameObject.SetActive(true);
 
             Time.timeScale = 1f;
         }
