@@ -73,7 +73,8 @@ namespace Enemies
                     Vector3 gravity = Physics.gravity;
                     Vector3 direction = targetPosition - currentPosition;
                     float angleRadian = _attackAngle * Mathf.Rad2Deg;
-                    Vector3 velocity = forward.CalculateVelocity(direction, angleRadian, gravity.y);
+                    Vector3 newForward = forward.RotateAlongY(direction);
+                    Vector3 velocity = newForward.CalculateVelocity(direction, angleRadian, gravity.y);
                     List<Vector3> points = new ();
 
                     for (float i = 0; i < Vector3.Distance(currentPosition, targetPosition); i += 0.2f)
@@ -91,7 +92,6 @@ namespace Enemies
 
                     Vector3 middleHeightPosition = points[points.Count / (int)ValueConstants.Two];
                     middleHeightPosition.y += _mortarTrajectoryHeightOffset;
-                    Vector3 newForward = forward.RotateAlongY(direction);
 
                     Gizmos.color = Color.blue;
 
@@ -108,6 +108,7 @@ namespace Enemies
 
                 case EnemyTypes.Bunker:
                     float angle = _attackAngle / (int)ValueConstants.Two;
+                    forward *= _attackRadius;
                     Vector3 leftPoint = currentPosition + Quaternion.Euler(new Vector3(0f, angle, 0f)) * forward;
                     Vector3 rightPoint = currentPosition + Quaternion.Euler(new Vector3(0f, -angle, 0f)) * forward;
 

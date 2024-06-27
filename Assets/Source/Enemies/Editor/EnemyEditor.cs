@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
 namespace Enemies
 {
     [CustomEditor(typeof(EnemySetup))]
     public class EnemyEditor : Editor
     {
+        private const string ThinkDelayLabel = "+ Random(0, 0.5)";
+
         private SerializedProperty _animator;
         private SerializedProperty _viewPoint;
         private SerializedProperty _transform;
@@ -32,7 +32,6 @@ namespace Enemies
         {
             _animator = serializedObject.FindProperty(nameof(_animator));
             _viewPoint = serializedObject.FindProperty(nameof(_viewPoint));
-            _thinkDelay = serializedObject.FindProperty(nameof(_thinkDelay));
             _transform = serializedObject.FindProperty(nameof(_transform));
             _rotationSpeed = serializedObject.FindProperty(nameof(_rotationSpeed));
             _thinkDelay = serializedObject.FindProperty(nameof(_thinkDelay));
@@ -65,7 +64,10 @@ namespace Enemies
             EditorGUILayout.PropertyField(_thinkDelay);
             EditorGUILayout.PropertyField(_transform);
             EditorGUILayout.PropertyField(_rotationSpeed);
+            EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PropertyField(_thinkDelay);
+            EditorGUILayout.LabelField(ThinkDelayLabel);
+            EditorGUILayout.EndHorizontal();
             EditorGUILayout.PropertyField(_type);
             EditorGUILayout.PropertyField(_isDebug);
             EditorGUILayout.PropertyField(_attackRadius);
