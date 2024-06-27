@@ -39,7 +39,7 @@ namespace Enemies
                 Quaternion look =
                     Quaternion.LookRotation(new Vector3(direction.x, (float)ValueConstants.Zero, direction.z));
                 Transform.rotation = Quaternion.RotateTowards(Transform.rotation, look, RotationSpeed);
-                await UniTask.NextFrame(cancellationToken: _cancellationSource.Token);
+                await UniTask.NextFrame(_cancellationSource.Token);
             }
         }
     }
