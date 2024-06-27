@@ -25,7 +25,7 @@ namespace Assets.Scripts
             language = YandexGamesSdk.Environment.i18n.lang;
 #else
             yield return null;
-            language = "en";
+            language = "ru";
 #endif
 
             LocalizationInitializer localizationInitializer = new ();
