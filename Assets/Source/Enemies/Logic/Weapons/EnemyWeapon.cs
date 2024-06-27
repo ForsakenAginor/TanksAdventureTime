@@ -4,8 +4,8 @@ namespace Enemies
 {
     public abstract class EnemyWeapon : ObjectPool, IWeapon
     {
-        private const float MaxPitch = 1.2f;
-        private const float MinPitch = 0.8f;
+        private const float MaxPitch = 1.3f;
+        private const float MinPitch = 1f;
 
         private readonly AudioSource Sound;
 
