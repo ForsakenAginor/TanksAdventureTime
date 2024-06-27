@@ -17,7 +17,7 @@
 
         public override void Update()
         {
-            if (FieldOfView.IsPlayerInRadius() == false)
+            if (FieldOfView.CanView() == false)
                 return;
 
             if (FieldOfView.IsBlockingByWall() == true)
