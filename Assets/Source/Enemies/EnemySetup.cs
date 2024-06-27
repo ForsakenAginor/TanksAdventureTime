@@ -38,7 +38,7 @@ namespace Enemies
         private FiniteStateMachine<EnemyState> _machine;
         private IWeapon _weapon;
         private IFieldOfView _fieldOfView;
-        private IPlayerDetector _detectorTarget;
+        private IPlayerTarget _target;
         private EnemyRotator _rotator;
         private EnemyThinker _thinker;
         private CancellationToken _token;
@@ -139,12 +139,12 @@ namespace Enemies
             _presenter?.Disable();
         }
 
-        public void Init(IPlayerDetector detector)
+        public void Init(IPlayerTarget detector)
         {
-            _detectorTarget = detector;
+            _target = detector;
             _animation = GetComponent<EnemyAnimation>();
             _machine = new FiniteStateMachine<EnemyState>();
-            _rotator = new EnemyRotator(_rotationSpeed, _transform, _detectorTarget);
+            _rotator = new EnemyRotator(_rotationSpeed, _transform, _target);
             _thinker = new EnemyThinker(destroyCancellationToken, _thinkDelay);
             _presenter = new EnemyPresenter(_machine, _thinker);
 
@@ -174,14 +174,14 @@ namespace Enemies
         {
             _weaponFactory = new WeaponFactory(
                 _viewPoint,
-                _detectorTarget,
+                _target,
                 _hitEffect,
                 _shootingEffect,
                 _sound,
                 _projectile,
                 _attackAngle);
             _fieldOfViewFactory = new FieldOfViewFactory(
-                _detectorTarget,
+                _target,
                 _viewPoint,
                 _attackRadius,
                 _walls,

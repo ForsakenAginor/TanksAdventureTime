@@ -11,7 +11,7 @@ namespace Enemies
         public Mortar(
             MortarProjectile projectile,
             Transform viewPoint,
-            IPlayerDetector target,
+            IPlayerTarget target,
             float angle,
             AudioSource sound)
             : base(projectile, viewPoint, target, sound)

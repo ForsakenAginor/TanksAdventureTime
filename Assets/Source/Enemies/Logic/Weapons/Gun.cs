@@ -9,7 +9,7 @@ namespace Enemies
         public Gun(
             HitEffect hitEffect,
             Transform viewPoint,
-            IPlayerDetector target,
+            IPlayerTarget target,
             ParticleSystem shootingEffect,
             AudioSource sound)
             : base(hitEffect, viewPoint, target, sound)

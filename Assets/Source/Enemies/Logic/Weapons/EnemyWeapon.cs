@@ -9,7 +9,7 @@ namespace Enemies
 
         private readonly AudioSource Sound;
 
-        public EnemyWeapon(SpawnableObject spawnable, Transform viewPoint, IPlayerDetector target, AudioSource sound)
+        public EnemyWeapon(SpawnableObject spawnable, Transform viewPoint, IPlayerTarget target, AudioSource sound)
             : base(spawnable)
         {
             ViewPoint = viewPoint;
@@ -19,7 +19,7 @@ namespace Enemies
 
         public Transform ViewPoint { get; }
 
-        public IPlayerDetector Target { get; }
+        public IPlayerTarget Target { get; }
 
         public void Shoot()
         {

@@ -6,7 +6,7 @@ namespace Enemies
     public class WeaponFactory : IEnemyFactory<IWeapon>
     {
         private readonly Transform ViewPoint;
-        private readonly IPlayerDetector Target;
+        private readonly IPlayerTarget Target;
         private readonly HitEffect HitEffect;
         private readonly ParticleSystem ShootingEffect;
         private readonly AudioSource Sound;
@@ -15,7 +15,7 @@ namespace Enemies
 
         public WeaponFactory(
             Transform viewPoint,
-            IPlayerDetector target,
+            IPlayerTarget target,
             HitEffect hitEffect,
             ParticleSystem shootingEffect,
             AudioSource sound,

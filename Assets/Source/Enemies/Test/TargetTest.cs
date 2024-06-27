@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Enemies
 {
     [RequireComponent(typeof(Collider))]
-    public class TargetTest : MonoBehaviour, IPlayerDetector
+    public class TargetTest : MonoBehaviour, IPlayerTarget
     {
         [SerializeField] private Transform _transform;
 
