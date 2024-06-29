@@ -7,10 +7,14 @@ public class PlayerInput
 
     public PlayerInput()
     {
-        _input = new ();
+        _input = new();
         _input.Enable();
     }
 
     public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
-    public Vector2 ReadRotation() => _input.Player.Rotate.ReadValue<Vector2>();
+    public Vector2 ReadRotation()
+    {
+        Debug.Log ($"{_input.Player.Rotate.activeControl}" ) ;
+        return _input.Player.Rotate.ReadValue<Vector2>();
+    }
 }

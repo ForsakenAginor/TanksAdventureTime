@@ -16,8 +16,6 @@ public class test : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //_text.text = _playerInput.ReadRotation().ToString();
-        Vector2 vector = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        _text.text = vector.ToString();
+        _text.text = _playerInput.ReadRotation().ToString();
     }
 }
