@@ -14,7 +14,6 @@ public class PlayerInput
     public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
     public Vector2 ReadRotation()
     {
-        Debug.Log ($"{_input.Player.Rotate.activeControl}" ) ;
         return _input.Player.Rotate.ReadValue<Vector2>();
     }
 }
