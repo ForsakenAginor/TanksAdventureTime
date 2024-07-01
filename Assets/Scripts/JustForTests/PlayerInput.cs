@@ -9,14 +9,25 @@ public class PlayerInput : IRotationInputDataHandler
     {
         _input = new();
         _input.Enable();
-        _input.Player.Rotate.performed += OnRotateInputPerformed;
+        _input.Player.Rotate.started += OnRotateInputStarted;
     }
 
-    public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
-    public Vector2 ReadRotation() => _input.Player.Rotate.ReadValue<Vector2>();    
+    public event Action<Vector2> RotationInputReceived;
 
-    private void OnRotateInputPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    public event Action<Vector2> RotationMouseInputReceived;
+
+    public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
+
+    public Vector2 ReadRotation() => _input.Player.Rotate.ReadValue<Vector2>();
+
+    private void OnRotateInputStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         Debug.Log(context.control.device);
+        Vector2 input = context.ReadValue<Vector2>();
+
+        if (context.control.device.ToString() != "Mouse:/Mouse")
+            RotationInputReceived?.Invoke(input);
+        else
+            RotationMouseInputReceived?.Invoke(input);
     }
 }

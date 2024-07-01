@@ -14,6 +14,12 @@ public class RotationMouseInputHandler : IRotationInputDataHandler
         _cannon = cannon != null ? cannon : throw new ArgumentNullException(nameof(cannon));
         _plane = new Plane(Vector3.up, _cannon.position);
         _playerInput = playerInput;
+        _playerInput.RotationMouseInputReceived += OnInputReceived;
+    }
+
+    private void OnInputReceived(Vector2 vector)
+    {
+        throw new NotImplementedException();
     }
 
     public Vector2 ReadRotation()

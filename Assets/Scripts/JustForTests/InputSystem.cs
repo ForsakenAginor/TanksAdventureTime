@@ -279,7 +279,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""modifier"",
                     ""id"": ""c67f9f6e-5957-4ad1-b434-a2e92fe4f0ca"",
-                    ""path"": ""<Pointer>/press"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -290,7 +290,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""binding"",
                     ""id"": ""2ff21ab9-67a0-405f-b0a7-5e75d033270e"",
-                    ""path"": ""<Pointer>/position"",
+                    ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
