@@ -19,7 +19,7 @@ public class RotationMouseInputHandler : IRotationInputDataHandler
 
     private void OnInputReceived(Vector2 vector)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     public Vector2 ReadRotation()

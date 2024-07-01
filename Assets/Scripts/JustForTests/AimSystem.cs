@@ -39,7 +39,7 @@ public class AimSystem : MonoBehaviour
         Vector3 rotatedDirection = (point - transform.position);
         Vector2 result = new(rotatedDirection.x, rotatedDirection.z);
         result.Normalize();
-        float angle = _cannon.transform.localRotation.eulerAngles.y * Mathf.Deg2Rad;
+        float angle = transform.transform.localRotation.eulerAngles.y * Mathf.Deg2Rad;
         float x = (result.x * Mathf.Cos(angle)) - (result.y * Mathf.Sin(angle));
         float y = (result.y * Mathf.Cos(angle)) + (result.x * Mathf.Sin(angle));
 
