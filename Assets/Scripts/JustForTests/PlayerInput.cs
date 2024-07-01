@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerInput : IRotationInputDataHandler
+public class PlayerInput
 {
     private InputSystem _input;
 
@@ -9,7 +10,12 @@ public class PlayerInput : IRotationInputDataHandler
     {
         _input = new();
         _input.Enable();
-        _input.Player.Rotate.started += OnRotateInputStarted;
+        _input.Player.Rotate.performed += OnRotateInputReceived;
+    }
+
+    ~PlayerInput()
+    {
+        _input.Player.Rotate.performed -= OnRotateInputReceived;
     }
 
     public event Action<Vector2> RotationInputReceived;
@@ -18,14 +24,11 @@ public class PlayerInput : IRotationInputDataHandler
 
     public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
 
-    public Vector2 ReadRotation() => _input.Player.Rotate.ReadValue<Vector2>();
-
-    private void OnRotateInputStarted(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    private void OnRotateInputReceived(InputAction.CallbackContext context)
     {
-        Debug.Log(context.control.device);
         Vector2 input = context.ReadValue<Vector2>();
 
-        if (context.control.device.ToString() != "Mouse:/Mouse")
+        if (context.control.device is Mouse == false)
             RotationInputReceived?.Invoke(input);
         else
             RotationMouseInputReceived?.Invoke(input);

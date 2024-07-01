@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class JustForTestMoving : MonoBehaviour
+public class MovingSystem : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _rotationSpeed;
