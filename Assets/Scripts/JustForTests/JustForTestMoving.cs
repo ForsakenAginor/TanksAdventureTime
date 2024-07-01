@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -28,7 +27,5 @@ public class JustForTestMoving : MonoBehaviour
 
         _rigidbody.velocity = (movingDirection * _speed * Time.deltaTime );
         transform.Rotate(Vector3.up, input.x * Time.deltaTime * _rotationSpeed);
-
-///
     }
 }

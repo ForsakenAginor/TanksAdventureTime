@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "New action",
-                    "type": "Value",
-                    "id": "bc58570e-ee41-4a53-a2ab-38987a8f3700",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -253,15 +244,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "ccaa4061-088e-4cee-bce9-1392fabb6778",
-                    "path": "",
+                    "name": "One Modifier",
+                    "id": "195a9e71-0b35-4c62-817a-146c2f53740e",
+                    "path": "OneModifier",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
+                    "action": "Rotate",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "c67f9f6e-5957-4ad1-b434-a2e92fe4f0ca",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "2ff21ab9-67a0-405f-b0a7-5e75d033270e",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

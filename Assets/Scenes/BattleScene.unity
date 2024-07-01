@@ -13162,11 +13162,12 @@ MonoBehaviour:
   _cannon: {fileID: 1286357716556902}
   _pidController:
     _ki: 0.3
-    _kp: 10
+    _kp: 20
     _kd: 0.5
     _maxOut: 40
     _minOut: -40
-  _aimingSpeed: 10
+  _camera: {fileID: 791460657}
+  _plain: {fileID: 605182527}
 --- !u!33 &33977920848291482
 MeshFilter:
   m_ObjectHideFlags: 0
