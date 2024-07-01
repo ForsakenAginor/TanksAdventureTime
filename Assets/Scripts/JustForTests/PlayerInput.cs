@@ -9,9 +9,14 @@ public class PlayerInput : IRotationInputDataHandler
     {
         _input = new();
         _input.Enable();
-        UnityEngine.InputSystem.Utilities.ReadOnlyArray<UnityEngine.InputSystem.InputBinding> hz = _input.Player.Rotate.bindings;
+        _input.Player.Rotate.performed += OnRotateInputPerformed;
     }
 
     public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
     public Vector2 ReadRotation() => _input.Player.Rotate.ReadValue<Vector2>();    
+
+    private void OnRotateInputPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        Debug.Log(context.control.device);
+    }
 }

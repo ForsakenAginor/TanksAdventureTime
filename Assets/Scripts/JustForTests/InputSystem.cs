@@ -266,7 +266,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""One Modifier"",
+                    ""name"": ""Pointer"",
                     ""id"": ""195a9e71-0b35-4c62-817a-146c2f53740e"",
                     ""path"": ""OneModifier"",
                     ""interactions"": """",
