@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -12,11 +13,13 @@ public class MovingSystem : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _playerInput = new ();
     }
 
     private void FixedUpdate()
     {
+        if (_playerInput == null)        
+            return;
+        
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
         Vector2 input = _playerInput.ReadMovement();
@@ -27,5 +30,10 @@ public class MovingSystem : MonoBehaviour
 
         _rigidbody.velocity = (movingDirection * _speed * Time.deltaTime );
         transform.Rotate(Vector3.up, input.x * Time.deltaTime * _rotationSpeed);
+    }
+
+    public void Init(PlayerInput playerInput)
+    {
+        _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
     }
 }

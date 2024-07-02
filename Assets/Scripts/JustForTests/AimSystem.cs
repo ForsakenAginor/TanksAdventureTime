@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AimSystem : MonoBehaviour
@@ -12,16 +13,12 @@ public class AimSystem : MonoBehaviour
 
     private void Awake()
     {
-        _playerInput = new();
         _plane = new Plane(Vector3.up, transform.position);
-
-        _playerInput.RotationInputReceived += OnInputReceived;
-        _playerInput.RotationMouseInputReceived += OnMouseInputReceived;
     }
 
     private void FixedUpdate()
     {
-        if (_aimDirection == Vector3.zero)
+        if (_playerInput == null || _aimDirection == Vector3.zero)
             return;
 
         RotateCannon();
@@ -31,6 +28,14 @@ public class AimSystem : MonoBehaviour
     {
         _playerInput.RotationInputReceived -= OnInputReceived;
         _playerInput.RotationMouseInputReceived -= OnMouseInputReceived;
+    }
+
+    public void Init(PlayerInput playerInput)
+    {
+        _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
+
+        _playerInput.RotationInputReceived += OnInputReceived;
+        _playerInput.RotationMouseInputReceived += OnMouseInputReceived;
     }
 
     private void RotateCannon()
