@@ -12,12 +12,14 @@ public class PlayerInput
         _input.Enable();
         _input.Player.Rotate.performed += OnRotateInputReceived;
         _input.Player.Fire.started += OnFireInputReceived;
+        _input.Player.Ability.started += OnAbilityInputReceived;
     }
 
     ~PlayerInput()
     {
         _input.Player.Rotate.performed -= OnRotateInputReceived;
         _input.Player.Fire.started -= OnFireInputReceived;
+        _input.Player.Ability.started -= OnAbilityInputReceived;
     }
 
     public event Action<Vector2> RotationInputReceived;
@@ -25,6 +27,8 @@ public class PlayerInput
     public event Action<Vector2> RotationMouseInputReceived;
 
     public event Action FireInputReceived;
+
+    public event Action AbilityInputReceived;
 
     public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
 
@@ -41,5 +45,10 @@ public class PlayerInput
     private void OnFireInputReceived(InputAction.CallbackContext context)
     {
         FireInputReceived?.Invoke();
+    }
+
+    private void OnAbilityInputReceived(InputAction.CallbackContext context)
+    {
+        AbilityInputReceived?.Invoke();
     }
 }
