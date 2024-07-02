@@ -1,39 +1,41 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class MovingSystem : MonoBehaviour
+public class MovingSystem
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _rotationSpeed;
+    private readonly float _speed;
+    private readonly float _rotationSpeed;
+    private readonly Transform _transform;
+    private readonly Rigidbody _rigidbody;
+    private readonly PlayerInput _playerInput;
 
-    private Rigidbody _rigidbody;
-    private PlayerInput _playerInput;
-
-    private void Awake()
+    public MovingSystem(PlayerInput playerInput, Rigidbody rigidbody, Transform transform, float speed, float rotationSpeed)
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
+        _rigidbody = rigidbody != null ? rigidbody : throw new ArgumentNullException(nameof(rigidbody));
+        _transform = transform != null ? transform : throw new ArgumentNullException(nameof(transform));
+        _speed = speed > 0 ? speed : throw new ArgumentOutOfRangeException(nameof(speed));
+        _rotationSpeed = rotationSpeed > 0 ? rotationSpeed : throw new ArgumentOutOfRangeException(nameof(rotationSpeed));
     }
 
-    private void FixedUpdate()
+    public void Moving()
     {
-        if (_playerInput == null)        
+        if (_playerInput == null)
             return;
         
+        Vector2 input = _playerInput.ReadMovement();
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.angularVelocity = Vector3.zero;
-        Vector2 input = _playerInput.ReadMovement();
+
+        if(input == Vector2.zero)
+            return;
+
         Vector3 movingDirection = Vector3.zero;
 
         if (Mathf.Approximately(input.y, 0f) == false )
-            movingDirection = (transform.forward * input.y).normalized;
+            movingDirection = (_transform.forward * input.y).normalized;
 
         _rigidbody.velocity = (movingDirection * _speed * Time.deltaTime );
-        transform.Rotate(Vector3.up, input.x * Time.deltaTime * _rotationSpeed);
-    }
-
-    public void Init(PlayerInput playerInput)
-    {
-        _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
+        _transform.Rotate(Vector3.up, input.x * Time.deltaTime * _rotationSpeed);
     }
 }

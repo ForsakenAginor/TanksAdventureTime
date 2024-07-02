@@ -1,28 +1,27 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class FireSystem : MonoBehaviour
+public class FireSystem
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private Transform _shootingPoint;
-    [SerializeField] private AmmoPool _pool;
-    [SerializeField] private float _projectileSpeed;
+    private readonly Transform _shootingPoint;
+    private readonly AmmoPool _pool;
+    private readonly float _projectileSpeed;
 
     private PlayerInput _playerInput;
 
-    private void OnDestroy()
-    {
-        _playerInput.FireInputReceived -= OnInputReceived;        
-        _button.onClick.RemoveListener(OnInputReceived);
-    }
-
-    public void Init(PlayerInput playerInput)
+    public FireSystem(PlayerInput playerInput, Transform shootingPoint, AmmoPool pool, float projectileSpeed)
     {
         _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
+        _shootingPoint = shootingPoint != null ? shootingPoint : throw new ArgumentNullException(nameof(shootingPoint));
+        _pool = pool != null ? pool : throw new ArgumentNullException(nameof(pool));
+        _projectileSpeed = projectileSpeed > 0 ? projectileSpeed : throw new ArgumentOutOfRangeException(nameof(projectileSpeed));
 
         _playerInput.FireInputReceived += OnInputReceived;
-        _button.onClick.AddListener(OnInputReceived);
+    }
+
+    ~FireSystem()
+    {
+        _playerInput.FireInputReceived -= OnInputReceived;        
     }
 
     private void OnInputReceived()

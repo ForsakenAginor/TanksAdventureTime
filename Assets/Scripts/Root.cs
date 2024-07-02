@@ -14,10 +14,14 @@ public class Root : MonoBehaviour
     [SerializeField] private GameObject _losePanel;
     [SerializeField] private GameObject _wonPanel;
 
+    [Header("Player")]
+    [SerializeField] private PlayerInitializer _playerInitializer;
+
     private void Start()
     {
         LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
         LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner);
+        _playerInitializer.Init();
     }
 
     public void Respawn()
