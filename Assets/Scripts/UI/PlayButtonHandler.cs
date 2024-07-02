@@ -1,4 +1,4 @@
-using Assets.Scripts.UI.Menu.LevelSystem;
+using Assets.Source.Global.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

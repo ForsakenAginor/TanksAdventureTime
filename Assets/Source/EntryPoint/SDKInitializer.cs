@@ -1,11 +1,11 @@
 using System.Collections;
 using Agava.YandexGames;
-using Assets.Scripts.Core;
-using Assets.Scripts.UI.Menu.LevelSystem;
+using Assets.Source.Global.Enums;
+using Assets.Source.Localization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts
+namespace Assets.Source.EntryPoint
 {
     public class SDKInitializer : MonoBehaviour
     {
@@ -28,7 +28,7 @@ namespace Assets.Scripts
             language = "ru";
 #endif
 
-            LocalizationInitializer localizationInitializer = new ();
+            LocalizationInitializer localizationInitializer = new();
             localizationInitializer.ApplyLocalization(language);
             SceneManager.LoadScene(Scenes.MainMenu.ToString());
         }

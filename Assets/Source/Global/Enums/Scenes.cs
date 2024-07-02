@@ -1,4 +1,4 @@
-namespace Assets.Scripts.UI.Menu.LevelSystem
+namespace Assets.Source.Global.Enums
 {
     public enum Scenes
     {

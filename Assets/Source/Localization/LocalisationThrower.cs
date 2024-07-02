@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Core
+namespace Assets.Source.Localization
 {
     public class LocalisationThrower : MonoBehaviour
     {

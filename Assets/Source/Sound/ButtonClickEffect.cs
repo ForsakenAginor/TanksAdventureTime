@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Sound
+namespace Assets.Source.Sound
 {
     [RequireComponent(typeof(Button))]
     public class ButtonClickEffect : MonoBehaviour

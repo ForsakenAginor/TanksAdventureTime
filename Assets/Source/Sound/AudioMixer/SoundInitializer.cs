@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Sound.AudioMixer
+namespace Assets.Source.Sound.AudioMixer
 {
     public class SoundInitializer : MonoBehaviour
     {
