@@ -6,8 +6,7 @@ public class FireSystem
     private readonly Transform _shootingPoint;
     private readonly AmmoPool _pool;
     private readonly float _projectileSpeed;
-
-    private PlayerInput _playerInput;
+    private readonly PlayerInput _playerInput;
 
     public FireSystem(PlayerInput playerInput, Transform shootingPoint, AmmoPool pool, float projectileSpeed)
     {

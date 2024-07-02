@@ -27,6 +27,8 @@ public class PlayerInitializer : MonoBehaviour
         MovingSystem movingSystem = new (playerInput, _rigidbody ,_transform, _speed, _rotationSpeed);
         AimSystem aimSystem = new (playerInput, _cannon, _pidRegulator, _camera, _transform);
         FireSystem fireSystem = new (playerInput, _shootingPoint, _pool, _projectileSpeed);
+        AbilitySystem abilitySystem = new (playerInput);
+
         _player.Init(movingSystem, aimSystem);
     }
 }
