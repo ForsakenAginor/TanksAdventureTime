@@ -3,21 +3,35 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class HitEffect : SpawnableObject
+    [RequireComponent(typeof(AudioSource))]
+    public class HitEffect : SpawnableParticle
     {
-        [SerializeField] private ParticleSystem _particle;
+        [Range(0f, 2f)]
+        [SerializeField] private float _minPitch = 1f;
+        [Range(0f, 2f)]
+        [SerializeField] private float _maxPitch = 1.3f;
+
+        private AudioPitcher _sound;
 
         public void Init(Vector3 position)
         {
             Transform.rotation = Quaternion.LookRotation(position - Transform.position);
-            OnPlayed().Forget();
+            Init();
         }
 
-        private async UniTaskVoid OnPlayed()
+        public void Init()
         {
-            _particle.Play();
+            _sound ??= new AudioPitcher(GetComponent<AudioSource>(), _minPitch, _maxPitch);
 
-            while (_particle.isPlaying == true)
+            StartPlaying().Forget();
+        }
+
+        private async UniTaskVoid StartPlaying()
+        {
+            Play();
+            _sound.Play();
+
+            while (IsPlaying == true || _sound.IsPlaying == true)
                 await UniTask.NextFrame(destroyCancellationToken);
 
             Push();
