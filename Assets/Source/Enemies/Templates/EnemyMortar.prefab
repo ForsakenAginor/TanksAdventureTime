@@ -282,7 +282,7 @@ MonoBehaviour:
   _transform: {fileID: 2553812831209021368}
   _rotationSpeed: 5
   _thinkDelay: 2.5
-  _type: 1
+  _enemyType: 1
   _isDebug: 0
   _attackRadius: 45
   _walls:
@@ -291,9 +291,15 @@ MonoBehaviour:
   _attackAngle: 56
   _mortarTrajectoryHeightOffset: 1
   _sound: {fileID: 3922374421797148141}
+  _minPitch: 1
+  _maxPitch: 1.3
   _shootingEffect: {fileID: 0}
-  _hitEffect: {fileID: 0}
-  _projectile: {fileID: 2379078113047893634, guid: 9484d83c1880d544ba191710f6e5ca45, type: 3}
+  _hitTemplate: {fileID: 4500890358154097124, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+  _projectile: {fileID: 4268471586272409974, guid: 9484d83c1880d544ba191710f6e5ca45, type: 3}
+  _aimTemplate: {fileID: -924650326620379055, guid: 106da352fa985af49beeaadbbf7409ff, type: 3}
+  _projectileType: 0
+  _distanceBetween: 0
+  _clusterCount: 0
   _debugTarget: {fileID: 0}
 --- !u!82 &3922374421797148141
 AudioSource:
