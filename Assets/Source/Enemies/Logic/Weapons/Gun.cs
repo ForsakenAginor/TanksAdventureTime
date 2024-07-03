@@ -2,26 +2,27 @@
 
 namespace Enemies
 {
-    public class Gun : EnemyWeapon
+    public class Gun : EnemyWeapon<IPlayerTarget>
     {
         private readonly ParticleSystem ShootingEffect;
+        private readonly ObjectPool<HitEffect> HitPool;
 
         public Gun(
             HitEffect hitEffect,
             Transform viewPoint,
             IPlayerTarget target,
             ParticleSystem shootingEffect,
-            AudioSource sound)
-            : base(hitEffect, viewPoint, target, sound)
+            AudioPitcher sound)
+            : base(viewPoint, target, sound)
         {
+            HitPool = new ObjectPool<HitEffect>(hitEffect);
             ShootingEffect = shootingEffect;
         }
 
         public override void OnShoot()
         {
             ShootingEffect.Play();
-            Vector3 closest = Target.GetClosestPoint(ViewPoint.position);
-            Pull<HitEffect>(closest).Init(ViewPoint.position);
+            HitPool.Pull(Target.GetClosestPoint(ViewPoint.position)).Init(ViewPoint.position);
             Target.TakeHit(HitTypes.Bullet);
         }
     }
