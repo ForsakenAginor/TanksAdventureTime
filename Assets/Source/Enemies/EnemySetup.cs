@@ -14,7 +14,7 @@ namespace Enemies
         [SerializeField] private Transform _transform;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _thinkDelay;
-        [SerializeField] private EnemyTypes _type;
+        [SerializeField] private EnemyTypes _enemyType;
         [SerializeField] private bool _isDebug;
 
         [Header("Field Of View")]
@@ -26,9 +26,17 @@ namespace Enemies
 
         [Header("Weapon")]
         [SerializeField] private AudioSource _sound;
+        [Range(0f, 2f)]
+        [SerializeField] private float _minPitch = 1f;
+        [Range(0f, 2f)]
+        [SerializeField] private float _maxPitch = 1.3f;
         [SerializeField] private ParticleSystem _shootingEffect;
-        [SerializeField] private HitEffect _hitEffect;
+        [SerializeField] private HitEffect _hitTemplate;
         [SerializeField] private MortarProjectile _projectile;
+        [SerializeField] private AimParticle _aimTemplate;
+        [SerializeField] private ProjectileTypes _projectileType;
+        [SerializeField] private float _distanceBetween = 0f;
+        [SerializeField] private int _clusterCount = 0;
 
         [Header("Debug")]
         [SerializeField] private TargetTest _debugTarget;
@@ -44,8 +52,105 @@ namespace Enemies
         private CancellationToken _token;
 
         private EnemyPresenter _presenter;
-        private IEnemyFactory<IWeapon> _weaponFactory;
-        private IEnemyFactory<IFieldOfView> _fieldOfViewFactory;
+
+        private void OnValidate()
+        {
+            if (_enemyType != EnemyTypes.Mortar)
+                return;
+
+            _viewPoint.localEulerAngles = new Vector3(
+                -_attackAngle,
+                (float)ValueConstants.Zero,
+                (float)ValueConstants.Zero);
+        }
+
+        private void OnDestroy()
+        {
+            _presenter?.Disable();
+        }
+
+        public void Init(IPlayerTarget target)
+        {
+            _target = target;
+            _animation = GetComponent<EnemyAnimation>();
+            _machine = new FiniteStateMachine<EnemyState>();
+            _rotator = new EnemyRotator(_rotationSpeed, _transform, _target);
+            _thinker = new EnemyThinker(destroyCancellationToken, _thinkDelay);
+            _presenter = new EnemyPresenter(_machine, _thinker);
+
+            _weapon = GetWeapon(target);
+            _fieldOfView = GetFieldOfView();
+
+            _machine.AddStates(
+                new Dictionary<Type, FiniteStateMachineState<EnemyState>>()
+                {
+                    {
+                        typeof(EnemyIdleState),
+                        new EnemyIdleState(_machine, _animation, _fieldOfView)
+                    },
+                    {
+                        typeof(EnemyAttackState),
+                        new EnemyAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
+                    },
+                });
+
+            _animation.Init(_animator, () => _machine.SetState(typeof(EnemyIdleState)));
+
+            _presenter.Enable();
+        }
+
+        private IWeapon GetWeapon(IDamageableTarget target)
+        {
+            AudioPitcher sound = new AudioPitcher(_sound, _minPitch, _maxPitch);
+
+            switch (_enemyType)
+            {
+                case EnemyTypes.Standard:
+                case EnemyTypes.Bunker:
+                    return new Gun(_hitTemplate, _viewPoint, _target, _shootingEffect, sound);
+
+                case EnemyTypes.Mortar:
+                    return new Mortar(
+                        _viewPoint,
+                        _target,
+                        sound,
+                        new ProjectileFactory(
+                            _projectile,
+                            _hitTemplate,
+                            _aimTemplate,
+                            target,
+                            _projectileType,
+                            _attackAngle * Mathf.Deg2Rad,
+                            _distanceBetween,
+                            _clusterCount));
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private IFieldOfView GetFieldOfView()
+        {
+            return _enemyType switch
+            {
+                EnemyTypes.Standard => new StandardFieldOfView(_target, _viewPoint, _attackRadius, _walls),
+                EnemyTypes.Mortar => new MortarFieldOfView(
+                    _target,
+                    _viewPoint,
+                    _attackRadius,
+                    _walls,
+                    _attackAngle,
+                    _projectile.ColliderRadius,
+                    _mortarTrajectoryHeightOffset),
+                EnemyTypes.Bunker => new BunkerFieldOfView(
+                    _target,
+                    _viewPoint,
+                    _attackRadius,
+                    _walls,
+                    _attackAngle / (int)ValueConstants.Two),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
 
         private void OnDrawGizmos()
         {
@@ -64,28 +169,16 @@ namespace Enemies
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(currentPosition, _attackRadius);
 
-            switch (_type)
+            switch (_enemyType)
             {
                 case EnemyTypes.Standard:
                     break;
 
                 case EnemyTypes.Mortar:
-                    Vector3 gravity = Physics.gravity;
                     Vector3 direction = targetPosition - currentPosition;
                     float angleRadian = _attackAngle * Mathf.Rad2Deg;
                     Vector3 newForward = forward.RotateAlongY(direction);
-                    Vector3 velocity = newForward.CalculateVelocity(direction, angleRadian, gravity.y);
-                    List<Vector3> points = new ();
-
-                    for (float i = 0; i < Vector3.Distance(currentPosition, targetPosition); i += 0.2f)
-                    {
-                        Vector3 position = currentPosition + velocity * i + gravity * i * i / (float)ValueConstants.Two;
-
-                        if (position.y < targetPosition.y)
-                            break;
-
-                        points.Add(position);
-                    }
+                    List<Vector3> points = newForward.CalculateTrajectory(currentPosition, targetPosition, direction, angleRadian);
 
                     if (points.Count <= 0)
                         return;
@@ -104,6 +197,27 @@ namespace Enemies
                     Gizmos.color = Color.yellow;
                     Gizmos.DrawLine(currentPosition, forward + currentPosition);
                     Gizmos.DrawLine(currentPosition, newForward + currentPosition);
+
+                    if (_projectileType != ProjectileTypes.Triple)
+                        return;
+
+                    Gizmos.color = Color.black;
+                    points.Clear();
+                    Vector3 cross = Vector3.Cross(direction, Vector3.up).normalized * _distanceBetween;
+                    Vector3 leftDirection = cross + targetPosition - currentPosition;
+                    Vector3 rightDirection = -cross + targetPosition - currentPosition;
+                    points = forward.RotateAlongY(leftDirection)
+                        .CalculateTrajectory(currentPosition, cross + targetPosition, leftDirection, angleRadian);
+
+                    for (int i = 1; i < points.Count; i++)
+                        Gizmos.DrawLine(points[i - 1], points[i]);
+
+                    points = forward.RotateAlongY(rightDirection)
+                        .CalculateTrajectory(currentPosition, -cross + targetPosition, rightDirection, angleRadian);
+
+                    for (int i = 1; i < points.Count; i++)
+                        Gizmos.DrawLine(points[i - 1], points[i]);
+
                     break;
 
                 case EnemyTypes.Bunker:
@@ -125,70 +239,6 @@ namespace Enemies
 
             Gizmos.color = Color.magenta;
             Gizmos.DrawLine(currentPosition, targetPosition);
-        }
-
-        private void OnValidate()
-        {
-            if (_type != EnemyTypes.Mortar)
-                return;
-
-            _viewPoint.localEulerAngles = new Vector3(-_attackAngle, (float)ValueConstants.Zero, (float)ValueConstants.Zero);
-        }
-
-        private void OnDestroy()
-        {
-            _presenter?.Disable();
-        }
-
-        public void Init(IPlayerTarget detector)
-        {
-            _target = detector;
-            _animation = GetComponent<EnemyAnimation>();
-            _machine = new FiniteStateMachine<EnemyState>();
-            _rotator = new EnemyRotator(_rotationSpeed, _transform, _target);
-            _thinker = new EnemyThinker(destroyCancellationToken, _thinkDelay);
-            _presenter = new EnemyPresenter(_machine, _thinker);
-
-            PrepareFactories();
-            _weapon = _weaponFactory.Create(_type);
-            _fieldOfView = _fieldOfViewFactory.Create(_type);
-
-            _machine.AddStates(
-                new Dictionary<Type, FiniteStateMachineState<EnemyState>>()
-                {
-                    {
-                        typeof(EnemyIdleState),
-                        new EnemyIdleState(_machine, _animation, _fieldOfView)
-                    },
-                    {
-                        typeof(EnemyAttackState),
-                        new EnemyAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
-                    },
-                });
-
-            _animation.Init(_animator, () => _machine.SetState(typeof(EnemyIdleState)));
-
-            _presenter.Enable();
-        }
-
-        private void PrepareFactories()
-        {
-            _weaponFactory = new WeaponFactory(
-                _viewPoint,
-                _target,
-                _hitEffect,
-                _shootingEffect,
-                _sound,
-                _projectile,
-                _attackAngle);
-            _fieldOfViewFactory = new FieldOfViewFactory(
-                _target,
-                _viewPoint,
-                _attackRadius,
-                _walls,
-                _attackAngle,
-                _mortarTrajectoryHeightOffset,
-                _projectile ? _projectile.Radius : (float)ValueConstants.Zero);
         }
     }
 }
