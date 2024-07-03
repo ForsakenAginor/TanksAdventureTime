@@ -1,40 +1,67 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Enemies
 {
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(SphereCollider))]
     public class MortarProjectile : SpawnableObject
     {
-        [SerializeField] private float _radius;
-        [SerializeField] private ParticleSystem _explosion;
+        [SerializeField] private float _explosionRadius;
 
         private Rigidbody _rigidbody;
-        private float _gravity;
+        private IAimParticle _aim;
+        private IExplosive _explosive;
+        private Action<Vector3> _onExplodedCallback;
+        private float _angleRadian;
+        private bool _didInit;
 
-        public float Radius => _radius;
+        public float ColliderRadius { get; private set; }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnDrawGizmos()
         {
-            Hide();
+            Gizmos.color = Color.black;
+            Gizmos.DrawWireSphere(transform.position, _explosionRadius);
         }
 
-        public override void Init()
+        private void OnCollisionEnter()
         {
+            Explode();
+        }
+
+        public MortarProjectile Init(IExplosive explosive, float angleRadian)
+        {
+            if (_didInit == true)
+                return this;
+
             _rigidbody = GetComponent<Rigidbody>();
-            _gravity = Physics.gravity.y;
+            ColliderRadius = GetComponent<SphereCollider>().radius;
+            _angleRadian = angleRadian;
+            _didInit = true;
+            return this;
         }
 
-        public void Move(float angleRadian, Vector3 direction, Vector3 forward)
+        public void Move(
+            Vector3 direction,
+            Vector3 forward,
+            Action<Vector3> onExplodedCallback,
+            IAimParticle aim = null)
         {
-            Transform.rotation = Quaternion.LookRotation(direction);
-            _rigidbody.velocity = forward.CalculateVelocity(direction, angleRadian, _gravity);
+            _onExplodedCallback = onExplodedCallback;
+            _aim = aim;
+            Transform.rotation = Quaternion.LookRotation(forward);
+            _rigidbody.velocity = forward.CalculateVelocity(direction, _angleRadian);
+            _aim?.Show();
         }
 
-        public void Hide()
+        private void Explode()
         {
-            _explosion.Play();
-            Push();
             _rigidbody.velocity = Vector3.zero;
+            _aim?.Hide();
+            _aim = null;
+            _onExplodedCallback.Invoke(Transform.position);
+            _explosive.Explode(Transform.position, _explosionRadius);
+            Push();
         }
     }
 }
