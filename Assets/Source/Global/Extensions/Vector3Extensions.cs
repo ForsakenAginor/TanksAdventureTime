@@ -1,16 +1,45 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public static class Vector3Extensions
 {
-    public static Vector3 CalculateVelocity(this Vector3 forward, Vector3 direction, float angleRadian, float gravity)
+    private const float TrajectoryStep = 0.2f;
+
+    public static Vector3 CalculateVelocity(this Vector3 forward, Vector3 direction, float angleRadian)
     {
+        float gravity = Physics.gravity.y;
         float y = direction.y;
         float x = new Vector3(direction.x, (float)ValueConstants.Zero, direction.z).magnitude;
         return forward * Mathf.Sqrt(
             Mathf.Abs(
                 gravity * x * x /
-                ((float)ValueConstants.Two * (y - Mathf.Tan(angleRadian) * x) * Mathf.Cos(angleRadian) * Mathf.Cos(angleRadian)))
+                ((float)ValueConstants.Two * (y - Mathf.Tan(angleRadian) * x) * Mathf.Cos(angleRadian) *
+                 Mathf.Cos(angleRadian)))
         );
+    }
+
+    public static List<Vector3> CalculateTrajectory(
+        this Vector3 forward,
+        Vector3 currentPosition,
+        Vector3 targetPosition,
+        Vector3 direction,
+        float angleRadian)
+    {
+        Vector3 velocity = forward.CalculateVelocity(direction, angleRadian);
+        Vector3 gravity = Physics.gravity;
+        List<Vector3> result = new List<Vector3>();
+
+        for (float i = 0; i < direction.magnitude; i += TrajectoryStep)
+        {
+            Vector3 position = currentPosition + velocity * i + gravity * i * i / (float)ValueConstants.Two;
+
+            if (position.y < targetPosition.y)
+                break;
+
+            result.Add(position);
+        }
+
+        return result;
     }
 
     public static Vector3 RotateAlongY(this Vector3 forward, Vector3 direction)
