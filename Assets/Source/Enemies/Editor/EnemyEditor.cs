@@ -13,18 +13,24 @@ namespace Enemies
         private SerializedProperty _transform;
         private SerializedProperty _rotationSpeed;
         private SerializedProperty _thinkDelay;
-        private SerializedProperty _type;
+        private SerializedProperty _enemyType;
         private SerializedProperty _isDebug;
 
         private SerializedProperty _sound;
+        private SerializedProperty _minPitch;
+        private SerializedProperty _maxPitch;
         private SerializedProperty _attackRadius;
         private SerializedProperty _walls;
 
         private SerializedProperty _attackAngle;
         private SerializedProperty _mortarTrajectoryHeightOffset;
         private SerializedProperty _shootingEffect;
-        private SerializedProperty _hitEffect;
+        private SerializedProperty _hitTemplate;
         private SerializedProperty _projectile;
+        private SerializedProperty _aimTemplate;
+        private SerializedProperty _projectileType;
+        private SerializedProperty _distanceBetween;
+        private SerializedProperty _clusterCount;
 
         private SerializedProperty _debugTarget;
 
@@ -35,18 +41,25 @@ namespace Enemies
             _transform = serializedObject.FindProperty(nameof(_transform));
             _rotationSpeed = serializedObject.FindProperty(nameof(_rotationSpeed));
             _thinkDelay = serializedObject.FindProperty(nameof(_thinkDelay));
-            _type = serializedObject.FindProperty(nameof(_type));
+            _enemyType = serializedObject.FindProperty(nameof(_enemyType));
             _isDebug = serializedObject.FindProperty(nameof(_isDebug));
 
             _sound = serializedObject.FindProperty(nameof(_sound));
+            _minPitch = serializedObject.FindProperty(nameof(_minPitch));
+            _maxPitch = serializedObject.FindProperty(nameof(_maxPitch));
             _attackRadius = serializedObject.FindProperty(nameof(_attackRadius));
             _attackAngle = serializedObject.FindProperty(nameof(_attackAngle));
             _walls = serializedObject.FindProperty(nameof(_walls));
             _mortarTrajectoryHeightOffset = serializedObject.FindProperty(nameof(_mortarTrajectoryHeightOffset));
 
             _shootingEffect = serializedObject.FindProperty(nameof(_shootingEffect));
-            _hitEffect = serializedObject.FindProperty(nameof(_hitEffect));
+            _hitTemplate = serializedObject.FindProperty(nameof(_hitTemplate));
             _projectile = serializedObject.FindProperty(nameof(_projectile));
+            _projectileType = serializedObject.FindProperty(nameof(_projectileType));
+            _aimTemplate = serializedObject.FindProperty(nameof(_aimTemplate));
+            _distanceBetween = serializedObject.FindProperty(nameof(_distanceBetween));
+            _clusterCount = serializedObject.FindProperty(nameof(_clusterCount));
+
             _debugTarget = serializedObject.FindProperty(nameof(_debugTarget));
         }
 
@@ -68,17 +81,19 @@ namespace Enemies
             EditorGUILayout.PropertyField(_thinkDelay);
             EditorGUILayout.LabelField(ThinkDelayLabel);
             EditorGUILayout.EndHorizontal();
-            EditorGUILayout.PropertyField(_type);
+            EditorGUILayout.PropertyField(_enemyType);
             EditorGUILayout.PropertyField(_isDebug);
             EditorGUILayout.PropertyField(_attackRadius);
             EditorGUILayout.PropertyField(_walls);
+            EditorGUILayout.PropertyField(_sound);
+            EditorGUILayout.PropertyField(_minPitch);
+            EditorGUILayout.PropertyField(_maxPitch);
+            EditorGUILayout.PropertyField(_hitTemplate);
         }
 
         private void DrawAdditions()
         {
-            EditorGUILayout.PropertyField(_sound);
-
-            switch ((EnemyTypes)_type.enumValueIndex)
+            switch ((EnemyTypes)_enemyType.enumValueIndex)
             {
                 case EnemyTypes.Standard:
                     ShowStandardOptions();
@@ -108,16 +123,6 @@ namespace Enemies
             _mortarTrajectoryHeightOffset.floatValue = (float)ValueConstants.Zero;
             _projectile.objectReferenceValue = null;
             EditorGUILayout.PropertyField(_shootingEffect);
-            EditorGUILayout.PropertyField(_hitEffect);
-        }
-
-        private void ShowMortarOptions()
-        {
-            _shootingEffect.objectReferenceValue = null;
-            _hitEffect.objectReferenceValue = null;
-            EditorGUILayout.PropertyField(_attackAngle);
-            EditorGUILayout.PropertyField(_mortarTrajectoryHeightOffset);
-            EditorGUILayout.PropertyField(_projectile);
         }
 
         private void ShowBunkerOptions()
@@ -126,7 +131,52 @@ namespace Enemies
             _projectile.objectReferenceValue = null;
             EditorGUILayout.PropertyField(_attackAngle);
             EditorGUILayout.PropertyField(_shootingEffect);
-            EditorGUILayout.PropertyField(_hitEffect);
+        }
+
+        private void ShowMortarOptions()
+        {
+            _shootingEffect.objectReferenceValue = null;
+            EditorGUILayout.PropertyField(_attackAngle);
+            EditorGUILayout.PropertyField(_mortarTrajectoryHeightOffset);
+            EditorGUILayout.PropertyField(_projectile);
+            EditorGUILayout.PropertyField(_aimTemplate);
+            EditorGUILayout.PropertyField(_projectileType);
+
+            switch ((ProjectileTypes)_projectileType.enumValueIndex)
+            {
+                case ProjectileTypes.Standard:
+                    ShowStandardProjectile();
+                    break;
+
+                case ProjectileTypes.Cluster:
+                    ShowClusterProjectile();
+                    break;
+
+                case ProjectileTypes.Triple:
+                    ShowTripleProjectile();
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void ShowStandardProjectile()
+        {
+            _distanceBetween.floatValue = (float)ValueConstants.Zero;
+            _clusterCount.intValue = (int)ValueConstants.Zero;
+        }
+
+        private void ShowClusterProjectile()
+        {
+            EditorGUILayout.PropertyField(_distanceBetween);
+            EditorGUILayout.PropertyField(_clusterCount);
+        }
+
+        private void ShowTripleProjectile()
+        {
+            _clusterCount.intValue = (int)ValueConstants.Zero;
+            EditorGUILayout.PropertyField(_distanceBetween);
         }
     }
 }
