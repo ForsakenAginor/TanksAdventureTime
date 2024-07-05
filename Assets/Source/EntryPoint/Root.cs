@@ -20,7 +20,11 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private GameObject _mobileInputCanvas;
 
         [Header("Player")]
+        [SerializeField] private PlayerBehaviour _player;
+        [SerializeField] private GameObject _playerModel;
         [SerializeField] private PlayerInitializer _playerInitializer;
+        [SerializeField] private OnDeathEffectInitializer _onDeathEffectInitializer;
+        private Vector3 _spawnPoint;
 
         private void Start()
         {
@@ -33,11 +37,15 @@ namespace Assets.Source.EntryPoint
             LevelConfiguration configuration = new(_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
             LevelGenerator levelGenerator = new(configuration, _buildingPresets, _buildingSpots, _spawner);
             _playerInitializer.Init();
+            _spawnPoint = _playerModel.transform.position;
         }
 
         public void Respawn()
         {
-            throw new NotImplementedException();
+            _playerModel.transform.position = _spawnPoint;
+            _playerModel.transform.rotation = Quaternion.identity;
+            _onDeathEffectInitializer.Init();
+            _player.enabled = true;
         }
     }
 }

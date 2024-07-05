@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Source.Player
 {
-    public class Player : MonoBehaviour
+    public class PlayerBehaviour : MonoBehaviour
     {
         private MovingInputHandler _movingSystem;
         private AimInputHandler _aimSystem;

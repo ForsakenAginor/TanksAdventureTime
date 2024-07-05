@@ -11,11 +11,11 @@ namespace Assets.Source.Player.Input
         private readonly Rigidbody _rigidbody;
         private readonly PlayerInput _playerInput;
 
-        public MovingInputHandler(PlayerInput playerInput, Rigidbody rigidbody, Transform transform, float speed, float rotationSpeed)
+        public MovingInputHandler(PlayerInput playerInput, Rigidbody rigidbody, float speed, float rotationSpeed)
         {
             _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
             _rigidbody = rigidbody != null ? rigidbody : throw new ArgumentNullException(nameof(rigidbody));
-            _transform = transform != null ? transform : throw new ArgumentNullException(nameof(transform));
+            _transform = _rigidbody.transform;
             _speed = speed > 0 ? speed : throw new ArgumentOutOfRangeException(nameof(speed));
             _rotationSpeed = rotationSpeed > 0 ? rotationSpeed : throw new ArgumentOutOfRangeException(nameof(rotationSpeed));
         }

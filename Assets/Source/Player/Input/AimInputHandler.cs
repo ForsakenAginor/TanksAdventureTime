@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using UnityEngine;
 

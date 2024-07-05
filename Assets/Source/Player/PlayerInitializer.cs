@@ -8,7 +8,6 @@ namespace Assets.Source.Player
     {
         [Header("Moving")]
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private Transform _transform;
         [SerializeField] private float _speed;
         [SerializeField] private float _rotationSpeed;
 
@@ -23,13 +22,13 @@ namespace Assets.Source.Player
         [SerializeField] private float _projectileSpeed;
 
         [Header("Player")]
-        [SerializeField] private Player _player;
+        [SerializeField] private PlayerBehaviour _player;
 
         public void Init()
         {
             PlayerInput playerInput = new();
-            MovingInputHandler movingSystem = new(playerInput, _rigidbody, _transform, _speed, _rotationSpeed);
-            AimInputHandler aimSystem = new(playerInput, _cannon, _pidRegulator, _camera, _transform);
+            MovingInputHandler movingSystem = new(playerInput, _rigidbody, _speed, _rotationSpeed);
+            AimInputHandler aimSystem = new(playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
             FireInputHandler fireSystem = new(playerInput, _shootingPoint, _pool, _projectileSpeed);
             AbilityInputHandler abilitySystem = new(playerInput);
 
