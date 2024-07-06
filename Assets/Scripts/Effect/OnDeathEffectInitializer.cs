@@ -20,6 +20,9 @@ public class OnDeathEffectInitializer : MonoBehaviour
     [SerializeField] private float _distance;
     [SerializeField] private float _heigth;
 
+    [Header("AudioEffect")]
+    [SerializeField] private AudioSource _audioSource;
+
     private ICancelableOnDeathEffect[] _onDeathEffects;
     private OnDeathCameraSwitcher _deathCameraSwitcher;
     private CannonDestruction _cannonDestructionEffect;
@@ -37,6 +40,7 @@ public class OnDeathEffectInitializer : MonoBehaviour
         _explosionSpawner.Init(_explosionEffect, _fireEffect, _spanwPoint.position);
         _deathCameraSwitcher.Switch();
         _cannonDestructionEffect.Detonate();
+        _audioSource.Play();
         _onDeathEffects = new ICancelableOnDeathEffect[] { _deathCameraSwitcher, _cannonDestructionEffect, _explosionSpawner };
     }
 
