@@ -1,5 +1,5 @@
 using Agava.YandexGames;
-using Assets.Scripts.UI.Menu.Profile;
+using Assets.Scripts.UI.Menu.LevelSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +7,7 @@ namespace Assets.Scripts.UI.Menu.Leaderboard
 {
     public class LeaderboardOpener : MonoBehaviour
     {
-        private readonly PlayerData _playerData = new ();
+        private readonly LevelData _levelData = new ();
 
         [SerializeField] private YandexLeaderboard _leaderboard;
         [SerializeField] private GameObject _leaderboardPanel;
@@ -28,11 +28,13 @@ namespace Assets.Scripts.UI.Menu.Leaderboard
         public void OpenLeaderboard()
         {
             bool isAuthorized;
+
 #if UNITY_EDITOR
             isAuthorized = false;
 #else
         isAuthorized = PlayerAccount.IsAuthorized;
 #endif
+
             if (isAuthorized)
                 PlayerAccount.RequestPersonalProfileDataPermission(OnSuccessCallback, OnErrorCallback);
             else
@@ -41,14 +43,21 @@ namespace Assets.Scripts.UI.Menu.Leaderboard
             _holderPanel.SetActive(false);
         }
 
+#if UNITY_EDITOR
+        public void ShowPanel()
+        {
+            _leaderboardPanel.SetActive(true);
+        }
+#endif
+
         private void OnErrorCallback(string nonmatterValue)
         {
-            _leaderboard.SetPlayerScore(_playerData.GetPoints(), Fill);
+            _leaderboard.SetPlayerScore(_levelData.GetLevel(), Fill);
         }
 
         private void OnSuccessCallback()
         {
-            _leaderboard.SetPlayerScore(_playerData.GetPoints(), Fill);
+            _leaderboard.SetPlayerScore(_levelData.GetLevel(), Fill);
         }
 
         private void Fill()
