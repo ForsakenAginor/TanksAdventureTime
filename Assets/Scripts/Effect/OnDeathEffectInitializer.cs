@@ -20,7 +20,7 @@ public class OnDeathEffectInitializer : MonoBehaviour
     [SerializeField] private float _distance;
     [SerializeField] private float _heigth;
 
-    private IOnDeathEffect[] _onDeathEffects;
+    private ICancelableOnDeathEffect[] _onDeathEffects;
     private OnDeathCameraSwitcher _deathCameraSwitcher;
     private CannonDestruction _cannonDestructionEffect;
     private ExplosionSpawner _explosionSpawner;
@@ -37,7 +37,7 @@ public class OnDeathEffectInitializer : MonoBehaviour
         _explosionSpawner.Init(_explosionEffect, _fireEffect, _spanwPoint.position);
         _deathCameraSwitcher.Switch();
         _cannonDestructionEffect.Detonate();
-        _onDeathEffects = new IOnDeathEffect[] { _deathCameraSwitcher, _cannonDestructionEffect, _explosionSpawner };
+        _onDeathEffects = new ICancelableOnDeathEffect[] { _deathCameraSwitcher, _cannonDestructionEffect, _explosionSpawner };
     }
 
     public void Init()

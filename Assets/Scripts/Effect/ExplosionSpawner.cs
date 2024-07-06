@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class ExplosionSpawner : MonoBehaviour, IOnDeathEffect
+public class ExplosionSpawner : MonoBehaviour, ICancelableOnDeathEffect
 {
     private ParticleSystem _explosionEffect;
     private ParticleSystem _firEffect;

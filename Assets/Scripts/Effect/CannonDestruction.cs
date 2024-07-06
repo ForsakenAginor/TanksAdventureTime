@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
-public class CannonDestruction : IOnDeathEffect
+public class CannonDestruction : ICancelableOnDeathEffect
 {
     private readonly Transform _cannon;
     private readonly float _effectSpeed;

@@ -41,6 +41,11 @@ namespace Assets.Source.Player.Input
             RotateCannon();
         }
 
+        public void CancelAim()
+        {
+            _aimDirection = Vector3.zero;
+        }
+
         private void RotateCannon()
         {
             float y = _cannon.localRotation.eulerAngles.y;
