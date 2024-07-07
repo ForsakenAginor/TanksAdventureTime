@@ -1,5 +1,6 @@
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
+using Assets.Source.Player.OnDeathEffect;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint

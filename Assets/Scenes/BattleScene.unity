@@ -6823,6 +6823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _holder: {fileID: 150650715008037050}
+  _mobileInputCanvas: {fileID: 41569815}
   _objectsThatWillBeEnabled:
   - {fileID: 217148097}
   _root: {fileID: 2112200516}
