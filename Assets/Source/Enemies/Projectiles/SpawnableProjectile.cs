@@ -5,7 +5,7 @@ namespace Enemies
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(SphereCollider))]
-    public class MortarProjectile : SpawnableObject
+    public class SpawnableProjectile : SpawnableObject
     {
         [SerializeField] private float _explosionRadius;
 
@@ -29,13 +29,14 @@ namespace Enemies
             Explode();
         }
 
-        public MortarProjectile Init(IExplosive explosive, float angleRadian)
+        public SpawnableProjectile Init(IExplosive explosive, float angleRadian)
         {
             if (_didInit == true)
                 return this;
 
             _rigidbody = GetComponent<Rigidbody>();
             ColliderRadius = GetComponent<SphereCollider>().radius;
+            _explosive = explosive;
             _angleRadian = angleRadian;
             _didInit = true;
             return this;

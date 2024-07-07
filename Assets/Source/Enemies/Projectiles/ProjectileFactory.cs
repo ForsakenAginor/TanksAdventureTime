@@ -6,7 +6,7 @@ namespace Enemies
 {
     public class ProjectileFactory : IProjectileFactory
     {
-        private readonly ObjectPool<MortarProjectile> Weapon;
+        private readonly ObjectPool<SpawnableProjectile> Weapon;
         private readonly ObjectPool<HitEffect> ExplosionPool;
         private readonly ObjectPool<AimParticle> AimPool;
         private readonly IDamageableTarget Target;
@@ -16,7 +16,7 @@ namespace Enemies
         private readonly int ClusterCount;
 
         public ProjectileFactory(
-            MortarProjectile projectile,
+            SpawnableProjectile projectile,
             HitEffect hitTemplate,
             AimParticle aimTemplate,
             IDamageableTarget target,
@@ -25,7 +25,7 @@ namespace Enemies
             float distanceBetween,
             int clusterCount)
         {
-            Weapon = new ObjectPool<MortarProjectile>(projectile);
+            Weapon = new ObjectPool<SpawnableProjectile>(projectile);
             ExplosionPool = new ObjectPool<HitEffect>(hitTemplate);
             AimPool = new ObjectPool<AimParticle>(aimTemplate);
             Target = target;
@@ -58,7 +58,7 @@ namespace Enemies
             }
         }
 
-        private MortarProjectile Create(Vector3 position, IExplosive explosive)
+        private SpawnableProjectile Create(Vector3 position, IExplosive explosive)
         {
             return Weapon.Pull(position).Init(explosive, AngleRadian);
         }
