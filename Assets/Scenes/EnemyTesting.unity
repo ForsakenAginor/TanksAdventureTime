@@ -3002,7 +3002,7 @@ GameObject:
   - component: {fileID: 313496380}
   - component: {fileID: 313496382}
   - component: {fileID: 313496381}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3160,8 +3160,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313856399}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37174803, y: 0.601501, z: -0.37174806, w: 0.6015009}
-  m_LocalPosition: {x: 81.5324, y: 16.714169, z: 30.79723}
+  m_LocalRotation: {x: 0.37174806, y: 0.601501, z: -0.37174806, w: 0.6015009}
+  m_LocalPosition: {x: 11.471988, y: 16.714165, z: -2.24397}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3878,7 +3878,7 @@ GameObject:
   - component: {fileID: 401594838}
   - component: {fileID: 401594840}
   - component: {fileID: 401594839}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4134,6 +4134,8 @@ MonoBehaviour:
   - {fileID: 1726038623}
   - {fileID: 895928577}
   - {fileID: 1274668270359925183}
+  _bombs:
+  - {fileID: 1344303717}
 --- !u!4 &430470936
 Transform:
   m_ObjectHideFlags: 0
@@ -4864,7 +4866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 496986266}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5984,7 +5986,7 @@ GameObject:
   - component: {fileID: 683434980}
   - component: {fileID: 683434982}
   - component: {fileID: 683434981}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6439,7 +6441,7 @@ GameObject:
   - component: {fileID: 743520277}
   - component: {fileID: 743520279}
   - component: {fileID: 743520278}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7437,7 +7439,7 @@ GameObject:
   - component: {fileID: 828693718}
   - component: {fileID: 828693720}
   - component: {fileID: 828693719}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7874,16 +7876,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 1152050764}
     m_Modifications:
     - target: {fileID: 6883277565462172704, guid: 9b0e91a1c818984498b8992906255949, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883277565462172704, guid: 9b0e91a1c818984498b8992906255949, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6883277565462172704, guid: 9b0e91a1c818984498b8992906255949, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.052887
+      value: -13.03
       objectReference: {fileID: 0}
     - target: {fileID: 6883277565462172704, guid: 9b0e91a1c818984498b8992906255949, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7891,7 +7885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6883277565462172704, guid: 9b0e91a1c818984498b8992906255949, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.0765038
+      value: 7.98
       objectReference: {fileID: 0}
     - target: {fileID: 6883277565462172704, guid: 9b0e91a1c818984498b8992906255949, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8197,8 +8191,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904324076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.37174803, y: 0.601501, z: -0.37174806, w: 0.6015009}
-  m_LocalPosition: {x: 81.5324, y: 16.714169, z: 30.79723}
+  m_LocalRotation: {x: 0.37174806, y: 0.601501, z: -0.37174806, w: 0.6015009}
+  m_LocalPosition: {x: 11.471988, y: 16.714165, z: -2.24397}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11426,6 +11420,115 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213791330}
   m_Mesh: {fileID: 4300000, guid: 61acac545cb3c0e4994e3fc8c50c55c9, type: 3}
+--- !u!1001 &1228356086
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1344303718}
+    m_Modifications:
+    - target: {fileID: 130078, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 137632, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 138878, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 156992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 161142, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 180702, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_Name
+      value: GrenadeExplosionFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075936047718304, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400541257573276931, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 873238fc146e9484eb72f0f4028cf839, type: 3}
+    m_RemovedComponents:
+    - {fileID: 4500890358154097124, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+--- !u!198 &1228356087 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19848870, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+  m_PrefabInstance: {fileID: 1228356086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1228356088 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 404992, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+  m_PrefabInstance: {fileID: 1228356086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1228356089 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8400541257573276931, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+  m_PrefabInstance: {fileID: 1228356086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1237367420
 GameObject:
   m_ObjectHideFlags: 0
@@ -11520,7 +11623,7 @@ GameObject:
   - component: {fileID: 1264430611}
   - component: {fileID: 1264430613}
   - component: {fileID: 1264430612}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12028,6 +12131,78 @@ Transform:
   - {fileID: 405821017}
   m_Father: {fileID: 1004655200}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1344303716
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1344303718}
+  - component: {fileID: 1344303717}
+  - component: {fileID: 1344303719}
+  m_Layer: 8
+  m_Name: Mine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1344303717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344303716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1bfff2009a146df974da53fd9a215e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionRadius: 5
+  _sound: {fileID: 1228356089}
+  _particle: {fileID: 1228356087}
+  _colliderBody: {fileID: 388380013504584268}
+--- !u!4 &1344303718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344303716}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 65.09844, y: 0.001, z: -7.3769674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 390237093114213844}
+  - {fileID: 1228356088}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1344303719
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344303716}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9794235, y: 0.51721734, z: 0.54707813}
+  m_Center: {x: 0.018550873, y: 0.2656757, z: 0.004374981}
 --- !u!1 &1347333447
 GameObject:
   m_ObjectHideFlags: 0
@@ -14232,7 +14407,7 @@ GameObject:
   - component: {fileID: 1597815363}
   - component: {fileID: 1597815365}
   - component: {fileID: 1597815364}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15538,6 +15713,80 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709510282}
   m_Mesh: {fileID: 4300018, guid: 1e70f83fd953e9e49adb1026cf90f1ca, type: 3}
+--- !u!1001 &1709760069
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 390237093114213844}
+    m_Modifications:
+    - target: {fileID: 1356209367432166, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_Name
+      value: RedPing
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0724
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+--- !u!4 &1709760070 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4525122955478668, guid: f526bd697cd3aa64a9797a3273bf383a, type: 3}
+  m_PrefabInstance: {fileID: 1709760069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712862772
 GameObject:
   m_ObjectHideFlags: 0
@@ -16230,7 +16479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1819249404}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19262,7 +19511,7 @@ GameObject:
   - component: {fileID: 2055777440}
   - component: {fileID: 2055777442}
   - component: {fileID: 2055777441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19354,7 +19603,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2063899393}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21286,9 +21535,8 @@ GameObject:
   - component: {fileID: 390237093114213844}
   - component: {fileID: 368654630187496874}
   - component: {fileID: 375824002659071742}
-  - component: {fileID: 397335719325796380}
-  m_Layer: 0
-  m_Name: Mine
+  m_Layer: 8
+  m_Name: Mine Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21302,35 +21550,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388380013504584268}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 93.95683, y: 0, z: 8.566999}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
+  m_Children:
+  - {fileID: 1709760070}
+  m_Father: {fileID: 1344303718}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &397335719325796380
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 388380013504584268}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43820527501379694, guid: 53e3b4e509f87d348b041794cad70349, type: 2}
 --- !u!1001 &1274668270359925180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22101,7 +22328,7 @@ Transform:
   m_GameObject: {fileID: 4565855419785342613}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 90.11984, y: 0.0000019073486, z: 17.309399}
+  m_LocalPosition: {x: 20.05943, y: -0.0000019073486, z: -15.7318}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22228,7 +22455,7 @@ GameObject:
   - component: {fileID: 4562282368241459883}
   - component: {fileID: 4551140324369686447}
   - component: {fileID: 4543109072470457785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22246,7 +22473,7 @@ GameObject:
   - component: {fileID: 4562164758238008109}
   - component: {fileID: 4550970245464321307}
   - component: {fileID: 4543522189894872725}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Turret_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22264,7 +22491,7 @@ GameObject:
   - component: {fileID: 4561756914488542459}
   - component: {fileID: 4551233519220869507}
   - component: {fileID: 4543223563496526403}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22282,7 +22509,7 @@ GameObject:
   - component: {fileID: 4562495816395401549}
   - component: {fileID: 4550518817424123893}
   - component: {fileID: 4542574525345604697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Turret_Barrel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22300,7 +22527,7 @@ GameObject:
   - component: {fileID: 4562014876241732127}
   - component: {fileID: 4550571547661995261}
   - component: {fileID: 4542473352536503727}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22318,7 +22545,7 @@ GameObject:
   - component: {fileID: 4561676712133486365}
   - component: {fileID: 4551282899304005281}
   - component: {fileID: 4543315356094938397}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22336,7 +22563,7 @@ GameObject:
   - component: {fileID: 4561785710416348221}
   - component: {fileID: 4551944843967519731}
   - component: {fileID: 4543047410309541971}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22354,7 +22581,7 @@ GameObject:
   - component: {fileID: 4562076349119998951}
   - component: {fileID: 4550484034446285315}
   - component: {fileID: 4543541768261422237}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_L_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22372,7 +22599,7 @@ GameObject:
   - component: {fileID: 4562608869294782075}
   - component: {fileID: 4551957058067790695}
   - component: {fileID: 4542548160834055731}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22393,8 +22620,7 @@ GameObject:
   - component: {fileID: 4592303698082929899}
   - component: {fileID: 4592303698082929900}
   - component: {fileID: 4592303698082929902}
-  - component: {fileID: 4592303698082929901}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22412,7 +22638,7 @@ GameObject:
   - component: {fileID: 4562636678754866305}
   - component: {fileID: 4552012271241494197}
   - component: {fileID: 4543387808355245727}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: SM_Veh_Tank_Russia_Track_Wheel_R_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22458,20 +22684,6 @@ MonoBehaviour:
   _shakeDuration: 0.8
   _shakeAmplitude: 5
   _shakeFrequency: 7
---- !u!114 &4592303698082929901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4565855419785342613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c2488a599b0fe4a887ef326080cd01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 1700
-  _rotationSpeed: 45
 --- !u!54 &4592303698082929902
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22513,4 +22725,4 @@ SceneRoots:
   - {fileID: 430470936}
   - {fileID: 4561890495400308765}
   - {fileID: 191224221}
-  - {fileID: 390237093114213844}
+  - {fileID: 1344303718}
