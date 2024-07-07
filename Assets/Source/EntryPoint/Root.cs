@@ -1,7 +1,5 @@
-using Agava.WebUtility;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
-using System;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint
@@ -16,9 +14,7 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private BuildingSpotsCollection _buildingSpots;
 
         [Header("UI objects")]
-        [SerializeField] private GameObject _losePanel;
-        [SerializeField] private GameObject _wonPanel;
-        [SerializeField] private GameObject _mobileInputCanvas;
+        [SerializeField] private UIManager _uIManager;
 
         [Header("Player")]
         [SerializeField] private PlayerBehaviour _player;
@@ -30,14 +26,8 @@ namespace Assets.Source.EntryPoint
 
         private void Start()
         {
-            /* 
-            uncomment that on publishing
-
-            if(Device.IsMobile == false)
-                _mobileInputCanvas.SetActive(false);
-            */
-            LevelConfiguration configuration = new(_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
-            LevelGenerator levelGenerator = new(configuration, _buildingPresets, _buildingSpots, _spawner);
+            LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
+            LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner);
             _playerInitializer.Init(_playerDamageTaker, _player);
             _spawnPoint = _playerModel.transform.position;
         }
@@ -65,6 +55,7 @@ namespace Assets.Source.EntryPoint
         private void OnPlayerDied()
         {
             _onDeathEffectInitializer.CreateEffect();
+            _uIManager.ShowLosingPanel();
         }
     }
 }
