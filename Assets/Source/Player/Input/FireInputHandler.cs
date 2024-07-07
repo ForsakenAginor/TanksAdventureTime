@@ -26,9 +26,12 @@ namespace Assets.Source.Player.Input
             _playerInput.FireInputReceived -= OnInputReceived;
         }
 
+        public event Action ShotFired;
+
         private void OnInputReceived()
         {
             _pool.Pull().Launch(_shootingPoint.position, _shootingPoint.forward * _projectileSpeed);
+            ShotFired?.Invoke();
         }
     }
 }

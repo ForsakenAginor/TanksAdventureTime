@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using UnityEngine;
 
@@ -38,6 +39,11 @@ namespace Assets.Source.Player.Input
                 return;
 
             RotateCannon();
+        }
+
+        public void CancelAim()
+        {
+            _aimDirection = Vector3.zero;
         }
 
         private void RotateCannon()

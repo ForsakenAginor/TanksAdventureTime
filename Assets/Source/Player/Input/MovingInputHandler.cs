@@ -11,14 +11,19 @@ namespace Assets.Source.Player.Input
         private readonly Rigidbody _rigidbody;
         private readonly PlayerInput _playerInput;
 
-        public MovingInputHandler(PlayerInput playerInput, Rigidbody rigidbody, Transform transform, float speed, float rotationSpeed)
+        private bool _isMoved;
+
+        public MovingInputHandler(PlayerInput playerInput, Rigidbody rigidbody, float speed, float rotationSpeed)
         {
             _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
             _rigidbody = rigidbody != null ? rigidbody : throw new ArgumentNullException(nameof(rigidbody));
-            _transform = transform != null ? transform : throw new ArgumentNullException(nameof(transform));
+            _transform = _rigidbody.transform;
             _speed = speed > 0 ? speed : throw new ArgumentOutOfRangeException(nameof(speed));
             _rotationSpeed = rotationSpeed > 0 ? rotationSpeed : throw new ArgumentOutOfRangeException(nameof(rotationSpeed));
         }
+
+        public event Action MoveStarted;
+        public event Action MoveEnded;
 
         public void Moving()
         {
@@ -30,7 +35,10 @@ namespace Assets.Source.Player.Input
             _rigidbody.angularVelocity = Vector3.zero;
 
             if (input == Vector2.zero)
+            {
+                SetIsMoved(false);
                 return;
+            }
 
             Vector3 movingDirection = Vector3.zero;
 
@@ -39,6 +47,27 @@ namespace Assets.Source.Player.Input
 
             _rigidbody.velocity = movingDirection * _speed * Time.deltaTime;
             _transform.Rotate(Vector3.up, input.x * Time.deltaTime * _rotationSpeed);
+            SetIsMoved(true);
+        }
+
+        public void CancelMove()
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+        }
+
+        private void SetIsMoved(bool isMoved)
+        {
+            if (isMoved != _isMoved && _isMoved == false)
+            {
+                _isMoved = isMoved;
+                MoveStarted?.Invoke();
+            }
+            else if (isMoved != _isMoved && _isMoved == true)
+            {
+                _isMoved = isMoved;
+                MoveEnded?.Invoke();
+            }
         }
     }
 }
