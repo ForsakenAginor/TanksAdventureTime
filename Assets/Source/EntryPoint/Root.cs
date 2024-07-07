@@ -1,6 +1,6 @@
-using Agava.WebUtility;
 using Assets.Source.Player;
-using System;
+using Assets.Source.Player.HealthSystem;
+using Assets.Source.Player.OnDeathEffect;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint
@@ -15,29 +15,49 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private BuildingSpotsCollection _buildingSpots;
 
         [Header("UI objects")]
-        [SerializeField] private GameObject _losePanel;
-        [SerializeField] private GameObject _wonPanel;
-        [SerializeField] private GameObject _mobileInputCanvas;
+        [SerializeField] private UIManager _uIManager;
 
         [Header("Player")]
+        [SerializeField] private PlayerBehaviour _playerBehaviour;
+        [SerializeField] private PlayerDamageTaker _playerDamageTaker;
+        [SerializeField] private GameObject _playerModel;
         [SerializeField] private PlayerInitializer _playerInitializer;
+        [SerializeField] private OnDeathEffectInitializer _onDeathEffectInitializer;
+        private Vector3 _spawnPoint;
 
         private void Start()
         {
-            /* 
-            uncomment that on publishing
+            LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
+            LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner);
+            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour);
+            _spawnPoint = _playerModel.transform.position;
+        }
 
-            if(Device.IsMobile == false)
-                _mobileInputCanvas.SetActive(false);
-            */
-            LevelConfiguration configuration = new(_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
-            LevelGenerator levelGenerator = new(configuration, _buildingPresets, _buildingSpots, _spawner);
-            _playerInitializer.Init();
+        private void OnEnable()
+        {
+            _playerDamageTaker.PlayerDied += OnPlayerDied;
+        }
+
+        private void OnDisable()
+        {
+            _playerDamageTaker.PlayerDied -= OnPlayerDied;            
         }
 
         public void Respawn()
         {
-            throw new NotImplementedException();
+            _playerModel.transform.position = _spawnPoint;
+            _playerModel.transform.rotation = Quaternion.identity;
+            _onDeathEffectInitializer.Init();
+            _playerDamageTaker.Respawn();
+            _playerBehaviour.Continue();
+        }
+
+
+        private void OnPlayerDied()
+        {
+            _playerBehaviour.Stop();
+            _onDeathEffectInitializer.CreateEffect();
+            _uIManager.ShowLosingPanel();
         }
     }
 }

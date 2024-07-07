@@ -1,3 +1,4 @@
+using Agava.WebUtility;
 using Assets.Source.EntryPoint;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class ShowAdvertiseButtonHandler : MonoBehaviour
 {
     [SerializeField] private GameObject _holder;
+    [SerializeField] private GameObject _mobileInputCanvas;
     [SerializeField] private GameObject[] _objectsThatWillBeEnabled;
     [SerializeField] private Root _root;
 
@@ -49,6 +51,13 @@ public class ShowAdvertiseButtonHandler : MonoBehaviour
         _holder.SetActive(false);        
         _objectsThatWillBeEnabled.ToList().ForEach( o => o.SetActive(true));
         _root.Respawn();
+
+#if !UNITY_EDITOR
+        if (Device.IsMobile)
+            _mobileInputCanvas.SetActive(true);
+#else
+        _mobileInputCanvas.SetActive(true);
+#endif
     }
 
     private void OnCloseCallback()
