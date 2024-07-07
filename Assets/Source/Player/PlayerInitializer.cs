@@ -13,6 +13,7 @@ namespace Assets.Source.Player
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _speed;
         [SerializeField] private float _rotationSpeed;
+        [SerializeField] private AudioSource _movingAudioSource;
 
         [Header("Aiming")]
         [SerializeField] private Transform _cannon;
@@ -23,6 +24,7 @@ namespace Assets.Source.Player
         [SerializeField] private Transform _shootingPoint;
         [SerializeField] private AmmoPool _pool;
         [SerializeField] private float _projectileSpeed;
+        [SerializeField] private AudioSource _shootingAudioSource;
 
         [Header("Player")]
         private PlayerBehaviour _player;
@@ -55,6 +57,8 @@ namespace Assets.Source.Player
             _aimSystem = new(playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
             _fireSystem = new(playerInput, _shootingPoint, _pool, _projectileSpeed);
             _abilitySystem = new(playerInput);
+
+            PlayerSoundHandler playerSoundHandler = new (_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
 
             _player.Init(_movingSystem, _aimSystem);
 
