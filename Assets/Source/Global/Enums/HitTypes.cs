@@ -2,4 +2,5 @@
 {
     Bullet,
     Explosion,
+    PermanentDeath
 }

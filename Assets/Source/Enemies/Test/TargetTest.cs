@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Enemies
 {
     [RequireComponent(typeof(Collider))]
-    public class TargetTest : MonoBehaviour, IPlayerTarget
+    public class TargetTest : MonoBehaviour, IPlayerTarget, IPermanentKiller
     {
         private const float MinValue = (float)ValueConstants.Zero;
 
