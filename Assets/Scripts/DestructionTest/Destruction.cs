@@ -1,12 +1,19 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Destruction : MonoBehaviour
 {
     [SerializeField] private Transform _panelDestruction;
 
     private Transform _transform;
+    private Rigidbody _rigidbody;
 
-    private void Start() => _transform = transform;
+    private void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.Sleep();
+        _transform = transform;
+    }
 
     public void DestroyObject()
     {
