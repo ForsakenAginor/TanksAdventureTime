@@ -6,12 +6,20 @@ using UnityEngine;
 namespace Enemies
 {
     [RequireComponent(typeof(EnemyAnimation))]
+    [RequireComponent(typeof(EnemyCollision))]
+    [RequireComponent(typeof(EnemyDeathEffect))]
     public class EnemySetup : MonoBehaviour
     {
         [Header("Main")]
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _viewPoint;
-        [SerializeField] private Transform _transform;
+        [SerializeField] private Transform _rotationPoint;
+        [SerializeField] private HitConfiguration _hitConfiguration;
+        [SerializeField] private ParticleSystem _deathParticle;
+        [SerializeField] private AudioSource _deathSound;
+        [SerializeField] private float _deathDisappearDuration = 1f;
+        [SerializeField] private string _deathLayerName = "Ignore Raycast";
+        [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _thinkDelay;
         [SerializeField] private EnemyTypes _enemyType;
@@ -25,14 +33,14 @@ namespace Enemies
         [SerializeField] private float _mortarTrajectoryHeightOffset;
 
         [Header("Weapon")]
-        [SerializeField] private AudioSource _sound;
+        [SerializeField] private AudioSource _fireSound;
         [Range(0f, 2f)]
         [SerializeField] private float _minPitch = 1f;
         [Range(0f, 2f)]
         [SerializeField] private float _maxPitch = 1.3f;
         [SerializeField] private ParticleSystem _shootingEffect;
         [SerializeField] private HitEffect _hitTemplate;
-        [SerializeField] private MortarProjectile _projectile;
+        [SerializeField] private SpawnableProjectile _projectile;
         [SerializeField] private AimParticle _aimTemplate;
         [SerializeField] private ProjectileTypes _projectileType;
         [SerializeField] private float _distanceBetween = 0f;
@@ -42,6 +50,9 @@ namespace Enemies
         [SerializeField] private TargetTest _debugTarget;
 
         private EnemyAnimation _animation;
+        private EnemyCollision _collision;
+        private EnemyDeathEffect _death;
+        private Transform _transform;
 
         private FiniteStateMachine<EnemyState> _machine;
         private IWeapon _weapon;
@@ -49,8 +60,7 @@ namespace Enemies
         private IPlayerTarget _target;
         private EnemyRotator _rotator;
         private EnemyThinker _thinker;
-        private CancellationToken _token;
-
+        private CancellationToken _destroyToken;
         private EnemyPresenter _presenter;
 
         private void OnValidate()
@@ -72,12 +82,22 @@ namespace Enemies
         public void Init(IPlayerTarget target)
         {
             _target = target;
+            _transform = transform;
+            _destroyToken = destroyCancellationToken;
             _animation = GetComponent<EnemyAnimation>();
-            _machine = new FiniteStateMachine<EnemyState>();
-            _rotator = new EnemyRotator(_rotationSpeed, _transform, _target);
-            _thinker = new EnemyThinker(destroyCancellationToken, _thinkDelay);
-            _presenter = new EnemyPresenter(_machine, _thinker);
+            _collision = GetComponent<EnemyCollision>();
+            _death = GetComponent<EnemyDeathEffect>();
 
+            _machine = new FiniteStateMachine<EnemyState>();
+            _rotator = new EnemyRotator(_rotationSpeed, _rotationPoint, _target);
+            _thinker = new EnemyThinker(_thinkDelay);
+            _presenter = new EnemyPresenter(
+                _machine,
+                _thinker,
+                _collision,
+                new EnemyTestHealth(_maxHealth),
+                _hitConfiguration,
+                _death);
             _weapon = GetWeapon(target);
             _fieldOfView = GetFieldOfView();
 
@@ -95,13 +115,22 @@ namespace Enemies
                 });
 
             _animation.Init(_animator, () => _machine.SetState(typeof(EnemyIdleState)));
+            _collision.Init(_rotationPoint);
+            _death.Init(
+                _transform,
+                _deathParticle,
+                _deathSound,
+                _animation,
+                _deathDisappearDuration,
+                LayerMask.NameToLayer(_deathLayerName),
+                _destroyToken);
 
             _presenter.Enable();
         }
 
         private IWeapon GetWeapon(IDamageableTarget target)
         {
-            AudioPitcher sound = new AudioPitcher(_sound, _minPitch, _maxPitch);
+            AudioPitcher sound = new AudioPitcher(_fireSound, _minPitch, _maxPitch);
 
             switch (_enemyType)
             {
@@ -157,7 +186,7 @@ namespace Enemies
             if (_isDebug == false)
                 return;
 
-            if (_viewPoint == null || _transform == null)
+            if (_viewPoint == null || _rotationPoint == null)
                 return;
 
             if (_debugTarget == null)

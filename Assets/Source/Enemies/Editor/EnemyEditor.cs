@@ -10,13 +10,19 @@ namespace Enemies
 
         private SerializedProperty _animator;
         private SerializedProperty _viewPoint;
-        private SerializedProperty _transform;
+        private SerializedProperty _rotationPoint;
+        private SerializedProperty _hitConfiguration;
+        private SerializedProperty _deathParticle;
+        private SerializedProperty _deathSound;
+        private SerializedProperty _deathDisappearDuration;
+        private SerializedProperty _deathLayerName;
+        private SerializedProperty _maxHealth;
         private SerializedProperty _rotationSpeed;
         private SerializedProperty _thinkDelay;
         private SerializedProperty _enemyType;
         private SerializedProperty _isDebug;
 
-        private SerializedProperty _sound;
+        private SerializedProperty _fireSound;
         private SerializedProperty _minPitch;
         private SerializedProperty _maxPitch;
         private SerializedProperty _attackRadius;
@@ -38,13 +44,19 @@ namespace Enemies
         {
             _animator = serializedObject.FindProperty(nameof(_animator));
             _viewPoint = serializedObject.FindProperty(nameof(_viewPoint));
-            _transform = serializedObject.FindProperty(nameof(_transform));
+            _rotationPoint = serializedObject.FindProperty(nameof(_rotationPoint));
+            _hitConfiguration = serializedObject.FindProperty(nameof(_hitConfiguration));
+            _deathParticle = serializedObject.FindProperty(nameof(_deathParticle));
+            _deathSound = serializedObject.FindProperty(nameof(_deathSound));
+            _deathDisappearDuration = serializedObject.FindProperty(nameof(_deathDisappearDuration));
+            _deathLayerName = serializedObject.FindProperty(nameof(_deathLayerName));
+            _maxHealth = serializedObject.FindProperty(nameof(_maxHealth));
             _rotationSpeed = serializedObject.FindProperty(nameof(_rotationSpeed));
             _thinkDelay = serializedObject.FindProperty(nameof(_thinkDelay));
             _enemyType = serializedObject.FindProperty(nameof(_enemyType));
             _isDebug = serializedObject.FindProperty(nameof(_isDebug));
 
-            _sound = serializedObject.FindProperty(nameof(_sound));
+            _fireSound = serializedObject.FindProperty(nameof(_fireSound));
             _minPitch = serializedObject.FindProperty(nameof(_minPitch));
             _maxPitch = serializedObject.FindProperty(nameof(_maxPitch));
             _attackRadius = serializedObject.FindProperty(nameof(_attackRadius));
@@ -75,7 +87,13 @@ namespace Enemies
             EditorGUILayout.PropertyField(_animator);
             EditorGUILayout.PropertyField(_viewPoint);
             EditorGUILayout.PropertyField(_thinkDelay);
-            EditorGUILayout.PropertyField(_transform);
+            EditorGUILayout.PropertyField(_rotationPoint);
+            EditorGUILayout.PropertyField(_hitConfiguration);
+            EditorGUILayout.PropertyField(_deathParticle);
+            EditorGUILayout.PropertyField(_deathSound);
+            EditorGUILayout.PropertyField(_deathDisappearDuration);
+            EditorGUILayout.PropertyField(_deathLayerName);
+            EditorGUILayout.PropertyField(_maxHealth);
             EditorGUILayout.PropertyField(_rotationSpeed);
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PropertyField(_thinkDelay);
@@ -85,7 +103,7 @@ namespace Enemies
             EditorGUILayout.PropertyField(_isDebug);
             EditorGUILayout.PropertyField(_attackRadius);
             EditorGUILayout.PropertyField(_walls);
-            EditorGUILayout.PropertyField(_sound);
+            EditorGUILayout.PropertyField(_fireSound);
             EditorGUILayout.PropertyField(_minPitch);
             EditorGUILayout.PropertyField(_maxPitch);
             EditorGUILayout.PropertyField(_hitTemplate);
