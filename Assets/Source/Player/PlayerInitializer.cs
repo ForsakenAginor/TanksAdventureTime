@@ -41,10 +41,18 @@ namespace Assets.Source.Player
         private FireInputHandler _fireSystem;
         private AbilityInputHandler _abilitySystem;
 
+        [Header("InputSystem")]
+        private PlayerInput _playerInput;
+
         private void OnValidate()
         {
             if (_maxHealth <= 0)
                 throw new ArgumentOutOfRangeException(nameof(_maxHealth));
+        }
+
+        private void OnDestroy()
+        {
+            _playerInput?.DisposeInputSystem();
         }
 
         public void Init(PlayerDamageTaker playerDamageTaker, PlayerBehaviour player)
@@ -52,11 +60,11 @@ namespace Assets.Source.Player
             _playerDamageTaker = playerDamageTaker != null ? playerDamageTaker : throw new ArgumentNullException(nameof(player));
             _player = player != null ? player : throw new ArgumentNullException(nameof(player));
 
-            PlayerInput playerInput = new();
-            _movingSystem = new(playerInput, _rigidbody, _speed, _rotationSpeed);
-            _aimSystem = new(playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
-            _fireSystem = new(playerInput, _shootingPoint, _pool, _projectileSpeed);
-            _abilitySystem = new(playerInput);
+            _playerInput = new();
+            _movingSystem = new(_playerInput, _rigidbody, _speed, _rotationSpeed);
+            _aimSystem = new(_playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
+            _fireSystem = new(_playerInput, _shootingPoint, _pool, _projectileSpeed);
+            _abilitySystem = new(_playerInput);
 
             PlayerSoundHandler playerSoundHandler = new (_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
 
