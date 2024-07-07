@@ -13,7 +13,7 @@ public class CannonDestruction : ICancelableOnDeathEffect
     public CannonDestruction(Transform cannon, float effectSpeed, float distance, float heigth)
     {
         _cannon = cannon != null ? cannon : throw new ArgumentNullException(nameof(cannon));
-        _effectSpeed = effectSpeed > 0 ? _effectSpeed : throw new ArgumentOutOfRangeException(nameof(effectSpeed));
+        _effectSpeed = effectSpeed > 0 ? effectSpeed : throw new ArgumentOutOfRangeException(nameof(effectSpeed));
         _distance = distance;
         _heigth = heigth;
         _startPosition = cannon.position;

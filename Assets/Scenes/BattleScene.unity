@@ -1672,7 +1672,7 @@ MonoBehaviour:
   _cannon: {fileID: 4083561215216004}
   _effectSpeed: 1
   _distance: 5
-  _heigth: 3
+  _heigth: 5
   _audioSource: {fileID: 1656304740}
 --- !u!1 &188859960
 GameObject:
@@ -10680,10 +10680,12 @@ MonoBehaviour:
   - {fileID: 805083767}
   - {fileID: 1656304740}
   - {fileID: 1804559871}
+  - {fileID: 699140633}
   _effectsSources:
   - {fileID: 805083767}
   - {fileID: 1656304740}
   - {fileID: 1804559871}
+  - {fileID: 699140633}
   _musicSources:
   - {fileID: 1999319367}
   _masterVolumeSlider: {fileID: 854278730351486909}
@@ -13386,7 +13388,7 @@ MonoBehaviour:
   _buildingPresets: {fileID: 1714307928}
   _buildingSpots: {fileID: 1714307929}
   _uIManager: {fileID: 2112200517}
-  _player: {fileID: 1494637071}
+  _playerBehaviour: {fileID: 1494637071}
   _playerDamageTaker: {fileID: 33908297208026066}
   _playerModel: {fileID: 1051163351528508}
   _playerInitializer: {fileID: 1494637072}

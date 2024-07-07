@@ -29,5 +29,10 @@ namespace Assets.Source.Player.HealthSystem
         {
             _health.TakeDamage(amount);
         }
+
+        public void Respawn()
+        {
+            _health.Restore(_health.Maximum);
+        }
     }
 }

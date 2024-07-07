@@ -11,6 +11,7 @@ namespace Assets.Source.Player
         private readonly AudioSource _shootingAudioSource;
         private readonly AudioSource _movingAudioSource;
         private readonly int _volumeMultiplier = 2;
+        private bool _isBoosted;
 
         public PlayerSoundHandler(FireInputHandler fireSystem, MovingInputHandler movingSystem, AudioSource shootingAudioSource, AudioSource movingAudioSource)
         {
@@ -31,6 +32,27 @@ namespace Assets.Source.Player
             _movingSystem.MoveEnded -= OnMoveEnded;
         }
 
+        public void Stop()
+        {
+            _fireSystem.ShotFired -= OnShotFired;
+            _movingSystem.MoveStarted -= OnMoveStarted;
+            _movingSystem.MoveEnded -= OnMoveEnded;
+
+            _movingAudioSource.Pause();
+
+            if (_isBoosted)
+                ReduceEngineVolume();
+        }
+
+        public void Continue()
+        {
+            _fireSystem.ShotFired += OnShotFired;
+            _movingSystem.MoveStarted += OnMoveStarted;
+            _movingSystem.MoveEnded += OnMoveEnded;
+
+            _movingAudioSource.UnPause();
+        }
+
         private void OnShotFired()
         {
             _shootingAudioSource.Play();
@@ -38,14 +60,26 @@ namespace Assets.Source.Player
 
         private void OnMoveStarted()
         {
-            float currentVolume = _movingAudioSource.volume;
-            _movingAudioSource.volume = currentVolume * _volumeMultiplier;
+            BoostEngineVolume();
         }
 
         private void OnMoveEnded()
         {
+            ReduceEngineVolume();
+        }
+
+        private void BoostEngineVolume()
+        {
+            float currentVolume = _movingAudioSource.volume;
+            _movingAudioSource.volume = currentVolume * _volumeMultiplier;
+            _isBoosted = true;
+        }
+
+        private void ReduceEngineVolume()
+        {
             float currentVolume = _movingAudioSource.volume;
             _movingAudioSource.volume = currentVolume / _volumeMultiplier;
+            _isBoosted = false;
         }
     }
 }

@@ -60,20 +60,11 @@ namespace Assets.Source.Player
 
             PlayerSoundHandler playerSoundHandler = new (_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
 
-            _player.Init(_movingSystem, _aimSystem);
+            _player.Init(_movingSystem, _aimSystem, playerSoundHandler);
 
             _health = new Health(_maxHealth);
             _playerDamageTaker.Init(_health);
             _healthViews.ToList().ForEach(o => o.Init(_health));
-        }
-
-        public void Respawn()
-        {
-            if (_aimSystem == null)
-                throw new Exception("PlayerInitializer class not initialized yet");
-
-            _aimSystem.CancelAim();
-            _health.Restore(_maxHealth);
         }
     }
 }

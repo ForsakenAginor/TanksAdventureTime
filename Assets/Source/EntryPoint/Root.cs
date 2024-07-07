@@ -17,7 +17,7 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private UIManager _uIManager;
 
         [Header("Player")]
-        [SerializeField] private PlayerBehaviour _player;
+        [SerializeField] private PlayerBehaviour _playerBehaviour;
         [SerializeField] private PlayerDamageTaker _playerDamageTaker;
         [SerializeField] private GameObject _playerModel;
         [SerializeField] private PlayerInitializer _playerInitializer;
@@ -28,7 +28,7 @@ namespace Assets.Source.EntryPoint
         {
             LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
             LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner);
-            _playerInitializer.Init(_playerDamageTaker, _player);
+            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour);
             _spawnPoint = _playerModel.transform.position;
         }
 
@@ -47,13 +47,14 @@ namespace Assets.Source.EntryPoint
             _playerModel.transform.position = _spawnPoint;
             _playerModel.transform.rotation = Quaternion.identity;
             _onDeathEffectInitializer.Init();
-            _player.enabled = true;
-            _playerInitializer.Respawn();
+            _playerDamageTaker.Respawn();
+            _playerBehaviour.Continue();
         }
 
 
         private void OnPlayerDied()
         {
+            _playerBehaviour.Stop();
             _onDeathEffectInitializer.CreateEffect();
             _uIManager.ShowLosingPanel();
         }

@@ -50,6 +50,12 @@ namespace Assets.Source.Player.Input
             SetIsMoved(true);
         }
 
+        public void CancelMove()
+        {
+            _rigidbody.velocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+        }
+
         private void SetIsMoved(bool isMoved)
         {
             if (isMoved != _isMoved && _isMoved == false)
