@@ -1,4 +1,4 @@
-﻿namespace Enemies
+﻿namespace Projectiles
 {
     public interface IAimParticle
     {

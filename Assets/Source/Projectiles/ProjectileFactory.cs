@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Enemies
+namespace Projectiles
 {
     public class ProjectileFactory : IProjectileFactory
     {

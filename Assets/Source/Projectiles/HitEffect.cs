@@ -1,7 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Enemies
+namespace Projectiles
 {
     [RequireComponent(typeof(AudioSource))]
     public class HitEffect : SpawnableParticle

@@ -1,4 +1,5 @@
 ﻿using System;
+using Projectiles;
 using UnityEditor;
 
 namespace Enemies

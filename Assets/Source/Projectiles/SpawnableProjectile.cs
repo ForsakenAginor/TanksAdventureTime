@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Enemies
+namespace Projectiles
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(SphereCollider))]

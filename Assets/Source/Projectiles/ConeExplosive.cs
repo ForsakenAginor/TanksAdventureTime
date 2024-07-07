@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace Projectiles
 {
     public class ConeExplosive : IExplosive
     {
