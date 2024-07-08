@@ -1,19 +1,21 @@
-using System;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+namespace DestructionTest
 {
-    [SerializeField] private Transform _pointSpawnBullet;
-    [SerializeField] private Bullet _bulletPrefab;
-
-    private void Update()
+    public class Gun : MonoBehaviour
     {
-        if (Input.GetMouseButtonDown(0)) Shoot();
-    }
+        [SerializeField] private Transform _pointSpawnBullet;
+        [SerializeField] private Bullet _bulletPrefab;
 
-    private void Shoot()
-    {
-        Quaternion quaternion = transform.rotation;
-        Instantiate(_bulletPrefab, _pointSpawnBullet.position, quaternion);
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0)) Shoot();
+        }
+
+        private void Shoot()
+        {
+            Quaternion quaternion = transform.rotation;
+            Instantiate(_bulletPrefab, _pointSpawnBullet.position, quaternion);
+        }
     }
 }

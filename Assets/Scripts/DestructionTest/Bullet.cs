@@ -1,26 +1,22 @@
-using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour
+namespace DestructionTest
 {
-    private Rigidbody _rigidbody;
-
-    private void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class Bullet : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
+        [SerializeField] private float _speed = 300f;
 
-    private void FixedUpdate()
-    {
-        _rigidbody.velocity += Vector3.forward * (300 * Time.deltaTime);
-    }
+        private Rigidbody _rigidbody;
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.TryGetComponent(out Destruction destruction))
+        private void Start() => _rigidbody = GetComponent<Rigidbody>();
+
+        private void FixedUpdate() => _rigidbody.velocity += Vector3.forward * (_speed * Time.deltaTime);
+
+        private void OnCollisionEnter(Collision other)
         {
-            destruction.DestroyObject();
+            if (other.gameObject.TryGetComponent(out Destruction destruction))
+                destruction.DestroyObject();
         }
     }
 }
