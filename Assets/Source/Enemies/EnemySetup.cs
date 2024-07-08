@@ -144,11 +144,11 @@ namespace Enemies
                         _viewPoint,
                         _target,
                         sound,
-                        new ProjectileFactory(
+                        new EnemyProjectileFactory(
                             _projectile,
                             _hitTemplate,
                             _aimTemplate,
-                            target,
+                            new Explosive(target),
                             _projectileType,
                             _attackAngle * Mathf.Deg2Rad,
                             _distanceBetween,
