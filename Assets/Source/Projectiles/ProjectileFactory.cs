@@ -4,111 +4,84 @@ using Random = UnityEngine.Random;
 
 namespace Projectiles
 {
-    public class ProjectileFactory : IProjectileFactory
+    public class ProjectileFactory
     {
         private readonly ObjectPool<SpawnableProjectile> Weapon;
         private readonly ObjectPool<HitEffect> ExplosionPool;
-        private readonly ObjectPool<AimParticle> AimPool;
-        private readonly IDamageableTarget Target;
-        private readonly ProjectileTypes Type;
+        private readonly IExplosive Explosive;
         private readonly float AngleRadian;
-        private readonly float DistanceBetween;
-        private readonly int ClusterCount;
 
         public ProjectileFactory(
             SpawnableProjectile projectile,
             HitEffect hitTemplate,
-            AimParticle aimTemplate,
-            IDamageableTarget target,
-            ProjectileTypes type,
-            float angleRadian,
-            float distanceBetween,
-            int clusterCount)
+            IExplosive explosive,
+            float angleRadian)
         {
             Weapon = new ObjectPool<SpawnableProjectile>(projectile);
             ExplosionPool = new ObjectPool<HitEffect>(hitTemplate);
-            AimPool = new ObjectPool<AimParticle>(aimTemplate);
-            Target = target;
-            Type = type;
+            Explosive = explosive;
             AngleRadian = angleRadian;
-            DistanceBetween = distanceBetween;
-            ClusterCount = clusterCount;
         }
 
-        public void Create(Vector3 position, Vector3 targetPosition, Vector3 direction, Vector3 forward)
+        public SpawnableProjectile Create(Vector3 position)
         {
-            IExplosive explosive = new Explosive(Target);
-
-            switch (Type)
-            {
-                case ProjectileTypes.Standard:
-                    Create(position, explosive).Move(direction, forward, CreateExplosion, CreateAim(targetPosition));
-                    break;
-
-                case ProjectileTypes.Cluster:
-                    Create(position, explosive).Move(direction, forward, ExplodeCluster, CreateAim(targetPosition));
-                    break;
-
-                case ProjectileTypes.Triple:
-                    CreateTriple(position, targetPosition, direction, forward, explosive);
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            return Weapon.Pull(position).Init(Explosive, AngleRadian);
         }
 
-        private SpawnableProjectile Create(Vector3 position, IExplosive explosive)
-        {
-            return Weapon.Pull(position).Init(explosive, AngleRadian);
-        }
-
-        private void CreateTriple(
+        public void CreateTriple(
             Vector3 position,
             Vector3 targetPosition,
             Vector3 direction,
             Vector3 forward,
-            IExplosive explosive)
+            float distanceBetween,
+            Func<Vector3, IAimParticle> aimCreateCallback = null)
         {
-            Vector3 cross = Vector3.Cross(direction, Vector3.up).normalized * DistanceBetween;
+            Vector3 cross = Vector3.Cross(direction, Vector3.up).normalized * distanceBetween;
             Vector3 leftTarget = cross + targetPosition;
             Vector3 rightTarget = -cross + targetPosition;
             Vector3 leftDirection = leftTarget - position;
             Vector3 rightDirection = -cross + targetPosition - position;
             Vector3 leftForward = forward.RotateAlongY(leftDirection);
             Vector3 rightForward = forward.RotateAlongY(rightDirection);
-            Create(position, explosive).Move(direction, forward, CreateExplosion, CreateAim(targetPosition));
-            Create(position, explosive).Move(leftDirection, leftForward, CreateExplosion, CreateAim(leftTarget));
-            Create(position, explosive).Move(rightDirection, rightForward, CreateExplosion, CreateAim(rightTarget));
+            Create(position).Move(
+                direction,
+                forward,
+                CreateExplosion,
+                aimCreateCallback?.Invoke(targetPosition));
+            Create(position).Move(
+                leftDirection,
+                leftForward,
+                CreateExplosion,
+                aimCreateCallback?.Invoke(leftTarget));
+            Create(position).Move(
+                rightDirection,
+                rightForward,
+                CreateExplosion,
+                aimCreateCallback?.Invoke(rightTarget));
         }
 
-        private void CreateExplosion(Vector3 position)
-        {
-            ExplosionPool.Pull(position).Init();
-        }
-
-        private void ExplodeCluster(Vector3 position)
+        public void ExplodeCluster(Vector3 position, float clusterCount, float distanceBetween)
         {
             CreateExplosion(position);
             position += Vector3.up;
 
-            for (int i = 0; i < ClusterCount; i++)
+            for (int i = 0; i < clusterCount; i++)
             {
                 Vector3 newPosition = new Vector3(
-                    Random.Range(-DistanceBetween, DistanceBetween) + position.x,
+                    Random.Range(-distanceBetween, distanceBetween) + position.x,
                     position.y,
-                    Random.Range(-DistanceBetween, DistanceBetween) + position.z);
+                    Random.Range(-distanceBetween, distanceBetween) + position.z);
                 Vector3 direction = newPosition - position;
                 Vector3 forward = new Vector3(direction.x, (float)ValueConstants.Zero, direction.z).normalized;
                 forward.y = newPosition.y;
                 forward /= Mathf.Cos(AngleRadian);
-                Create(position, new Explosive(Target)).Move(direction, forward, CreateExplosion);
+                Create(position).Move(direction, forward, CreateExplosion);
             }
         }
 
-        private IAimParticle CreateAim(Vector3 targetPosition)
+        public void CreateExplosion(Vector3 position)
         {
-            return AimPool.Pull(targetPosition);
+            ExplosionPool.Pull(position).Init();
         }
     }
 }
