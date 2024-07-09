@@ -1,6 +1,7 @@
 using Assets.Source.Player.Ammunition;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.Input;
+using Assets.Source.Player.MovingEffect;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace Assets.Source.Player
         [SerializeField] private float _speed;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private AudioSource _movingAudioSource;
+        [SerializeField] private Transform _movingEffectSpawnPoint;
+        [SerializeField] private ParticleSystem _movingParticleEffectPrefab;
 
         [Header("Aiming")]
         [SerializeField] private Transform _cannon;
@@ -69,6 +72,9 @@ namespace Assets.Source.Player
             PlayerSoundHandler playerSoundHandler = new (_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
 
             _player.Init(_movingSystem, _aimSystem, playerSoundHandler);
+
+            var movingParticleEffect = Instantiate(_movingParticleEffectPrefab, _movingEffectSpawnPoint);
+            OnMovingSmokeEffectHandler onMovingSmokeEffectHandler = new(movingParticleEffect, _movingSystem);
 
             _health = new Health(_maxHealth);
             _playerDamageTaker.Init(_health);
