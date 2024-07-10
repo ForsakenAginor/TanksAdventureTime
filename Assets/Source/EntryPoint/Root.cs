@@ -37,7 +37,7 @@ namespace Assets.Source.EntryPoint
         {
             LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
             LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner);
-            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour);
+            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, _soundInitializer);
             _spawnPoint = _playerModel.transform.position;
 
             _soundInitializer.Init();

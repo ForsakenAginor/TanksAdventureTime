@@ -10140,10 +10140,17 @@ MonoBehaviour:
     _kd: 0.5
     _maxOut: 40
     _minOut: -40
-  _shootingPoint: {fileID: 2081640899}
-  _pool: {fileID: 1494637073}
-  _projectileSpeed: 100
   _shootingAudioSource: {fileID: 1804559871}
+  _projectile: {fileID: 8374450373478926076, guid: 4b74b785d7fb43d479f284adbe70b782, type: 3}
+  _hitEffect: {fileID: 4500890358154097124, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
+  _attackAngle: 5
+  _shootPoint: {fileID: 2081640899}
+  _cannonBarrel: {fileID: 4411870589481956}
+  _transform: {fileID: 4932870345009844}
+  _maxDistance: 500
+  _reactionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _maxHealth: 210
   _healthViews:
   - {fileID: 1494637075}
@@ -10201,11 +10208,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 8374450373478926076, guid: 4b74b785d7fb43d479f284adbe70b782, type: 3}
   _hitEffect: {fileID: 4500890358154097124, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
-  _attackAngle: 10
+  _attackAngle: 5
   _shootPoint: {fileID: 2081640899}
   _cannonBarrel: {fileID: 4411870589481956}
   _transform: {fileID: 4932870345009844}
-  _maxDistance: 1000
+  _maxDistance: 500
   _reactionMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -13523,7 +13530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 0}
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 1
   m_FrequencyGain: 1
@@ -14347,7 +14354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404703093673664}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.08715574, y: 0, z: 0, w: 0.9961947}
+  m_LocalRotation: {x: -0.043619387, y: 0, z: 0, w: 0.99904823}
   m_LocalPosition: {x: 0.06305027, y: 0.3796774, z: 1.1858103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
