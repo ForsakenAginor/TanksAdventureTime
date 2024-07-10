@@ -32,19 +32,11 @@ namespace Enemies
             Vector3 targetPosition = Target.Position;
             Vector3 direction = targetPosition - currentPosition;
             Vector3 forward = ViewPoint.forward.RotateAlongY(direction);
-            Vector3 gravity = Physics.gravity;
-            Vector3 velocity = forward.CalculateVelocity(direction, AngleRadian, gravity.y);
-            List<Vector3> points = new ();
-
-            for (float i = 0; i < direction.magnitude; i += 0.2f)
-            {
-                Vector3 position = currentPosition + velocity * i + gravity * i * i / (float)ValueConstants.Two;
-
-                if (position.y < targetPosition.y)
-                    break;
-
-                points.Add(position);
-            }
+            List<Vector3> points = forward.CalculateTrajectory(
+                currentPosition,
+                targetPosition,
+                direction,
+                AngleRadian);
 
             Vector3 middleHeightPosition = points[points.Count / (int)ValueConstants.Two];
             middleHeightPosition.y += HeightOffset;

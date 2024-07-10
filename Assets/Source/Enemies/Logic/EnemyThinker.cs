@@ -10,12 +10,14 @@ namespace Enemies
         private const float MinDelay = 0f;
         private const float MaxDelay = 0.5f;
 
-        private readonly CancellationToken Token;
+        private readonly CancellationTokenSource Cancellation;
         private readonly TimeSpan Time;
 
-        public EnemyThinker(CancellationToken token, float delay)
+        private bool _isBusy;
+
+        public EnemyThinker(float delay)
         {
-            Token = token;
+            Cancellation = new CancellationTokenSource();
             Time = TimeSpan.FromSeconds(delay + Random.Range(MinDelay, MaxDelay));
         }
 
@@ -23,14 +25,26 @@ namespace Enemies
 
         public void Start()
         {
+            _isBusy = true;
             Update().Forget();
+        }
+
+        public void Stop()
+        {
+            _isBusy = false;
+
+            if (Cancellation.IsCancellationRequested == true)
+                return;
+
+            Cancellation.Cancel();
+            Cancellation.Dispose();
         }
 
         private async UniTaskVoid Update()
         {
-            while (Token.IsCancellationRequested == false)
+            while (_isBusy == true)
             {
-                await UniTask.Delay(Time, cancellationToken: Token);
+                await UniTask.Delay(Time, cancellationToken: Cancellation.Token);
                 Updated?.Invoke();
             }
         }

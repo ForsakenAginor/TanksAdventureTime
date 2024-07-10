@@ -7,17 +7,12 @@ public class SpawnableObject : MonoBehaviour
 
     public Transform Transform { get; private set; }
 
-    public virtual void Init()
-    {
-    }
-
     public SpawnableObject Init(IPushable spawner)
     {
         _spawner = spawner;
         _gameObject = gameObject;
         Transform = transform;
 
-        Init();
         SetActive(false);
         return this;
     }
