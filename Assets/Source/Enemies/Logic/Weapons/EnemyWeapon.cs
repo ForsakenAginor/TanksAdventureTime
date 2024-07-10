@@ -2,15 +2,12 @@
 
 namespace Enemies
 {
-    public abstract class EnemyWeapon : ObjectPool, IWeapon
+    public abstract class EnemyWeapon<TI> : IWeapon
+        where TI: IDamageableTarget
     {
-        private const float MaxPitch = 1.3f;
-        private const float MinPitch = 1f;
+        private readonly AudioPitcher Sound;
 
-        private readonly AudioSource Sound;
-
-        public EnemyWeapon(SpawnableObject spawnable, Transform viewPoint, IPlayerTarget target, AudioSource sound)
-            : base(spawnable)
+        public EnemyWeapon(Transform viewPoint, TI target, AudioPitcher sound)
         {
             ViewPoint = viewPoint;
             Target = target;
@@ -19,22 +16,16 @@ namespace Enemies
 
         public Transform ViewPoint { get; }
 
-        public IPlayerTarget Target { get; }
+        public TI Target { get; }
 
         public void Shoot()
         {
-            PlaySound();
+            Sound.Play();
             OnShoot();
         }
 
         public virtual void OnShoot()
         {
-        }
-
-        private void PlaySound()
-        {
-            Sound.pitch = Random.Range(MinPitch, MaxPitch);
-            Sound.Play();
         }
     }
 }

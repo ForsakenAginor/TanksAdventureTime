@@ -18,5 +18,11 @@ namespace Enemies
         {
             _animator.SetTrigger(animation.ToString());
         }
+
+        public bool IsPlaying()
+        {
+            return _animator.GetCurrentAnimatorStateInfo((int)ValueConstants.Zero).normalizedTime <=
+                   (float)ValueConstants.One;
+        }
     }
 }
