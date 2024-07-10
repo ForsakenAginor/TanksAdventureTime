@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemyCollision : MonoBehaviour, IDamageableTarget
+    public class EnemyCollision : MonoBehaviour, IDamageableTarget, IReactive
     {
         private Transform _transform;
 
@@ -27,6 +27,11 @@ namespace Enemies
         public void TakeHit(HitTypes type)
         {
             HitTook?.Invoke(type);
+        }
+
+        public void React()
+        {
+            TakeHit(HitTypes.Explosion);
         }
     }
 }
