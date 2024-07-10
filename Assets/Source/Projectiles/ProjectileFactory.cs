@@ -10,17 +10,20 @@ namespace Projectiles
         private readonly ObjectPool<HitEffect> ExplosionPool;
         private readonly IExplosive Explosive;
         private readonly float AngleRadian;
+        private readonly Action<AudioSource> AudioCreationCallback;
 
         public ProjectileFactory(
             SpawnableProjectile projectile,
             HitEffect hitTemplate,
             IExplosive explosive,
-            float angleRadian)
+            float angleRadian,
+            Action<AudioSource> audioCreationCallback)
         {
             Weapon = new ObjectPool<SpawnableProjectile>(projectile);
             ExplosionPool = new ObjectPool<HitEffect>(hitTemplate);
             Explosive = explosive;
             AngleRadian = angleRadian;
+            AudioCreationCallback = audioCreationCallback;
         }
 
         public SpawnableProjectile Create(Vector3 position)
@@ -81,7 +84,7 @@ namespace Projectiles
 
         public void CreateExplosion(Vector3 position)
         {
-            ExplosionPool.Pull(position).Init();
+            ExplosionPool.Pull(position).Init(AudioCreationCallback);
         }
     }
 }
