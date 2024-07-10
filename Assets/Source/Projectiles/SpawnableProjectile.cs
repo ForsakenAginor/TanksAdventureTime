@@ -60,7 +60,8 @@ namespace Projectiles
             _rigidbody.velocity = Vector3.zero;
             _aim?.Hide();
             _aim = null;
-            _onExplodedCallback.Invoke(Transform.position);
+            _onExplodedCallback?.Invoke(Transform.position);
+            _onExplodedCallback = null;
             _explosive.Explode(Transform.position, _explosionRadius);
             Push();
         }
