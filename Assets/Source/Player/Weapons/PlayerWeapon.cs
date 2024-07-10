@@ -24,7 +24,7 @@ public class PlayerWeapon : IWeapon
     {
         Vector3 forward = ShootPoint.forward;
         Vector3 currentPosition = ShootPoint.position;
-        Vector3 targetPosition = forward * MaxDistance;
+        Vector3 targetPosition = forward * MaxDistance + currentPosition;
         targetPosition.y = Transform.position.y;
         Factory.Create(currentPosition, targetPosition, targetPosition - currentPosition, forward);
     }
