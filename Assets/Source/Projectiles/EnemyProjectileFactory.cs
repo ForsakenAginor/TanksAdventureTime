@@ -15,11 +15,12 @@ namespace Projectiles
             HitEffect hitTemplate,
             AimParticle aimTemplate,
             IExplosive explosive,
-            ProjectileTypes type,
             float angleRadian,
+            Action<AudioSource> audioCreationCallback,
+            ProjectileTypes type,
             float distanceBetweenExplosions,
             int clusterExplosionsCount)
-            : base(projectile, hitTemplate, explosive, angleRadian)
+            : base(projectile, hitTemplate, explosive, angleRadian, audioCreationCallback)
         {
             AimPool = new ObjectPool<AimParticle>(aimTemplate);
             Type = type;

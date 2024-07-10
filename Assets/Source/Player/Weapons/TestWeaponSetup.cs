@@ -33,7 +33,8 @@ public class TestWeaponSetup : MonoBehaviour
                 _projectile,
                 _hitEffect,
                 new OverlapExplosive(_reactionMask),
-                _attackAngle * Mathf.Deg2Rad),
+                _attackAngle * Mathf.Deg2Rad,
+                OnAudioCreated),
             _shootPoint,
             _transform,
             _maxDistance);
@@ -56,5 +57,9 @@ public class TestWeaponSetup : MonoBehaviour
 
         for (int i = 1; i < points.Count; i++)
             Gizmos.DrawLine(points[i - 1], points[i]);
+    }
+
+    private void OnAudioCreated(AudioSource source)
+    {
     }
 }

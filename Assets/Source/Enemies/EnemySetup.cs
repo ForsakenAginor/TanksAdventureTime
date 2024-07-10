@@ -80,7 +80,7 @@ namespace Enemies
             _presenter?.Disable();
         }
 
-        public void Init(IPlayerTarget target)
+        public void Init(IPlayerTarget target, Action<AudioSource> audioCreationCallback)
         {
             _target = target;
             _transform = transform;
@@ -99,7 +99,7 @@ namespace Enemies
                 new EnemyTestHealth(_maxHealth),
                 _hitConfiguration,
                 _death);
-            _weapon = GetWeapon(target);
+            _weapon = GetWeapon(target, audioCreationCallback);
             _fieldOfView = GetFieldOfView();
 
             _machine.AddStates(
@@ -126,10 +126,13 @@ namespace Enemies
                 LayerMask.NameToLayer(_deathLayerName),
                 _destroyToken);
 
+            audioCreationCallback?.Invoke(_fireSound);
+            audioCreationCallback?.Invoke(_deathSound);
+
             _presenter.Enable();
         }
 
-        private IWeapon GetWeapon(IDamageableTarget target)
+        private IWeapon GetWeapon(IDamageableTarget target, Action<AudioSource> audioCreationCallback)
         {
             AudioPitcher sound = new AudioPitcher(_fireSound, _minPitch, _maxPitch);
 
@@ -137,7 +140,7 @@ namespace Enemies
             {
                 case EnemyTypes.Standard:
                 case EnemyTypes.Bunker:
-                    return new Gun(_hitTemplate, _viewPoint, _target, _shootingEffect, sound);
+                    return new Gun(_hitTemplate, _viewPoint, _target, _shootingEffect, sound, audioCreationCallback);
 
                 case EnemyTypes.Mortar:
                     return new Mortar(
@@ -149,8 +152,9 @@ namespace Enemies
                             _hitTemplate,
                             _aimTemplate,
                             new Explosive(target),
-                            _projectileType,
                             _attackAngle * Mathf.Deg2Rad,
+                            audioCreationCallback,
+                            _projectileType,
                             _distanceBetween,
                             _clusterCount));
 
