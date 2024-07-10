@@ -10079,7 +10079,6 @@ GameObject:
   - component: {fileID: 1494637071}
   - component: {fileID: 1494637075}
   - component: {fileID: 1494637074}
-  - component: {fileID: 1494637076}
   m_Layer: 0
   m_Name: PlayerLogic
   m_TagString: Untagged
@@ -10146,7 +10145,6 @@ MonoBehaviour:
   _attackAngle: 5
   _shootPoint: {fileID: 2081640899}
   _cannonBarrel: {fileID: 4411870589481956}
-  _transform: {fileID: 4932870345009844}
   _maxDistance: 500
   _reactionMask:
     serializedVersion: 2
@@ -10194,28 +10192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slider: {fileID: 188859962}
---- !u!114 &1494637076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494637069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a512b75ef9984a81b6c4ff22e099ad56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _projectile: {fileID: 8374450373478926076, guid: 4b74b785d7fb43d479f284adbe70b782, type: 3}
-  _hitEffect: {fileID: 4500890358154097124, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
-  _attackAngle: 5
-  _shootPoint: {fileID: 2081640899}
-  _cannonBarrel: {fileID: 4411870589481956}
-  _transform: {fileID: 4932870345009844}
-  _maxDistance: 500
-  _reactionMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1001 &1502164027
 PrefabInstance:
   m_ObjectHideFlags: 0
