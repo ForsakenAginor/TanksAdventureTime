@@ -27,6 +27,9 @@ namespace Enemies
 
         public void StopRotation()
         {
+            if (_cancellationSource.IsCancellationRequested == true)
+                return;
+
             _cancellationSource.Cancel();
             _cancellationSource.Dispose();
         }

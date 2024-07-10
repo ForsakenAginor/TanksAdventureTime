@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : IPushable
+public class ObjectPool<T> : IPushable
+    where T : SpawnableObject
 {
     private readonly Queue<SpawnableObject> SpawnQueue = new ();
     private readonly SpawnableObject SpawnableObject;
@@ -16,8 +17,7 @@ public class ObjectPool : IPushable
         PushOnInitialize(spawnableObject);
     }
 
-    public T Pull<T>(Vector3 position)
-        where T : SpawnableObject
+    public T Pull(Vector3 position)
     {
         if (SpawnQueue.Count == 0)
             PushOnInitialize(Object.Instantiate(SpawnableObject, position, Quaternion.identity).Init(this));
@@ -25,8 +25,7 @@ public class ObjectPool : IPushable
         return SpawnQueue.Dequeue().Pull<T>(position);
     }
 
-    public T Pull<T>(Transform parent)
-        where T : SpawnableObject
+    public T Pull(Transform parent)
     {
         if (SpawnQueue.Count == 0)
             PushOnInitialize(Object.Instantiate(SpawnableObject, parent).Init(this));
@@ -34,8 +33,7 @@ public class ObjectPool : IPushable
         return SpawnQueue.Dequeue().Pull<T>(parent);
     }
 
-    public T Pull<T>(Transform parent, Vector3 position)
-        where T : SpawnableObject
+    public T Pull(Transform parent, Vector3 position)
     {
         if (SpawnQueue.Count == 0)
             PushOnInitialize(Object.Instantiate(SpawnableObject, parent).Init(this));

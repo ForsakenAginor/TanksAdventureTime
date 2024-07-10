@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Projectiles;
+using UnityEngine;
 
 namespace Enemies
 {
@@ -6,11 +7,17 @@ namespace Enemies
     {
         [SerializeField] private TargetTest _target;
         [SerializeField] private EnemySetup[] _enemies;
+        [SerializeField] private Bomb[] _bombs;
 
         private void Awake()
         {
             foreach (EnemySetup enemy in _enemies)
                 enemy.Init(_target);
+
+            IExplosive explosive = new Explosive(_target);
+
+            foreach (Bomb bomb in _bombs)
+                bomb.Init(explosive);
         }
     }
 }

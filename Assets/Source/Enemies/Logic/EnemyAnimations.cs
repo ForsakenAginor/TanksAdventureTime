@@ -4,5 +4,6 @@
     {
         Idle,
         Fire,
+        Death,
     }
 }
