@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Projectiles
@@ -13,15 +14,20 @@ namespace Projectiles
 
         private AudioPitcher _sound;
 
-        public void Init(Vector3 position)
+        public void Init(Vector3 position, Action<AudioSource> audioCreationCallback)
         {
             Transform.rotation = Quaternion.LookRotation(position - Transform.position);
-            Init();
+            Init(audioCreationCallback);
         }
 
-        public void Init()
+        public void Init(Action<AudioSource> audioCreationCallback)
         {
-            _sound ??= new AudioPitcher(GetComponent<AudioSource>(), _minPitch, _maxPitch);
+            if (_sound == null)
+            {
+                AudioSource source = GetComponent<AudioSource>();
+                _sound = new AudioPitcher(GetComponent<AudioSource>(), _minPitch, _maxPitch);
+                audioCreationCallback?.Invoke(source);
+            }
 
             StartPlaying().Forget();
         }

@@ -12,12 +12,16 @@ namespace Enemies
         private void Awake()
         {
             foreach (EnemySetup enemy in _enemies)
-                enemy.Init(_target);
+                enemy.Init(_target, OnAudioCreated);
 
             IExplosive explosive = new Explosive(_target);
 
             foreach (Bomb bomb in _bombs)
                 bomb.Init(explosive);
+        }
+
+        private void OnAudioCreated(AudioSource source)
+        {
         }
     }
 }

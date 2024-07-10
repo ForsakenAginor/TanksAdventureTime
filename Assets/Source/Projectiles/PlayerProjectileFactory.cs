@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Projectiles
 {
@@ -8,8 +9,9 @@ namespace Projectiles
             SpawnableProjectile projectile,
             HitEffect hitTemplate,
             IExplosive explosive,
-            float angleRadian)
-            : base(projectile, hitTemplate, explosive, angleRadian)
+            float angleRadian,
+            Action<AudioSource> audioCreationCallback)
+            : base(projectile, hitTemplate, explosive, angleRadian, audioCreationCallback)
         {
         }
 
