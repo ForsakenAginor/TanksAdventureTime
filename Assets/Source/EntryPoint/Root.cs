@@ -1,6 +1,7 @@
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.OnDeathEffect;
+using Assets.Source.Sound.AudioMixer;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint
@@ -24,6 +25,9 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private PlayerInitializer _playerInitializer;
         [SerializeField] private OnDeathEffectInitializer _onDeathEffectInitializer;
         private Vector3 _spawnPoint;
+
+        [Header("Audio")]
+        [SerializeField] private SoundInitializer _soundInitializer;
 
         private void Start()
         {
