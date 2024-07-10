@@ -2,6 +2,7 @@ using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.OnDeathEffect;
 using Assets.Source.Sound.AudioMixer;
+using Enemies;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint
@@ -29,12 +30,18 @@ namespace Assets.Source.EntryPoint
         [Header("Audio")]
         [SerializeField] private SoundInitializer _soundInitializer;
 
+        [Header("Test")]
+        [SerializeField] private EnemyTest _enemyTest;
+
         private void Start()
         {
             LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
             LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner);
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour);
             _spawnPoint = _playerModel.transform.position;
+
+            _soundInitializer.Init();
+            _enemyTest.Init(_soundInitializer);
         }
 
         private void OnEnable()

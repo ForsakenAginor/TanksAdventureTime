@@ -24,8 +24,7 @@ namespace Assets.Source.Sound.AudioMixer
         private VolumeChanger _effectsChanger;
         private VolumeChanger _musicChanger;
 
-
-        private void Start()
+        public void Init()
         {
             _masterVolumeSlider.value = _audioData.GetMasterVolume();
             _effectsVolumeSlider.value = _audioData.GetEffectsVolume();

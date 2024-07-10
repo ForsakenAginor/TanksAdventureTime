@@ -9,11 +9,11 @@ public class VirtualCameraShaker
 
     private readonly float ShakeDuration;
     private readonly float ShakeAmplitude;
+    private readonly CinemachineBasicMultiChannelPerlin CameraNoise;
+    private readonly CancellationToken Token;
 
     private Collider _collider;
     private float _timer = 0f;
-    private readonly CinemachineBasicMultiChannelPerlin CameraNoise;
-    private readonly CancellationToken Token;
 
     public VirtualCameraShaker(
         CinemachineVirtualCamera virtualCamera,
