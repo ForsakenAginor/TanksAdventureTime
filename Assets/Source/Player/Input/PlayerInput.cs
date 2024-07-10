@@ -34,6 +34,11 @@ namespace Assets.Source.Player.Input
 
         public Vector2 ReadMovement() => _input.Player.Move.ReadValue<Vector2>();
 
+        public void DisposeInputSystem()
+        {
+            _input.Dispose();
+        }
+
         private void OnRotateInputReceived(InputAction.CallbackContext context)
         {
             Vector2 input = context.ReadValue<Vector2>();
