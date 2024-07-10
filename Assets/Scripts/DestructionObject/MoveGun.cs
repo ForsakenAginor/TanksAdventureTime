@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DestructionTest
+namespace DestructionObject
 {
     public class MoveGun : MonoBehaviour
     {
