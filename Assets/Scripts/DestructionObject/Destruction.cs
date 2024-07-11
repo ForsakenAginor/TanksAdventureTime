@@ -1,10 +1,11 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Destruction : MonoBehaviour, IPermanentKiller
+    public class Destruction : MonoBehaviour, IPermanentKiller, IReactive, ISupportStructure
     {
         [SerializeField] private Transform _panelDestruction;
         [SerializeField] private ParticleSystem _particleSystem;
@@ -12,6 +13,8 @@ namespace DestructionObject
         private Transform[] _transformObjects;
         private Transform _transform;
         private Rigidbody _rigidbody;
+
+        public event Action Destroyed;
 
         private void Start()
         {
@@ -21,12 +24,13 @@ namespace DestructionObject
             Init();
         }
 
-        public void DestroyObject()
+        public void React()
         {
-            _panelDestruction.transform.position = _transform.position;
+            _panelDestruction.position = _transform.position;
             _panelDestruction.rotation = _transform.rotation;
             _panelDestruction.gameObject.SetActive(true);
-            _transform.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            Destroyed?.Invoke();
         }
 
         private void Init()
