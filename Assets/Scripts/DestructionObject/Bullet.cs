@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DestructionTest
+namespace DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Bullet : MonoBehaviour
@@ -17,6 +17,9 @@ namespace DestructionTest
         {
             if (other.gameObject.TryGetComponent(out Destruction destruction))
                 destruction.DestroyObject();
+            if (other.gameObject.TryGetComponent(out EnemyMyTest enemy) &&
+                enemy.TryGetComponent(out Rigidbody rigidbody) == false)
+                enemy.AddRigidbody();
         }
     }
 }
