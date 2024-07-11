@@ -1,17 +1,19 @@
-﻿namespace Enemies
+﻿using Characters;
+
+namespace Enemies
 {
     public class EnemyPresenter
     {
-        private readonly FiniteStateMachine<EnemyState> _machine;
-        private readonly EnemyThinker _thinker;
+        private readonly FiniteStateMachine<CharacterState> _machine;
+        private readonly CharacterThinker _thinker;
         private readonly EnemyCollision _collision;
         private readonly IDamageable _health;
         private readonly HitConfiguration _hitConfiguration;
         private readonly EnemyDeathEffect _death;
 
         public EnemyPresenter(
-            FiniteStateMachine<EnemyState> machine,
-            EnemyThinker thinker,
+            FiniteStateMachine<CharacterState> machine,
+            CharacterThinker thinker,
             EnemyCollision collision,
             IDamageable health,
             HitConfiguration hitConfiguration,

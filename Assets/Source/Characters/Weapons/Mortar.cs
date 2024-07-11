@@ -1,9 +1,9 @@
 ﻿using Projectiles;
 using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class Mortar : EnemyWeapon<IDamageableTarget>
+    public class Mortar : CharacterWeapon<IDamageableTarget>
     {
         private readonly IProjectileFactory _factory;
 

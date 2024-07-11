@@ -2,9 +2,9 @@
 using Projectiles;
 using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class Gun : EnemyWeapon<IPlayerTarget>
+    public class Gun : CharacterWeapon<IPlayerTarget>
     {
         private readonly ParticleSystem _shootingEffect;
         private readonly ObjectPool<HitEffect> _hitPool;

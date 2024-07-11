@@ -2,9 +2,9 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class EnemyRotator
+    public class CharacterRotator
     {
         private readonly float _rotationSpeed;
         private readonly Transform _transform;
@@ -12,7 +12,7 @@ namespace Enemies
 
         private CancellationTokenSource _cancellationSource;
 
-        public EnemyRotator(float rotationSpeed, Transform transform, ITarget target)
+        public CharacterRotator(float rotationSpeed, Transform transform, ITarget target)
         {
             _rotationSpeed = rotationSpeed;
             _transform = transform;

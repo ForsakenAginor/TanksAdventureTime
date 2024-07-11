@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class MortarFieldOfView : EnemyFieldOfView
+    public class MortarFieldOfView : CharacterFieldOfView
     {
         private readonly LayerMask _walls;
         private readonly float _angleRadian;

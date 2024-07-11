@@ -3,9 +3,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Random = UnityEngine.Random;
 
-namespace Enemies
+namespace Characters
 {
-    public class EnemyThinker
+    public class CharacterThinker
     {
         private const float MinDelay = 0f;
         private const float MaxDelay = 0.5f;
@@ -15,7 +15,7 @@ namespace Enemies
 
         private bool _isBusy;
 
-        public EnemyThinker(float delay)
+        public CharacterThinker(float delay)
         {
             _cancellation = new CancellationTokenSource();
             _time = TimeSpan.FromSeconds(delay + Random.Range(MinDelay, MaxDelay));

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class EnemyFieldOfView : IFieldOfView
+    public class CharacterFieldOfView : IFieldOfView
     {
-        public EnemyFieldOfView(ITarget target, Transform viewPoint, float attackRadius)
+        public CharacterFieldOfView(ITarget target, Transform viewPoint, float attackRadius)
         {
             Target = target;
             ViewPoint = viewPoint;

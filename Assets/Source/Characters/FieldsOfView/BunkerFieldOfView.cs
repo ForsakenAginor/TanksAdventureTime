@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
     public class BunkerFieldOfView : StandardFieldOfView
     {

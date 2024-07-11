@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public abstract class EnemyWeapon<TI> : IWeapon
+    public abstract class CharacterWeapon<TI> : IWeapon
         where TI: IDamageableTarget
     {
         private readonly AudioPitcher _sound;
 
-        public EnemyWeapon(Transform viewPoint, TI target, AudioPitcher sound)
+        public CharacterWeapon(Transform viewPoint, TI target, AudioPitcher sound)
         {
             ViewPoint = viewPoint;
             Target = target;

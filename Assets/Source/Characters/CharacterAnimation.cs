@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class EnemyAnimation : MonoBehaviour
+    public class CharacterAnimation : MonoBehaviour
     {
         private Animator _animator;
 
@@ -11,10 +11,10 @@ namespace Enemies
         {
             _animator = animator;
             onInitializeCallback?.Invoke();
-            _animator.ResetTrigger(EnemyAnimations.Idle.ToString());
+            _animator.ResetTrigger(CharacterAnimations.Idle.ToString());
         }
 
-        public void Play(EnemyAnimations animation)
+        public void Play(CharacterAnimations animation)
         {
             _animator.SetTrigger(animation.ToString());
         }

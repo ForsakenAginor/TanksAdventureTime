@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using Characters;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace Enemies
         private Transform _transform;
         private ParticleSystem _particle;
         private AudioSource _sound;
-        private EnemyAnimation _animation;
+        private CharacterAnimation _animation;
         private float _disappearDuration;
         private int _layer;
         private CancellationToken _token;
@@ -19,7 +20,7 @@ namespace Enemies
             Transform transform,
             ParticleSystem particle,
             AudioSource sound,
-            EnemyAnimation animation,
+            CharacterAnimation animation,
             float disappearDuration,
             int layer,
             CancellationToken token)
@@ -36,7 +37,7 @@ namespace Enemies
         public void Die()
         {
             gameObject.layer = _layer;
-            _animation.Play(EnemyAnimations.Death);
+            _animation.Play(CharacterAnimations.Death);
             _particle.Play();
             _sound.Play();
             Disappear().Forget();

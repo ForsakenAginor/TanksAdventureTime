@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using Characters;
 using Projectiles;
 using UnityEngine;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(EnemyAnimation))]
+    [RequireComponent(typeof(CharacterAnimation))]
     [RequireComponent(typeof(EnemyCollision))]
     [RequireComponent(typeof(EnemyDeathEffect))]
     public class EnemySetup : MonoBehaviour
@@ -56,17 +57,17 @@ namespace Enemies
         [Header("Debug")]
         [SerializeField] private TargetTest _debugTarget;
 
-        private EnemyAnimation _animation;
+        private CharacterAnimation _animation;
         private EnemyCollision _collision;
         private EnemyDeathEffect _death;
         private Transform _transform;
 
-        private FiniteStateMachine<EnemyState> _machine;
+        private FiniteStateMachine<CharacterState> _machine;
         private IWeapon _weapon;
         private IFieldOfView _fieldOfView;
         private IPlayerTarget _target;
-        private EnemyRotator _rotator;
-        private EnemyThinker _thinker;
+        private CharacterRotator _rotator;
+        private CharacterThinker _thinker;
         private CollisionActivator _activator;
         private CancellationToken _destroyToken;
         private EnemyPresenter _presenter;
@@ -93,13 +94,13 @@ namespace Enemies
             _target = target;
             _transform = transform;
             _destroyToken = destroyCancellationToken;
-            _animation = GetComponent<EnemyAnimation>();
+            _animation = GetComponent<CharacterAnimation>();
             _collision = GetComponent<EnemyCollision>();
             _death = GetComponent<EnemyDeathEffect>();
 
-            _machine = new FiniteStateMachine<EnemyState>();
-            _rotator = new EnemyRotator(_rotationSpeed, _rotationPoint, _target);
-            _thinker = new EnemyThinker(_thinkDelay);
+            _machine = new FiniteStateMachine<CharacterState>();
+            _rotator = new CharacterRotator(_rotationSpeed, _rotationPoint, _target);
+            _thinker = new CharacterThinker(_thinkDelay);
             _presenter = new EnemyPresenter(
                 _machine,
                 _thinker,
@@ -114,19 +115,19 @@ namespace Enemies
                 _activator = new CollisionActivator(gameObject, _ownCollider, _supportStructure.GetComponent<ISupportStructure>());
 
             _machine.AddStates(
-                new Dictionary<Type, FiniteStateMachineState<EnemyState>>()
+                new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
                 {
                     {
-                        typeof(EnemyIdleState),
-                        new EnemyIdleState(_machine, _animation, _fieldOfView)
+                        typeof(CharacterIdleState),
+                        new CharacterIdleState(_machine, _animation, _fieldOfView)
                     },
                     {
-                        typeof(EnemyAttackState),
-                        new EnemyAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
+                        typeof(CharacterAttackState),
+                        new CharacterAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
                     },
                 });
 
-            _animation.Init(_animator, () => _machine.SetState(typeof(EnemyIdleState)));
+            _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
             _collision.Init(_rotationPoint);
             _death.Init(
                 _transform,

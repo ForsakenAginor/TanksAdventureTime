@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class StandardFieldOfView : EnemyFieldOfView
+    public class StandardFieldOfView : CharacterFieldOfView
     {
         private readonly LayerMask _walls;
         private readonly RaycastHit[] _hits;

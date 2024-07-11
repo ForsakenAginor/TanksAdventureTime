@@ -1,15 +1,15 @@
-﻿namespace Enemies
+﻿namespace Characters
 {
-    public class EnemyAttackState : EnemyState
+    public class CharacterAttackState : CharacterState
     {
-        private readonly EnemyRotator _rotator;
+        private readonly CharacterRotator _rotator;
         private readonly IWeapon _weapon;
 
-        public EnemyAttackState(
-            FiniteStateMachine<EnemyState> machine,
-            EnemyAnimation animation,
+        public CharacterAttackState(
+            FiniteStateMachine<CharacterState> machine,
+            CharacterAnimation animation,
             IFieldOfView fieldOfView,
-            EnemyRotator rotator,
+            CharacterRotator rotator,
             IWeapon weapon)
             : base(machine, animation, fieldOfView)
         {
@@ -19,7 +19,7 @@
 
         public override void Enter()
         {
-            PlayAnimation(EnemyAnimations.Fire);
+            PlayAnimation(CharacterAnimations.Fire);
             _rotator.StartRotation();
         }
 
@@ -33,7 +33,7 @@
             _weapon.Shoot();
 
             if (FieldOfView.CanView() == false || FieldOfView.IsBlockingByWall() == true)
-                SetState<EnemyIdleState>();
+                SetState<CharacterIdleState>();
         }
     }
 }
