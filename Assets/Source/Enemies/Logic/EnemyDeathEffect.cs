@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(Collider))]
     public class EnemyDeathEffect : MonoBehaviour
     {
         private Transform _transform;
@@ -48,7 +47,7 @@ namespace Enemies
             while (_particle.isPlaying == true || _sound.isPlaying == true || _animation.IsPlaying() == true)
                 await UniTask.NextFrame(_token);
 
-            _transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => Destroy(gameObject));
+            _transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => gameObject.SetActive(false));
         }
     }
 }

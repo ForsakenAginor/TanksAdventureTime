@@ -30,7 +30,6 @@
             Thinker.Updated += OnUpdated;
             Collision.HitTook += OnHitTook;
             Health.Died += OnDied;
-            Health.DamageTook += OnDamageTook;
 
             Thinker.Start();
         }
@@ -40,7 +39,6 @@
             Thinker.Updated -= OnUpdated;
             Collision.HitTook -= OnHitTook;
             Health.Died -= OnDied;
-            Health.DamageTook -= OnDamageTook;
 
             OnDisable();
         }
@@ -59,10 +57,6 @@
         {
             OnDisable();
             Death.Die();
-        }
-
-        private void OnDamageTook(int value)
-        {
         }
 
         private void OnDisable()

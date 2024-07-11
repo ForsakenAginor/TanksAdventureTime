@@ -18,7 +18,6 @@ namespace Enemies
 
         public event Action Died;
 
-        public event Action<int> DamageTook;
 
         public void TakeDamage(int value)
         {
@@ -26,7 +25,6 @@ namespace Enemies
                 throw new ArgumentOutOfRangeException(ExceptionMessage);
 
             _health -= value;
-            DamageTook?.Invoke(value);
 
             if (_health > MinHealth)
                 return;
