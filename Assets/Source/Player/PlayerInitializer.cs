@@ -37,6 +37,7 @@ namespace Assets.Source.Player
         [SerializeField] private LayerMask _reactionMask;
         [SerializeField] private MuzzleFlashCreator _flashCreator;
         [SerializeField] private ParticleSystem _flashhEffectPrefab;
+        [SerializeField] private ShootingCooldownView _cooldownView;
 
         [Header("Player")]
         private PlayerBehaviour _player;
@@ -98,6 +99,8 @@ namespace Assets.Source.Player
             _aimSystem = new(_playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
             _fireSystem = new(_playerInput, weapon, _shootCooldown);
             _abilitySystem = new(_playerInput);
+
+            _cooldownView.Init(_fireSystem, _shootCooldown);
 
             PlayerSoundHandler playerSoundHandler = new(_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
             _flashCreator.Init(_flashhEffectPrefab, _shootPoint, _fireSystem);
