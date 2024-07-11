@@ -15,10 +15,10 @@ namespace DestructionObject
 
         private void Start()
         {
+            _transform = transform;
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.Sleep();
             Init();
-            _transform = transform;
         }
 
         public void DestroyObject()

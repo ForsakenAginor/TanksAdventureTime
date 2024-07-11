@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DestructionObject
@@ -18,11 +17,9 @@ namespace DestructionObject
         {
             if (other.gameObject.TryGetComponent(out Destruction destruction))
                 destruction.DestroyObject();
-            if (other.gameObject.TryGetComponent(out EnemyTony enemy))
-            {
-                if (enemy.TryGetComponent(out Rigidbody rigidbody) == false)
-                    enemy.AddComponent<Rigidbody>();
-            }
+            if (other.gameObject.TryGetComponent(out EnemyMyTest enemy) &&
+                enemy.TryGetComponent(out Rigidbody rigidbody) == false)
+                enemy.AddRigidbody();
         }
     }
 }
