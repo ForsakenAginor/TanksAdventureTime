@@ -108,7 +108,7 @@ namespace Assets.Source.Player
             var movingParticleEffect = Instantiate(_movingParticleEffectPrefab, _movingEffectSpawnPoint);
             OnMovingSmokeEffectHandler onMovingSmokeEffectHandler = new(movingParticleEffect, _movingSystem);
 
-            _player.Init(_movingSystem, _aimSystem, playerSoundHandler);
+            _player.Init(_movingSystem, _aimSystem, playerSoundHandler, _fireSystem);
 
             _health = new Health(_maxHealth);
             _playerDamageTaker.Init(_health);

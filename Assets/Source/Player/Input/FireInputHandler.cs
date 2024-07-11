@@ -10,6 +10,7 @@ namespace Assets.Source.Player.Input
         private readonly PlayerInput _playerInput;
         private readonly int _shootDelay;
         private bool _isReadyToFire = true;
+        private bool _isWorking = true;
 
         public FireInputHandler(PlayerInput playerInput, PlayerWeapon playerWeapon, float shootDelay)
         {
@@ -27,8 +28,15 @@ namespace Assets.Source.Player.Input
 
         public event Action ShotFired;
 
+        public void StartWorking() => _isWorking = true;
+
+        public void StopWorking() => _isWorking = false;
+
         private void OnInputReceived()
         {
+            if (_isWorking == false)
+                return;
+
             Shoot();
         }
 
