@@ -6,17 +6,17 @@ namespace Enemies
 {
     public class EnemyRotator
     {
-        private readonly float RotationSpeed;
-        private readonly Transform Transform;
-        private readonly ITarget Target;
+        private readonly float _rotationSpeed;
+        private readonly Transform _transform;
+        private readonly ITarget _target;
 
         private CancellationTokenSource _cancellationSource;
 
         public EnemyRotator(float rotationSpeed, Transform transform, ITarget target)
         {
-            RotationSpeed = rotationSpeed;
-            Transform = transform;
-            Target = target;
+            _rotationSpeed = rotationSpeed;
+            _transform = transform;
+            _target = target;
         }
 
         public void StartRotation()
@@ -38,10 +38,10 @@ namespace Enemies
         {
             while (_cancellationSource.IsCancellationRequested == false)
             {
-                Vector3 direction = Target.Position - Transform.position;
+                Vector3 direction = _target.Position - _transform.position;
                 Quaternion look =
                     Quaternion.LookRotation(new Vector3(direction.x, (float)ValueConstants.Zero, direction.z));
-                Transform.rotation = Quaternion.RotateTowards(Transform.rotation, look, RotationSpeed);
+                _transform.rotation = Quaternion.RotateTowards(_transform.rotation, look, _rotationSpeed);
                 await UniTask.NextFrame(_cancellationSource.Token);
             }
         }

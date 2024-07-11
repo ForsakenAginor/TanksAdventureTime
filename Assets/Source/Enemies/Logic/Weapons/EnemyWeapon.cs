@@ -5,13 +5,13 @@ namespace Enemies
     public abstract class EnemyWeapon<TI> : IWeapon
         where TI: IDamageableTarget
     {
-        private readonly AudioPitcher Sound;
+        private readonly AudioPitcher _sound;
 
         public EnemyWeapon(Transform viewPoint, TI target, AudioPitcher sound)
         {
             ViewPoint = viewPoint;
             Target = target;
-            Sound = sound;
+            _sound = sound;
         }
 
         public Transform ViewPoint { get; }
@@ -20,7 +20,7 @@ namespace Enemies
 
         public void Shoot()
         {
-            Sound.Play();
+            _sound.Play();
             OnShoot();
         }
 

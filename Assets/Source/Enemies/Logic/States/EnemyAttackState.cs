@@ -2,8 +2,8 @@
 {
     public class EnemyAttackState : EnemyState
     {
-        private readonly EnemyRotator Rotator;
-        private readonly IWeapon Weapon;
+        private readonly EnemyRotator _rotator;
+        private readonly IWeapon _weapon;
 
         public EnemyAttackState(
             FiniteStateMachine<EnemyState> machine,
@@ -13,24 +13,24 @@
             IWeapon weapon)
             : base(machine, animation, fieldOfView)
         {
-            Rotator = rotator;
-            Weapon = weapon;
+            _rotator = rotator;
+            _weapon = weapon;
         }
 
         public override void Enter()
         {
             PlayAnimation(EnemyAnimations.Fire);
-            Rotator.StartRotation();
+            _rotator.StartRotation();
         }
 
         public override void Exit()
         {
-            Rotator.StopRotation();
+            _rotator.StopRotation();
         }
 
         public override void Update()
         {
-            Weapon.Shoot();
+            _weapon.Shoot();
 
             if (FieldOfView.CanView() == false || FieldOfView.IsBlockingByWall() == true)
                 SetState<EnemyIdleState>();

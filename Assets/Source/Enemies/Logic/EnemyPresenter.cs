@@ -2,12 +2,12 @@
 {
     public class EnemyPresenter
     {
-        private readonly FiniteStateMachine<EnemyState> Machine;
-        private readonly EnemyThinker Thinker;
-        private readonly EnemyCollision Collision;
-        private readonly IDamageable Health;
-        private readonly HitConfiguration HitConfiguration;
-        private readonly EnemyDeathEffect Death;
+        private readonly FiniteStateMachine<EnemyState> _machine;
+        private readonly EnemyThinker _thinker;
+        private readonly EnemyCollision _collision;
+        private readonly IDamageable _health;
+        private readonly HitConfiguration _hitConfiguration;
+        private readonly EnemyDeathEffect _death;
 
         public EnemyPresenter(
             FiniteStateMachine<EnemyState> machine,
@@ -17,52 +17,52 @@
             HitConfiguration hitConfiguration,
             EnemyDeathEffect death)
         {
-            Machine = machine;
-            Thinker = thinker;
-            Collision = collision;
-            Health = health;
-            HitConfiguration = hitConfiguration;
-            Death = death;
+            _machine = machine;
+            _thinker = thinker;
+            _collision = collision;
+            _health = health;
+            _hitConfiguration = hitConfiguration;
+            _death = death;
         }
 
         public void Enable()
         {
-            Thinker.Updated += OnUpdated;
-            Collision.HitTook += OnHitTook;
-            Health.Died += OnDied;
+            _thinker.Updated += OnUpdated;
+            _collision.HitTook += OnHitTook;
+            _health.Died += OnDied;
 
-            Thinker.Start();
+            _thinker.Start();
         }
 
         public void Disable()
         {
-            Thinker.Updated -= OnUpdated;
-            Collision.HitTook -= OnHitTook;
-            Health.Died -= OnDied;
+            _thinker.Updated -= OnUpdated;
+            _collision.HitTook -= OnHitTook;
+            _health.Died -= OnDied;
 
             OnDisable();
         }
 
         private void OnUpdated()
         {
-            Machine.Update();
+            _machine.Update();
         }
 
         private void OnHitTook(HitTypes type)
         {
-            Health.TakeDamage(HitConfiguration.GetDamage(type));
+            _health.TakeDamage(_hitConfiguration.GetDamage(type));
         }
 
         private void OnDied()
         {
             OnDisable();
-            Death.Die();
+            _death.Die();
         }
 
         private void OnDisable()
         {
-            Thinker.Stop();
-            Machine.Exit();
+            _thinker.Stop();
+            _machine.Exit();
         }
     }
 }

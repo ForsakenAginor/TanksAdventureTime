@@ -1,10 +1,8 @@
-﻿using UnityEngine;
-
-namespace Enemies
+﻿namespace Enemies
 {
     public class EnemyState : FiniteStateMachineState<EnemyState>
     {
-        private readonly EnemyAnimation Animation;
+        private readonly EnemyAnimation _animation;
 
         public EnemyState(
             FiniteStateMachine<EnemyState> machine,
@@ -12,7 +10,7 @@ namespace Enemies
             IFieldOfView fieldOfView)
             : base(machine)
         {
-            Animation = animation;
+            _animation = animation;
             FieldOfView = fieldOfView;
         }
 
@@ -20,7 +18,7 @@ namespace Enemies
 
         public void PlayAnimation(EnemyAnimations animation)
         {
-            Animation.Play(animation);
+            _animation.Play(animation);
         }
     }
 }
