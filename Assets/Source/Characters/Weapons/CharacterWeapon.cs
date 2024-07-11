@@ -2,8 +2,8 @@
 
 namespace Characters
 {
-    public abstract class CharacterWeapon<TI> : IWeapon
-        where TI: IDamageableTarget
+    public abstract class CharacterWeapon<TI> : IWeapon, ISwitchable<TI>
+        where TI : IDamageableTarget
     {
         private readonly AudioPitcher _sound;
 
@@ -16,12 +16,17 @@ namespace Characters
 
         public Transform ViewPoint { get; }
 
-        public TI Target { get; }
+        public TI Target { get; private set; }
 
         public void Shoot()
         {
             _sound.Play();
             OnShoot();
+        }
+
+        public void Switch(TI target)
+        {
+            Target = target;
         }
 
         public virtual void OnShoot()

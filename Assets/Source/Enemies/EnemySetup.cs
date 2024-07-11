@@ -128,7 +128,7 @@ namespace Enemies
                 });
 
             _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
-            _collision.Init(_rotationPoint);
+            _collision.Init(_rotationPoint, GetPriority());
             _death.Init(
                 _transform,
                 _deathParticle,
@@ -194,6 +194,17 @@ namespace Enemies
                     _attackRadius,
                     _walls,
                     _attackAngle / (int)ValueConstants.Two),
+                _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+
+        private TargetPriority GetPriority()
+        {
+            return _enemyType switch
+            {
+                EnemyTypes.Standard => TargetPriority.Low,
+                EnemyTypes.Mortar => TargetPriority.Medium,
+                EnemyTypes.Bunker => TargetPriority.High,
                 _ => throw new ArgumentOutOfRangeException()
             };
         }

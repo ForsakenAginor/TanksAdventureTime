@@ -2,7 +2,7 @@
 
 namespace Characters
 {
-    public class CharacterFieldOfView : IFieldOfView
+    public class CharacterFieldOfView : IFieldOfView, ISwitchable<ITarget>
     {
         public CharacterFieldOfView(ITarget target, Transform viewPoint, float attackRadius)
         {
@@ -11,8 +11,10 @@ namespace Characters
             AttackRadius = attackRadius;
         }
 
-        public ITarget Target { get; }
+        public ITarget Target { get; private set; }
+
         public Transform ViewPoint { get; }
+
         public float AttackRadius { get; }
 
         public virtual bool IsBlockingByWall()
@@ -28,6 +30,11 @@ namespace Characters
         public bool IsPlayerInRadius()
         {
             return Vector3.Distance(ViewPoint.position, Target.Position) <= AttackRadius;
+        }
+
+        public void Switch(ITarget target)
+        {
+            Target = target;
         }
     }
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace Characters
 {
-    public class CharacterRotator
+    public class CharacterRotator : ISwitchable<ITarget>
     {
         private readonly float _rotationSpeed;
         private readonly Transform _transform;
-        private readonly ITarget _target;
 
+        private ITarget _target;
         private CancellationTokenSource _cancellationSource;
 
         public CharacterRotator(float rotationSpeed, Transform transform, ITarget target)
@@ -34,14 +34,23 @@ namespace Characters
             _cancellationSource.Dispose();
         }
 
+        public void Switch(ITarget target)
+        {
+            _target = target;
+        }
+
         private async UniTaskVoid Rotate()
         {
             while (_cancellationSource.IsCancellationRequested == false)
             {
-                Vector3 direction = _target.Position - _transform.position;
-                Quaternion look =
-                    Quaternion.LookRotation(new Vector3(direction.x, (float)ValueConstants.Zero, direction.z));
-                _transform.rotation = Quaternion.RotateTowards(_transform.rotation, look, _rotationSpeed);
+                if (_target.Equals(null) == false)
+                {
+                    Vector3 direction = _target.Position - _transform.position;
+                    Quaternion look =
+                        Quaternion.LookRotation(new Vector3(direction.x, (float)ValueConstants.Zero, direction.z));
+                    _transform.rotation = Quaternion.RotateTowards(_transform.rotation, look, _rotationSpeed);
+                }
+
                 await UniTask.NextFrame(_cancellationSource.Token);
             }
         }

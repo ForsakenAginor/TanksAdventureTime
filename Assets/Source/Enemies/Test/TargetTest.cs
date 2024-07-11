@@ -17,6 +17,8 @@ namespace Enemies
 
         public Vector3 Position => _transform.position;
 
+        public TargetPriority Priority => TargetPriority.Medium;
+
         private void Awake()
         {
             _collider = GetComponent<Collider>();
