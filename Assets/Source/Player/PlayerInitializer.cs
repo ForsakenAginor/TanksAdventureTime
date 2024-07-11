@@ -26,6 +26,7 @@ namespace Assets.Source.Player
         [SerializeField] private PidRegulator _pidRegulator = new();
 
         [Header("Shooting")]
+        [SerializeField] private float _shootCooldown;
         [SerializeField] private AudioSource _shootingAudioSource;
         [SerializeField] private SpawnableProjectile _projectile;
         [SerializeField] private HitEffect _hitEffect;
@@ -61,6 +62,9 @@ namespace Assets.Source.Player
             if (_maxHealth <= 0)
                 throw new ArgumentOutOfRangeException(nameof(_maxHealth));
 
+            if(_shootCooldown < 0)
+                throw new ArgumentOutOfRangeException(nameof(_shootCooldown));
+
             _cannonBarrel.localEulerAngles = new Vector3(
                                             -_attackAngle,
                                             (float)ValueConstants.Zero,
@@ -92,7 +96,7 @@ namespace Assets.Source.Player
             _playerInput = new();
             _movingSystem = new(_playerInput, _rigidbody, _speed, _rotationSpeed);
             _aimSystem = new(_playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
-            _fireSystem = new(_playerInput, weapon);
+            _fireSystem = new(_playerInput, weapon, _shootCooldown);
             _abilitySystem = new(_playerInput);
 
             PlayerSoundHandler playerSoundHandler = new(_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
