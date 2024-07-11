@@ -26,6 +26,12 @@ namespace Enemies
         [SerializeField] private EnemyTypes _enemyType;
         [SerializeField] private bool _isDebug;
 
+        [Header("Building")]
+        [SerializeField] private bool _isOnBuilding;
+        [SerializeInterface(typeof(ISupportStructure))]
+        [SerializeField] private GameObject _supportStructure;
+        [SerializeField] private Collider _ownCollider;
+
         [Header("Field Of View")]
         [SerializeField] private float _attackRadius;
         [SerializeField] private LayerMask _walls;
@@ -61,6 +67,7 @@ namespace Enemies
         private IPlayerTarget _target;
         private EnemyRotator _rotator;
         private EnemyThinker _thinker;
+        private CollisionActivator _activator;
         private CancellationToken _destroyToken;
         private EnemyPresenter _presenter;
 
@@ -77,6 +84,7 @@ namespace Enemies
 
         private void OnDestroy()
         {
+            _activator?.Dispose();
             _presenter?.Disable();
         }
 
@@ -101,6 +109,9 @@ namespace Enemies
                 _death);
             _weapon = GetWeapon(target, audioCreationCallback);
             _fieldOfView = GetFieldOfView();
+
+            if (_isOnBuilding == true && _enemyType != EnemyTypes.Bunker)
+                _activator = new CollisionActivator(gameObject, _ownCollider, _supportStructure.GetComponent<ISupportStructure>());
 
             _machine.AddStates(
                 new Dictionary<Type, FiniteStateMachineState<EnemyState>>()
