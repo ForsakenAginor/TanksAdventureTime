@@ -253,6 +253,17 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""cd3d0268-b8b1-4fc5-ae4b-69742dc1656e"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Fire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""Pointer"",
                     ""id"": ""195a9e71-0b35-4c62-817a-146c2f53740e"",
                     ""path"": ""OneModifier"",

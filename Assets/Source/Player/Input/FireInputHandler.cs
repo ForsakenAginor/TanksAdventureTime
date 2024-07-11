@@ -1,6 +1,4 @@
-﻿using Assets.Source.Player.Ammunition;
-using System;
-using UnityEngine;
+﻿using System;
 
 namespace Assets.Source.Player.Input
 {

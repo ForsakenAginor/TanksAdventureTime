@@ -10074,7 +10074,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1494637070}
-  - component: {fileID: 1494637073}
   - component: {fileID: 1494637072}
   - component: {fileID: 1494637071}
   - component: {fileID: 1494637075}
@@ -10140,12 +10139,12 @@ MonoBehaviour:
     _maxOut: 40
     _minOut: -40
   _shootingAudioSource: {fileID: 1804559871}
-  _projectile: {fileID: 8374450373478926076, guid: 4b74b785d7fb43d479f284adbe70b782, type: 3}
-  _hitEffect: {fileID: 4500890358154097124, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
-  _attackAngle: 1
+  _projectile: {fileID: 5240967118992473225, guid: edbb6fc305a35b941922fd034c3afeae, type: 3}
+  _hitEffect: {fileID: -1298408947994979477, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
+  _attackAngle: 2
   _shootPoint: {fileID: 2081640899}
   _cannonBarrel: {fileID: 4411870589481956}
-  _maxDistance: 500
+  _maxDistance: 75
   _reactionMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10153,19 +10152,6 @@ MonoBehaviour:
   _healthViews:
   - {fileID: 1494637075}
   - {fileID: 1494637074}
---- !u!114 &1494637073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494637069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b44cb66b691e2cc4088f3e925c6152d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 3059405386593405023, guid: f9d4e9439d881de42a25d93e9af7423b, type: 3}
 --- !u!114 &1494637074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13508,8 +13494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 1
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &2094605045
 GameObject:
@@ -14330,7 +14316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404703093673664}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.008726535, y: 0, z: 0, w: 0.9999619}
+  m_LocalRotation: {x: -0.017452406, y: 0, z: 0, w: 0.9998477}
   m_LocalPosition: {x: 0.06305027, y: 0.3796774, z: 1.1858103}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
