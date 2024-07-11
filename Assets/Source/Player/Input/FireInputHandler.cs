@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Source.Player.Weapons;
+using System;
 
 namespace Assets.Source.Player.Input
 {

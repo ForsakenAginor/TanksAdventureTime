@@ -1,6 +1,7 @@
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.Input;
 using Assets.Source.Player.MovingEffect;
+using Assets.Source.Player.Weapons;
 using Assets.Source.Sound.AudioMixer;
 using Projectiles;
 using System;
@@ -33,6 +34,8 @@ namespace Assets.Source.Player
         [SerializeField] private Transform _cannonBarrel;
         [SerializeField] private float _maxDistance;
         [SerializeField] private LayerMask _reactionMask;
+        [SerializeField] private MuzzleFlashCreator _flashCreator;
+        [SerializeField] private ParticleSystem _flashhEffectPrefab;
 
         [Header("Player")]
         private PlayerBehaviour _player;
@@ -93,12 +96,12 @@ namespace Assets.Source.Player
             _abilitySystem = new(_playerInput);
 
             PlayerSoundHandler playerSoundHandler = new(_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
-
-            _player.Init(_movingSystem, _aimSystem, playerSoundHandler);
-
+            _flashCreator.Init(_flashhEffectPrefab, _shootPoint, _fireSystem);
 
             var movingParticleEffect = Instantiate(_movingParticleEffectPrefab, _movingEffectSpawnPoint);
             OnMovingSmokeEffectHandler onMovingSmokeEffectHandler = new(movingParticleEffect, _movingSystem);
+
+            _player.Init(_movingSystem, _aimSystem, playerSoundHandler);
 
             _health = new Health(_maxHealth);
             _playerDamageTaker.Init(_health);
