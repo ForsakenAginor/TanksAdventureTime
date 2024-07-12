@@ -80,7 +80,7 @@ namespace PlayerHelpers
             return _current;
         }
 
-        private async UniTask<IReadOnlyCollection<IDamageableTarget>> GetTargetsInRadius(Vector3 position)
+        private UniTask<List<IDamageableTarget>> GetTargetsInRadius(Vector3 position)
         {
             List<IDamageableTarget> result = new List<IDamageableTarget>();
 
@@ -96,20 +96,20 @@ namespace PlayerHelpers
                     result.Add(target);
             }
 
-            return await UniTask.FromResult(result);
+            return UniTask.FromResult(result);
         }
 
-        private async UniTask<TargetPriority> FindHightestPriority(IEnumerable<IDamageableTarget> targets)
+        private UniTask<TargetPriority> FindHightestPriority(IEnumerable<IDamageableTarget> targets)
         {
-            return await UniTask.FromResult(
+            return UniTask.FromResult(
                 (TargetPriority)Mathf.Max(targets.Select(target => (int)target.Priority).ToArray()));
         }
 
-        private async UniTask<IEnumerable<IDamageableTarget>> FindPrioritizedTargets(
+        private UniTask<IEnumerable<IDamageableTarget>> FindPrioritizedTargets(
             TargetPriority priority,
             IEnumerable<IDamageableTarget> hightestPriorityTargets)
         {
-            return await UniTask.FromResult(hightestPriorityTargets.Where(target => target.Priority == priority));
+            return UniTask.FromResult(hightestPriorityTargets.Where(target => target.Priority == priority));
         }
 
         private async UniTask<IDamageableTarget> FindTarget(
