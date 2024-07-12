@@ -9,6 +9,7 @@ namespace Assets.Source.Player
         private MovingInputHandler _movingSystem;
         private AimInputHandler _aimSystem;
         private PlayerSoundHandler _playerSoundHandler;
+        private FireInputHandler _fireSystem;
         private bool _isWorking;
 
         private void FixedUpdate()
@@ -23,11 +24,12 @@ namespace Assets.Source.Player
             _aimSystem.Aim();
         }
 
-        public void Init(MovingInputHandler movingSystem, AimInputHandler aimSystem, PlayerSoundHandler playerSoundHandler)
+        public void Init(MovingInputHandler movingSystem, AimInputHandler aimSystem, PlayerSoundHandler playerSoundHandler, FireInputHandler fireSystem)
         {
             _movingSystem = movingSystem != null ? movingSystem : throw new ArgumentNullException(nameof(movingSystem));
             _aimSystem = aimSystem != null ? aimSystem : throw new ArgumentNullException(nameof(aimSystem));
             _playerSoundHandler = playerSoundHandler != null ? playerSoundHandler : throw new ArgumentNullException(nameof(_playerSoundHandler));
+            _fireSystem = fireSystem != null ? fireSystem : throw new ArgumentNullException(nameof(fireSystem));
             _isWorking = true;
         }
 
@@ -40,6 +42,7 @@ namespace Assets.Source.Player
             _movingSystem.CancelMove();
             _playerSoundHandler.Stop();
             _aimSystem.CancelAim();
+            _fireSystem.StopWorking();
         }
 
         public void Continue()
@@ -49,6 +52,7 @@ namespace Assets.Source.Player
 
             _isWorking = true;
             _playerSoundHandler.Continue();
+            _fireSystem.StartWorking();
         }
     }
 }
