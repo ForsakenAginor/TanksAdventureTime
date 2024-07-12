@@ -10,6 +10,7 @@ public class Point : MonoBehaviour
     [SerializeField] private Transform _player;
     [SerializeField] private float _minDistance;
     [SerializeField] private RectTransform _marker;
+    [SerializeField] private float _markerSize = 25;
 
     private void FixedUpdate()
     {
@@ -45,8 +46,13 @@ public class Point : MonoBehaviour
 
         sin = cross.z < 0 ? -sin : sin;
 
-        float width = Screen.width / 2;
-        float height = Screen.height / 2;
-        _marker.localPosition = new Vector3(width * sin, height * cos, 0);
+        float screenWidth = Screen.width / 2;
+        float screemHeight = Screen.height / 2;
+        float width = screenWidth * sin;
+        float height = screemHeight * cos;
+        width = Mathf.Clamp(width, -screenWidth + _markerSize, screenWidth -  _markerSize);
+        height = Mathf.Clamp(height, -screemHeight + _markerSize, screemHeight -  _markerSize);
+
+        _marker.localPosition = new Vector3(width, height, 0);
     }
 }
