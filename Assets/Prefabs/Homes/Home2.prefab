@@ -10032,7 +10032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabsEnemy:
   - {fileID: 2456040969412775031, guid: 5cc946ed385c91948963e777ca9a7294, type: 3}
-  _needCountForSpawn: 4
+  _needCountForSpawn: 2
 --- !u!1 &8191739775857029496
 GameObject:
   m_ObjectHideFlags: 0
