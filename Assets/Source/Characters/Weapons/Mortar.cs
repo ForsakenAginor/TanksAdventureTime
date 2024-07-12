@@ -1,11 +1,11 @@
 ﻿using Projectiles;
 using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class Mortar : EnemyWeapon<IDamageableTarget>
+    public class Mortar : CharacterWeapon<IDamageableTarget>
     {
-        private readonly IProjectileFactory Factory;
+        private readonly IProjectileFactory _factory;
 
         public Mortar(
             Transform viewPoint,
@@ -14,12 +14,12 @@ namespace Enemies
             IProjectileFactory factory)
             : base(viewPoint, target, sound)
         {
-            Factory = factory;
+            _factory = factory;
         }
 
         public override void OnShoot()
         {
-            Factory.Create(ViewPoint.position, Target.Position, Target.Position - ViewPoint.position, ViewPoint.forward);
+            _factory.Create(ViewPoint.position, Target.Position, Target.Position - ViewPoint.position, ViewPoint.forward);
         }
     }
 }

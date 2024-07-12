@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class EnemyFieldOfView : IFieldOfView
+    public class CharacterFieldOfView : IFieldOfView, ISwitchable<ITarget>
     {
-        public EnemyFieldOfView(ITarget target, Transform viewPoint, float attackRadius)
+        public CharacterFieldOfView(ITarget target, Transform viewPoint, float attackRadius)
         {
             Target = target;
             ViewPoint = viewPoint;
             AttackRadius = attackRadius;
         }
 
-        public ITarget Target { get; }
+        public ITarget Target { get; private set; }
+
         public Transform ViewPoint { get; }
+
         public float AttackRadius { get; }
 
         public virtual bool IsBlockingByWall()
@@ -28,6 +30,11 @@ namespace Enemies
         public bool IsPlayerInRadius()
         {
             return Vector3.Distance(ViewPoint.position, Target.Position) <= AttackRadius;
+        }
+
+        public void Switch(ITarget target)
+        {
+            Target = target;
         }
     }
 }

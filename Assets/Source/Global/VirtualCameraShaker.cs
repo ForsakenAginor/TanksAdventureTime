@@ -7,10 +7,10 @@ public class VirtualCameraShaker
 {
     private const float MinValue = (float)ValueConstants.Zero;
 
-    private readonly float ShakeDuration;
-    private readonly float ShakeAmplitude;
-    private readonly CinemachineBasicMultiChannelPerlin CameraNoise;
-    private readonly CancellationToken Token;
+    private readonly float _shakeDuration;
+    private readonly float _shakeAmplitude;
+    private readonly CinemachineBasicMultiChannelPerlin _cameraNoise;
+    private readonly CancellationToken _token;
 
     private Collider _collider;
     private float _timer = 0f;
@@ -22,11 +22,11 @@ public class VirtualCameraShaker
         float shakeAmplitude = 5f,
         float shakeFrequency = 7f)
     {
-        CameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        Token = destroyCancellationToken;
-        ShakeDuration = shakeDuration;
-        ShakeAmplitude = shakeAmplitude;
-        CameraNoise.m_FrequencyGain = shakeFrequency;
+        _cameraNoise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _token = destroyCancellationToken;
+        _shakeDuration = shakeDuration;
+        _shakeAmplitude = shakeAmplitude;
+        _cameraNoise.m_FrequencyGain = shakeFrequency;
     }
 
     public void Shake()
@@ -36,16 +36,16 @@ public class VirtualCameraShaker
 
     private async UniTaskVoid StartShaking()
     {
-        _timer = ShakeDuration;
+        _timer = _shakeDuration;
 
         while (_timer > MinValue)
         {
-            CameraNoise.m_AmplitudeGain = ShakeAmplitude;
+            _cameraNoise.m_AmplitudeGain = _shakeAmplitude;
             _timer -= Time.deltaTime;
-            await UniTask.NextFrame(Token);
+            await UniTask.NextFrame(_token);
         }
 
-        CameraNoise.m_AmplitudeGain = MinValue;
+        _cameraNoise.m_AmplitudeGain = MinValue;
         _timer = MinValue;
     }
 }

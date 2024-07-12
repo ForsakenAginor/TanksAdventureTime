@@ -3,22 +3,22 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Random = UnityEngine.Random;
 
-namespace Enemies
+namespace Characters
 {
-    public class EnemyThinker
+    public class CharacterThinker
     {
         private const float MinDelay = 0f;
         private const float MaxDelay = 0.5f;
 
-        private readonly CancellationTokenSource Cancellation;
-        private readonly TimeSpan Time;
+        private readonly CancellationTokenSource _cancellation;
+        private readonly TimeSpan _time;
 
         private bool _isBusy;
 
-        public EnemyThinker(float delay)
+        public CharacterThinker(float delay)
         {
-            Cancellation = new CancellationTokenSource();
-            Time = TimeSpan.FromSeconds(delay + Random.Range(MinDelay, MaxDelay));
+            _cancellation = new CancellationTokenSource();
+            _time = TimeSpan.FromSeconds(delay + Random.Range(MinDelay, MaxDelay));
         }
 
         public event Action Updated;
@@ -33,18 +33,18 @@ namespace Enemies
         {
             _isBusy = false;
 
-            if (Cancellation.IsCancellationRequested == true)
+            if (_cancellation.IsCancellationRequested == true)
                 return;
 
-            Cancellation.Cancel();
-            Cancellation.Dispose();
+            _cancellation.Cancel();
+            _cancellation.Dispose();
         }
 
         private async UniTaskVoid Update()
         {
             while (_isBusy == true)
             {
-                await UniTask.Delay(Time, cancellationToken: Cancellation.Token);
+                await UniTask.Delay(_time, cancellationToken: _cancellation.Token);
                 Updated?.Invoke();
             }
         }

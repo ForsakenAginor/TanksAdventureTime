@@ -11,6 +11,8 @@ namespace Enemies
 
         public Vector3 Position => _transform.position;
 
+        public TargetPriority Priority { get; private set; }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.collider.TryGetComponent(out IPermanentKiller _) == false)
@@ -19,9 +21,10 @@ namespace Enemies
             TakeHit(HitTypes.PermanentDeath);
         }
 
-        public void Init(Transform transform)
+        public void Init(Transform transform, TargetPriority priority)
         {
             _transform = transform;
+            Priority = priority;
         }
 
         public void TakeHit(HitTypes type)

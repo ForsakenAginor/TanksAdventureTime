@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
-    public class MortarFieldOfView : EnemyFieldOfView
+    public class MortarFieldOfView : CharacterFieldOfView
     {
-        private readonly LayerMask Walls;
-        private readonly float AngleRadian;
-        private readonly float ProjectileRadius;
-        private readonly float HeightOffset;
+        private readonly LayerMask _walls;
+        private readonly float _angleRadian;
+        private readonly float _projectileRadius;
+        private readonly float _heightOffset;
 
         public MortarFieldOfView(
             ITarget target,
@@ -20,10 +20,10 @@ namespace Enemies
             float heightOffset)
             : base(target, viewPoint, attackRadius)
         {
-            Walls = walls;
-            AngleRadian = angle * Mathf.Deg2Rad;
-            ProjectileRadius = projectileRadius;
-            HeightOffset = heightOffset;
+            _walls = walls;
+            _angleRadian = angle * Mathf.Deg2Rad;
+            _projectileRadius = projectileRadius;
+            _heightOffset = heightOffset;
         }
 
         public override bool IsBlockingByWall()
@@ -36,29 +36,29 @@ namespace Enemies
                 currentPosition,
                 targetPosition,
                 direction,
-                AngleRadian);
+                _angleRadian);
 
             Vector3 middleHeightPosition = points[points.Count / (int)ValueConstants.Two];
-            middleHeightPosition.y += HeightOffset;
+            middleHeightPosition.y += _heightOffset;
             Vector3 fromBottom = middleHeightPosition - currentPosition;
             Vector3 fromTop = targetPosition - middleHeightPosition;
 
             if (Physics.SphereCast(
                     currentPosition,
-                    ProjectileRadius,
+                    _projectileRadius,
                     fromBottom,
                     out _,
                     fromBottom.magnitude,
-                    Walls) == true)
+                    _walls) == true)
                 return true;
 
             return Physics.SphereCast(
                 middleHeightPosition,
-                ProjectileRadius,
+                _projectileRadius,
                 fromTop,
                 out _,
                 fromTop.magnitude,
-                Walls);
+                _walls);
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-namespace Enemies
+namespace Characters
 {
     public class BunkerFieldOfView : StandardFieldOfView
     {
-        private readonly float HalfAngle;
+        private readonly float _halfAngle;
 
         public BunkerFieldOfView(
             ITarget target,
@@ -14,7 +14,7 @@ namespace Enemies
             float halfAngle)
             : base(target, forwardPoint, attackRadius, walls)
         {
-            HalfAngle = halfAngle;
+            _halfAngle = halfAngle;
         }
 
         public override bool CanView()
@@ -24,7 +24,7 @@ namespace Enemies
 
         private bool IsPlayerInAngle()
         {
-            return Vector3.Angle(ViewPoint.forward, Target.Position - ViewPoint.position) <= HalfAngle;
+            return Vector3.Angle(ViewPoint.forward, Target.Position - ViewPoint.position) <= _halfAngle;
         }
     }
 }

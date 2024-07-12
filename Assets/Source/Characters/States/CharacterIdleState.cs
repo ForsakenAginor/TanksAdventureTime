@@ -1,10 +1,10 @@
-﻿namespace Enemies
+﻿namespace Characters
 {
-    public class EnemyIdleState : EnemyState
+    public class CharacterIdleState : CharacterState
     {
-        public EnemyIdleState(
-            FiniteStateMachine<EnemyState> machine,
-            EnemyAnimation animation,
+        public CharacterIdleState(
+            FiniteStateMachine<CharacterState> machine,
+            CharacterAnimation animation,
             IFieldOfView fieldOfView)
             : base(machine, animation, fieldOfView)
         {
@@ -12,7 +12,7 @@
 
         public override void Enter()
         {
-            PlayAnimation(EnemyAnimations.Idle);
+            PlayAnimation(CharacterAnimations.Idle);
         }
 
         public override void Update()
@@ -23,7 +23,7 @@
             if (FieldOfView.IsBlockingByWall() == true)
                 return;
 
-            SetState<EnemyAttackState>();
+            SetState<CharacterAttackState>();
         }
     }
 }
