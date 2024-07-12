@@ -45,8 +45,9 @@ namespace Enemies
 
         private async UniTaskVoid Disappear()
         {
-            while (_particle.isPlaying == true || _sound.isPlaying == true || _animation.IsPlaying() == true)
-                await UniTask.NextFrame(_token);
+            await UniTask.WaitUntil(
+                () => _particle.isPlaying == false && _sound.isPlaying == false && _animation.IsPlaying() == false,
+                cancellationToken: _token);
 
             _transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => gameObject.SetActive(false));
         }
