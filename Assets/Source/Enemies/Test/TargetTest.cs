@@ -6,19 +6,20 @@ namespace Enemies
     [RequireComponent(typeof(Collider))]
     public class TargetTest : MonoBehaviour, IPlayerTarget, IPermanentKiller
     {
-        [SerializeField] private Transform _transform;
         [SerializeField] private CinemachineVirtualCamera _camera;
         [SerializeField] private float _shakeDuration = 1f;
         [SerializeField] private float _shakeAmplitude = 1f;
         [SerializeField] private float _shakeFrequency = 1f;
-
+        private Transform _transform;
         private Collider _collider;
+
         private VirtualCameraShaker _shaker;
 
         public Vector3 Position => _transform.position;
 
         private void Awake()
         {
+            _transform = transform;
             _collider = GetComponent<Collider>();
             _shaker = new VirtualCameraShaker(
                 _camera,
