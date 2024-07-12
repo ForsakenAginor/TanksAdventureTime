@@ -41,21 +41,23 @@ namespace SpawnerPointsWithEnemies
 
             for (int i = 0; i < _needCountForSpawn; i++)
             {
-                freePlace = FreePlace();
+                freePlace = GetListFreePlace();
                 int randomPoint = freePlace[Random.Range(minValue, freePlace.Count)];
                 Instantiate(_prefabsEnemy[Random.Range(minValue, _prefabsEnemy.Count)],
                 _points[randomPoint].transform);
-                _points[randomPoint].TakeASeat();
+                _points[randomPoint].TakeThePlace();
             }
         }
 
-        private List<int> FreePlace()
+        private List<int> GetListFreePlace()
         {
             List<int> freePointIndexes = new List<int>();
 
             for (int i = 0; i < _points.Length; i++)
+            {
                 if (_points[i].IsFreePlace == false)
                     freePointIndexes.Add(i);
+            }
 
             return freePointIndexes;
         }

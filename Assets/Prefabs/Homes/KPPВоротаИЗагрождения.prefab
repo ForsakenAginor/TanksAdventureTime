@@ -6715,10 +6715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabsEnemy:
-  - {fileID: 8321775294965392016, guid: 7c990de6c9b9c1143addfc34ad298c48, type: 3}
-  - {fileID: 8321775294965392016, guid: 7c990de6c9b9c1143addfc34ad298c48, type: 3}
-  - {fileID: 8321775294965392016, guid: 7c990de6c9b9c1143addfc34ad298c48, type: 3}
-  _needCountForSpawn: 4
+  - {fileID: 2456040969412775031, guid: 5cc946ed385c91948963e777ca9a7294, type: 3}
+  _needCountForSpawn: 1
 --- !u!1 &2351146746581149722
 GameObject:
   m_ObjectHideFlags: 0
@@ -7308,8 +7306,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabsEnemy:
-  - {fileID: 8321775294965392016, guid: 7c990de6c9b9c1143addfc34ad298c48, type: 3}
-  _needCountForSpawn: 5
+  - {fileID: 6972371409024292061, guid: 31fd8f6075a7d2743b7bdb16cb64c1c3, type: 3}
+  _needCountForSpawn: 2
 --- !u!1 &2543146940893709919
 GameObject:
   m_ObjectHideFlags: 0
@@ -12789,9 +12787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabsEnemy:
   - {fileID: 8321775294965392016, guid: 7c990de6c9b9c1143addfc34ad298c48, type: 3}
-  - {fileID: 8321775294965392016, guid: 7c990de6c9b9c1143addfc34ad298c48, type: 3}
-  - {fileID: 8321775294965392016, guid: 7c990de6c9b9c1143addfc34ad298c48, type: 3}
-  _needCountForSpawn: 4
+  _needCountForSpawn: 3
 --- !u!1 &4526825169522482781
 GameObject:
   m_ObjectHideFlags: 0

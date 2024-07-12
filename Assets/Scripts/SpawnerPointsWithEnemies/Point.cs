@@ -6,6 +6,6 @@ namespace SpawnerPointsWithEnemies
     {
         public bool IsFreePlace { get; private set; } = false;
 
-        public void TakeASeat() => IsFreePlace = true;
+        public void TakeThePlace() => IsFreePlace = true;
     }
 }
