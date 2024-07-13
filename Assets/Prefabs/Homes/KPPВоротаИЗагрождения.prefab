@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 776431676924123286}
+  _particleSystem: {fileID: 0}
 --- !u!1 &194855053860932256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,6 +2078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 5960663147003457414}
+  _particleSystem: {fileID: 0}
 --- !u!1 &423784931608720663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,6 +3371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6132189940769307518}
+  _particleSystem: {fileID: 0}
 --- !u!1 &1264543468010894163
 GameObject:
   m_ObjectHideFlags: 0
@@ -4838,6 +4841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 2024864634784677138}
+  _particleSystem: {fileID: 0}
 --- !u!65 &8650265385792529852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5164,6 +5168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 7467986698816432777}
+  _particleSystem: {fileID: 0}
 --- !u!65 &9060778579583221117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8321,6 +8326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 1515441737342331103}
+  _particleSystem: {fileID: 0}
 --- !u!1 &2971380501871267293
 GameObject:
   m_ObjectHideFlags: 0
@@ -8875,6 +8881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 325867315510049508}
+  _particleSystem: {fileID: 0}
 --- !u!1 &3158031278435159911
 GameObject:
   m_ObjectHideFlags: 0
@@ -18227,6 +18234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6559501182599273060}
+  _particleSystem: {fileID: 0}
 --- !u!65 &2859032089611942963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19522,6 +19530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8343651559383316759}
+  _particleSystem: {fileID: 0}
 --- !u!1 &8034886986247510351
 GameObject:
   m_ObjectHideFlags: 0
@@ -20094,6 +20103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8315036944430410490}
+  _particleSystem: {fileID: 0}
 --- !u!1 &8226904603072787833
 GameObject:
   m_ObjectHideFlags: 0
@@ -20906,6 +20916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 2230103399051531767}
+  _particleSystem: {fileID: 0}
 --- !u!65 &4142614407638669850
 BoxCollider:
   m_ObjectHideFlags: 0
