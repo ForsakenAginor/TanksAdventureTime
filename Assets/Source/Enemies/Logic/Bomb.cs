@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 namespace Enemies
@@ -25,10 +26,11 @@ namespace Enemies
             OnExploding();
         }
 
-        public void Init(IExplosive explosive)
+        public void Init(IExplosive explosive, Action<AudioSource> initCallback)
         {
             _explosive = explosive;
             _transform = transform;
+            initCallback?.Invoke(_sound);
         }
 
         public void Explode()

@@ -1,14 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Source.Sound.AudioMixer
 {
     public class VolumeChanger
     {
-        private readonly AudioSource[] _audioSources;
+        private readonly List<AudioSource> _audioSources;
         private float _previousVolumeValue;
 
-        public VolumeChanger(AudioSource[] audioSources, float volumeValue = 1f)
+        public VolumeChanger(List<AudioSource> audioSources, float volumeValue = 1f)
         {
             _audioSources = audioSources != null ? audioSources : throw new ArgumentNullException(nameof(audioSources));
 
@@ -29,6 +30,18 @@ namespace Assets.Source.Sound.AudioMixer
                 source.volume = source.volume / _previousVolumeValue * volume;
 
             _previousVolumeValue = volume;
+        }
+
+        public void AddAudioSource(AudioSource audioSource)
+        {
+            if (audioSource == null)
+                throw new ArgumentNullException(nameof(audioSource));
+
+            if (_audioSources.Contains(audioSource))
+                throw new Exception($"{audioSource} is alredy added to VolumeChanger");
+
+            audioSource.volume *= _previousVolumeValue;
+            _audioSources.Add(audioSource);
         }
     }
 }

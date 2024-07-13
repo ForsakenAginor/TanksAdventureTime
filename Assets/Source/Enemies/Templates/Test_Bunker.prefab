@@ -617,7 +617,6 @@ GameObject:
   - component: {fileID: 6850433306577880227}
   - component: {fileID: 3570726916893518861}
   - component: {fileID: 943769012894932150}
-  - component: {fileID: 6876042143991337876}
   - component: {fileID: 3299246712903500584}
   - component: {fileID: 1437184180521437051}
   m_Layer: 8
@@ -679,20 +678,15 @@ MonoBehaviour:
   _deathParticle: {fileID: 6155566765927651412}
   _deathSound: {fileID: 5122952310504517396}
   _deathDisappearDuration: 2
-  _renderers:
-  - {fileID: 4912464167034926539}
-  - {fileID: 3836000669296865871}
-  - {fileID: 4096706071783203082}
-  - {fileID: 3775320752129601874}
-  - {fileID: 6114703554037475248}
-  - {fileID: 5429079038777439969}
-  - {fileID: 3331922288483902871}
   _deathLayerName: Ignore Raycast
   _maxHealth: 100
   _rotationSpeed: 5
   _thinkDelay: 0.5
-  _enemyType: 0
+  _enemyType: 2
   _isDebug: 0
+  _isOnBuilding: 0
+  _supportStructure: {fileID: 0}
+  _ownCollider: {fileID: 0}
   _attackRadius: 20
   _walls:
     serializedVersion: 2
@@ -710,27 +704,6 @@ MonoBehaviour:
   _distanceBetween: 0
   _clusterCount: 0
   _debugTarget: {fileID: 0}
---- !u!65 &6876042143991337876
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028367903104469339}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0, y: 0, z: 0}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3299246712903500584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2698,7 +2671,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3128865744093454273}
   - component: {fileID: 3331922288483902871}
-  - component: {fileID: 8999185128264824187}
   m_Layer: 8
   m_Name: Character_MilitaryMale_01
   m_TagString: Untagged
@@ -2823,28 +2795,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00032520294, y: 0.8450177, z: -0.054154232}
     m_Extent: {x: 1.0241513, y: 0.9430711, z: 0.27041548}
   m_DirtyAABB: 0
---- !u!64 &8999185128264824187
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7168319815696225495}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &7672812739233282403
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316b5161b43d9b043aad16bea09c44d3, type: 3}
   m_Name: SmallCivilian1
   m_EditorClassIdentifier: 
-  <Model>k__BackingField: {fileID: 1118391213089184, guid: 8089c8951d9c6b44f89ee4403039bf5e, type: 3}
-  <Type>k__BackingField: 1
+  <Prefab>k__BackingField: {fileID: 8099014697440315049, guid: 5a5c6d5147b8ba74f856c358f2ea7a17, type: 3}
   <Size>k__BackingField: 0

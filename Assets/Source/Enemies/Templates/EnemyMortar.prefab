@@ -229,10 +229,8 @@ GameObject:
   - component: {fileID: 469444709705398411}
   - component: {fileID: 629032999015538386}
   - component: {fileID: 5397657445449863417}
-  - component: {fileID: 8866952885223908897}
   - component: {fileID: 1621962972917590298}
   - component: {fileID: 3023422465533222410}
-  - component: {fileID: 6969649434660381698}
   m_Layer: 8
   m_Name: EnemyMortar
   m_TagString: Untagged
@@ -290,19 +288,15 @@ MonoBehaviour:
   _deathParticle: {fileID: 746674423237678362}
   _deathSound: {fileID: 7269623319625902782}
   _deathDisappearDuration: 1
-  _renderers:
-  - {fileID: 929753258608860431}
-  - {fileID: 8981861433333108476}
-  - {fileID: 3680645323918660234}
-  - {fileID: 2169860472117405947}
-  - {fileID: 1791323736602544498}
-  - {fileID: 5950702008141858114}
   _deathLayerName: Ignore Raycast
   _maxHealth: 100
   _rotationSpeed: 5
   _thinkDelay: 2.5
   _enemyType: 1
   _isDebug: 0
+  _isOnBuilding: 0
+  _supportStructure: {fileID: 0}
+  _ownCollider: {fileID: 5397657445449863417}
   _attackRadius: 45
   _walls:
     serializedVersion: 2
@@ -339,29 +333,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.8117205, y: 1.5721052, z: 0.7459569}
-  m_Center: {x: -0.3896386, y: 0.76362884, z: 0.28965676}
---- !u!65 &8866952885223908897
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271802811047712276}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.7421603, y: 1.4119902, z: 0.6962371}
-  m_Center: {x: 0.5362563, y: 0.705112, z: -0.31458366}
+  m_Size: {x: 1.6866682, y: 1.5721052, z: 1.5168786}
+  m_Center: {x: 0.04783523, y: 0.76362884, z: -0.095804095}
 --- !u!114 &1621962972917590298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,33 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea15071c93848eabffcf36481fb73ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &6969649434660381698
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271802811047712276}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!1 &295957006400126352
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 ﻿using System;
 using Projectiles;
 using UnityEditor;
+using UnityEngine;
 
 namespace Enemies
 {
@@ -22,6 +23,10 @@ namespace Enemies
         private SerializedProperty _thinkDelay;
         private SerializedProperty _enemyType;
         private SerializedProperty _isDebug;
+
+        private SerializedProperty _isOnBuilding;
+        private SerializedProperty _supportStructure;
+        private SerializedProperty _ownCollider;
 
         private SerializedProperty _fireSound;
         private SerializedProperty _minPitch;
@@ -56,6 +61,10 @@ namespace Enemies
             _thinkDelay = serializedObject.FindProperty(nameof(_thinkDelay));
             _enemyType = serializedObject.FindProperty(nameof(_enemyType));
             _isDebug = serializedObject.FindProperty(nameof(_isDebug));
+
+            _isOnBuilding = serializedObject.FindProperty(nameof(_isOnBuilding));
+            _supportStructure = serializedObject.FindProperty(nameof(_supportStructure));
+            _ownCollider = serializedObject.FindProperty(nameof(_ownCollider));
 
             _fireSound = serializedObject.FindProperty(nameof(_fireSound));
             _minPitch = serializedObject.FindProperty(nameof(_minPitch));
@@ -96,12 +105,24 @@ namespace Enemies
             EditorGUILayout.PropertyField(_deathLayerName);
             EditorGUILayout.PropertyField(_maxHealth);
             EditorGUILayout.PropertyField(_rotationSpeed);
+
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PropertyField(_thinkDelay);
             EditorGUILayout.LabelField(ThinkDelayLabel);
             EditorGUILayout.EndHorizontal();
+
             EditorGUILayout.PropertyField(_enemyType);
             EditorGUILayout.PropertyField(_isDebug);
+
+            if ((EnemyTypes)_enemyType.enumValueIndex != EnemyTypes.Bunker)
+            {
+                EditorGUILayout.PropertyField(_isOnBuilding);
+                EditorGUILayout.PropertyField(_ownCollider);
+
+                if (_isOnBuilding.boolValue == true)
+                    EditorGUILayout.PropertyField(_supportStructure);
+            }
+
             EditorGUILayout.PropertyField(_attackRadius);
             EditorGUILayout.PropertyField(_walls);
             EditorGUILayout.PropertyField(_fireSound);
