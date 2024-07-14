@@ -1361,6 +1361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 801976906532508605}
+  _particleSystem: {fileID: 0}
 --- !u!1 &919566851495129727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2853,6 +2854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 3940765532244818425}
+  _particleSystem: {fileID: 0}
 --- !u!1 &2915135654521143037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,6 +3003,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8884614889366257319}
+  _particleSystem: {fileID: 0}
 --- !u!1 &2960807929862151811
 GameObject:
   m_ObjectHideFlags: 0
@@ -6930,6 +6933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 398748339659763672}
+  _particleSystem: {fileID: 0}
 --- !u!1 &6852238494945805791
 GameObject:
   m_ObjectHideFlags: 0
@@ -9405,6 +9409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 104643069810607617}
+  _particleSystem: {fileID: 0}
 --- !u!1 &9043395583277720591
 GameObject:
   m_ObjectHideFlags: 0
@@ -9464,7 +9469,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 184067288589712504}

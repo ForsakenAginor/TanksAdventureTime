@@ -418,6 +418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 776431676924123286}
+  _particleSystem: {fileID: 0}
 --- !u!1 &194855053860932256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,6 +2078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 5960663147003457414}
+  _particleSystem: {fileID: 0}
 --- !u!1 &423784931608720663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,6 +3371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6132189940769307518}
+  _particleSystem: {fileID: 0}
 --- !u!1 &1264543468010894163
 GameObject:
   m_ObjectHideFlags: 0
@@ -4838,6 +4841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 2024864634784677138}
+  _particleSystem: {fileID: 0}
 --- !u!65 &8650265385792529852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5164,6 +5168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 7467986698816432777}
+  _particleSystem: {fileID: 0}
 --- !u!65 &9060778579583221117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8321,6 +8326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 1515441737342331103}
+  _particleSystem: {fileID: 0}
 --- !u!1 &2971380501871267293
 GameObject:
   m_ObjectHideFlags: 0
@@ -8875,6 +8881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 325867315510049508}
+  _particleSystem: {fileID: 0}
 --- !u!1 &3158031278435159911
 GameObject:
   m_ObjectHideFlags: 0
@@ -16738,6 +16745,7 @@ Transform:
   m_Children:
   - {fileID: 6533654509233515475}
   - {fileID: 8343651559383316759}
+  - {fileID: 994474350366086109}
   m_Father: {fileID: 8274456988200233022}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7058318174145942654
@@ -18226,6 +18234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6559501182599273060}
+  _particleSystem: {fileID: 0}
 --- !u!65 &2859032089611942963
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19521,6 +19530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8343651559383316759}
+  _particleSystem: {fileID: 0}
 --- !u!1 &8034886986247510351
 GameObject:
   m_ObjectHideFlags: 0
@@ -20093,6 +20103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8315036944430410490}
+  _particleSystem: {fileID: 0}
 --- !u!1 &8226904603072787833
 GameObject:
   m_ObjectHideFlags: 0
@@ -20674,6 +20685,111 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &8416668747261800189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 994474350366086109}
+  - component: {fileID: 1412170463995674886}
+  - component: {fileID: 8161519320408719194}
+  - component: {fileID: 5475323418686808875}
+  m_Layer: 0
+  m_Name: Foundation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &994474350366086109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416668747261800189}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.003000021, y: -1.957418, z: 0.0029997826}
+  m_LocalScale: {x: 0.7113272, y: 0.2472951, z: 9.143236}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5797710185966870393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1412170463995674886
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416668747261800189}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8161519320408719194
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416668747261800189}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 4268061769963950097, guid: cc0f9ac81d1d1484981365e86104d89a, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5475323418686808875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416668747261800189}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8420983298362926124
 GameObject:
   m_ObjectHideFlags: 0
@@ -20800,6 +20916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 2230103399051531767}
+  _particleSystem: {fileID: 0}
 --- !u!65 &4142614407638669850
 BoxCollider:
   m_ObjectHideFlags: 0

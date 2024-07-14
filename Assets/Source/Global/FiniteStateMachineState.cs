@@ -1,17 +1,17 @@
 ﻿public abstract class FiniteStateMachineState<T>
     where T : FiniteStateMachineState<T>
 {
-    private readonly FiniteStateMachine<T> Machine;
+    private readonly FiniteStateMachine<T> _machine;
 
     public FiniteStateMachineState(FiniteStateMachine<T> machine)
     {
-        Machine = machine;
+        _machine = machine;
     }
 
     public void SetState<TU>()
         where TU : T
     {
-        Machine.SetState(typeof(TU));
+        _machine.SetState(typeof(TU));
     }
 
     public virtual void Enter()

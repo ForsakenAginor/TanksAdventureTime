@@ -3113,6 +3113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6706860421463028028}
+  _particleSystem: {fileID: 0}
 --- !u!1 &3022322890470129651
 GameObject:
   m_ObjectHideFlags: 0
@@ -7869,6 +7870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 9074358749025177187}
+  _particleSystem: {fileID: 0}
 --- !u!1 &6455215453296537154
 GameObject:
   m_ObjectHideFlags: 0
@@ -9214,6 +9216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 1700412308774262166}
+  _particleSystem: {fileID: 0}
 --- !u!1 &7832953288033143017
 GameObject:
   m_ObjectHideFlags: 0
@@ -9363,6 +9366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 428119061522196626}
+  _particleSystem: {fileID: 0}
 --- !u!1 &7877628144313884976
 GameObject:
   m_ObjectHideFlags: 0
@@ -10861,6 +10865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 1760733979873013564}
+  _particleSystem: {fileID: 0}
 --- !u!1 &9095460680378467913
 GameObject:
   m_ObjectHideFlags: 0
@@ -11010,6 +11015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8584942883669978497}
+  _particleSystem: {fileID: 0}
 --- !u!1 &9096222297007291275
 GameObject:
   m_ObjectHideFlags: 0

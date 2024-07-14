@@ -10,6 +10,8 @@ namespace Assets.Source.Player.HealthSystem
 
         public Vector3 Position => _transform.position;
 
+        public TargetPriority Priority => throw new System.NotImplementedException();
+
         private void Awake()
         {
             _transform = transform;
