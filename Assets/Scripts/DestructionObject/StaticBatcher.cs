@@ -17,7 +17,7 @@ public class StaticBatcher : MonoBehaviour
 
         foreach (var obj in objects)
         {
-            obj.Destroyed1 += OnPartDestroyed;
+            //obj.Destroyed1 += OnPartDestroyed;
         }
     }
 
