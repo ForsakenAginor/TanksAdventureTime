@@ -44,6 +44,7 @@ namespace DestructionObject
             _panelDestruction.rotation = _transform.rotation;
             _panelDestruction.gameObject.SetActive(true);
             gameObject.SetActive(false);
+            
             StopWaiting();
             Waked?.Invoke();
         }

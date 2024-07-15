@@ -2,7 +2,6 @@ using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.Input;
 using Assets.Source.Player.MovingEffect;
 using Assets.Source.Player.Weapons;
-using Assets.Source.Sound.AudioMixer;
 using Projectiles;
 using System;
 using System.Linq;
@@ -56,7 +55,6 @@ namespace Assets.Source.Player
 
         [Header("Other")]
         private PlayerInput _playerInput;
-        private SoundInitializer _soundInitializer;
 
         private void OnValidate()
         {
@@ -77,11 +75,10 @@ namespace Assets.Source.Player
             _playerInput?.DisposeInputSystem();
         }
 
-        public void Init(PlayerDamageTaker playerDamageTaker, PlayerBehaviour player, SoundInitializer soundInitializer)
+        public void Init(PlayerDamageTaker playerDamageTaker, PlayerBehaviour player, Action<AudioSource> onAudioCreated)
         {
             _playerDamageTaker = playerDamageTaker != null ? playerDamageTaker : throw new ArgumentNullException(nameof(player));
             _player = player != null ? player : throw new ArgumentNullException(nameof(player));
-            _soundInitializer = soundInitializer != null ? soundInitializer : throw new ArgumentNullException(nameof(soundInitializer));
 
             PlayerWeapon weapon = new PlayerWeapon(
                                     new PlayerProjectileFactory(
@@ -89,7 +86,7 @@ namespace Assets.Source.Player
                                         _hitEffect,
                                         new OverlapExplosive(_reactionMask),
                                         _attackAngle * Mathf.Deg2Rad,
-                                        OnAudioCreated),
+                                        onAudioCreated),
                                     _shootPoint,
                                     _rigidbody.transform,
                                     _maxDistance);
@@ -113,14 +110,6 @@ namespace Assets.Source.Player
             _health = new Health(_maxHealth);
             _playerDamageTaker.Init(_health);
             _healthViews.ToList().ForEach(o => o.Init(_health));
-        }
-
-        private void OnAudioCreated(AudioSource source)
-        {
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
-
-            _soundInitializer.AddEffectSource(source);
         }
     }
 }

@@ -1,20 +1,23 @@
+using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.OnDeathEffect;
 using Assets.Source.Sound.AudioMixer;
-using Enemies;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint
 {
     public class Root : MonoBehaviour
     {
+        [Header("Level generation")]
         [SerializeField] private int _smallMilitarySpots;
         [SerializeField] private int _mediumMilitarySpots;
         [SerializeField] private int _largeMilitarySpots;
         [SerializeField] private Spawner _spawner;
-        [SerializeField] private BuildingPresetCollection _buildingPresets;
-        [SerializeField] private BuildingSpotsCollection _buildingSpots;
+        [SerializeField] private PointPresetCollection _buildingPresets;
+        [SerializeField] private PointsSpotsCollection _buildingSpots;
 
         [Header("UI objects")]
         [SerializeField] private UIManager _uIManager;
@@ -22,26 +25,25 @@ namespace Assets.Source.EntryPoint
         [Header("Player")]
         [SerializeField] private PlayerBehaviour _playerBehaviour;
         [SerializeField] private PlayerDamageTaker _playerDamageTaker;
-        [SerializeField] private GameObject _playerModel;
         [SerializeField] private PlayerInitializer _playerInitializer;
         [SerializeField] private OnDeathEffectInitializer _onDeathEffectInitializer;
         private Vector3 _spawnPoint;
 
+        [Header("Enemies")]
+        private readonly List<Transform> _enemies = new ();
+
         [Header("Audio")]
         [SerializeField] private SoundInitializer _soundInitializer;
 
-        [Header("Test")]
-        [SerializeField] private EnemyTest _enemyTest;
-
         private void Start()
         {
-            LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
-            LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner);
-            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, _soundInitializer);
-            _spawnPoint = _playerModel.transform.position;
-
             _soundInitializer.Init();
-            _enemyTest.Init(_soundInitializer);
+            LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
+            LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner, _playerDamageTaker, OnAudioCreated, OnEnemySpawned);
+            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
+            _spawnPoint = _playerDamageTaker.transform.position;
+
+            _uIManager.Init(_enemies, _playerDamageTaker.transform);
         }
 
         private void OnEnable()
@@ -56,8 +58,7 @@ namespace Assets.Source.EntryPoint
 
         public void Respawn()
         {
-            _playerModel.transform.position = _spawnPoint;
-            _playerModel.transform.rotation = Quaternion.identity;
+            _playerDamageTaker.transform.SetPositionAndRotation(_spawnPoint, Quaternion.identity);
             _onDeathEffectInitializer.Init();
             _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();
@@ -70,5 +71,21 @@ namespace Assets.Source.EntryPoint
             _onDeathEffectInitializer.CreateEffect();
             _uIManager.ShowLosingPanel();
         }
+
+        private void OnAudioCreated(AudioSource source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            _soundInitializer.AddEffectSource(source);
+        }
+
+        private void OnEnemySpawned(IEnumerable<Transform> targets)
+        {
+            if(targets == null)
+                throw new ArgumentNullException(nameof(targets));
+
+            _enemies.AddRange(targets);
+        }    
     }
 }
