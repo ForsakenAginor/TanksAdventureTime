@@ -14,13 +14,14 @@ namespace Enemies
             _gameObject = gameObject;
             _collider = collider;
             _structure = structure;
+            _collider.enabled = false;
 
-            _structure.Destroyed += OnSupportDestroyed;
+            _structure.Waked += OnSupportDestroyed;
         }
 
         public void Dispose()
         {
-            _structure.Destroyed -= OnSupportDestroyed;
+            _structure.Waked -= OnSupportDestroyed;
         }
 
         private void OnSupportDestroyed()

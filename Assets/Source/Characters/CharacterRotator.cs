@@ -43,7 +43,7 @@ namespace Characters
         {
             while (_cancellationSource.IsCancellationRequested == false)
             {
-                if (_target.Equals(null) == false)
+                if (_target != null)
                 {
                     Vector3 direction = _target.Position - _transform.position;
                     Quaternion look =

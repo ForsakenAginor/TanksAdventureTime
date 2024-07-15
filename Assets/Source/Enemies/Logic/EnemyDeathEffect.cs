@@ -1,14 +1,12 @@
 ﻿using System.Threading;
 using Characters;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using UnityEngine;
 
 namespace Enemies
 {
     public class EnemyDeathEffect : MonoBehaviour
     {
-        private Transform _transform;
         private ParticleSystem _particle;
         private AudioSource _sound;
         private CharacterAnimation _animation;
@@ -16,8 +14,9 @@ namespace Enemies
         private int _layer;
         private CancellationToken _token;
 
+        private bool _isDying;
+
         public void Init(
-            Transform transform,
             ParticleSystem particle,
             AudioSource sound,
             CharacterAnimation animation,
@@ -25,7 +24,6 @@ namespace Enemies
             int layer,
             CancellationToken token)
         {
-            _transform = transform;
             _particle = particle;
             _sound = sound;
             _animation = animation;
@@ -36,10 +34,14 @@ namespace Enemies
 
         public void Die()
         {
+            if (_isDying == true)
+                return;
+
             gameObject.layer = _layer;
-            _animation.Play(CharacterAnimations.Death);
+            _isDying = true;
             _particle.Play();
             _sound.Play();
+            _animation.Play(CharacterAnimations.Death);
             Disappear().Forget();
         }
 
@@ -49,7 +51,7 @@ namespace Enemies
                 () => _particle.isPlaying == false && _sound.isPlaying == false && _animation.IsPlaying() == false,
                 cancellationToken: _token);
 
-            _transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => gameObject.SetActive(false));
+            gameObject.SetActive(false);
         }
     }
 }
