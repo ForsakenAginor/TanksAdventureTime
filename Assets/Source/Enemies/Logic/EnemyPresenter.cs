@@ -57,6 +57,7 @@ namespace Enemies
 
         private void OnDied()
         {
+            _collision.SetPriority(TargetPriority.None);
             OnDisable();
             _death.Die();
         }

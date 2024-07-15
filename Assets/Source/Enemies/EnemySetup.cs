@@ -60,12 +60,12 @@ namespace Enemies
         private CharacterAnimation _animation;
         private EnemyCollision _collision;
         private EnemyDeathEffect _death;
-        private Transform _transform;
 
         private FiniteStateMachine<CharacterState> _machine;
         private IWeapon _weapon;
         private IFieldOfView _fieldOfView;
         private IPlayerTarget _target;
+        private ISupportStructure _structure;
         private CharacterRotator _rotator;
         private CharacterThinker _thinker;
         private CollisionActivator _activator;
@@ -89,10 +89,12 @@ namespace Enemies
             _presenter?.Disable();
         }
 
-        public void Init(IPlayerTarget target, Action<AudioSource> audioCreationCallback)
+        public void Init(
+            IPlayerTarget target,
+            Action<AudioSource> audioCreationCallback,
+            Action<IDamageableTarget> initializeCallback)
         {
             _target = target;
-            _transform = transform;
             _destroyToken = destroyCancellationToken;
             _animation = GetComponent<CharacterAnimation>();
             _collision = GetComponent<EnemyCollision>();
@@ -112,7 +114,10 @@ namespace Enemies
             _fieldOfView = GetFieldOfView();
 
             if (_isOnBuilding == true && _enemyType != EnemyTypes.Bunker)
-                _activator = new CollisionActivator(gameObject, _ownCollider, _supportStructure.GetComponent<ISupportStructure>());
+            {
+                _structure = _supportStructure.GetComponent<ISupportStructure>();
+                _activator = new CollisionActivator(gameObject, _ownCollider, _structure);
+            }
 
             _machine.AddStates(
                 new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
@@ -128,9 +133,8 @@ namespace Enemies
                 });
 
             _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
-            _collision.Init(_rotationPoint, GetPriority());
+            _collision.Init(_viewPoint, GetPriority(), _structure);
             _death.Init(
-                _transform,
                 _deathParticle,
                 _deathSound,
                 _animation,
@@ -140,6 +144,7 @@ namespace Enemies
 
             audioCreationCallback?.Invoke(_fireSound);
             audioCreationCallback?.Invoke(_deathSound);
+            initializeCallback?.Invoke(_collision);
 
             _presenter.Enable();
         }

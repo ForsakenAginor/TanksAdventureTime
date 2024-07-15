@@ -12,7 +12,7 @@ namespace PlayerHelpers
         private readonly List<IDamageableTarget> _targets;
         private readonly List<ISwitchable<IDamageableTarget>> _switchableObjects;
         private readonly Transform _transform;
-        private readonly float _maxDistance;
+        private readonly ImaginaryFieldOfView _fieldOfView;
 
         private CancellationTokenSource _cancellation;
         private IDamageableTarget _current;
@@ -21,12 +21,12 @@ namespace PlayerHelpers
             List<IDamageableTarget> targets,
             List<ISwitchable<IDamageableTarget>> switchableObjects,
             Transform transform,
-            float maxDistance)
+            ImaginaryFieldOfView fieldOfView)
         {
             _targets = targets;
             _switchableObjects = switchableObjects;
             _transform = transform;
-            _maxDistance = maxDistance;
+            _fieldOfView = fieldOfView;
         }
 
         public void StartSearching()
@@ -48,12 +48,13 @@ namespace PlayerHelpers
                 Vector3 currentPosition = _transform.position;
                 IDamageableTarget resultTarget = _current;
 
-                if (_current != null && Vector3.Distance(_current.Position, currentPosition) > _maxDistance)
+                if (_current != null &&
+                    (_current.Priority == TargetPriority.None || _fieldOfView.CanView(_current) == false))
                 {
                     resultTarget = null;
                 }
 
-                IReadOnlyCollection<IDamageableTarget> available = await GetTargetsInRadius(_transform.position);
+                IReadOnlyCollection<IDamageableTarget> available = await GetTargetsInRadius();
 
                 if (available.Any())
                     resultTarget = await GetTarget(available, currentPosition);
@@ -80,7 +81,7 @@ namespace PlayerHelpers
             return _current;
         }
 
-        private UniTask<List<IDamageableTarget>> GetTargetsInRadius(Vector3 position)
+        private async UniTask<List<IDamageableTarget>> GetTargetsInRadius()
         {
             List<IDamageableTarget> result = new List<IDamageableTarget>();
 
@@ -92,24 +93,27 @@ namespace PlayerHelpers
                     continue;
                 }
 
-                if (Vector3.Distance(target.Position, position) <= _maxDistance)
+                if (target.Priority == TargetPriority.None)
+                    continue;
+
+                if (_fieldOfView.CanView(target))
                     result.Add(target);
             }
 
-            return UniTask.FromResult(result);
+            return await UniTask.FromResult(result);
         }
 
-        private UniTask<TargetPriority> FindHightestPriority(IEnumerable<IDamageableTarget> targets)
+        private async UniTask<TargetPriority> FindHightestPriority(IEnumerable<IDamageableTarget> targets)
         {
-            return UniTask.FromResult(
+            return await UniTask.FromResult(
                 (TargetPriority)Mathf.Max(targets.Select(target => (int)target.Priority).ToArray()));
         }
 
-        private UniTask<IEnumerable<IDamageableTarget>> FindPrioritizedTargets(
+        private async UniTask<IEnumerable<IDamageableTarget>> FindPrioritizedTargets(
             TargetPriority priority,
             IEnumerable<IDamageableTarget> hightestPriorityTargets)
         {
-            return UniTask.FromResult(hightestPriorityTargets.Where(target => target.Priority == priority));
+            return await UniTask.FromResult(hightestPriorityTargets.Where(target => target.Priority == priority));
         }
 
         private async UniTask<IDamageableTarget> FindTarget(

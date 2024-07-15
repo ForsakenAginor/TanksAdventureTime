@@ -2,7 +2,7 @@
 
 namespace Enemies
 {
-    public class EnemyTestHealth : IDamageable
+    public class EnemyTestHealth : IDamageable // Используется только в EnemyTesting сцене
     {
         private const string ExceptionMessage = "The damage must be greater than 0";
 
