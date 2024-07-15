@@ -1,3 +1,5 @@
+using Assets.Source.Enemies;
+using Assets.Source.Global;
 using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
@@ -36,6 +38,9 @@ namespace Assets.Source.EntryPoint
         [Header("Audio")]
         [SerializeField] private SoundInitializer _soundInitializer;
 
+        [Header("GameProgress")]
+        [SerializeField] private WinCondition _winCondition;
+
         private void Start()
         {
             _soundInitializer.Init();
@@ -45,6 +50,7 @@ namespace Assets.Source.EntryPoint
             _spawnPoint = _playerDamageTaker.transform.position;
 
             _enemiesManager = new (_enemies);
+            _winCondition.Init(_enemiesManager.AlivedEnemies);
 
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform);
         }
@@ -52,11 +58,13 @@ namespace Assets.Source.EntryPoint
         private void OnEnable()
         {
             _playerDamageTaker.PlayerDied += OnPlayerDied;
+            _winCondition.PlayerWon += OnPlayerWon;
         }
 
         private void OnDisable()
         {
             _playerDamageTaker.PlayerDied -= OnPlayerDied;            
+            _winCondition.PlayerWon -= OnPlayerWon;
         }
 
         public void Respawn()
@@ -65,6 +73,13 @@ namespace Assets.Source.EntryPoint
             _onDeathEffectInitializer.Init();
             _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();
+        }
+
+        private void OnPlayerWon()
+        {
+            //TODO save results
+            _playerBehaviour.Stop();
+            _uIManager.ShowWiningPanel();
         }
 
 
