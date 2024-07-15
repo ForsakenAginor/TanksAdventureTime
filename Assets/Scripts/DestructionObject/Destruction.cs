@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,6 +17,7 @@ namespace DestructionObject
         private Rigidbody _rigidbody;
 
         public event Action Destroyed;
+        public event Action<List<GameObject>> Destroyed1;
 
         private void Start()
         {
@@ -30,6 +33,9 @@ namespace DestructionObject
             _panelDestruction.rotation = _transform.rotation;
             _panelDestruction.gameObject.SetActive(true);
             gameObject.SetActive(false);
+
+            Destroyed1?.Invoke(_panelDestruction.GetComponentsInChildren<Transform>().Select(o => o.gameObject).ToList());
+
             Destroyed?.Invoke();
         }
 
