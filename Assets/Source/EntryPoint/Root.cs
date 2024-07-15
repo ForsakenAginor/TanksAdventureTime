@@ -25,7 +25,6 @@ namespace Assets.Source.EntryPoint
         [Header("Player")]
         [SerializeField] private PlayerBehaviour _playerBehaviour;
         [SerializeField] private PlayerDamageTaker _playerDamageTaker;
-        [SerializeField] private PlayerAsTarget _playerAsTarget;
         [SerializeField] private PlayerInitializer _playerInitializer;
         [SerializeField] private OnDeathEffectInitializer _onDeathEffectInitializer;
         private Vector3 _spawnPoint;
@@ -40,10 +39,9 @@ namespace Assets.Source.EntryPoint
         {
             _soundInitializer.Init();
             LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
-            LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner, _playerAsTarget, OnAudioCreated, OnEnemySpawned);
-            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, _soundInitializer);
-            _spawnPoint = _playerAsTarget.transform.position;
-
+            LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner, _playerDamageTaker, OnAudioCreated, OnEnemySpawned);
+            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
+            _spawnPoint = _playerDamageTaker.transform.position;
         }
 
         private void OnEnable()
@@ -58,7 +56,7 @@ namespace Assets.Source.EntryPoint
 
         public void Respawn()
         {
-            _playerAsTarget.transform.SetPositionAndRotation(_spawnPoint, Quaternion.identity);
+            _playerDamageTaker.transform.SetPositionAndRotation(_spawnPoint, Quaternion.identity);
             _onDeathEffectInitializer.Init();
             _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();

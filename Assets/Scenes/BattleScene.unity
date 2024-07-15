@@ -10880,7 +10880,6 @@ MonoBehaviour:
   _uIManager: {fileID: 2112200517}
   _playerBehaviour: {fileID: 1494637071}
   _playerDamageTaker: {fileID: 33908297208026066}
-  _playerAsTarget: {fileID: 33908297208026067}
   _playerInitializer: {fileID: 1494637072}
   _onDeathEffectInitializer: {fileID: 152089873}
   _soundInitializer: {fileID: 1624068528}
@@ -11033,7 +11032,6 @@ GameObject:
   - component: {fileID: 1221298467}
   - component: {fileID: 33908297208026065}
   - component: {fileID: 33908297208026066}
-  - component: {fileID: 33908297208026067}
   m_Layer: 3
   m_Name: PlayerTank
   m_TagString: Untagged
@@ -12718,18 +12716,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a57500c75bdb4a64890cfa01ba57bd29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &33908297208026067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1051163351528508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a5cc18ba61ec64d85507b89d83c942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!33 &33977920848291482
