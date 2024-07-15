@@ -1,7 +1,11 @@
 using Agava.WebUtility;
+using Assets.Source.Marker;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Marker))]
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _losingPanel;
@@ -9,6 +13,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _mobileInputCanvas;
     [SerializeField] private GameObject _buttonsPanel;
     [SerializeField] private float _delay;
+
+    [Header("Marker")]
+    [SerializeField] private float _minDistance;
+    [SerializeField] private RectTransform _markerImage;
+    private Marker _marker;
+
+    private void Awake()
+    {
+        _marker = GetComponent<Marker>();
+    }
 
     private void Start()
     {
@@ -18,6 +32,17 @@ public class UIManager : MonoBehaviour
         if(Device.IsMobile == false)
             _mobileInputCanvas.SetActive(false);
         */
+    }
+
+    public void Init(IEnumerable<Transform> enemies, Transform player)
+    {
+        if (enemies == null)
+            throw new ArgumentNullException(nameof(enemies));
+
+        if (player == null)
+            throw new ArgumentNullException(nameof(player));
+
+        _marker.Init(enemies, player, _minDistance, _markerImage);
     }
 
     public void ShowLosingPanel()

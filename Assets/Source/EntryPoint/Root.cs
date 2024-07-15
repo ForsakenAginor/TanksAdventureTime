@@ -30,7 +30,7 @@ namespace Assets.Source.EntryPoint
         private Vector3 _spawnPoint;
 
         [Header("Enemies")]
-        private IEnumerable<ITarget> _enemies;
+        private readonly List<Transform> _enemies = new ();
 
         [Header("Audio")]
         [SerializeField] private SoundInitializer _soundInitializer;
@@ -42,6 +42,8 @@ namespace Assets.Source.EntryPoint
             LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner, _playerDamageTaker, OnAudioCreated, OnEnemySpawned);
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
+
+            _uIManager.Init(_enemies, _playerDamageTaker.transform);
         }
 
         private void OnEnable()
@@ -78,9 +80,12 @@ namespace Assets.Source.EntryPoint
             _soundInitializer.AddEffectSource(source);
         }
 
-        private void OnEnemySpawned(IEnumerable<ITarget> targets)
+        private void OnEnemySpawned(IEnumerable<Transform> targets)
         {
-            _enemies = targets != null ? targets : throw new ArgumentNullException(nameof(targets));
+            if(targets == null)
+                throw new ArgumentNullException(nameof(targets));
+
+            _enemies.AddRange(targets);
         }    
     }
 }

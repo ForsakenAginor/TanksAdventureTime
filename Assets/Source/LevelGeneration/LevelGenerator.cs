@@ -22,7 +22,7 @@ namespace Assets.Source.LevelGeneration
             Spawner spawner,
             IPlayerTarget player,
             Action<AudioSource> audioSourceAddedCallBack,
-            Action<IEnumerable<ITarget>> targetsSpawnedCallback)
+            Action<IEnumerable<Transform>> targetsSpawnedCallback)
         {
             _configuration = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
             _presets = presets != null ? presets : throw new ArgumentNullException(nameof(presets));
@@ -39,7 +39,7 @@ namespace Assets.Source.LevelGeneration
             Generate(audioSourceAddedCallBack, targetsSpawnedCallback);
         }
 
-        private void Generate(Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<ITarget>> targetsSpawnedCallback)
+        private void Generate(Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<Transform>> targetsSpawnedCallback)
         {
             MilitaryPoint[] smallMilitaryPresets = ChoseMilitaryPresets(PointPresetSize.Small);
             MilitaryPoint[] mediumMilitaryPresets = ChoseMilitaryPresets(PointPresetSize.Medium);
@@ -105,7 +105,7 @@ namespace Assets.Source.LevelGeneration
                 ToArray();
         }
 
-        private void InitializeMilitaryPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<ITarget>> targetsSpawnedCallback)
+        private void InitializeMilitaryPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<Transform>> targetsSpawnedCallback)
         {
             points.
                 Select(o => o as MilitaryPoint).

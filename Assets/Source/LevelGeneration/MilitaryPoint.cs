@@ -13,7 +13,7 @@ namespace Assets.Source.LevelGeneration
         [SerializeField] private Bomb[] _bombs;
         private IPlayerTarget _player;
 
-        public void Init(IPlayerTarget player, Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<ITarget>> targetsSpawnedCallback)
+        public void Init(IPlayerTarget player, Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<Transform>> targetsSpawnedCallback)
         {
             _player = player != null ? player : throw new ArgumentNullException(nameof(player));
 
@@ -25,7 +25,7 @@ namespace Assets.Source.LevelGeneration
             foreach (Bomb bomb in _bombs)
                 bomb.Init(explosive, audioSourceAddedCallBack);
 
-            targetsSpawnedCallback?.Invoke(_enemies.Select(o => o.GetComponent<ITarget>()));
+            targetsSpawnedCallback?.Invoke(_enemies.Select(o => o.transform));
         }
     }
 }

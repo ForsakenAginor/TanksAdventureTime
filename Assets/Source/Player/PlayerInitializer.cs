@@ -2,7 +2,6 @@ using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.Input;
 using Assets.Source.Player.MovingEffect;
 using Assets.Source.Player.Weapons;
-using Assets.Source.Sound.AudioMixer;
 using Projectiles;
 using System;
 using System.Linq;

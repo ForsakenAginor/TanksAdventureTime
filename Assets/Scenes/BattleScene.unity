@@ -10900,6 +10900,8 @@ MonoBehaviour:
   _mobileInputCanvas: {fileID: 41569815}
   _buttonsPanel: {fileID: 217148097}
   _delay: 2
+  _minDistance: 10
+  _markerImage: {fileID: 1918082214}
 --- !u!114 &2112200518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10912,11 +10914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03493f323e8e1094d8a06d07dbf25f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies: []
-  _player: {fileID: 4932870345009844}
-  _minDistance: 30
-  _image: {fileID: 1918082214}
-  _imageSize: 25
 --- !u!1 &2117524356
 GameObject:
   m_ObjectHideFlags: 0
