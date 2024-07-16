@@ -4,12 +4,12 @@ namespace Assets.Source.LevelGeneration
 {
     public class SpotMarker : MonoBehaviour
     {
-        [SerializeField] private float _radius = 1f;
+        [SerializeField] private  Vector3 _cube;
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(transform.position, _radius);
+            Gizmos.DrawCube(transform.position, _cube);
         }
     }
 }

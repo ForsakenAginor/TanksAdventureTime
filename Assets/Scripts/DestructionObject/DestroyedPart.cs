@@ -11,7 +11,7 @@ namespace DestructionObject
             float minValue = 1f;
             float maxValue = 5f;
             float timeDie = Random.Range(minValue, maxValue);
-            Invoke(DieObject, timeDie);
+           // Invoke(DieObject, timeDie);
         }
 
         private void DisableObject() => gameObject.SetActive(false);
