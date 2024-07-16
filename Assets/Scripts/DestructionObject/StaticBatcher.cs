@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
 using DestructionObject;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,39 +9,41 @@ public class StaticBatcher : MonoBehaviour
 {
     [SerializeField] private Transform _parent;
 
-    private List<GameObject> _parts = new();
+    private List<MeshRenderer> _parts = new();
+    private int _limit = 100;
+    private int _multiplier = 2;
 
     private void Awake()
     {
         var objects = GetComponentsInChildren<Destruction>();
 
-        foreach (var obj in objects)
+        foreach (var part in objects)
         {
-            //obj.Destroyed1 += OnPartDestroyed;
+            part.Destroyed += OnPartDestroyed;
         }
     }
 
-    private void OnPartDestroyed(List<GameObject> list)
+    private void OnPartDestroyed(List<MeshRenderer> list)
     {
-        var sorted = list.Where(o =>
-        {
-            return o.activeSelf == true && o.TryGetComponent<MeshRenderer>(out _);
-        }).
-        ToList();
-        BatchingCome(sorted);
+        if(list == null)
+            throw new ArgumentNullException(nameof(list));
+
+        _parts.AddRange(list);
+
+        foreach (var part in list)
+            part.transform.parent = _parent;
+
+        UniteMesh();
     }
 
-    private async void BatchingCome(List<GameObject> list)
+    private void UniteMesh()
     {
-        await UniTask.Delay(20000);
-        list.ForEach(o =>
+        if(_parts.Count >= _limit)
         {
-            //o.isStatic = true;
-            o.transform.parent = _parent;
-        });
-        _parts.AddRange(list);
-        _parts.Where(o => o.activeSelf == false).ToList().ForEach(o => o.transform.parent = null);
-        StaticBatchingUtility.Combine(_parent.gameObject);
-        Debug.Log("Batched");
+            _limit *= _multiplier;
+            _parts.Where(o => o.gameObject.activeSelf == false).ToList().ForEach(o => o.transform.parent = null);
+            StaticBatchingUtility.Combine(_parent.gameObject);
+            Debug.Log("Batched");
+        }
     }
 }
