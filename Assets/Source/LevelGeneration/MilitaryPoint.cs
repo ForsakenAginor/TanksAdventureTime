@@ -13,19 +13,17 @@ namespace Assets.Source.LevelGeneration
         [SerializeField] private Bomb[] _bombs;
         private IPlayerTarget _player;
 
-        public void Init(IPlayerTarget player, Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<Transform>> targetsSpawnedCallback)
+        public void Init(IPlayerTarget player, Action<AudioSource> audioSourceAddedCallBack, Action<IDamageableTarget> targetSpawnedCallback)
         {
             _player = player != null ? player : throw new ArgumentNullException(nameof(player));
 
             foreach (EnemySetup enemy in _enemies)
-                enemy.Init(_player, audioSourceAddedCallBack);
+                enemy.Init(_player, audioSourceAddedCallBack, targetSpawnedCallback);
 
             IExplosive explosive = new Explosive(_player);
 
             foreach (Bomb bomb in _bombs)
                 bomb.Init(explosive, audioSourceAddedCallBack);
-
-            targetsSpawnedCallback?.Invoke(_enemies.Select(o => o.transform));
         }
     }
 }

@@ -8,19 +8,18 @@ namespace Assets.Source.Marker
     public class Marker : MonoBehaviour
     {
         private readonly float _imageSize = 25;
-        private IEnumerable<Transform> _enemies;
+        private IEnumerable<ITarget> _enemies;
         private Transform _player;
         private float _minDistance;
         private RectTransform _image;
 
         private void FixedUpdate()
         {
-            if (_enemies.Where(o => o.gameObject.activeSelf == true).Count() == 0)
+            if (_enemies.Count() == 0)
                 return;
 
             Vector3 closest = _enemies.
-                            Where(o => o.gameObject.activeSelf == true).
-                            Select(o => o.position).
+                            Select(o => o.Position).
                             OrderBy(o => (o - _player.position).sqrMagnitude).
                             First();
 
@@ -40,7 +39,7 @@ namespace Assets.Source.Marker
             }
         }
 
-        public void Init(IEnumerable<Transform> enemies, Transform player, float minDistance, RectTransform marker)
+        public void Init(IEnumerable<ITarget> enemies, Transform player, float minDistance, RectTransform marker)
         {
             _enemies = enemies != null ? enemies : throw new ArgumentNullException(nameof(enemies));
             _player = player != null ? player : throw new ArgumentNullException(nameof(player));

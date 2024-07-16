@@ -1,3 +1,5 @@
+using Assets.Source.Enemies;
+using Assets.Source.Global;
 using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
@@ -30,10 +32,14 @@ namespace Assets.Source.EntryPoint
         private Vector3 _spawnPoint;
 
         [Header("Enemies")]
-        private readonly List<Transform> _enemies = new ();
+        private readonly List<IDamageableTarget> _enemies = new ();
+        private EnemiesManager _enemiesManager;
 
         [Header("Audio")]
         [SerializeField] private SoundInitializer _soundInitializer;
+
+        [Header("GameProgress")]
+        [SerializeField] private WinCondition _winCondition;
 
         private void Start()
         {
@@ -43,17 +49,22 @@ namespace Assets.Source.EntryPoint
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
-            _uIManager.Init(_enemies, _playerDamageTaker.transform);
+            _enemiesManager = new (_enemies);
+            _winCondition.Init(_enemiesManager.AlivedEnemies);
+
+            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform);
         }
 
         private void OnEnable()
         {
             _playerDamageTaker.PlayerDied += OnPlayerDied;
+            _winCondition.PlayerWon += OnPlayerWon;
         }
 
         private void OnDisable()
         {
             _playerDamageTaker.PlayerDied -= OnPlayerDied;            
+            _winCondition.PlayerWon -= OnPlayerWon;
         }
 
         public void Respawn()
@@ -62,6 +73,13 @@ namespace Assets.Source.EntryPoint
             _onDeathEffectInitializer.Init();
             _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();
+        }
+
+        private void OnPlayerWon()
+        {
+            //TODO save results
+            _playerBehaviour.Stop();
+            _uIManager.ShowWiningPanel();
         }
 
 
@@ -80,12 +98,12 @@ namespace Assets.Source.EntryPoint
             _soundInitializer.AddEffectSource(source);
         }
 
-        private void OnEnemySpawned(IEnumerable<Transform> targets)
+        private void OnEnemySpawned(IDamageableTarget target)
         {
-            if(targets == null)
-                throw new ArgumentNullException(nameof(targets));
+            if(target == null)
+                throw new ArgumentNullException(nameof(target));
 
-            _enemies.AddRange(targets);
+            _enemies.Add(target);
         }    
     }
 }

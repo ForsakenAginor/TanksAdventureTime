@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
         */
     }
 
-    public void Init(IEnumerable<Transform> enemies, Transform player)
+    public void Init(IEnumerable<ITarget> enemies, Transform player)
     {
         if (enemies == null)
             throw new ArgumentNullException(nameof(enemies));

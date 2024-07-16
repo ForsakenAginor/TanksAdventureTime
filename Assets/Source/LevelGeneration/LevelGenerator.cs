@@ -22,7 +22,7 @@ namespace Assets.Source.LevelGeneration
             Spawner spawner,
             IPlayerTarget player,
             Action<AudioSource> audioSourceAddedCallBack,
-            Action<IEnumerable<Transform>> targetsSpawnedCallback)
+            Action <IDamageableTarget> targetSpawnedCallback)
         {
             _configuration = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
             _presets = presets != null ? presets : throw new ArgumentNullException(nameof(presets));
@@ -36,10 +36,10 @@ namespace Assets.Source.LevelGeneration
             _mediumSpots = spots.MediumBuildingSpots.ToList();
             _largeSpots = spots.LargeBuildingSpots.ToList();
 
-            Generate(audioSourceAddedCallBack, targetsSpawnedCallback);
+            Generate(audioSourceAddedCallBack, targetSpawnedCallback);
         }
 
-        private void Generate(Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<Transform>> targetsSpawnedCallback)
+        private void Generate(Action<AudioSource> audioSourceAddedCallBack, Action<IDamageableTarget> targetSpawnedCallback)
         {
             MilitaryPoint[] smallMilitaryPresets = ChoseMilitaryPresets(PointPresetSize.Small);
             MilitaryPoint[] mediumMilitaryPresets = ChoseMilitaryPresets(PointPresetSize.Medium);
@@ -52,7 +52,7 @@ namespace Assets.Source.LevelGeneration
                 throw new Exception("wrong level configuration: not enought small spots)");
 
             int amount = _configuration.MilitarySmallBuildings;
-            InitializeMilitaryPoints(SpawnRandomBuildings(amount, smallMilitaryPresets, _smallSpots), audioSourceAddedCallBack, targetsSpawnedCallback);
+            InitializeMilitaryPoints(SpawnRandomBuildings(amount, smallMilitaryPresets, _smallSpots), audioSourceAddedCallBack, targetSpawnedCallback);
             amount = _smallSpots.Count();
             SpawnRandomBuildings(amount, smallCivilianPresets, _smallSpots);
 
@@ -60,7 +60,7 @@ namespace Assets.Source.LevelGeneration
                 throw new Exception("wrong level configuration: not enought medium spots)");
 
             amount = _configuration.MilitaryMediumBuildings;
-            InitializeMilitaryPoints(SpawnRandomBuildings(amount, mediumMilitaryPresets, _mediumSpots), audioSourceAddedCallBack, targetsSpawnedCallback);
+            InitializeMilitaryPoints(SpawnRandomBuildings(amount, mediumMilitaryPresets, _mediumSpots), audioSourceAddedCallBack, targetSpawnedCallback);
             amount = _mediumSpots.Count();
             SpawnRandomBuildings(amount, mediumCivilianPresets, _mediumSpots);
 
@@ -68,7 +68,7 @@ namespace Assets.Source.LevelGeneration
                 throw new Exception("wrong level configuration: not enought large spots)");
 
             amount = _configuration.MilitaryLargeBuildings;
-            InitializeMilitaryPoints(SpawnRandomBuildings(amount, largeMilitaryPresets, _largeSpots), audioSourceAddedCallBack, targetsSpawnedCallback);
+            InitializeMilitaryPoints(SpawnRandomBuildings(amount, largeMilitaryPresets, _largeSpots), audioSourceAddedCallBack, targetSpawnedCallback);
             amount = _largeSpots.Count();
             SpawnRandomBuildings(amount, largeCivilianPresets, _largeSpots);
         }
@@ -105,12 +105,12 @@ namespace Assets.Source.LevelGeneration
                 ToArray();
         }
 
-        private void InitializeMilitaryPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack, Action<IEnumerable<Transform>> targetsSpawnedCallback)
+        private void InitializeMilitaryPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack, Action<IDamageableTarget> targetSpawnedCallback)
         {
             points.
                 Select(o => o as MilitaryPoint).
                 ToList().
-                ForEach(o => o.Init(_player, audioSourceAddedCallBack, targetsSpawnedCallback));
+                ForEach(o => o.Init(_player, audioSourceAddedCallBack, targetSpawnedCallback));
         }
     }
 }
