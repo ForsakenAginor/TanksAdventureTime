@@ -10,8 +10,8 @@ namespace Assets.Source.LevelGeneration
         [SerializeField] private Transform[] _mediumBuildingSpots;
         [SerializeField] private Transform[] _largeBuildingSpots;
 
-        public IEnumerable<Vector3> SmallBuildingSpots => _smallBuildingSpots.Select(o => o.position);
-        public IEnumerable<Vector3> MediumBuildingSpots => _mediumBuildingSpots.Select(o => o.position);
-        public IEnumerable<Vector3> LargeBuildingSpots => _largeBuildingSpots.Select(o => o.position);
+        public IEnumerable<Transform> SmallBuildingSpots => _smallBuildingSpots;
+        public IEnumerable<Transform> MediumBuildingSpots => _mediumBuildingSpots;
+        public IEnumerable<Transform> LargeBuildingSpots => _largeBuildingSpots;
     }
 }
