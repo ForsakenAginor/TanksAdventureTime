@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7258801241935506200}
   - component: {fileID: -6885938282029242093}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 3751033525393019563}
   - component: {fileID: 6498763858945172804}
   - component: {fileID: 600689995129122113}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Veh_Car_Destroyed_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

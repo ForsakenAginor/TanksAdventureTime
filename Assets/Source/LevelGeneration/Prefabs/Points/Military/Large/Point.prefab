@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1001705576010199635}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Houses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5315707524338065507}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2957,6 +2957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Target_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1301019947510714, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4889387558117824, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.8
@@ -3019,6 +3023,10 @@ PrefabInstance:
     - target: {fileID: 1301019947510714, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Target_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301019947510714, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4889387558117824, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3570,6 +3578,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Target_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1301019947510714, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4889387558117824, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.63
@@ -3854,6 +3866,10 @@ PrefabInstance:
     - target: {fileID: 1862776649476270, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Tent_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862776649476270, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4212909550926562, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4379,6 +4395,10 @@ PrefabInstance:
     - target: {fileID: 1862776649476270, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Tent_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1862776649476270, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4212909550926562, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9165,6 +9185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Tent_02 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1862776649476270, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4212909550926562, guid: d4ecf54e1ea1911499271cb18852e93c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.288883
@@ -10325,6 +10349,10 @@ PrefabInstance:
     - target: {fileID: 809842206331679495, guid: 07f70f4b3326e3e4a8829b9741b2c262, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360584905783668932, guid: 07f70f4b3326e3e4a8829b9741b2c262, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12596,6 +12624,10 @@ PrefabInstance:
     - target: {fileID: 1301019947510714, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Target_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1301019947510714, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4889387558117824, guid: b89fe3f03a968ea40b750113555e1169, type: 3}
       propertyPath: m_LocalPosition.x
