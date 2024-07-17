@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Characters
 {
@@ -20,6 +21,9 @@ namespace Characters
 
         public void Shoot()
         {
+            if (Target == null)
+                return;
+
             _sound.Play();
             OnShoot();
         }

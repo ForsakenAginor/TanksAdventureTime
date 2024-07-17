@@ -14,7 +14,7 @@ TagManager:
   - EnemyProjectile
   - Environment
   - Enemy
-  - Destructible
+  - Ignore Environment
   - 
   - 
   - 

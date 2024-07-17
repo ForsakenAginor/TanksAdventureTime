@@ -2,5 +2,5 @@
 
 public interface ISupportStructure
 {
-    public event Action Destroyed;
+    public event Action Waked;
 }

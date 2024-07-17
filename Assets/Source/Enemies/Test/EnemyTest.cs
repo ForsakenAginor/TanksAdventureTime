@@ -1,39 +1,34 @@
-﻿using Assets.Source.Sound.AudioMixer;
+﻿using System.Collections.Generic;
+using PlayerHelpers;
 using Projectiles;
-using System;
 using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemyTest : MonoBehaviour
+    public class EnemyTest : MonoBehaviour // Используется только в EnemyTesting сцене
     {
+        private readonly List<IDamageableTarget> _targets = new ();
+
         [SerializeField] private TargetTest _target;
         [SerializeField] private EnemySetup[] _enemies;
         [SerializeField] private Bomb[] _bombs;
+        [SerializeField] private PlayerHelperSetup _helper;
 
-        private SoundInitializer _soundInitializer;
-
-        public void Init(SoundInitializer soundInitializer)
+        private void Awake()
         {
-            _soundInitializer = soundInitializer != null ?
-                soundInitializer :
-                throw new ArgumentNullException(nameof(soundInitializer));
-
             foreach (EnemySetup enemy in _enemies)
-                enemy.Init(_target, OnAudioCreated);            
+                enemy.Init(_target, OnAudioCreated, _targets.Add);
 
             IExplosive explosive = new Explosive(_target);
 
             foreach (Bomb bomb in _bombs)
-                bomb.Init(explosive, OnAudioCreated); 
+                bomb.Init(explosive, OnAudioCreated);
+
+            _helper.Init(_targets, OnAudioCreated);
         }
 
         private void OnAudioCreated(AudioSource source)
         {
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
-
-            _soundInitializer.AddEffectSource(source);
         }
     }
 }

@@ -1,4 +1,4 @@
-using Enemies;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,36 +7,44 @@ namespace Assets.Source.Marker
 {
     public class Marker : MonoBehaviour
     {
-        [SerializeField] private List<EnemySetup> _enemies;
-        [SerializeField] private Transform _player;
-        [SerializeField] private float _minDistance;
-        [SerializeField] private RectTransform _image;
-        [SerializeField] private float _imageSize = 25;
+        private readonly float _imageSize = 25;
+        private IEnumerable<ITarget> _enemies;
+        private Transform _player;
+        private float _minDistance;
+        private RectTransform _image;
 
         private void FixedUpdate()
         {
-            if (_enemies.Count == 0)
+            if (_enemies.Count() == 0)
                 return;
 
-            Transform closest = _enemies.
-                            Select(o => o.transform).
-                            OrderBy(o => (o.position - _player.position).sqrMagnitude).
+            Vector3 closest = _enemies.
+                            Select(o => o.Position).
+                            OrderBy(o => (o - _player.position).sqrMagnitude).
                             First();
 
-            float distance = (closest.position - _player.position).magnitude;
+            float distance = (closest - _player.position).magnitude;
 
             if (distance > _minDistance)
             {
                 if (_image.gameObject.activeSelf == false)
                     _image.gameObject.SetActive(true);
 
-                MoveMarkerImage(closest.position);
+                MoveMarkerImage(closest);
             }
             else
             {
                 if (_image.gameObject.activeSelf)
                     _image.gameObject.SetActive(false);
             }
+        }
+
+        public void Init(IEnumerable<ITarget> enemies, Transform player, float minDistance, RectTransform marker)
+        {
+            _enemies = enemies != null ? enemies : throw new ArgumentNullException(nameof(enemies));
+            _player = player != null ? player : throw new ArgumentNullException(nameof(player));
+            _image = marker != null ? marker : throw new ArgumentNullException(nameof(marker));
+            _minDistance = minDistance > 0 ? minDistance : throw new ArgumentNullException(nameof(minDistance));
         }
 
         private void MoveMarkerImage(Vector3 enemyPosition)

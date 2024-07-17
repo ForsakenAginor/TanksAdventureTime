@@ -5,25 +5,30 @@ namespace Enemies
 {
     public class EnemyCollision : MonoBehaviour, IDamageableTarget, IReactive
     {
-        private Transform _transform;
+        private Transform _viewPoint;
+        private ISupportStructure _structure;
 
         public event Action<HitTypes> HitTook;
 
-        public Vector3 Position => _transform.position;
+        public Vector3 Position => _viewPoint.position;
 
         public TargetPriority Priority { get; private set; }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.collider.TryGetComponent(out IPermanentKiller _) == false)
+            if (collision.collider.TryGetComponent(out IPermanentKiller killer) == false)
+                return;
+
+            if (killer is ISupportStructure && killer == _structure)
                 return;
 
             TakeHit(HitTypes.PermanentDeath);
         }
 
-        public void Init(Transform transform, TargetPriority priority)
+        public void Init(Transform viewPoint, TargetPriority priority, ISupportStructure structure)
         {
-            _transform = transform;
+            _viewPoint = viewPoint;
+            _structure = structure;
             Priority = priority;
         }
 
@@ -35,6 +40,11 @@ namespace Enemies
         public void React()
         {
             TakeHit(HitTypes.Explosion);
+        }
+
+        public void SetPriority(TargetPriority priority)
+        {
+            Priority = priority;
         }
     }
 }

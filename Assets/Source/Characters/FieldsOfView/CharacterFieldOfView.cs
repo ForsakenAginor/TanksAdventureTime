@@ -29,12 +29,17 @@ namespace Characters
 
         public bool IsPlayerInRadius()
         {
-            return Vector3.Distance(ViewPoint.position, Target.Position) <= AttackRadius;
+            return HaveTarget() && Vector3.Distance(ViewPoint.position, Target.Position) <= AttackRadius;
         }
 
         public void Switch(ITarget target)
         {
             Target = target;
+        }
+
+        private bool HaveTarget()
+        {
+            return Target != null;
         }
     }
 }
