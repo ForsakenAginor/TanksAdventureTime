@@ -4,9 +4,9 @@ namespace Assets.Source.LevelGeneration
 {
     public class Spawner : MonoBehaviour
     {
-        public GameObject Spawn(Vector3 position, GameObject spawned)
+        public GameObject Spawn(Transform parent, GameObject spawned)
         {
-            return Instantiate(spawned, position, Quaternion.identity);
+            return Instantiate(spawned, parent);
         }
     }
 }

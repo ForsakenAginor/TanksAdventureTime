@@ -8,9 +8,9 @@ namespace Assets.Source.LevelGeneration
     public class LevelGenerator
     {
         private readonly PointPresetCollection _presets;
-        private readonly List<Vector3> _smallSpots;
-        private readonly List<Vector3> _mediumSpots;
-        private readonly List<Vector3> _largeSpots;
+        private readonly List<Transform> _smallSpots;
+        private readonly List<Transform> _mediumSpots;
+        private readonly List<Transform> _largeSpots;
         private readonly LevelConfiguration _configuration;
         private readonly Spawner _spawner;
         private readonly IPlayerTarget _player;
@@ -73,14 +73,14 @@ namespace Assets.Source.LevelGeneration
             SpawnRandomBuildings(amount, largeCivilianPresets, _largeSpots);
         }
 
-        private IEnumerable<Point> SpawnRandomBuildings(int amount, Point[] buildings, List<Vector3> spots)
+        private IEnumerable<Point> SpawnRandomBuildings(int amount, Point[] buildings, List<Transform> spots)
         {
             List<Point> result = new();
 
             while (amount > 0)
             {
                 int presetIndex = UnityEngine.Random.Range(0, buildings.Length);
-                Vector3 spot = spots[UnityEngine.Random.Range(0, spots.Count)];
+                Transform spot = spots[UnityEngine.Random.Range(0, spots.Count)];
                 result.Add(_spawner.Spawn(spot, buildings[presetIndex].gameObject).GetComponent<Point>());
                 spots.Remove(spot);
                 amount--;
