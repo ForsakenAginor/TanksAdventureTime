@@ -3,7 +3,32 @@ guid: ad1e09cf12c878745bcb55cbb59621c7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Balcony
+    second: {fileID: 2100000, guid: 5d266f111f7523b44bd3b84763a6a933, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor
+    second: {fileID: 2100000, guid: f1a84d17b721f534295cfaef6e9bf379, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Frame
+    second: {fileID: 2100000, guid: 5d0b261c3f1f5ee45bb63d0ac1fc19cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HomePanel
+    second: {fileID: 2100000, guid: 3137dd7b3f4a7ed468f364efbfa9f965, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HomePanel.001
+    second: {fileID: 2100000, guid: 0b08baabbdba86944bc33aa2e415afb9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
