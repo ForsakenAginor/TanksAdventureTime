@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if UNITY_EDITOR
+using System;
 using UnityEngine;
 
 public class SerializeInterfaceAttribute : PropertyAttribute
@@ -10,3 +11,4 @@ public class SerializeInterfaceAttribute : PropertyAttribute
         Type = type;
     }
 }
+#endif

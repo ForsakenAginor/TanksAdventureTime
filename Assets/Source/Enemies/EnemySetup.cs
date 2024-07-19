@@ -29,7 +29,9 @@ namespace Enemies
 
         [Header("Building")]
         [SerializeField] private bool _isOnBuilding;
+#if UNITY_EDITOR
         [SerializeInterface(typeof(ISupportStructure))]
+#endif
         [SerializeField] private GameObject _supportStructure;
         [SerializeField] private Collider _ownCollider;
 
