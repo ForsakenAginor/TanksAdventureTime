@@ -1,5 +1,8 @@
+using Agava.YandexGames;
+using Assets.Scripts.Advertise;
+using Assets.Scripts.Core;
+using Assets.Source.Difficulty;
 using Assets.Source.Enemies;
-using Assets.Source.Global;
 using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
@@ -14,9 +17,6 @@ namespace Assets.Source.EntryPoint
     public class Root : MonoBehaviour
     {
         [Header("Level generation")]
-        [SerializeField] private int _smallMilitarySpots;
-        [SerializeField] private int _mediumMilitarySpots;
-        [SerializeField] private int _largeMilitarySpots;
         [SerializeField] private Spawner _spawner;
         [SerializeField] private PointPresetCollection _buildingPresets;
         [SerializeField] private PointsSpotsCollection _buildingSpots;
@@ -32,7 +32,7 @@ namespace Assets.Source.EntryPoint
         private Vector3 _spawnPoint;
 
         [Header("Enemies")]
-        private readonly List<IDamageableTarget> _enemies = new ();
+        private readonly List<IDamageableTarget> _enemies = new();
         private EnemiesManager _enemiesManager;
 
         [Header("Audio")]
@@ -40,19 +40,41 @@ namespace Assets.Source.EntryPoint
 
         [Header("GameProgress")]
         [SerializeField] private WinCondition _winCondition;
+        private int _currentLevel;
+        private LevelData _levelData;
+
+        [Header("Other")]
+        [SerializeField] private Silencer _silencer;
 
         private void Start()
         {
             _soundInitializer.Init();
-            LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
-            LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner, _playerDamageTaker, OnAudioCreated, OnEnemySpawned);
+            _levelData = new();
+            _currentLevel = _levelData.GetLevel();
+            DifficultySystem difficultySystem = new(_currentLevel);
+
+            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
+                                                _buildingPresets,
+                                                _buildingSpots,
+                                                _spawner,
+                                                _playerDamageTaker,
+                                                OnAudioCreated,
+                                                OnEnemySpawned);
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
-            _enemiesManager = new (_enemies);
+            _enemiesManager = new(_enemies);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
 
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform);
+
+            InterstitialAdvertiseShower advertiseShower = new(_silencer);
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+            StickyAd.Show();
+            advertiseShower.ShowAdvertise();
+#endif
+            Time.timeScale = 0f;
         }
 
         private void OnEnable()
@@ -63,7 +85,7 @@ namespace Assets.Source.EntryPoint
 
         private void OnDisable()
         {
-            _playerDamageTaker.PlayerDied -= OnPlayerDied;            
+            _playerDamageTaker.PlayerDied -= OnPlayerDied;
             _winCondition.PlayerWon -= OnPlayerWon;
         }
 
@@ -77,8 +99,10 @@ namespace Assets.Source.EntryPoint
 
         private void OnPlayerWon()
         {
-            //TODO save results
             _playerBehaviour.Stop();
+            LeaderboardScoreSaver leaderboardScoreSaver = new();
+            leaderboardScoreSaver.SaveScore(_currentLevel);
+            _levelData.SaveLevel(++_currentLevel);
             _uIManager.ShowWiningPanel();
         }
 
@@ -100,10 +124,10 @@ namespace Assets.Source.EntryPoint
 
         private void OnEnemySpawned(IDamageableTarget target)
         {
-            if(target == null)
+            if (target == null)
                 throw new ArgumentNullException(nameof(target));
 
             _enemies.Add(target);
-        }    
+        }
     }
 }

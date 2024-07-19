@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using Assets.Source.Sound.AudioMixer;
 using UnityEngine;
 
@@ -8,5 +9,9 @@ public class MainMenuRoot : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        YandexGamesSdk.GameReady();
+#endif
     }
 }

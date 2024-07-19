@@ -5,18 +5,14 @@ using UnityEngine;
 
 namespace Assets.Source.LevelGeneration
 {
-    public class MilitaryPoint : Point
+    public class ObstaclesPoint : Point
     {
-        [SerializeField] private EnemySetup[] _enemies;
         [SerializeField] private Bomb[] _bombs;
 
-        public void Init(IPlayerTarget player, Action<AudioSource> audioSourceAddedCallBack, Action<IDamageableTarget> targetSpawnedCallback)
+        public void Init(IPlayerTarget player, Action<AudioSource> audioSourceAddedCallBack)
         {
             if (player == null)
                 throw new ArgumentNullException(nameof(player));
-
-            foreach (EnemySetup enemy in _enemies)
-                enemy.Init(player, audioSourceAddedCallBack, targetSpawnedCallback);
 
             IExplosive explosive = new Explosive(player);
 

@@ -1,5 +1,5 @@
 using Agava.YandexGames;
-using Assets.Scripts.UI.Menu.LevelSystem;
+using Assets.Source.Difficulty;
 using UnityEngine;
 using UnityEngine.UI;
 

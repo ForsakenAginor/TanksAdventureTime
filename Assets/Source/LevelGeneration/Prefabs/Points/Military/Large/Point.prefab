@@ -224,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6548849505667437994}
-  - component: {fileID: 1188370003651858751}
+  - component: {fileID: 3062718258585384540}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -257,7 +257,7 @@ Transform:
   - {fileID: 5315707524338065507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1188370003651858751
+--- !u!114 &3062718258585384540
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2397374620997777721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a33f27d63b8fe84685329ded9a777ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 394c845bb94494a49b1282a16ff3c440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _enemies:

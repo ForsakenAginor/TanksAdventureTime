@@ -7,8 +7,6 @@ namespace Assets.Source.LevelGeneration
     {
         [field: SerializeField] public Point Prefab { get; private set; }
 
-        //[field: SerializeField] public BuildingPresetType Type { get; private set; }
-
         [field: SerializeField] public PointPresetSize Size { get; private set; }
     }
 }
