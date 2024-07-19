@@ -85,8 +85,10 @@ namespace Assets.Source.EntryPoint
 
         private void OnPlayerWon()
         {
-            _levelData.SaveLevel(++_currentLevel);
             _playerBehaviour.Stop();
+            LeaderboardScoreSaver leaderboardScoreSaver = new ();
+            leaderboardScoreSaver.SaveScore(_currentLevel);
+            _levelData.SaveLevel(++_currentLevel);
             _uIManager.ShowWiningPanel();
         }
 
