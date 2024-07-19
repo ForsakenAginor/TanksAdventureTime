@@ -1,5 +1,4 @@
 using Assets.Source.Enemies;
-using Assets.Source.Global;
 using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
@@ -17,6 +16,7 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private int _smallMilitarySpots;
         [SerializeField] private int _mediumMilitarySpots;
         [SerializeField] private int _largeMilitarySpots;
+        [SerializeField] private int _obstaclesSpots;
         [SerializeField] private Spawner _spawner;
         [SerializeField] private PointPresetCollection _buildingPresets;
         [SerializeField] private PointsSpotsCollection _buildingSpots;
@@ -44,7 +44,7 @@ namespace Assets.Source.EntryPoint
         private void Start()
         {
             _soundInitializer.Init();
-            LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots);
+            LevelConfiguration configuration = new (_smallMilitarySpots, _mediumMilitarySpots, _largeMilitarySpots, _obstaclesSpots);
             LevelGenerator levelGenerator = new (configuration, _buildingPresets, _buildingSpots, _spawner, _playerDamageTaker, OnAudioCreated, OnEnemySpawned);
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;

@@ -11,6 +11,7 @@ namespace Assets.Source.LevelGeneration
         private readonly List<Transform> _smallSpots;
         private readonly List<Transform> _mediumSpots;
         private readonly List<Transform> _largeSpots;
+        private readonly List<Transform> _obstaclesSpots;
         private readonly LevelConfiguration _configuration;
         private readonly Spawner _spawner;
         private readonly IPlayerTarget _player;
@@ -35,6 +36,7 @@ namespace Assets.Source.LevelGeneration
             _smallSpots = spots.SmallBuildingSpots.ToList();
             _mediumSpots = spots.MediumBuildingSpots.ToList();
             _largeSpots = spots.LargeBuildingSpots.ToList();
+            _obstaclesSpots = spots.ObstaclesSpots.ToList();
 
             Generate(audioSourceAddedCallBack, targetSpawnedCallback);
         }
@@ -47,6 +49,7 @@ namespace Assets.Source.LevelGeneration
             CivilianPoint[] smallCivilianPresets = ChoseCivilianPresets(PointPresetSize.Small);
             CivilianPoint[] mediumCivilianPresets = ChoseCivilianPresets(PointPresetSize.Medium);
             CivilianPoint[] largeCivilianPresets = ChoseCivilianPresets(PointPresetSize.Large);
+            ObstaclesPoint[] obstaclesPresets = ChoseObstaclesPresets();
 
             if (_smallSpots.Count() < _configuration.MilitarySmallBuildings)
                 throw new Exception("wrong level configuration: not enought small spots)");
@@ -71,6 +74,12 @@ namespace Assets.Source.LevelGeneration
             InitializeMilitaryPoints(SpawnRandomBuildings(amount, largeMilitaryPresets, _largeSpots), audioSourceAddedCallBack, targetSpawnedCallback);
             amount = _largeSpots.Count();
             SpawnRandomBuildings(amount, largeCivilianPresets, _largeSpots);
+
+            if (_obstaclesSpots.Count() < _configuration.Obstacles)
+                throw new Exception("wrong level configuration: not enought obstacles spots)");
+
+            amount = _configuration.Obstacles;
+            InitializeObstaclesPoints(SpawnRandomBuildings(amount, obstaclesPresets, _obstaclesSpots), audioSourceAddedCallBack);
         }
 
         private IEnumerable<Point> SpawnRandomBuildings(int amount, Point[] buildings, List<Transform> spots)
@@ -105,12 +114,28 @@ namespace Assets.Source.LevelGeneration
                 ToArray();
         }
 
+        private ObstaclesPoint[] ChoseObstaclesPresets()
+        {
+            return _presets.Presets.
+                Where(o => o.Prefab is ObstaclesPoint).
+                Select(o => o.Prefab as ObstaclesPoint).
+                ToArray();
+        }
+
         private void InitializeMilitaryPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack, Action<IDamageableTarget> targetSpawnedCallback)
         {
             points.
                 Select(o => o as MilitaryPoint).
                 ToList().
                 ForEach(o => o.Init(_player, audioSourceAddedCallBack, targetSpawnedCallback));
+        }
+
+        private void InitializeObstaclesPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack)
+        {
+            points.
+                Select(o => o as ObstaclesPoint).
+                ToList().
+                ForEach(o => o.Init(_player, audioSourceAddedCallBack));
         }
     }
 }
