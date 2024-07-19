@@ -24118,7 +24118,7 @@ GameObject:
   - component: {fileID: 4500890358154097124}
   - component: {fileID: 8400541257573276931}
   m_Layer: 0
-  m_Name: GrenadeExplosionFire
+  m_Name: Grenade_Explosion_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
