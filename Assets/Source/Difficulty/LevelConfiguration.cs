@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Source.LevelGeneration
+namespace Assets.Source.Difficulty
 {
     public class LevelConfiguration
     {

@@ -6,6 +6,7 @@ using UnityEngine;
 public class WinCondition : MonoBehaviour
 {
     private IEnumerable<IDamageableTarget> _alivedEnemies;
+    private bool _isPlayerWon;
 
     public event Action PlayerWon;
 
@@ -14,8 +15,11 @@ public class WinCondition : MonoBehaviour
         if (_alivedEnemies == null)
             return;
 
-        if(_alivedEnemies.Count() == 0)
+        if(_isPlayerWon == false && _alivedEnemies.Count() == 0)
+        {
+            _isPlayerWon = true;
             PlayerWon?.Invoke();
+        }
     }
 
     public void Init(IEnumerable<IDamageableTarget> enemies)

@@ -31,6 +31,7 @@ namespace DestructionObject
             _body.angularVelocity = Vector3.zero;
             _body.useGravity = false;
             _collider.enabled = false;
+            _body.detectCollisions = false;
         }
     }
 }

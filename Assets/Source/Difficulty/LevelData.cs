@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Scripts.UI.Menu.LevelSystem
+namespace Assets.Source.Difficulty
 {
     public class LevelData
     {
@@ -17,7 +17,7 @@ namespace Assets.Scripts.UI.Menu.LevelSystem
 
         public void SaveLevel(int level)
         {
-            if (level <= 0)
+            if (level < 0)
                 throw new ArgumentOutOfRangeException(nameof(level));
 
             PlayerPrefs.SetInt(LevelsVariableName, level);
