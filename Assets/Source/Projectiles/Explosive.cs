@@ -1,22 +1,31 @@
-﻿using UnityEngine;
+﻿using Characters;
+using UnityEngine;
 
 namespace Projectiles
 {
-    public class Explosive : IExplosive
+    public class Explosive : IExplosive, ISwitchable<IDamageableTarget>
     {
-        private readonly IDamageableTarget Target;
+        private IDamageableTarget _target;
 
         public Explosive(IDamageableTarget target)
         {
-            Target = target;
+            _target = target;
         }
 
         public void Explode(Vector3 position, float radius)
         {
-            if (Vector3.Distance(position, Target.Position) > radius)
+            if (_target == null)
                 return;
 
-            Target.TakeHit(HitTypes.Explosion);
+            if (Vector3.Distance(position, _target.Position) > radius)
+                return;
+
+            _target.TakeHit(HitTypes.Explosion);
+        }
+
+        public void Switch(IDamageableTarget target)
+        {
+            _target = target;
         }
     }
 }
