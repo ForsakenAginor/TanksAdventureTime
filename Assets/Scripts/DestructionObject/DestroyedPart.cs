@@ -2,18 +2,35 @@ using UnityEngine;
 
 namespace DestructionObject
 {
-    public class DestroyedPart : MonoBehaviour, IPermanentKiller
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Collider))]
+    public class DestroyedPart : MonoBehaviour, IPermanentKiller, IReactive
     {
-        private const string DieObject = "DisableObject";
+        private const string DieObject = nameof(DisableObject);
 
-        public void Die()
+        private Rigidbody _body;
+        private Collider _collider;
+
+        private void Awake()
         {
-            float minValue = 1f;
-            float maxValue = 5f;
-            float timeDie = Random.Range(minValue, maxValue);
-            Invoke(DieObject, timeDie);
+            _body = GetComponent<Rigidbody>();
+            _collider = GetComponent<Collider>();
         }
 
-        private void DisableObject() => gameObject.SetActive(false);
+        public void React()
+        {
+            float minValue = 5f;
+            float maxValue = 10f;
+            float timeDie = Random.Range(minValue, maxValue);
+             Invoke(DieObject, timeDie);
+        }
+
+        private void DisableObject()
+        {
+            _body.velocity = Vector3.zero;
+            _body.angularVelocity = Vector3.zero;
+            _body.useGravity = false;
+            _collider.enabled = false;
+        }
     }
 }

@@ -1,31 +1,34 @@
 ﻿using Projectiles;
 using UnityEngine;
 
-public class PlayerWeapon : IWeapon
+namespace Assets.Source.Player.Weapons
 {
-    private readonly IProjectileFactory Factory;
-    private readonly Transform ShootPoint;
-    private readonly Transform Transform;
-    private readonly float MaxDistance;
-
-    public PlayerWeapon(
-        IProjectileFactory factory,
-        Transform shootPoint,
-        Transform transform,
-        float maxDistance)
+    public class PlayerWeapon : IWeapon
     {
-        Factory = factory;
-        ShootPoint = shootPoint;
-        Transform = transform;
-        MaxDistance = maxDistance;
-    }
+        private readonly IProjectileFactory Factory;
+        private readonly Transform ShootPoint;
+        private readonly Transform Transform;
+        private readonly float MaxDistance;
 
-    public void Shoot()
-    {
-        Vector3 forward = ShootPoint.forward;
-        Vector3 currentPosition = ShootPoint.position;
-        Vector3 targetPosition = forward * MaxDistance;
-        targetPosition.y = Transform.position.y;
-        Factory.Create(currentPosition, targetPosition, targetPosition - currentPosition, forward);
+        public PlayerWeapon(
+            IProjectileFactory factory,
+            Transform shootPoint,
+            Transform transform,
+            float maxDistance)
+        {
+            Factory = factory;
+            ShootPoint = shootPoint;
+            Transform = transform;
+            MaxDistance = maxDistance;
+        }
+
+        public void Shoot()
+        {
+            Vector3 forward = ShootPoint.forward;
+            Vector3 currentPosition = ShootPoint.position;
+            Vector3 targetPosition = forward * MaxDistance + currentPosition;
+            targetPosition.y = Transform.position.y;
+            Factory.Create(currentPosition, targetPosition, targetPosition - currentPosition, forward);
+        }
     }
 }

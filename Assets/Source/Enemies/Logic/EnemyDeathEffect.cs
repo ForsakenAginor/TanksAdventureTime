@@ -1,31 +1,29 @@
 ﻿using System.Threading;
+using Characters;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
 using UnityEngine;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(Collider))]
     public class EnemyDeathEffect : MonoBehaviour
     {
-        private Transform _transform;
         private ParticleSystem _particle;
         private AudioSource _sound;
-        private EnemyAnimation _animation;
+        private CharacterAnimation _animation;
         private float _disappearDuration;
         private int _layer;
         private CancellationToken _token;
 
+        private bool _isDying;
+
         public void Init(
-            Transform transform,
             ParticleSystem particle,
             AudioSource sound,
-            EnemyAnimation animation,
+            CharacterAnimation animation,
             float disappearDuration,
             int layer,
             CancellationToken token)
         {
-            _transform = transform;
             _particle = particle;
             _sound = sound;
             _animation = animation;
@@ -36,19 +34,24 @@ namespace Enemies
 
         public void Die()
         {
+            if (_isDying == true)
+                return;
+
             gameObject.layer = _layer;
-            _animation.Play(EnemyAnimations.Death);
+            _isDying = true;
             _particle.Play();
             _sound.Play();
+            _animation.Play(CharacterAnimations.Death);
             Disappear().Forget();
         }
 
         private async UniTaskVoid Disappear()
         {
-            while (_particle.isPlaying == true || _sound.isPlaying == true || _animation.IsPlaying() == true)
-                await UniTask.NextFrame(_token);
+            await UniTask.WaitUntil(
+                () => _particle.isPlaying == false && _sound.isPlaying == false && _animation.IsPlaying() == false,
+                cancellationToken: _token);
 
-            _transform.DOScale(Vector3.zero, _disappearDuration).OnComplete(() => Destroy(gameObject));
+            gameObject.SetActive(false);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 
 namespace Enemies
@@ -9,10 +10,12 @@ namespace Enemies
         [SerializeField] private AudioSource _sound;
         [SerializeField] private ParticleSystem _particle;
         [SerializeField] private GameObject _colliderBody;
+        [SerializeField] private string _ignoreLayer = "Ignore Raycast";
 
         private IExplosive _explosive;
         private Transform _transform;
         private bool _didExplode;
+        private int _ignoreInteraction;
 
         private void OnDrawGizmos()
         {
@@ -25,10 +28,12 @@ namespace Enemies
             OnExploding();
         }
 
-        public void Init(IExplosive explosive)
+        public void Init(IExplosive explosive, Action<AudioSource> initCallback)
         {
             _explosive = explosive;
             _transform = transform;
+            _ignoreInteraction = LayerMask.NameToLayer(_ignoreLayer);
+            initCallback?.Invoke(_sound);
         }
 
         public void Explode()
@@ -37,6 +42,7 @@ namespace Enemies
                 return;
 
             _didExplode = true;
+            _colliderBody.layer = _ignoreInteraction;
             _colliderBody.SetActive(false);
             _explosive.Explode(_transform.position, _explosionRadius);
             OnExploded().Forget();

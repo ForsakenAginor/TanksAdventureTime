@@ -1,32 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class Destruction : MonoBehaviour, IPermanentKiller
+    public class Destruction : MonoBehaviour, IPermanentKiller, IReactive, ISupportStructure
     {
+        private const float FallOffset = 1f;
+
         [SerializeField] private Transform _panelDestruction;
         [SerializeField] private ParticleSystem _particleSystem;
 
         private Transform[] _transformObjects;
         private Transform _transform;
         private Rigidbody _rigidbody;
+        private CancellationTokenSource _cancellation;
+        private float _startY;
 
-        private void Start()
+        public event Action Waked;
+        public event Action<List<MeshRenderer>> Destroyed;
+
+        private void Awake()
         {
             _transform = transform;
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.Sleep();
+            _cancellation = new CancellationTokenSource();
+            _startY = _transform.position.y;
             Init();
+            WaitWaking().Forget();
         }
 
-        public void DestroyObject()
+        private void OnDestroy()
         {
-            _panelDestruction.transform.position = _transform.position;
+            StopWaiting();
+        }
+
+        public void React()
+        {
+            _panelDestruction.position = _transform.position;
             _panelDestruction.rotation = _transform.rotation;
             _panelDestruction.gameObject.SetActive(true);
-            _transform.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            
+            StopWaiting();
+            Waked?.Invoke();
+
+            Destroyed?.Invoke(_panelDestruction.GetComponentsInChildren<MeshRenderer>().ToList());
         }
 
         private void Init()
@@ -38,6 +63,24 @@ namespace DestructionObject
                 _transformObjects[i] = _panelDestruction.GetChild(i);
                 _transformObjects[i].AddComponent<DestroyedPart>();
             }
+        }
+
+        private async UniTaskVoid WaitWaking()
+        {
+            await UniTask.WaitUntil(CanWakeUp, cancellationToken: _cancellation.Token);
+            React();
+        }
+
+        private void StopWaiting()
+        {
+            _cancellation?.Cancel();
+            _cancellation?.Dispose();
+            _cancellation = null;
+        }
+
+        private bool CanWakeUp()
+        {
+            return _rigidbody.IsSleeping() == false && (_startY - _transform.position.y) > FallOffset;
         }
     }
 }

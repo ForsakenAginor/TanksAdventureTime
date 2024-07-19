@@ -1,74 +1,71 @@
-﻿namespace Enemies
+﻿using Characters;
+
+namespace Enemies
 {
     public class EnemyPresenter
     {
-        private readonly FiniteStateMachine<EnemyState> Machine;
-        private readonly EnemyThinker Thinker;
-        private readonly EnemyCollision Collision;
-        private readonly IDamageable Health;
-        private readonly HitConfiguration HitConfiguration;
-        private readonly EnemyDeathEffect Death;
+        private readonly FiniteStateMachine<CharacterState> _machine;
+        private readonly CharacterThinker _thinker;
+        private readonly EnemyCollision _collision;
+        private readonly IDamageable _health;
+        private readonly HitConfiguration _hitConfiguration;
+        private readonly EnemyDeathEffect _death;
 
         public EnemyPresenter(
-            FiniteStateMachine<EnemyState> machine,
-            EnemyThinker thinker,
+            FiniteStateMachine<CharacterState> machine,
+            CharacterThinker thinker,
             EnemyCollision collision,
             IDamageable health,
             HitConfiguration hitConfiguration,
             EnemyDeathEffect death)
         {
-            Machine = machine;
-            Thinker = thinker;
-            Collision = collision;
-            Health = health;
-            HitConfiguration = hitConfiguration;
-            Death = death;
+            _machine = machine;
+            _thinker = thinker;
+            _collision = collision;
+            _health = health;
+            _hitConfiguration = hitConfiguration;
+            _death = death;
         }
 
         public void Enable()
         {
-            Thinker.Updated += OnUpdated;
-            Collision.HitTook += OnHitTook;
-            Health.Died += OnDied;
-            Health.DamageTook += OnDamageTook;
+            _thinker.Updated += OnUpdated;
+            _collision.HitTook += OnHitTook;
+            _health.Died += OnDied;
 
-            Thinker.Start();
+            _thinker.Start();
         }
 
         public void Disable()
         {
-            Thinker.Updated -= OnUpdated;
-            Collision.HitTook -= OnHitTook;
-            Health.Died -= OnDied;
-            Health.DamageTook -= OnDamageTook;
+            _thinker.Updated -= OnUpdated;
+            _collision.HitTook -= OnHitTook;
+            _health.Died -= OnDied;
 
             OnDisable();
         }
 
         private void OnUpdated()
         {
-            Machine.Update();
+            _machine.Update();
         }
 
         private void OnHitTook(HitTypes type)
         {
-            Health.TakeDamage(HitConfiguration.GetDamage(type));
+            _health.TakeDamage(_hitConfiguration.GetDamage(type));
         }
 
         private void OnDied()
         {
+            _collision.SetPriority(TargetPriority.None);
             OnDisable();
-            Death.Die();
-        }
-
-        private void OnDamageTook(int value)
-        {
+            _death.Die();
         }
 
         private void OnDisable()
         {
-            Thinker.Stop();
-            Machine.Exit();
+            _thinker.Stop();
+            _machine.Exit();
         }
     }
 }

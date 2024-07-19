@@ -15,8 +15,9 @@ namespace DestructionObject
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.TryGetComponent(out Destruction destruction))
-                destruction.DestroyObject();
+            if (other.gameObject.TryGetComponent(out IReactive reactive))
+                reactive.React();
+
             if (other.gameObject.TryGetComponent(out EnemyMyTest enemy) &&
                 enemy.TryGetComponent(out Rigidbody rigidbody) == false)
                 enemy.AddRigidbody();
