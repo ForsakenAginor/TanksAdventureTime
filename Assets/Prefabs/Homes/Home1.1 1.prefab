@@ -3068,6 +3068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 4568370783010723528}
+  _particleSystem: {fileID: 0}
 --- !u!1 &705196605189316014
 GameObject:
   m_ObjectHideFlags: 0
@@ -5715,6 +5716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 4729519786970370742}
+  _particleSystem: {fileID: 0}
 --- !u!1 &1350598172312807134
 GameObject:
   m_ObjectHideFlags: 0
@@ -8062,6 +8064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 9118400715928271050}
+  _particleSystem: {fileID: 0}
 --- !u!1 &1886368491075138009
 GameObject:
   m_ObjectHideFlags: 0
@@ -9250,6 +9253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6601489361723840407}
+  _particleSystem: {fileID: 0}
 --- !u!1 &2098957015326984738
 GameObject:
   m_ObjectHideFlags: 0
@@ -11896,6 +11900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6484762022285758409}
+  _particleSystem: {fileID: 0}
 --- !u!1 &2756814465756093290
 GameObject:
   m_ObjectHideFlags: 0
@@ -13476,6 +13481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 6265476589254222555}
+  _particleSystem: {fileID: 0}
 --- !u!1 &3404851678781659107
 GameObject:
   m_ObjectHideFlags: 0
@@ -16676,6 +16682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 4471645204340337041}
+  _particleSystem: {fileID: 0}
 --- !u!1 &4344763430985062701
 GameObject:
   m_ObjectHideFlags: 0
@@ -20645,6 +20652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 3901997324920009329}
+  _particleSystem: {fileID: 0}
 --- !u!1 &5565489816005193301
 GameObject:
   m_ObjectHideFlags: 0
@@ -23017,6 +23025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 333934519881379359}
+  _particleSystem: {fileID: 0}
 --- !u!1 &6080134188309771399
 GameObject:
   m_ObjectHideFlags: 0
@@ -24647,6 +24656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 681666811809752403}
+  _particleSystem: {fileID: 0}
 --- !u!1 &6733614796185527399
 GameObject:
   m_ObjectHideFlags: 0
@@ -26145,6 +26155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8292399149884109106}
+  _particleSystem: {fileID: 0}
 --- !u!1 &7029694917384585165
 GameObject:
   m_ObjectHideFlags: 0
@@ -26428,6 +26439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 5710680450872108324}
+  _particleSystem: {fileID: 0}
 --- !u!1 &7191560019404071904
 GameObject:
   m_ObjectHideFlags: 0
@@ -27864,6 +27876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8115152582323619665}
+  _particleSystem: {fileID: 0}
 --- !u!1 &7570002112994878810
 GameObject:
   m_ObjectHideFlags: 0
@@ -28719,6 +28732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 5626106517536922381}
+  _particleSystem: {fileID: 0}
 --- !u!1 &7887319555332663201
 GameObject:
   m_ObjectHideFlags: 0
@@ -29001,6 +29015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 5805037653258796782}
+  _particleSystem: {fileID: 0}
 --- !u!1 &8011394601153577071
 GameObject:
   m_ObjectHideFlags: 0
@@ -30912,6 +30927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 8668245808162223394}
+  _particleSystem: {fileID: 0}
 --- !u!1 &8568660373645838583
 GameObject:
   m_ObjectHideFlags: 0
@@ -31498,6 +31514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panelDestruction: {fileID: 5179055087746949180}
+  _particleSystem: {fileID: 0}
 --- !u!1 &8696806761569517502
 GameObject:
   m_ObjectHideFlags: 0
