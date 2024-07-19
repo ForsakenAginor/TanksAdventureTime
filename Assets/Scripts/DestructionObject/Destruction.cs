@@ -11,7 +11,7 @@ namespace DestructionObject
     [RequireComponent(typeof(Rigidbody))]
     public class Destruction : MonoBehaviour, IPermanentKiller, IReactive, ISupportStructure
     {
-        private const float FallOffset = 1f;
+        private const float FallOffset = 0.5f;
 
         [SerializeField] private Transform _panelDestruction;
         [SerializeField] private ParticleSystem _particleSystem;
@@ -47,7 +47,7 @@ namespace DestructionObject
             _panelDestruction.rotation = _transform.rotation;
             _panelDestruction.gameObject.SetActive(true);
             gameObject.SetActive(false);
-            
+
             StopWaiting();
             Waked?.Invoke();
 
@@ -80,7 +80,7 @@ namespace DestructionObject
 
         private bool CanWakeUp()
         {
-            return _rigidbody.IsSleeping() == false && (_startY - _transform.position.y) > FallOffset;
+            return _rigidbody.IsSleeping() == false && _startY - _transform.position.y > FallOffset;
         }
     }
 }
