@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316b5161b43d9b043aad16bea09c44d3, type: 3}
   m_Name: LargeMilitary
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 1188370003651858751, guid: 163b5201390c4104b8f8d0154abb57d5, type: 3}
+  <Prefab>k__BackingField: {fileID: 3062718258585384540, guid: 163b5201390c4104b8f8d0154abb57d5, type: 3}
   <Size>k__BackingField: 2

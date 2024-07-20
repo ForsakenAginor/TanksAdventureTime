@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 316b5161b43d9b043aad16bea09c44d3, type: 3}
-  m_Name: MIlitaryMedium1 1
+  m_Name: Obstacles
   m_EditorClassIdentifier: 
-  <Prefab>k__BackingField: {fileID: 7940700127520090134, guid: 75b65dc33f706dd459b868031fa9e768, type: 3}
-  <Size>k__BackingField: 1
+  <Prefab>k__BackingField: {fileID: 3071310967530414605, guid: cd28b2c958ed20c489a085029f7cc414, type: 3}
+  <Size>k__BackingField: 0
