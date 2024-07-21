@@ -3390,8 +3390,8 @@ MonoBehaviour:
   _minPitch: 1
   _maxPitch: 1.3
   _shootingEffect: {fileID: 3555628013400943058}
-  _projectile: {fileID: 8374450373478926076, guid: 470be509aee23e844a54a78aad8235e3, type: 3}
-  _hitTemplate: {fileID: 4500890358154097124, guid: c6301ec001754f74d9b7392fc346ed57, type: 3}
+  _projectile: {fileID: 8374450373478926076, guid: 2d9e3dfecc170ed4f9f14d16e89693da, type: 3}
+  _hitTemplate: {fileID: 4500890358154097124, guid: bc8fa09ba7fee00478903a6ca8fae1db, type: 3}
   _attackAngle: 60
   _renderObject:
   - Key: 0
