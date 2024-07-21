@@ -12,19 +12,17 @@ namespace PlayerHelpers
         private const float MoveOffset = 0.1f;
 
         private readonly float _radius;
-        private readonly float _groundY;
-        private readonly Transform _viewPoint;
+        private readonly Transform _drawPoint;
         private readonly LineRenderer _line;
 
         private CancellationTokenSource _cancellation;
         private Vector3 _lastPosition;
 
-        public CircleDrawer(float radius, Transform viewPoint, LineRenderer line, float groundY)
+        public CircleDrawer(float radius, Transform drawPoint, LineRenderer line)
         {
             _radius = radius;
-            _viewPoint = viewPoint;
+            _drawPoint = drawPoint;
             _line = line;
-            _groundY = groundY;
         }
 
         public void StartDraw()
@@ -43,17 +41,17 @@ namespace PlayerHelpers
         {
             while (_cancellation.IsCancellationRequested == false)
             {
-                if (Vector3.Distance(_lastPosition, _viewPoint.position) > MoveOffset)
+                if (Vector3.Distance(_lastPosition, _drawPoint.position) > MoveOffset)
                 {
                     List<Vector3> points = new ();
-                    _lastPosition = _viewPoint.position;
+                    _lastPosition = _drawPoint.position;
 
                     for (int i = 0; i < Angle; i += AngleStep)
                     {
                         points.Add(
                             new Vector3(
                                 _lastPosition.x + _radius * Mathf.Cos(i * Mathf.Deg2Rad),
-                                _groundY,
+                                _lastPosition.y,
                                 _lastPosition.z + _radius * Mathf.Sin(i * Mathf.Deg2Rad)));
                     }
 

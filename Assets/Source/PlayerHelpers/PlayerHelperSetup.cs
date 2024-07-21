@@ -13,6 +13,7 @@ namespace PlayerHelpers
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _viewPoint;
         [SerializeField] private Transform _rotationPoint;
+        [SerializeField] private Transform _drawPoint;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _thinkDelay;
         [SerializeField] private float _attackRadius;
@@ -96,7 +97,7 @@ namespace PlayerHelpers
             _machine = new FiniteStateMachine<CharacterState>();
             _rotator = new CharacterRotator(_rotationSpeed, _rotationPoint, null);
             _thinker = new CharacterThinker(_thinkDelay);
-            _drawer = new CircleDrawer(_attackRadius, _viewPoint, _line, _rotationPoint.position.y);
+            _drawer = new CircleDrawer(_attackRadius, _drawPoint, _line);
         }
 
         private void InitSwitcher(
