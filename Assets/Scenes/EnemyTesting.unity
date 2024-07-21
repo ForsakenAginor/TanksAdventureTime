@@ -4386,7 +4386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313856399}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38109648, y: -0.595623, z: 0.38109884, w: 0.5956193}
+  m_LocalRotation: {x: 0.38109645, y: -0.595623, z: 0.38109884, w: 0.5956193}
   m_LocalPosition: {x: 39.973274, y: 22.714167, z: -37.741646}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7385,7 +7385,7 @@ MonoBehaviour:
     _minOut: -40
   _shootCooldown: 1
   _projectile: {fileID: 8374450373478926076, guid: 4b74b785d7fb43d479f284adbe70b782, type: 3}
-  _hitEffect: {fileID: 4500890358154097124, guid: 1c40fc100752e994d80a4408488ccc84, type: 3}
+  _hitEffect: {fileID: 4500890358154097124, guid: cf4f1205ded735b4fb73c5369fc48e9b, type: 3}
   _attackAngle: 0
   _shootPoint: {fileID: 1853479247}
   _cannonBarrel: {fileID: 4562495816395401549}
@@ -16113,7 +16113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904324076}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38109648, y: -0.595623, z: 0.38109884, w: 0.5956193}
+  m_LocalRotation: {x: 0.38109645, y: -0.595623, z: 0.38109884, w: 0.5956193}
   m_LocalPosition: {x: 39.973274, y: 22.714167, z: -37.741646}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25605,7 +25605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1461169109}
   m_Layer: 3
-  m_Name: Target Point
+  m_Name: Draw Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25620,7 +25620,7 @@ Transform:
   m_GameObject: {fileID: 1461169108}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 1.189, z: -0.12}
+  m_LocalPosition: {x: 0.02, y: 0.14, z: -0.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30810,6 +30810,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4562164758238008109}
     m_Modifications:
+    - target: {fileID: 4285556185572203055, guid: 93b8e42cd9a5bd84abffe2692b525339, type: 3}
+      propertyPath: _drawPoint
+      value: 
+      objectReference: {fileID: 1461169109}
     - target: {fileID: 6883277565462172704, guid: 93b8e42cd9a5bd84abffe2692b525339, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5842285
@@ -30849,14 +30853,6 @@ PrefabInstance:
     - target: {fileID: 6883277565462172704, guid: 93b8e42cd9a5bd84abffe2692b525339, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210006217798271539, guid: 93b8e42cd9a5bd84abffe2692b525339, type: 3}
-      propertyPath: m_Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8210006217798271539, guid: 93b8e42cd9a5bd84abffe2692b525339, type: 3}
-      propertyPath: m_Positions.Array.size
-      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 8210006217798271539, guid: 93b8e42cd9a5bd84abffe2692b525339, type: 3}
       propertyPath: m_Positions.Array.data[0].x

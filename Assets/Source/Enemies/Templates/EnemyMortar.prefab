@@ -309,7 +309,7 @@ MonoBehaviour:
   _shootingEffect: {fileID: 0}
   _hitTemplate: {fileID: 4500890358154097124, guid: bfceb262122804f42bf1cd4ff278c5af, type: 3}
   _projectile: {fileID: 8374450373478926076, guid: 893d9e768532d064bb8993544fb0450d, type: 3}
-  _aimTemplate: {fileID: -924650326620379055, guid: 106da352fa985af49beeaadbbf7409ff, type: 3}
+  _aimTemplate: {fileID: -924650326620379055, guid: 2ad340c3eb0eac9459f641d8198475ae, type: 3}
   _projectileType: 0
   _distanceBetween: 0
   _clusterCount: 0
