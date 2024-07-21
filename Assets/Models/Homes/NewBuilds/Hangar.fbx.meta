@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 5b602b5062bf86e45bc93bc9b40916f3
+guid: 209331ffd4dfada46bd1d9b390d7ad51
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Foundation
+    second: {fileID: 2100000, guid: 8097b3d2b5d3cfd43bdd9c4c2f94e3d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hangar
+    second: {fileID: 2100000, guid: db9cd5d1a16370148af8ddf376b6b235, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hangar2
+    second: {fileID: 2100000, guid: d433d3ced82ba3441954443230a6c2bd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -72,7 +87,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 2
+    tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
