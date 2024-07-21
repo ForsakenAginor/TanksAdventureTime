@@ -97,7 +97,6 @@ namespace PlayerHelpers
             _rotator = new CharacterRotator(_rotationSpeed, _rotationPoint, null);
             _thinker = new CharacterThinker(_thinkDelay);
             _drawer = new CircleDrawer(_attackRadius, _viewPoint, _line, _rotationPoint.position.y);
-            _fieldOfView = CreateFieldOfView();
         }
 
         private void InitSwitcher(
@@ -105,6 +104,8 @@ namespace PlayerHelpers
             PlayerHelperTypes type,
             Action<AudioSource> audioCreationCallback)
         {
+            _fieldOfView = CreateFieldOfView(type);
+
             _switchableObjects = new List<ISwitchable<IDamageableTarget>>()
             {
                 (ISwitchable<IDamageableTarget>)_fieldOfView,
@@ -121,7 +122,7 @@ namespace PlayerHelpers
                 targets,
                 _switchableObjects,
                 _rotationPoint,
-                new ImaginaryFieldOfView(CreateFieldOfView()));
+                new ImaginaryFieldOfView(CreateFieldOfView(type)));
         }
 
         private void InitPresenter(Action<(Action onEnable, Action onDisable)> presenterInitCallback)
@@ -162,9 +163,21 @@ namespace PlayerHelpers
             _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
         }
 
-        private IFieldOfView CreateFieldOfView()
+        private IFieldOfView CreateFieldOfView(PlayerHelperTypes type)
         {
-            return new StandardFieldOfView(null, _viewPoint, _attackRadius, _walls);
+            return type switch
+            {
+                PlayerHelperTypes.MachineGun => new StandardFieldOfView(null, _viewPoint, _attackRadius, _walls),
+                PlayerHelperTypes.Grenade => new MortarFieldOfView(
+                    null,
+                    _viewPoint,
+                    _attackRadius,
+                    _walls,
+                    _attackAngle,
+                    _projectile.ColliderRadius,
+                    (float)ValueConstants.One),
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            };
         }
 
         private IWeapon CreateWeapon(

@@ -27,16 +27,19 @@ public static class Vector3Extensions
     {
         Vector3 velocity = forward.CalculateVelocity(direction, angleRadian);
         Vector3 gravity = Physics.gravity;
+        Vector3 last = currentPosition;
         List<Vector3> result = new List<Vector3>();
 
-        for (float i = 0; i < direction.magnitude; i += TrajectoryStep)
+        for (float i = 0f; i < direction.magnitude; i += TrajectoryStep)
         {
             Vector3 position = currentPosition + velocity * i + gravity * i * i / (float)ValueConstants.Two;
 
-            if (position.y < targetPosition.y)
+            if (currentPosition.y >= targetPosition.y && position.y < targetPosition.y ||
+                currentPosition.y < targetPosition.y && position.y < targetPosition.y && last.y > targetPosition.y)
                 break;
 
             result.Add(position);
+            last = position;
         }
 
         return result;
