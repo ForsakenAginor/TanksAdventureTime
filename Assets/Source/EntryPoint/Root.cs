@@ -127,8 +127,8 @@ namespace Assets.Source.EntryPoint
 
         private void HelperInitCallback((Action onEnable, Action onDisable) tuple)
         {
-            PlayerDied = tuple.onEnable;
-            PlayerRespawned = tuple.onDisable;
+            PlayerDied = tuple.onDisable;
+            PlayerRespawned = tuple.onEnable;
         }
 
         private void OnAudioCreated(AudioSource source)
