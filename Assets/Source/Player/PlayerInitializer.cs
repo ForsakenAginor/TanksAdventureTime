@@ -2,6 +2,7 @@ using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.Input;
 using Assets.Source.Player.MovingEffect;
 using Assets.Source.Player.Weapons;
+using PlayerHelpers;
 using Projectiles;
 using System;
 using System.Linq;
@@ -52,6 +53,9 @@ namespace Assets.Source.Player
         private AimInputHandler _aimSystem;
         private FireInputHandler _fireSystem;
         private AbilityInputHandler _abilitySystem;
+
+        [Header("PlayerHelpers")]
+        [SerializeField] private PlayerHelperSetup _playerHelper;
 
         [Header("Other")]
         private PlayerInput _playerInput;
