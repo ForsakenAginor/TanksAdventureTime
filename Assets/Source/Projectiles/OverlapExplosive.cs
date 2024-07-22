@@ -4,32 +4,32 @@ namespace Projectiles
 {
     public class OverlapExplosive : IExplosive
     {
-        private readonly LayerMask Mask;
-        private readonly Collider[] Colliders;
+        private readonly LayerMask _mask;
+        private readonly Collider[] _colliders;
 
         public OverlapExplosive(LayerMask mask, int bufferSize = 100)
         {
-            Mask = mask;
-            Colliders = new Collider[bufferSize];
+            _mask = mask;
+            _colliders = new Collider[bufferSize];
         }
 
         public void Explode(Vector3 position, float radius)
         {
-            Physics.OverlapSphereNonAlloc(position, radius, Colliders, Mask);
+            Physics.OverlapSphereNonAlloc(position, radius, _colliders, _mask);
 
-            for (int i = 0; i < Colliders.Length; i++)
+            for (int i = 0; i < _colliders.Length; i++)
             {
-                if (Colliders[i] == null)
+                if (_colliders[i] == null)
                     continue;
 
-                if (Colliders[i].TryGetComponent(out IReactive reactive) == false)
+                if (_colliders[i].TryGetComponent(out IReactive reactive) == false)
                 {
-                    Colliders[i] = null;
+                    _colliders[i] = null;
                     continue;
                 }
 
                 reactive.React();
-                Colliders[i] = null;
+                _colliders[i] = null;
             }
         }
     }

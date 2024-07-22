@@ -9464,7 +9464,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 974352481324012107}
-  - component: {fileID: 1212079419748479176}
   m_Layer: 0
   m_Name: Hangar
   m_TagString: Untagged
@@ -9497,19 +9496,6 @@ Transform:
   - {fileID: 5876896639367384491}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1212079419748479176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8958648724241360497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df820d93b668a645ab3d80938c8238e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 6591055844160602131}
 --- !u!1 &9036798900510728312
 GameObject:
   m_ObjectHideFlags: 0

@@ -13760,7 +13760,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8504898627451898119}
-  - component: {fileID: 8381794837187992423}
   m_Layer: 0
   m_Name: A2Home
   m_TagString: Untagged
@@ -13805,19 +13804,6 @@ Transform:
   - {fileID: 1062225522396608781}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8381794837187992423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4883718601885599391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df820d93b668a645ab3d80938c8238e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 2650049224349833222}
 --- !u!1 &4897638185067491072
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,7 +57,10 @@ namespace Enemies
         [SerializeField] private int _clusterCount = 0;
 
         [Header("Debug")]
-        [SerializeField] private TargetTest _debugTarget;
+#if UNITY_EDITOR
+        [SerializeInterface(typeof(ITarget))]
+#endif
+        [SerializeField] private GameObject _debugTarget;
 
         private CharacterAnimation _animation;
         private EnemyCollision _collision;
@@ -227,8 +230,11 @@ namespace Enemies
             if (_debugTarget == null)
                 return;
 
+            if (_debugTarget.TryGetComponent(out  ITarget target) == false)
+                return;
+
             Vector3 currentPosition = _viewPoint.position;
-            Vector3 targetPosition = _debugTarget.Position;
+            Vector3 targetPosition = target.Position;
             Vector3 forward = _viewPoint.forward;
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(currentPosition, _attackRadius);

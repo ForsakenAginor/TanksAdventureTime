@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Characters;
-using Enemies;
+using Projectiles;
 using UnityEngine;
 
 namespace PlayerHelpers
@@ -9,30 +9,43 @@ namespace PlayerHelpers
     [RequireComponent(typeof(CharacterAnimation))]
     public class PlayerHelperSetup : MonoBehaviour, ISwitchable<IDamageableTarget>
     {
+        [Header("Main")]
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _viewPoint;
         [SerializeField] private Transform _rotationPoint;
+        [SerializeField] private Transform _drawPoint;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _thinkDelay;
         [SerializeField] private float _attackRadius;
         [SerializeField] private LayerMask _walls;
+        [SerializeField] private LineRenderer _line;
+
+        [Header("Weapon")]
         [SerializeField] private AudioSource _fireSound;
         [Range(0f, 2f)]
         [SerializeField] private float _minPitch = 1f;
         [Range(0f, 2f)]
         [SerializeField] private float _maxPitch = 1.3f;
         [SerializeField] private ParticleSystem _shootingEffect;
+        [SerializeField] private SpawnableProjectile _projectile;
+        [SerializeField] private HitEffect _hitTemplate;
+        [SerializeField] private float _attackAngle = 0f;
+        [SerializeField] private List<SerializedPair<PlayerHelperTypes, GameObject>> _renderObject;
 
+        private GameObject _gameObject;
         private CharacterAnimation _animation;
 
         private List<ISwitchable<IDamageableTarget>> _switchableObjects;
+        private Dictionary<PlayerHelperTypes, Func<Action<AudioSource>, Action<IExplosive>, IWeapon>> _weapons;
         private FiniteStateMachine<CharacterState> _machine;
         private CharacterRotator _rotator;
         private CharacterThinker _thinker;
+        private CircleDrawer _drawer;
         private TargetSwitcher _switcher;
         private PlayerHelperPresenter _presenter;
         private IWeapon _weapon;
         private IFieldOfView _fieldOfView;
+        private IExplosive _explosive;
 
         private IDamageableTarget _target;
 
@@ -56,35 +69,85 @@ namespace PlayerHelpers
             Gizmos.DrawLine(_viewPoint.position, _target.Position);
         }
 
-        public void Init(List<IDamageableTarget> targets, Action<AudioSource> audioCreationCallback)
+        public void Init(
+            List<IDamageableTarget> targets,
+            PlayerHelperTypes type,
+            Action<AudioSource> audioCreationCallback,
+            Action<(Action onEnable, Action onDisable)> presenterInitCallback)
         {
+            _gameObject = gameObject;
             _animation = GetComponent<CharacterAnimation>();
+            audioCreationCallback?.Invoke(_fireSound);
 
+            InitParts();
+            InitSwitcher(targets, type, audioCreationCallback);
+            InitPresenter(presenterInitCallback);
+            InitMachine();
+
+            _presenter.Enable();
+        }
+
+        public void Switch(IDamageableTarget target)
+        {
+            _target = target;
+        }
+
+        private void InitParts()
+        {
             _machine = new FiniteStateMachine<CharacterState>();
             _rotator = new CharacterRotator(_rotationSpeed, _rotationPoint, null);
             _thinker = new CharacterThinker(_thinkDelay);
-            _fieldOfView = CreateFieldOfView();
+            _drawer = new CircleDrawer(_attackRadius, _drawPoint, _line);
+        }
 
-            _weapon = new MachineGun(
-                _viewPoint,
-                null,
-                new AudioPitcher(_fireSound, _minPitch, _maxPitch),
-                _shootingEffect);
+        private void InitSwitcher(
+            List<IDamageableTarget> targets,
+            PlayerHelperTypes type,
+            Action<AudioSource> audioCreationCallback)
+        {
+            _fieldOfView = CreateFieldOfView(type);
+
+            _switchableObjects = new List<ISwitchable<IDamageableTarget>>()
+            {
+                (ISwitchable<IDamageableTarget>)_fieldOfView,
+                _rotator,
+                this,
+            };
+            _switchableObjects.Add(
+                (ISwitchable<IDamageableTarget>)(_weapon = CreateWeapon(
+                    type,
+                    audioCreationCallback,
+                    explosive => _switchableObjects.Add((ISwitchable<IDamageableTarget>)explosive))));
 
             _switcher = new TargetSwitcher(
                 targets,
-                new List<ISwitchable<IDamageableTarget>>()
-                {
-                    (ISwitchable<IDamageableTarget>)_weapon,
-                    (ISwitchable<IDamageableTarget>)_fieldOfView,
-                    _rotator,
-                    this,
-                },
+                _switchableObjects,
                 _rotationPoint,
-                new ImaginaryFieldOfView(CreateFieldOfView()));
+                new ImaginaryFieldOfView(CreateFieldOfView(type)));
+        }
 
-            _presenter = new PlayerHelperPresenter(_machine, _thinker, _switcher);
+        private void InitPresenter(Action<(Action onEnable, Action onDisable)> presenterInitCallback)
+        {
+            (Action onEnable, Action onDisable) activationHandler = (() =>
+            {
+                _switcher.StartSearching();
+                _thinker.Start();
+                _drawer.StartDraw();
+                _gameObject.SetActive(true);
+            }, () =>
+            {
+                _switcher.StopSearching();
+                _thinker.Stop();
+                _drawer.StopDraw();
+                _gameObject.SetActive(false);
+            });
 
+            _presenter = new PlayerHelperPresenter(_machine, _thinker, activationHandler);
+            presenterInitCallback?.Invoke(activationHandler);
+        }
+
+        private void InitMachine()
+        {
             _machine.AddStates(
                 new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
                 {
@@ -97,19 +160,80 @@ namespace PlayerHelpers
                         new CharacterAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
                     },
                 });
+
             _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
-
-            _presenter.Enable();
         }
 
-        public void Switch(IDamageableTarget target)
+        private IFieldOfView CreateFieldOfView(PlayerHelperTypes type)
         {
-            _target = target;
+            return type switch
+            {
+                PlayerHelperTypes.MachineGun => new StandardFieldOfView(null, _viewPoint, _attackRadius, _walls),
+                PlayerHelperTypes.Grenade => new MortarFieldOfView(
+                    null,
+                    _viewPoint,
+                    _attackRadius,
+                    _walls,
+                    _attackAngle,
+                    _projectile.ColliderRadius,
+                    (float)ValueConstants.One),
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            };
         }
 
-        private IFieldOfView CreateFieldOfView()
+        private IWeapon CreateWeapon(
+            PlayerHelperTypes type,
+            Action<AudioSource> audioCreationCallback,
+            Action<IExplosive> explosiveCreationCallback)
         {
-            return new StandardFieldOfView(null, _viewPoint, _attackRadius, _walls);
+            _weapons = new Dictionary<PlayerHelperTypes, Func<Action<AudioSource>, Action<IExplosive>, IWeapon>>()
+            {
+                {
+                    PlayerHelperTypes.MachineGun, (_, _) =>
+                    {
+                        _renderObject
+                            .Find(item => item.Key == PlayerHelperTypes.MachineGun)
+                            .Value
+                            .SetActive(true);
+
+                        return new MachineGun(
+                            _viewPoint,
+                            null,
+                            new AudioPitcher(_fireSound, _minPitch, _maxPitch),
+                            _shootingEffect);
+                    }
+                },
+                {
+                    PlayerHelperTypes.Grenade,
+                    (audioCallback, explosiveCallback) =>
+                    {
+                        IExplosive explosive = new Explosive(null);
+                        explosiveCallback?.Invoke(explosive);
+                        _renderObject
+                            .Find(item => item.Key == PlayerHelperTypes.Grenade)
+                            .Value
+                            .SetActive(true);
+
+                        _viewPoint.localEulerAngles = new Vector3(
+                            -_attackAngle,
+                            (float)ValueConstants.Zero,
+                            (float)ValueConstants.Zero);
+
+                        return new Mortar(
+                            _viewPoint,
+                            null,
+                            new AudioPitcher(_fireSound, _minPitch, _maxPitch),
+                            new PlayerProjectileFactory(
+                                _projectile,
+                                _hitTemplate,
+                                explosive,
+                                _attackAngle * Mathf.Deg2Rad,
+                                audioCallback));
+                    }
+                }
+            };
+
+            return _weapons[type]?.Invoke(audioCreationCallback, explosiveCreationCallback);
         }
     }
 }

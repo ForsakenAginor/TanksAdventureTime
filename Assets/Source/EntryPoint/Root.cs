@@ -8,6 +8,7 @@ using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.OnDeathEffect;
 using Assets.Source.Sound.AudioMixer;
+using PlayerHelpers;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private PlayerDamageTaker _playerDamageTaker;
         [SerializeField] private PlayerInitializer _playerInitializer;
         [SerializeField] private OnDeathEffectInitializer _onDeathEffectInitializer;
+        [SerializeField] private PlayerHelperSetup _playerHelper;
         private Vector3 _spawnPoint;
 
         [Header("Enemies")]
@@ -45,6 +47,9 @@ namespace Assets.Source.EntryPoint
 
         [Header("Other")]
         [SerializeField] private Silencer _silencer;
+
+        public Action PlayerDied;
+        public Action PlayerRespawned;
 
         private void Start()
         {
@@ -64,6 +69,7 @@ namespace Assets.Source.EntryPoint
             _spawnPoint = _playerDamageTaker.transform.position;
 
             _enemiesManager = new(_enemies);
+            _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
 
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform);
@@ -95,13 +101,17 @@ namespace Assets.Source.EntryPoint
             _onDeathEffectInitializer.Init();
             _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();
+            PlayerRespawned.Invoke();
         }
 
         private void OnPlayerWon()
         {
             _playerBehaviour.Stop();
             LeaderboardScoreSaver leaderboardScoreSaver = new();
+
+#if UNITY_WEBGL && !UNITY_EDITOR
             leaderboardScoreSaver.SaveScore(_currentLevel);
+#endif
             _levelData.SaveLevel(++_currentLevel);
             _uIManager.ShowWiningPanel();
         }
@@ -110,8 +120,15 @@ namespace Assets.Source.EntryPoint
         private void OnPlayerDied()
         {
             _playerBehaviour.Stop();
+            PlayerDied.Invoke();
             _onDeathEffectInitializer.CreateEffect();
             _uIManager.ShowLosingPanel();
+        }
+
+        private void HelperInitCallback((Action onEnable, Action onDisable) tuple)
+        {
+            PlayerDied = tuple.onEnable;
+            PlayerRespawned = tuple.onDisable;
         }
 
         private void OnAudioCreated(AudioSource source)
