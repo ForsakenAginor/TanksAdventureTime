@@ -54,9 +54,6 @@ namespace Assets.Source.Player
         private FireInputHandler _fireSystem;
         private AbilityInputHandler _abilitySystem;
 
-        [Header("PlayerHelpers")]
-        [SerializeField] private PlayerHelperSetup _playerHelper;
-
         [Header("Other")]
         private PlayerInput _playerInput;
 
