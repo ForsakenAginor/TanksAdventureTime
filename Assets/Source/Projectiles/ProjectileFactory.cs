@@ -6,11 +6,11 @@ namespace Projectiles
 {
     public class ProjectileFactory
     {
-        private readonly ObjectPool<SpawnableProjectile> Weapon;
-        private readonly ObjectPool<HitEffect> ExplosionPool;
-        private readonly IExplosive Explosive;
-        private readonly float AngleRadian;
-        private readonly Action<AudioSource> AudioCreationCallback;
+        private readonly ObjectPool<SpawnableProjectile> _weapon;
+        private readonly ObjectPool<HitEffect> _explosionPool;
+        private readonly IExplosive _explosive;
+        private readonly float _angleRadian;
+        private readonly Action<AudioSource> _audioCreationCallback;
 
         public ProjectileFactory(
             SpawnableProjectile projectile,
@@ -19,16 +19,16 @@ namespace Projectiles
             float angleRadian,
             Action<AudioSource> audioCreationCallback)
         {
-            Weapon = new ObjectPool<SpawnableProjectile>(projectile);
-            ExplosionPool = new ObjectPool<HitEffect>(hitTemplate);
-            Explosive = explosive;
-            AngleRadian = angleRadian;
-            AudioCreationCallback = audioCreationCallback;
+            _weapon = new ObjectPool<SpawnableProjectile>(projectile);
+            _explosionPool = new ObjectPool<HitEffect>(hitTemplate);
+            _explosive = explosive;
+            _angleRadian = angleRadian;
+            _audioCreationCallback = audioCreationCallback;
         }
 
         public SpawnableProjectile Create(Vector3 position)
         {
-            return Weapon.Pull(position).Init(Explosive, AngleRadian);
+            return _weapon.Pull(position).Init(_explosive, _angleRadian);
         }
 
         public void CreateTriple(
@@ -77,14 +77,14 @@ namespace Projectiles
                 Vector3 direction = newPosition - position;
                 Vector3 forward = new Vector3(direction.x, (float)ValueConstants.Zero, direction.z).normalized;
                 forward.y = newPosition.y;
-                forward /= Mathf.Cos(AngleRadian);
+                forward /= Mathf.Cos(_angleRadian);
                 Create(position).Move(direction, forward, CreateExplosion);
             }
         }
 
         public void CreateExplosion(Vector3 position)
         {
-            ExplosionPool.Pull(position).Init(AudioCreationCallback);
+            _explosionPool.Pull(position).Init(_audioCreationCallback);
         }
     }
 }
