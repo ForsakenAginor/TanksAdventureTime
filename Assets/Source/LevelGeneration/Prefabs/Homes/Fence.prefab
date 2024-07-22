@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7597013687798481696}
   - component: {fileID: 5420194867484465388}
   - component: {fileID: 2316099206263747475}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 8980643386297914735}
   - component: {fileID: 8466016220363977387}
   - component: {fileID: 3788073294108237703}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,8 @@ GameObject:
   - component: {fileID: 6901169181200698308}
   - component: {fileID: 7885171357915482568}
   - component: {fileID: 7282399909193397807}
-  m_Layer: 0
+  - component: {fileID: 2142586724348670029}
+  m_Layer: 7
   m_Name: Foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,6 +376,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.726284, y: 0.3316164, z: 4.079469}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2142586724348670029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250333080743746035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d91d5688a0c56347ab4197ee87eaf47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3857636485389865245
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +401,7 @@ GameObject:
   - component: {fileID: 5147018646335133368}
   - component: {fileID: 7366601290490457485}
   - component: {fileID: 2975247592709053355}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +535,7 @@ GameObject:
   - component: {fileID: 1269442420733232618}
   - component: {fileID: 5785770320212750556}
   - component: {fileID: 5628810401453421440}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +670,7 @@ GameObject:
   - component: {fileID: 3588306722093808644}
   - component: {fileID: 3258395883322225524}
   - component: {fileID: 1970193197332294452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +800,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1709699035616495242}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -829,7 +842,7 @@ GameObject:
   - component: {fileID: 3972565401865539408}
   - component: {fileID: 9170714716524017658}
   - component: {fileID: 781464789480527185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,8 +972,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2947905875329230373}
-  - component: {fileID: 2798130251783711837}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -986,19 +998,6 @@ Transform:
   - {fileID: 6943491659051746196}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -89.546, z: 0}
---- !u!114 &2798130251783711837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513268598985944385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9df820d93b668a645ab3d80938c8238e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 5078683994992666105}
 --- !u!1 &6673728669883630926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1012,7 @@ GameObject:
   - component: {fileID: 2585721050657261016}
   - component: {fileID: 3746428821149301706}
   - component: {fileID: 7326314656238081781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5078683994992666105}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1192,7 +1191,7 @@ GameObject:
   - component: {fileID: 6859292873767098778}
   - component: {fileID: 3095377763521949331}
   - component: {fileID: 6912075675933503258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
