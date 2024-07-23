@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
+using Characters;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace PlayerHelpers
 {
-    public class CircleDrawer
+    public class CircleDrawer : ISwitchable<ITarget>
     {
         private const int Angle = 360;
         private const int AngleStep = 10;
@@ -14,6 +15,8 @@ namespace PlayerHelpers
         private readonly float _radius;
         private readonly Transform _drawPoint;
         private readonly LineRenderer _line;
+        private readonly Color _available;
+        private readonly Color _standard;
 
         private CancellationTokenSource _cancellation;
         private Vector3 _lastPosition;
@@ -23,6 +26,8 @@ namespace PlayerHelpers
             _radius = radius;
             _drawPoint = drawPoint;
             _line = line;
+            _available = Color.green;
+            _standard = Color.white;
         }
 
         public void StartDraw()
@@ -61,6 +66,19 @@ namespace PlayerHelpers
 
                 await UniTask.NextFrame(PlayerLoopTiming.FixedUpdate, _cancellation.Token);
             }
+        }
+
+        public void Switch(ITarget target)
+        {
+            if (target == null)
+            {
+                _line.startColor = _standard;
+                _line.endColor = _standard;
+                return;
+            }
+
+            _line.startColor = _available;
+            _line.endColor = _available;
         }
     }
 }
