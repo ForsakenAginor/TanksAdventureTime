@@ -42,7 +42,7 @@ namespace Enemies
                 return;
 
             _didExplode = true;
-            _colliderBody.layer = _ignoreInteraction;
+            gameObject.layer = _ignoreInteraction;
             _colliderBody.SetActive(false);
             _explosive.Explode(_transform.position, _explosionRadius);
             OnExploded().Forget();

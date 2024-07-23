@@ -24,7 +24,15 @@ namespace Enemies
             foreach (Bomb bomb in _bombs)
                 bomb.Init(explosive, OnAudioCreated);
 
-            _helper.Init(_targets, OnAudioCreated);
+            _helper.Init(
+                _targets,
+                PlayerHelperTypes.Grenade,
+                OnAudioCreated,
+                activationHandler =>
+                {
+                    Debug.Log(nameof(activationHandler.onEnable));
+                    Debug.Log(nameof(activationHandler.onDisable));
+                });
         }
 
         private void OnAudioCreated(AudioSource source)

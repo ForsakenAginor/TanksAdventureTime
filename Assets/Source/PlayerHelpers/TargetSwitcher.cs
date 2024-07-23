@@ -57,12 +57,12 @@ namespace PlayerHelpers
                 IReadOnlyCollection<IDamageableTarget> available = await GetTargetsInRadius();
 
                 if (available.Any())
-                    resultTarget = await GetTarget(available, currentPosition);
+                    resultTarget = await GetTarget(currentPosition, available);
 
                 if (_current != resultTarget)
                 {
                     _current = resultTarget;
-                    Notify();
+                    await Notify();
                 }
 
                 await UniTask.NextFrame(PlayerLoopTiming.FixedUpdate, _cancellation.Token);
@@ -70,13 +70,13 @@ namespace PlayerHelpers
         }
 
         private async UniTask<IDamageableTarget> GetTarget(
-            IReadOnlyCollection<IDamageableTarget> available,
-            Vector3 currentPosition)
+            Vector3 currentPosition,
+            IReadOnlyCollection<IDamageableTarget> targets)
         {
-            TargetPriority priority = await FindHightestPriority(available);
+            TargetPriority priority = await FindHightestPriority(targets);
 
             if (_current == null || _current.Priority < priority)
-                return await FindTarget(await FindPrioritizedTargets(priority, available), currentPosition);
+                return await FindTarget(await FindPrioritizedTargets(priority, targets), currentPosition);
 
             return _current;
         }
@@ -137,10 +137,12 @@ namespace PlayerHelpers
             return await UniTask.FromResult(result);
         }
 
-        private void Notify()
+        private async UniTask Notify()
         {
             foreach (ISwitchable<IDamageableTarget> switchable in _switchableObjects)
                 switchable.Switch(_current);
+
+            await UniTask.CompletedTask;
         }
     }
 }
