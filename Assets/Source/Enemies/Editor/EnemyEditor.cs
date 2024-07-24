@@ -1,7 +1,6 @@
 ﻿using System;
 using Projectiles;
 using UnityEditor;
-using UnityEngine;
 
 namespace Enemies
 {
@@ -10,7 +9,6 @@ namespace Enemies
     {
         private const string ThinkDelayLabel = "+ Random(0, 0.5)";
 
-        private SerializedProperty _animator;
         private SerializedProperty _viewPoint;
         private SerializedProperty _rotationPoint;
         private SerializedProperty _hitConfiguration;
@@ -22,6 +20,7 @@ namespace Enemies
         private SerializedProperty _rotationSpeed;
         private SerializedProperty _thinkDelay;
         private SerializedProperty _enemyType;
+        private SerializedProperty _animator;
         private SerializedProperty _isDebug;
 
         private SerializedProperty _isOnBuilding;
@@ -94,7 +93,6 @@ namespace Enemies
 
         private void DrawMain()
         {
-            EditorGUILayout.PropertyField(_animator);
             EditorGUILayout.PropertyField(_viewPoint);
             EditorGUILayout.PropertyField(_thinkDelay);
             EditorGUILayout.PropertyField(_rotationPoint);
@@ -112,10 +110,10 @@ namespace Enemies
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.PropertyField(_enemyType);
-            EditorGUILayout.PropertyField(_isDebug);
 
             if ((EnemyTypes)_enemyType.enumValueIndex != EnemyTypes.Bunker)
             {
+                EditorGUILayout.PropertyField(_animator);
                 EditorGUILayout.PropertyField(_isOnBuilding);
                 EditorGUILayout.PropertyField(_ownCollider);
 
@@ -150,6 +148,8 @@ namespace Enemies
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            EditorGUILayout.PropertyField(_isDebug);
 
             if (_isDebug.boolValue == false)
                 return;

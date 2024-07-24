@@ -196,11 +196,11 @@ namespace PlayerHelpers
                 {
                     {
                         typeof(CharacterIdleState),
-                        new CharacterIdleState(_machine, _animation, _fieldOfView)
+                        new CharacterIdleState(_machine, _fieldOfView, _animation)
                     },
                     {
                         typeof(CharacterAttackState),
-                        new CharacterAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
+                        new CharacterAttackState(_machine, _fieldOfView, _rotator, _weapon, _animation)
                     },
                 });
 

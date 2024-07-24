@@ -7,13 +7,11 @@ using UnityEngine;
 
 namespace Enemies
 {
-    [RequireComponent(typeof(CharacterAnimation))]
     [RequireComponent(typeof(EnemyCollision))]
     [RequireComponent(typeof(EnemyDeathEffect))]
     public class EnemySetup : MonoBehaviour
     {
         [Header("Main")]
-        [SerializeField] private Animator _animator;
         [SerializeField] private Transform _viewPoint;
         [SerializeField] private Transform _rotationPoint;
         [SerializeField] private HitConfiguration _hitConfiguration;
@@ -25,7 +23,7 @@ namespace Enemies
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _thinkDelay;
         [SerializeField] private EnemyTypes _enemyType;
-        [SerializeField] private bool _isDebug;
+        [SerializeField] private Animator _animator;
 
         [Header("Building")]
         [SerializeField] private bool _isOnBuilding;
@@ -57,6 +55,7 @@ namespace Enemies
         [SerializeField] private int _clusterCount = 0;
 
         [Header("Debug")]
+        [SerializeField] private bool _isDebug;
 #if UNITY_EDITOR
         [SerializeInterface(typeof(ITarget))]
 #endif
@@ -99,12 +98,35 @@ namespace Enemies
             Action<AudioSource> audioCreationCallback,
             Action<IDamageableTarget> initializeCallback)
         {
+            CollectComponents(target);
+            InitParts(audioCreationCallback);
+            InitMachine();
+            InitComponents();
+
+            audioCreationCallback?.Invoke(_fireSound);
+            audioCreationCallback?.Invoke(_deathSound);
+            initializeCallback?.Invoke(_collision);
+
+            _presenter.Enable();
+        }
+
+        private void CollectComponents(IPlayerTarget target)
+        {
             _target = target;
             _destroyToken = destroyCancellationToken;
-            _animation = GetComponent<CharacterAnimation>();
             _collision = GetComponent<EnemyCollision>();
             _death = GetComponent<EnemyDeathEffect>();
 
+            if (_enemyType == EnemyTypes.Bunker)
+                return;
+
+            _animation = TryGetComponent(out CharacterAnimation component) == true
+                ? component
+                : gameObject.AddComponent<CharacterAnimation>();
+        }
+
+        private void InitParts(Action<AudioSource> audioCreationCallback)
+        {
             _machine = new FiniteStateMachine<CharacterState>();
             _rotator = new CharacterRotator(_rotationSpeed, _rotationPoint, _target);
             _thinker = new CharacterThinker(_thinkDelay);
@@ -115,29 +137,31 @@ namespace Enemies
                 new EnemyTestHealth(_maxHealth),
                 _hitConfiguration,
                 _death);
-            _weapon = GetWeapon(target, audioCreationCallback);
-            _fieldOfView = GetFieldOfView();
+            _weapon = CreateWeapon(_target, audioCreationCallback);
+            _fieldOfView = CreateFieldOfView();
 
-            if (_isOnBuilding == true && _enemyType != EnemyTypes.Bunker)
+            if (_isOnBuilding == false || _enemyType == EnemyTypes.Bunker)
+                return;
+
+            _structure = _supportStructure.GetComponent<ISupportStructure>();
+            _activator = new CollisionActivator(gameObject, _ownCollider, _structure);
+        }
+
+        private void InitMachine()
+        {
+            if (_animation != null)
             {
-                _structure = _supportStructure.GetComponent<ISupportStructure>();
-                _activator = new CollisionActivator(gameObject, _ownCollider, _structure);
+                _machine.AddStates(CreateStates());
+                _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
+                return;
             }
 
-            _machine.AddStates(
-                new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
-                {
-                    {
-                        typeof(CharacterIdleState),
-                        new CharacterIdleState(_machine, _animation, _fieldOfView)
-                    },
-                    {
-                        typeof(CharacterAttackState),
-                        new CharacterAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
-                    },
-                });
+            _machine.AddStates(CreateNonAnimatedStates());
+            _machine.SetState(typeof(CharacterIdleState));
+        }
 
-            _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
+        private void InitComponents()
+        {
             _collision.Init(_viewPoint, GetPriority(), _structure);
             _death.Init(
                 _deathParticle,
@@ -146,15 +170,9 @@ namespace Enemies
                 _deathDisappearDuration,
                 LayerMask.NameToLayer(_deathLayerName),
                 _destroyToken);
-
-            audioCreationCallback?.Invoke(_fireSound);
-            audioCreationCallback?.Invoke(_deathSound);
-            initializeCallback?.Invoke(_collision);
-
-            _presenter.Enable();
         }
 
-        private IWeapon GetWeapon(IDamageableTarget target, Action<AudioSource> audioCreationCallback)
+        private IWeapon CreateWeapon(IDamageableTarget target, Action<AudioSource> audioCreationCallback)
         {
             AudioPitcher sound = new AudioPitcher(_fireSound, _minPitch, _maxPitch);
 
@@ -185,7 +203,7 @@ namespace Enemies
             }
         }
 
-        private IFieldOfView GetFieldOfView()
+        private IFieldOfView CreateFieldOfView()
         {
             return _enemyType switch
             {
@@ -216,6 +234,36 @@ namespace Enemies
                 EnemyTypes.Mortar => TargetPriority.Medium,
                 EnemyTypes.Bunker => TargetPriority.High,
                 _ => throw new ArgumentOutOfRangeException()
+            };
+        }
+
+        private Dictionary<Type, FiniteStateMachineState<CharacterState>> CreateStates()
+        {
+            return new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
+            {
+                {
+                    typeof(CharacterIdleState),
+                    new CharacterIdleState(_machine, _fieldOfView, _animation)
+                },
+                {
+                    typeof(CharacterAttackState),
+                    new CharacterAttackState(_machine, _fieldOfView, _rotator, _weapon, _animation)
+                },
+            };
+        }
+
+        private Dictionary<Type, FiniteStateMachineState<CharacterState>> CreateNonAnimatedStates()
+        {
+            return new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
+            {
+                {
+                    typeof(CharacterIdleState),
+                    new CharacterIdleState(_machine, _fieldOfView)
+                },
+                {
+                    typeof(CharacterAttackState),
+                    new CharacterAttackState(_machine, _fieldOfView, _rotator, _weapon)
+                },
             };
         }
 

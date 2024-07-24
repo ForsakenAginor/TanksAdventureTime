@@ -18,6 +18,9 @@
 
         public void PlayAnimation(CharacterAnimations animation)
         {
+            if (_animation == null)
+                return;
+
             _animation.Play(animation);
         }
     }
