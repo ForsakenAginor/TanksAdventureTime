@@ -10,14 +10,14 @@ namespace Assets.Source.Difficulty
         public int GetLevel()
         {
             if (PlayerPrefs.HasKey(LevelsVariableName) == false)
-                return 0;
+                return 1;
 
             return PlayerPrefs.GetInt(LevelsVariableName);
         }
 
         public void SaveLevel(int level)
         {
-            if (level < 0)
+            if (level < 1)
                 throw new ArgumentOutOfRangeException(nameof(level));
 
             PlayerPrefs.SetInt(LevelsVariableName, level);

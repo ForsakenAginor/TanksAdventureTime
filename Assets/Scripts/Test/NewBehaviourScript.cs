@@ -24,6 +24,6 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void AbortProgress()
     {
-        _levelData.SaveLevel(0);
+        _levelData.SaveLevel(1);
     }
 }
