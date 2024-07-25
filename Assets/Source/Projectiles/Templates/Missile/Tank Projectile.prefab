@@ -14404,7 +14404,7 @@ GameObject:
   - component: {fileID: 1968378350640706117}
   - component: {fileID: 8374450373478926076}
   m_Layer: 3
-  m_Name: Bright Projectile
+  m_Name: Tank Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19282,3 +19282,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionRadius: 2
+  _collider: {fileID: 1968378350640706117}

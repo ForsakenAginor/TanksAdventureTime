@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8387617768010483676, guid: f1f38b01d06708e4988c63d526e63d58, type: 3}
       propertyPath: _distanceBetween
-      value: 0.5
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 9158537078280507162, guid: f1f38b01d06708e4988c63d526e63d58, type: 3}
       propertyPath: m_Name

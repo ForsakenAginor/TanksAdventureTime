@@ -30,7 +30,7 @@ namespace PlayerHelpers
         [SerializeField] private SpawnableProjectile _projectile;
         [SerializeField] private HitEffect _hitTemplate;
         [SerializeField] private float _attackAngle = 0f;
-        [SerializeField] private List<SerializedPair<PlayerHelperTypes, GameObject>> _renderObject;
+        [SerializeField] private List<SerializedPair<PlayerHelperTypes, SerializedPair<GameObject, AudioClip>>> _views;
 
         private GameObject _gameObject;
         private CharacterAnimation _animation;
@@ -45,9 +45,10 @@ namespace PlayerHelpers
         private PlayerHelperPresenter _presenter;
         private IWeapon _weapon;
         private IFieldOfView _fieldOfView;
-        private IExplosive _explosive;
+        private SwitchableExplosive _explosive;
 
         private IDamageableTarget _target;
+        private PlayerHelperTypes _type;
 
         private void OnDestroy()
         {
@@ -65,8 +66,45 @@ namespace PlayerHelpers
             if (_target == null)
                 return;
 
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(_viewPoint.position, _target.Position);
+            Vector3 currentPosition = _viewPoint.position;
+            Vector3 forward = _viewPoint.forward;
+            Vector3 targetPosition = _target.Position;
+
+            switch (_type)
+            {
+                case PlayerHelperTypes.MachineGun:
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawLine(currentPosition, targetPosition);
+                    break;
+
+                case PlayerHelperTypes.Grenade:
+                    Vector3 direction = targetPosition - currentPosition;
+                    float angleRadian = _attackAngle * Mathf.Rad2Deg;
+                    Vector3 newForward = forward.RotateAlongY(direction);
+                    List<Vector3> points = newForward.CalculateTrajectory(currentPosition, targetPosition, direction, angleRadian);
+
+                    if (points.Count <= 0)
+                        return;
+
+                    Vector3 middleHeightPosition = points[points.Count / (int)ValueConstants.Two];
+                    middleHeightPosition.y += Vector3.up.y;
+
+                    Gizmos.color = Color.blue;
+
+                    for (int i = 1; i < points.Count; i++)
+                        Gizmos.DrawLine(points[i - 1], points[i]);
+
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawLine(currentPosition, middleHeightPosition);
+                    Gizmos.DrawLine(middleHeightPosition, targetPosition);
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawLine(currentPosition, forward + currentPosition);
+                    Gizmos.DrawLine(currentPosition, newForward + currentPosition);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void Init(
@@ -75,6 +113,7 @@ namespace PlayerHelpers
             Action<AudioSource> audioCreationCallback,
             Action<(Action onEnable, Action onDisable)> presenterInitCallback)
         {
+            _type = type;
             _gameObject = gameObject;
             _animation = GetComponent<CharacterAnimation>();
             audioCreationCallback?.Invoke(_fireSound);
@@ -110,9 +149,11 @@ namespace PlayerHelpers
             _switchableObjects = new List<ISwitchable<IDamageableTarget>>()
             {
                 (ISwitchable<IDamageableTarget>)_fieldOfView,
+                _drawer,
                 _rotator,
                 this,
             };
+
             _switchableObjects.Add(
                 (ISwitchable<IDamageableTarget>)(_weapon = CreateWeapon(
                     type,
@@ -133,12 +174,14 @@ namespace PlayerHelpers
                 _switcher.StartSearching();
                 _thinker.Start();
                 _drawer.StartDraw();
+                _explosive.StartTracking();
                 _gameObject.SetActive(true);
             }, () =>
             {
                 _switcher.StopSearching();
                 _thinker.Stop();
                 _drawer.StopDraw();
+                _explosive.StopTracking();
                 _gameObject.SetActive(false);
             });
 
@@ -153,11 +196,11 @@ namespace PlayerHelpers
                 {
                     {
                         typeof(CharacterIdleState),
-                        new CharacterIdleState(_machine, _animation, _fieldOfView)
+                        new CharacterIdleState(_machine, _fieldOfView, _animation)
                     },
                     {
                         typeof(CharacterAttackState),
-                        new CharacterAttackState(_machine, _animation, _fieldOfView, _rotator, _weapon)
+                        new CharacterAttackState(_machine, _fieldOfView, _rotator, _weapon, _animation)
                     },
                 });
 
@@ -186,54 +229,53 @@ namespace PlayerHelpers
             Action<AudioSource> audioCreationCallback,
             Action<IExplosive> explosiveCreationCallback)
         {
-            _weapons = new Dictionary<PlayerHelperTypes, Func<Action<AudioSource>, Action<IExplosive>, IWeapon>>()
+            return type switch
             {
-                {
-                    PlayerHelperTypes.MachineGun, (_, _) =>
-                    {
-                        _renderObject
-                            .Find(item => item.Key == PlayerHelperTypes.MachineGun)
-                            .Value
-                            .SetActive(true);
-
-                        return new MachineGun(
-                            _viewPoint,
-                            null,
-                            new AudioPitcher(_fireSound, _minPitch, _maxPitch),
-                            _shootingEffect);
-                    }
-                },
-                {
-                    PlayerHelperTypes.Grenade,
-                    (audioCallback, explosiveCallback) =>
-                    {
-                        IExplosive explosive = new Explosive(null);
-                        explosiveCallback?.Invoke(explosive);
-                        _renderObject
-                            .Find(item => item.Key == PlayerHelperTypes.Grenade)
-                            .Value
-                            .SetActive(true);
-
-                        _viewPoint.localEulerAngles = new Vector3(
-                            -_attackAngle,
-                            (float)ValueConstants.Zero,
-                            (float)ValueConstants.Zero);
-
-                        return new Mortar(
-                            _viewPoint,
-                            null,
-                            new AudioPitcher(_fireSound, _minPitch, _maxPitch),
-                            new PlayerProjectileFactory(
-                                _projectile,
-                                _hitTemplate,
-                                explosive,
-                                _attackAngle * Mathf.Deg2Rad,
-                                audioCallback));
-                    }
-                }
+                PlayerHelperTypes.MachineGun => CreateMachineGun(),
+                PlayerHelperTypes.Grenade => CreateGrenade(audioCreationCallback, explosiveCreationCallback),
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
+        }
 
-            return _weapons[type]?.Invoke(audioCreationCallback, explosiveCreationCallback);
+        private IWeapon CreateMachineGun()
+        {
+            ActivateView(PlayerHelperTypes.MachineGun);
+            return new MachineGun(
+                _viewPoint,
+                null,
+                new AudioPitcher(_fireSound, _minPitch, _maxPitch),
+                _shootingEffect);
+        }
+
+        private IWeapon CreateGrenade(Action<AudioSource> audioCreationCallback, Action<IExplosive> explosiveCreationCallback)
+        {
+            _explosive = new SwitchableExplosive(_projectile.ColliderRadius);
+            explosiveCreationCallback?.Invoke(_explosive);
+            ActivateView(PlayerHelperTypes.Grenade);
+
+            _viewPoint.localEulerAngles = new Vector3(
+                -_attackAngle,
+                (float)ValueConstants.Zero,
+                (float)ValueConstants.Zero);
+
+            return new Mortar(
+                _viewPoint,
+                null,
+                new AudioPitcher(_fireSound, _minPitch, _maxPitch),
+                new PlayerHelperProjectileFactory(
+                    _projectile,
+                    _hitTemplate,
+                    _explosive,
+                    _explosive,
+                    _attackAngle * Mathf.Deg2Rad,
+                    audioCreationCallback));
+        }
+
+        private void ActivateView(PlayerHelperTypes type)
+        {
+            SerializedPair<GameObject, AudioClip> pair = _views.Find(item => item.Key == type).Value;
+            pair.Key.SetActive(true);
+            _fireSound.clip = pair.Value;
         }
     }
 }
