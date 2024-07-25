@@ -174,14 +174,14 @@ namespace PlayerHelpers
                 _switcher.StartSearching();
                 _thinker.Start();
                 _drawer.StartDraw();
-                _explosive.StartTracking();
+                _explosive?.StartTracking();
                 _gameObject.SetActive(true);
             }, () =>
             {
                 _switcher.StopSearching();
                 _thinker.Stop();
                 _drawer.StopDraw();
-                _explosive.StopTracking();
+                _explosive?.StopTracking();
                 _gameObject.SetActive(false);
             });
 
