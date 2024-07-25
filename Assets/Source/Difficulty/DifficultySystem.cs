@@ -18,6 +18,8 @@ namespace Assets.Source.Difficulty
             if (level < 0)
                 throw new ArgumentOutOfRangeException(nameof(level));
 
+            level--;
+
             int smallSpots = Math.Min(_minConfiguration.MilitarySmallBuildings + (int)(level * _smallScaleFactor),
                                         _maxConfiguration.MilitarySmallBuildings);
             int mediumSpots = Math.Min(_minConfiguration.MilitaryMediumBuildings + (int)(level * _mediumScaleFactor),

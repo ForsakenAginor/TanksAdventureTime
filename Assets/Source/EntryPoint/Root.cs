@@ -54,11 +54,11 @@ namespace Assets.Source.EntryPoint
         private void Start()
         {
             _soundInitializer.Init();
-            _levelData = new();
+            _levelData = new ();
             _currentLevel = _levelData.GetLevel();
-            DifficultySystem difficultySystem = new(_currentLevel);
+            DifficultySystem difficultySystem = new (_currentLevel);
 
-            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
+            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
@@ -68,13 +68,13 @@ namespace Assets.Source.EntryPoint
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
-            _enemiesManager = new(_enemies);
+            _enemiesManager = new (_enemies);
             _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
 
-            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform);
+            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _levelData.GetLevel());
 
-            InterstitialAdvertiseShower advertiseShower = new(_silencer);
+            InterstitialAdvertiseShower advertiseShower = new (_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             StickyAd.Show();
@@ -107,7 +107,7 @@ namespace Assets.Source.EntryPoint
         private void OnPlayerWon()
         {
             _playerBehaviour.Stop();
-            LeaderboardScoreSaver leaderboardScoreSaver = new();
+            LeaderboardScoreSaver leaderboardScoreSaver = new ();
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             leaderboardScoreSaver.SaveScore(_currentLevel);
