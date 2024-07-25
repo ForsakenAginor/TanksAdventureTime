@@ -14,7 +14,6 @@ namespace Enemies
         private SerializedProperty _hitConfiguration;
         private SerializedProperty _deathParticle;
         private SerializedProperty _deathSound;
-        private SerializedProperty _deathDisappearDuration;
         private SerializedProperty _deathLayerName;
         private SerializedProperty _maxHealth;
         private SerializedProperty _rotationSpeed;
@@ -53,7 +52,6 @@ namespace Enemies
             _hitConfiguration = serializedObject.FindProperty(nameof(_hitConfiguration));
             _deathParticle = serializedObject.FindProperty(nameof(_deathParticle));
             _deathSound = serializedObject.FindProperty(nameof(_deathSound));
-            _deathDisappearDuration = serializedObject.FindProperty(nameof(_deathDisappearDuration));
             _deathLayerName = serializedObject.FindProperty(nameof(_deathLayerName));
             _maxHealth = serializedObject.FindProperty(nameof(_maxHealth));
             _rotationSpeed = serializedObject.FindProperty(nameof(_rotationSpeed));
@@ -99,7 +97,6 @@ namespace Enemies
             EditorGUILayout.PropertyField(_hitConfiguration);
             EditorGUILayout.PropertyField(_deathParticle);
             EditorGUILayout.PropertyField(_deathSound);
-            EditorGUILayout.PropertyField(_deathDisappearDuration);
             EditorGUILayout.PropertyField(_deathLayerName);
             EditorGUILayout.PropertyField(_maxHealth);
             EditorGUILayout.PropertyField(_rotationSpeed);

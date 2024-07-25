@@ -9,7 +9,7 @@ namespace Enemies
         private readonly EnemyCollision _collision;
         private readonly IDamageable _health;
         private readonly HitConfiguration _hitConfiguration;
-        private readonly EnemyDeathEffect _death;
+        private readonly IDeath _death;
 
         public EnemyPresenter(
             FiniteStateMachine<CharacterState> machine,
@@ -17,7 +17,7 @@ namespace Enemies
             EnemyCollision collision,
             IDamageable health,
             HitConfiguration hitConfiguration,
-            EnemyDeathEffect death)
+            IDeath death)
         {
             _machine = machine;
             _thinker = thinker;

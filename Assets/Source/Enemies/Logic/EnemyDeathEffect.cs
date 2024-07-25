@@ -5,29 +5,29 @@ using UnityEngine;
 
 namespace Enemies
 {
-    public class EnemyDeathEffect : MonoBehaviour
+    public class EnemyDeathEffect : IDeath
     {
-        private ParticleSystem _particle;
-        private AudioSource _sound;
-        private CharacterAnimation _animation;
-        private float _disappearDuration;
-        private int _layer;
-        private CancellationToken _token;
+        private readonly ParticleSystem _particle;
+        private readonly AudioSource _sound;
+        private readonly CharacterAnimation _animation;
+        private readonly GameObject _gameObject;
+        private readonly int _layer;
+        private readonly CancellationToken _token;
 
         private bool _isDying;
 
-        public void Init(
+        public EnemyDeathEffect(
             ParticleSystem particle,
             AudioSource sound,
             CharacterAnimation animation,
-            float disappearDuration,
+            GameObject gameObject,
             int layer,
             CancellationToken token)
         {
             _particle = particle;
             _sound = sound;
             _animation = animation;
-            _disappearDuration = disappearDuration;
+            _gameObject = gameObject;
             _layer = layer;
             _token = token;
         }
@@ -37,7 +37,7 @@ namespace Enemies
             if (_isDying == true)
                 return;
 
-            gameObject.layer = _layer;
+            _gameObject.layer = _layer;
             _isDying = true;
             _particle.Play();
             _sound.Play();
@@ -51,7 +51,7 @@ namespace Enemies
                 () => _particle.isPlaying == false && _sound.isPlaying == false && _animation.IsPlaying() == false,
                 cancellationToken: _token);
 
-            gameObject.SetActive(false);
+            _gameObject.SetActive(false);
         }
     }
 }

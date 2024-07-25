@@ -8,7 +8,6 @@ using UnityEngine;
 namespace Enemies
 {
     [RequireComponent(typeof(EnemyCollision))]
-    [RequireComponent(typeof(EnemyDeathEffect))]
     public class EnemySetup : MonoBehaviour
     {
         [Header("Main")]
@@ -17,7 +16,6 @@ namespace Enemies
         [SerializeField] private HitConfiguration _hitConfiguration;
         [SerializeField] private ParticleSystem _deathParticle;
         [SerializeField] private AudioSource _deathSound;
-        [SerializeField] private float _deathDisappearDuration = 1f;
         [SerializeField] private string _deathLayerName = "Ignore Raycast";
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private float _rotationSpeed;
@@ -61,15 +59,16 @@ namespace Enemies
 #endif
         [SerializeField] private GameObject _debugTarget;
 
-        private CharacterAnimation _animation;
         private EnemyCollision _collision;
-        private EnemyDeathEffect _death;
+        private GameObject _gameObject;
 
         private FiniteStateMachine<CharacterState> _machine;
         private IWeapon _weapon;
         private IFieldOfView _fieldOfView;
         private IPlayerTarget _target;
         private ISupportStructure _structure;
+        private IDeath _death;
+        private CharacterAnimation _animation;
         private CharacterRotator _rotator;
         private CharacterThinker _thinker;
         private CollisionActivator _activator;
@@ -101,8 +100,8 @@ namespace Enemies
             CollectComponents(target);
             InitParts(audioCreationCallback);
             InitMachine();
-            InitComponents();
 
+            _collision.Init(_viewPoint, GetPriority(), _structure);
             audioCreationCallback?.Invoke(_fireSound);
             audioCreationCallback?.Invoke(_deathSound);
             initializeCallback?.Invoke(_collision);
@@ -113,6 +112,7 @@ namespace Enemies
         private void CollectComponents(IPlayerTarget target)
         {
             _target = target;
+            _gameObject = gameObject;
             _destroyToken = destroyCancellationToken;
             _collision = GetComponent<EnemyCollision>();
             _death = GetComponent<EnemyDeathEffect>();
@@ -122,7 +122,7 @@ namespace Enemies
 
             _animation = TryGetComponent(out CharacterAnimation component) == true
                 ? component
-                : gameObject.AddComponent<CharacterAnimation>();
+                : _gameObject.AddComponent<CharacterAnimation>();
         }
 
         private void InitParts(Action<AudioSource> audioCreationCallback)
@@ -139,12 +139,13 @@ namespace Enemies
                 _death);
             _weapon = CreateWeapon(_target, audioCreationCallback);
             _fieldOfView = CreateFieldOfView();
+            _death = CreateDeathEffect();
 
             if (_isOnBuilding == false || _enemyType == EnemyTypes.Bunker)
                 return;
 
             _structure = _supportStructure.GetComponent<ISupportStructure>();
-            _activator = new CollisionActivator(gameObject, _ownCollider, _structure);
+            _activator = new CollisionActivator(_gameObject, _ownCollider, _structure);
         }
 
         private void InitMachine()
@@ -158,18 +159,6 @@ namespace Enemies
 
             _machine.AddStates(CreateNonAnimatedStates());
             _machine.SetState(typeof(CharacterIdleState));
-        }
-
-        private void InitComponents()
-        {
-            _collision.Init(_viewPoint, GetPriority(), _structure);
-            _death.Init(
-                _deathParticle,
-                _deathSound,
-                _animation,
-                _deathDisappearDuration,
-                LayerMask.NameToLayer(_deathLayerName),
-                _destroyToken);
         }
 
         private IWeapon CreateWeapon(IDamageableTarget target, Action<AudioSource> audioCreationCallback)
@@ -224,6 +213,26 @@ namespace Enemies
                     _attackAngle / (int)ValueConstants.Two),
                 _ => throw new ArgumentOutOfRangeException()
             };
+        }
+
+        private IDeath CreateDeathEffect()
+        {
+            switch (_enemyType)
+            {
+                case EnemyTypes.Standard:
+                case EnemyTypes.Mortar:
+                    return new EnemyDeathEffect(
+                        _deathParticle,
+                        _deathSound,
+                        _animation,
+                        _gameObject,
+                        LayerMask.NameToLayer(_deathLayerName),
+                        _destroyToken);
+
+                case EnemyTypes.Bunker:
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private TargetPriority GetPriority()
