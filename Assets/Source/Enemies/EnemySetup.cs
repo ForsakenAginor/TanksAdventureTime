@@ -115,7 +115,6 @@ namespace Enemies
             _gameObject = gameObject;
             _destroyToken = destroyCancellationToken;
             _collision = GetComponent<EnemyCollision>();
-            _death = GetComponent<EnemyDeathEffect>();
 
             if (_enemyType == EnemyTypes.Bunker)
                 return;

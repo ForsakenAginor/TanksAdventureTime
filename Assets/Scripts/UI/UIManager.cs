@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _mobileInputCanvas;
     [SerializeField] private GameObject _buttonsPanel;
     [SerializeField] private float _delay;
+    [SerializeField] private LevelLabel _levelLabel;
 
     [Header("Marker")]
     [SerializeField] private float _minDistance;
@@ -34,7 +35,7 @@ public class UIManager : MonoBehaviour
         */
     }
 
-    public void Init(IEnumerable<ITarget> enemies, Transform player)
+    public void Init(IEnumerable<ITarget> enemies, Transform player, int levelNumber)
     {
         if (enemies == null)
             throw new ArgumentNullException(nameof(enemies));
@@ -42,7 +43,11 @@ public class UIManager : MonoBehaviour
         if (player == null)
             throw new ArgumentNullException(nameof(player));
 
+        if(levelNumber <= 0)
+            throw new ArgumentOutOfRangeException(nameof(levelNumber));
+
         _marker.Init(enemies, player, _minDistance, _markerImage);
+        _levelLabel.Init(levelNumber);
     }
 
     public void ShowLosingPanel()
