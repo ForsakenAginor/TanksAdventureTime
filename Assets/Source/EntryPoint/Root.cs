@@ -1,13 +1,16 @@
 using Agava.YandexGames;
-using Assets.Scripts.Advertise;
-using Assets.Scripts.Core;
+using Assets.Source.Advertise;
 using Assets.Source.Difficulty;
 using Assets.Source.Enemies;
+using Assets.Source.Global;
 using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.OnDeathEffect;
+using Assets.Source.Shop;
 using Assets.Source.Sound.AudioMixer;
+using Assets.Source.UI;
+using Assets.Source.UI.Menu.Leaderboard;
 using PlayerHelpers;
 using System;
 using System.Collections.Generic;
@@ -24,6 +27,7 @@ namespace Assets.Source.EntryPoint
 
         [Header("UI objects")]
         [SerializeField] private UIManager _uIManager;
+        [SerializeField] private VictoryEffect _victoryEffect;
 
         [Header("Player")]
         [SerializeField] private PlayerBehaviour _playerBehaviour;
@@ -42,6 +46,8 @@ namespace Assets.Source.EntryPoint
 
         [Header("GameProgress")]
         [SerializeField] private WinCondition _winCondition;
+        [SerializeField] private int _bounty;
+        private CurrencyCalculator _currencyCalculator;
         private int _currentLevel;
         private LevelData _levelData;
 
@@ -73,6 +79,10 @@ namespace Assets.Source.EntryPoint
             _winCondition.Init(_enemiesManager.AlivedEnemies);
 
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _levelData.GetLevel());
+
+            CurrencyData currencyData = new ();
+            Wallet wallet = new (currencyData);
+            _currencyCalculator = new (_bounty, wallet);
 
             InterstitialAdvertiseShower advertiseShower = new (_silencer);
 
@@ -114,6 +124,7 @@ namespace Assets.Source.EntryPoint
 #endif
             _levelData.SaveLevel(++_currentLevel);
             _uIManager.ShowWiningPanel();
+            _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }
 
 
