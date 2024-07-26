@@ -5,18 +5,24 @@ namespace Projectiles
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(SphereCollider))]
-    public class SpawnableProjectile : SpawnableObject
+    public class SpawnableProjectile : SpawnableObject, ITarget
     {
         [SerializeField] private float _explosionRadius;
+        [SerializeField] private SphereCollider _collider;
 
         private Rigidbody _rigidbody;
+        private Transform _transform;
         private IAimParticle _aim;
         private IExplosive _explosive;
         private Action<Vector3> _onExplodedCallback;
         private float _angleRadian;
         private bool _didInit;
 
-        public float ColliderRadius { get; private set; }
+        public float ColliderRadius => _collider.radius;
+
+        public Vector3 Position => _rigidbody.position;
+
+        public TargetPriority Priority => TargetPriority.None;
 
         private void OnDrawGizmos()
         {
@@ -35,7 +41,6 @@ namespace Projectiles
                 return this;
 
             _rigidbody = GetComponent<Rigidbody>();
-            ColliderRadius = GetComponent<SphereCollider>().radius;
             _explosive = explosive;
             _angleRadian = angleRadian;
             _didInit = true;
@@ -55,7 +60,7 @@ namespace Projectiles
             _aim?.Show();
         }
 
-        private void Explode()
+        public void Explode()
         {
             _rigidbody.velocity = Vector3.zero;
             _aim?.Hide();

@@ -19282,3 +19282,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionRadius: 4.5
+  _collider: {fileID: 1968378350640706117}

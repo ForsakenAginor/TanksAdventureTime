@@ -7,10 +7,10 @@
 
         public CharacterAttackState(
             FiniteStateMachine<CharacterState> machine,
-            CharacterAnimation animation,
             IFieldOfView fieldOfView,
             CharacterRotator rotator,
-            IWeapon weapon)
+            IWeapon weapon,
+            CharacterAnimation animation = null)
             : base(machine, animation, fieldOfView)
         {
             _rotator = rotator;

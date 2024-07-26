@@ -3379,6 +3379,7 @@ MonoBehaviour:
   _animator: {fileID: 7551808216412108115}
   _viewPoint: {fileID: 6255325439290779249}
   _rotationPoint: {fileID: 6883277565462172704}
+  _drawPoint: {fileID: 0}
   _rotationSpeed: 5
   _thinkDelay: 1
   _attackRadius: 15
@@ -3393,11 +3394,15 @@ MonoBehaviour:
   _projectile: {fileID: 8374450373478926076, guid: 2d9e3dfecc170ed4f9f14d16e89693da, type: 3}
   _hitTemplate: {fileID: 4500890358154097124, guid: bc8fa09ba7fee00478903a6ca8fae1db, type: 3}
   _attackAngle: 60
-  _renderObject:
+  _views:
   - Key: 0
-    Value: {fileID: 2748051409023554885}
+    Value:
+      Key: {fileID: 2748051409023554885}
+      Value: {fileID: 8300000, guid: f9260df22ddb47745992c0331f3561e8, type: 3}
   - Key: 1
-    Value: {fileID: 1862104008727536508}
+    Value:
+      Key: {fileID: 1862104008727536508}
+      Value: {fileID: 8300000, guid: 6b67289d3f4b34342af2d5790135b189, type: 3}
 --- !u!120 &8210006217798271539
 LineRenderer:
   serializedVersion: 2
@@ -3498,7 +3503,7 @@ LineRenderer:
     generateLightingData: 0
   m_MaskInteraction: 0
   m_UseWorldSpace: 1
-  m_Loop: 0
+  m_Loop: 1
   m_ApplyActiveColorSpace: 1
 --- !u!1 &8767586063291291597
 GameObject:

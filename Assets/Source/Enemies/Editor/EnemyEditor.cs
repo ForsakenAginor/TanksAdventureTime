@@ -1,7 +1,6 @@
 ﻿using System;
 using Projectiles;
 using UnityEditor;
-using UnityEngine;
 
 namespace Enemies
 {
@@ -10,18 +9,17 @@ namespace Enemies
     {
         private const string ThinkDelayLabel = "+ Random(0, 0.5)";
 
-        private SerializedProperty _animator;
         private SerializedProperty _viewPoint;
         private SerializedProperty _rotationPoint;
         private SerializedProperty _hitConfiguration;
         private SerializedProperty _deathParticle;
         private SerializedProperty _deathSound;
-        private SerializedProperty _deathDisappearDuration;
         private SerializedProperty _deathLayerName;
         private SerializedProperty _maxHealth;
         private SerializedProperty _rotationSpeed;
         private SerializedProperty _thinkDelay;
         private SerializedProperty _enemyType;
+        private SerializedProperty _animator;
         private SerializedProperty _isDebug;
 
         private SerializedProperty _isOnBuilding;
@@ -54,7 +52,6 @@ namespace Enemies
             _hitConfiguration = serializedObject.FindProperty(nameof(_hitConfiguration));
             _deathParticle = serializedObject.FindProperty(nameof(_deathParticle));
             _deathSound = serializedObject.FindProperty(nameof(_deathSound));
-            _deathDisappearDuration = serializedObject.FindProperty(nameof(_deathDisappearDuration));
             _deathLayerName = serializedObject.FindProperty(nameof(_deathLayerName));
             _maxHealth = serializedObject.FindProperty(nameof(_maxHealth));
             _rotationSpeed = serializedObject.FindProperty(nameof(_rotationSpeed));
@@ -94,14 +91,12 @@ namespace Enemies
 
         private void DrawMain()
         {
-            EditorGUILayout.PropertyField(_animator);
             EditorGUILayout.PropertyField(_viewPoint);
             EditorGUILayout.PropertyField(_thinkDelay);
             EditorGUILayout.PropertyField(_rotationPoint);
             EditorGUILayout.PropertyField(_hitConfiguration);
             EditorGUILayout.PropertyField(_deathParticle);
             EditorGUILayout.PropertyField(_deathSound);
-            EditorGUILayout.PropertyField(_deathDisappearDuration);
             EditorGUILayout.PropertyField(_deathLayerName);
             EditorGUILayout.PropertyField(_maxHealth);
             EditorGUILayout.PropertyField(_rotationSpeed);
@@ -112,10 +107,10 @@ namespace Enemies
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.PropertyField(_enemyType);
-            EditorGUILayout.PropertyField(_isDebug);
 
             if ((EnemyTypes)_enemyType.enumValueIndex != EnemyTypes.Bunker)
             {
+                EditorGUILayout.PropertyField(_animator);
                 EditorGUILayout.PropertyField(_isOnBuilding);
                 EditorGUILayout.PropertyField(_ownCollider);
 
@@ -150,6 +145,8 @@ namespace Enemies
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            EditorGUILayout.PropertyField(_isDebug);
 
             if (_isDebug.boolValue == false)
                 return;

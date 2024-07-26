@@ -75,9 +75,7 @@ namespace Projectiles
                     position.y,
                     Random.Range(-distanceBetween, distanceBetween) + position.z);
                 Vector3 direction = newPosition - position;
-                Vector3 forward = new Vector3(direction.x, (float)ValueConstants.Zero, direction.z).normalized;
-                forward.y = newPosition.y;
-                forward /= Mathf.Cos(_angleRadian);
+                Vector3 forward = new Vector3(direction.x, newPosition.y, direction.z).normalized / Mathf.Cos(_angleRadian);
                 Create(position).Move(direction, forward, CreateExplosion);
             }
         }

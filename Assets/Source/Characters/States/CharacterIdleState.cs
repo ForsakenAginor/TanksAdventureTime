@@ -4,8 +4,8 @@
     {
         public CharacterIdleState(
             FiniteStateMachine<CharacterState> machine,
-            CharacterAnimation animation,
-            IFieldOfView fieldOfView)
+            IFieldOfView fieldOfView,
+            CharacterAnimation animation = null)
             : base(machine, animation, fieldOfView)
         {
         }

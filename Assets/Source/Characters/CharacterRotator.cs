@@ -51,7 +51,7 @@ namespace Characters
                     _transform.rotation = Quaternion.RotateTowards(_transform.rotation, look, _rotationSpeed);
                 }
 
-                await UniTask.NextFrame(_cancellationSource.Token);
+                await UniTask.NextFrame(PlayerLoopTiming.FixedUpdate, _cancellationSource.Token);
             }
         }
     }
