@@ -18,9 +18,8 @@ namespace DestructionObject
             if (other.gameObject.TryGetComponent(out IReactive reactive))
                 reactive.React();
 
-            if (other.gameObject.TryGetComponent(out EnemyMyTest enemy) &&
-                enemy.TryGetComponent(out Rigidbody rigidbody) == false)
-                enemy.AddRigidbody();
+            if (other.gameObject.TryGetComponent(out IDamageable damage))
+                damage.TakeDamage(1);
         }
     }
 }
