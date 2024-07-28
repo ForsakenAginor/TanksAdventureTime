@@ -2307,10 +2307,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 67829406663486799, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
-      propertyPath: _camera
-      value: 
-      objectReference: {fileID: 1115409647}
+    - target: {fileID: 881538663845270390, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 881538663845270390, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7917911279862946846, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
       propertyPath: m_Name
       value: Bunker
@@ -2329,19 +2333,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.00000035762784
-      objectReference: {fileID: 0}
-    - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
-      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2349,7 +2353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9147822272179473024, guid: 9da87c34c0ea9364197b83c805cb6731, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

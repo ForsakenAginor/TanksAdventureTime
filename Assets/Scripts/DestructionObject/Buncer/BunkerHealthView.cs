@@ -1,15 +1,13 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using DestructionObject;
 
-public class BukcerHealthView : MonoBehaviour
+public class BunkerHealthView : MonoBehaviour
 {
     [SerializeField] private Slider _slider;
     [SerializeField] private Bunker _bunker;
-    [SerializeField] private Camera _camera;
 
+    private Camera _camera;
     private Transform _transform;
     private Coroutine _coroutine;
     private WaitForSeconds _waitForSeconds;
@@ -35,11 +33,19 @@ public class BukcerHealthView : MonoBehaviour
         _bunker.Died -= EnableSlider;
     }
 
-    private void Update() => _transform.rotation = _camera.transform.rotation;
+    private void Update() => CameraRotation();
 
-    private void EnableSlider(Action died)
+    public void Init(Camera camera) => _camera = camera;
+
+    private void CameraRotation()
     {
-        died?.Invoke();
+        if (_camera == null) return;
+
+        _transform.rotation = _camera.transform.rotation;
+    }
+
+    private void EnableSlider()
+    {
         _slider.gameObject.SetActive(false);
     }
 

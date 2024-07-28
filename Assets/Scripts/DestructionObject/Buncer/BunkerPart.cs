@@ -1,30 +1,18 @@
-using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BunkerPart : MonoBehaviour, IDamageable
+public class BunkerPart : MonoBehaviour
 {
     [SerializeField] private Transform _destruction;
 
     private DestroyedPartBunker[] _buncerDestructionObjects;
     private Transform _transform;
 
-    public event Action Died;
-    public event Action<Action> Destructed;
+    public bool IsDestroyed { get; private set; } = false;
 
-    private void Awake()
-    {
-        Init();
-        _transform = transform;
-    }
+    private void Awake() => Init();
 
-    public void TakeDamage(int value)
-    {
-        React();
-        Destructed?.Invoke(Died);
-    }
-
-    private void React()
+    public void React()
     {
         _destruction.position = _transform.position;
         _destruction.rotation = _transform.rotation;
@@ -33,10 +21,13 @@ public class BunkerPart : MonoBehaviour, IDamageable
 
         for (int i = 0; i < _buncerDestructionObjects.Length; i++)
             _buncerDestructionObjects[i].React(_transform);
+
+        IsDestroyed = true;
     }
 
     private void Init()
     {
+        _transform = transform;
         _buncerDestructionObjects = new DestroyedPartBunker[_destruction.childCount];
 
         for (int i = 0; i < _buncerDestructionObjects.Length; i++)

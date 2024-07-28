@@ -2,48 +2,54 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bunker : MonoBehaviour
+public class Bunker : MonoBehaviour, IDamageable
 {
     [SerializeField] private List<BunkerPart> _bunkerDetails;
 
     public event Action<float> TookDamage;
-    public event Action<Action> Died;
+    public event Action Died;
 
-    private float MaxHeath = 100;
+    private int _minValue = 0;
+    private float _maxHeath = 100;
     private float _currentHealth;
     private float _damage;
 
-
     private void Awake() => Init();
-
-    private void OnEnable()
-    {
-        for (int i = 0; i < _bunkerDetails.Count; i++)
-            _bunkerDetails[i].Destructed += TakeDamage;
-    }
-
-    private void OnDisable()
-    {
-        for (int i = 0; i < _bunkerDetails.Count; i++)
-            _bunkerDetails[i].Destructed -= TakeDamage;
-    }
 
     private void Init()
     {
-        _currentHealth = MaxHeath;
-        _damage = _currentHealth / _bunkerDetails.Count;
-        _damage = Mathf.CeilToInt(_damage);
+        _currentHealth = _maxHeath;
+        _damage = Mathf.CeilToInt(_currentHealth / _bunkerDetails.Count);
     }
 
-    private void TakeDamage(Action died)
+    public void TakeDamage(int value)
     {
-        if (_currentHealth > 0)
+        TryGetNoDestructionPart(out List<BunkerPart> bunkers);
+
+        if (bunkers.Count == _minValue)
         {
-            _currentHealth -= _damage;
-            TookDamage?.Invoke(_currentHealth / MaxHeath);
+            Died?.Invoke();
+            return;
         }
 
-        if (_currentHealth <= 0)
-            Died?.Invoke(died);
+        _currentHealth -= _damage;
+        bunkers[GetRandomPart(bunkers.Count)].React();
+        TookDamage?.Invoke(_currentHealth / _maxHeath);
+    }
+
+    private List<BunkerPart> TryGetNoDestructionPart(out List<BunkerPart> bunkerParts)
+    {
+        bunkerParts = new List<BunkerPart>();
+
+        foreach (var part in _bunkerDetails)
+            if (part.IsDestroyed == false)
+                bunkerParts.Add(part);
+
+        return bunkerParts;
+    }
+
+    private int GetRandomPart(int countBunkerPart)
+    {
+        return UnityEngine.Random.Range(_minValue, countBunkerPart);
     }
 }
