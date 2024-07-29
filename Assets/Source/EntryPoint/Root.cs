@@ -49,22 +49,30 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private int _bounty;
         private CurrencyCalculator _currencyCalculator;
         private int _currentLevel;
-        private LevelData _levelData;
+        // private LevelData _levelData;
+        //
+        [SerializeField] private SaveService _saveService;
+        //
 
         [Header("Other")]
         [SerializeField] private Silencer _silencer;
+
+        //
+        public int CurrentLevel => _currentLevel;
+        //
 
         public Action PlayerDied;
         public Action PlayerRespawned;
 
         private void Start()
         {
-            _soundInitializer.Init();
-            _levelData = new ();
-            _currentLevel = _levelData.GetLevel();
-            DifficultySystem difficultySystem = new (_currentLevel);
+            //_soundInitializer.Init();
+            // _levelData = new();
+            // _currentLevel = _levelData.GetLevel();
+            _currentLevel = _saveService.Level;
+            DifficultySystem difficultySystem = new(_currentLevel);
 
-            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
+            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
@@ -74,17 +82,17 @@ namespace Assets.Source.EntryPoint
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
-            _enemiesManager = new (_enemies);
+            _enemiesManager = new(_enemies);
             _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
 
-            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _levelData.GetLevel());
+            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _saveService.Level); //_levelData.GetLevel());
 
-            CurrencyData currencyData = new ();
-            Wallet wallet = new (currencyData);
-            _currencyCalculator = new (_bounty, wallet);
+            CurrencyData currencyData = new();
+            Wallet wallet = new(currencyData);
+            _currencyCalculator = new(_bounty, wallet);
 
-            InterstitialAdvertiseShower advertiseShower = new (_silencer);
+            InterstitialAdvertiseShower advertiseShower = new(_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             StickyAd.Show();
@@ -93,14 +101,28 @@ namespace Assets.Source.EntryPoint
             Time.timeScale = 0f;
         }
 
+        //
+        private void InitSound()
+        {
+            Debug.Log("ED");
+            _soundInitializer.Init();
+        }
+        //
+
         private void OnEnable()
         {
+            //
+            _saveService.SaveGameData.Loaded += InitSound;
+            //
             _playerDamageTaker.PlayerDied += OnPlayerDied;
             _winCondition.PlayerWon += OnPlayerWon;
         }
 
         private void OnDisable()
         {
+            //
+            _saveService.SaveGameData.Loaded -= InitSound;
+            //
             _playerDamageTaker.PlayerDied -= OnPlayerDied;
             _winCondition.PlayerWon -= OnPlayerWon;
         }
@@ -117,12 +139,13 @@ namespace Assets.Source.EntryPoint
         private void OnPlayerWon()
         {
             _playerBehaviour.Stop();
-            LeaderboardScoreSaver leaderboardScoreSaver = new ();
+            LeaderboardScoreSaver leaderboardScoreSaver = new();
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
-            _levelData.SaveLevel(++_currentLevel);
+            _saveService.SaveLevel(++_currentLevel);
+            //_levelData.SaveLevel(++_currentLevel);
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }
