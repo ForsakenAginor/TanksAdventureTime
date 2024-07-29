@@ -10118,7 +10118,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 162
+  m_fontSize: 179.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10942,6 +10942,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f83d408aa4b7024488fb7e34cb720404, type: 2}
   - {fileID: 11400000, guid: 78a926f2be2bb4c4babd868c108455d3, type: 2}
   - {fileID: 11400000, guid: 36434dd8d3ceda04d8d91e5e9b04a0cb, type: 2}
+  - {fileID: 11400000, guid: 9d944571d082a5e42a93da2d5813ef35, type: 2}
+  - {fileID: 11400000, guid: df0e3666996978e47ac42173403c1b53, type: 2}
+  - {fileID: 11400000, guid: 2c5fca8ddc859c641a9eaedbbedc8289, type: 2}
+  - {fileID: 11400000, guid: 5324aed3dedb8e74bbd7106f54a234ee, type: 2}
+  - {fileID: 11400000, guid: 7e2cf7b4fcbc0834aa888ec5c18889c5, type: 2}
+  - {fileID: 11400000, guid: 3ddde8adfda7c9248a66937d8a3f191f, type: 2}
   - {fileID: 11400000, guid: 8943803eacb5f2c47ad2a9f073808700, type: 2}
   - {fileID: 11400000, guid: 668524e57aadde240980074bfc2e46e3, type: 2}
   - {fileID: 11400000, guid: 3db3cad9a14aa624fa4b83605abf9a9e, type: 2}
@@ -10952,6 +10958,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 36d365aef168a2244a1744f5368ae35d, type: 2}
   - {fileID: 11400000, guid: e38d04ccd97685649999c0208489f588, type: 2}
   - {fileID: 11400000, guid: f398e0cd4b054e8438bf10310cbd7cd1, type: 2}
+  - {fileID: 11400000, guid: c3bbe2edafd5e234b925a76c12f770ea, type: 2}
+  - {fileID: 11400000, guid: e057363b6ed204647b56c9bb1078ba45, type: 2}
+  - {fileID: 11400000, guid: a930f474f002ed240b7d180d00216414, type: 2}
   - {fileID: 11400000, guid: 2fd08489375ee6347965829a93b5add8, type: 2}
   - {fileID: 11400000, guid: 3236764cb6178ee428fb3eb710482119, type: 2}
   - {fileID: 11400000, guid: 4c4e893d3690b9242b66f3389d3e40ba, type: 2}
