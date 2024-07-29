@@ -1,0 +1,18 @@
+{
+    "name": "TanksAdventure.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6b21fc4c27b393d4b98df39e52d542d1"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

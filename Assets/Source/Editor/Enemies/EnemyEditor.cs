@@ -44,6 +44,13 @@ namespace Enemies
 
         private SerializedProperty _debugTarget;
 
+        public override void OnInspectorGUI()
+        {
+            DrawMain();
+            DrawAdditions();
+            serializedObject.ApplyModifiedProperties();
+        }
+
         private void OnEnable()
         {
             _animator = serializedObject.FindProperty(nameof(_animator));
@@ -80,13 +87,6 @@ namespace Enemies
             _clusterCount = serializedObject.FindProperty(nameof(_clusterCount));
 
             _debugTarget = serializedObject.FindProperty(nameof(_debugTarget));
-        }
-
-        public override void OnInspectorGUI()
-        {
-            DrawMain();
-            DrawAdditions();
-            serializedObject.ApplyModifiedProperties();
         }
 
         private void DrawMain()
