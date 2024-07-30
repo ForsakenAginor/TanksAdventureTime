@@ -7,11 +7,7 @@ namespace Assets.Source.Sound.AudioMixer
 {
     public class SoundInitializer : MonoBehaviour
     {
-        //private readonly AudioData _audioData = new ();
-
-        //
-        [SerializeField] private SaveService _saveService;
-        //
+        private readonly AudioData _audioData = new();
 
         [Header("AudioSources")]
         [SerializeField] private List<AudioSource> _allSources;
@@ -30,24 +26,13 @@ namespace Assets.Source.Sound.AudioMixer
 
         public void Init()
         {
-            //
-            SoundSettingsData soundSettingsData = _saveService.LoadSoundSettingData();
-            _masterVolumeSlider.value = soundSettingsData.MasterVolume;
-            _effectsVolumeSlider.value = soundSettingsData.EffectVolume;
-            _musicVolumeSlider.value = soundSettingsData.MusicVolume;
+            _masterVolumeSlider.value = _audioData.GetMasterVolume();
+            _effectsVolumeSlider.value = _audioData.GetEffectsVolume();
+            _musicVolumeSlider.value = _audioData.GetMusicVolume();
 
-            _masterChanger = new(_allSources, soundSettingsData.MasterVolume);
-            _effectsChanger = new(_effectsSources, soundSettingsData.EffectVolume);
-            _musicChanger = new(_musicSources, soundSettingsData.MusicVolume);
-            //
-
-            //_masterVolumeSlider.value = _audioData.GetMasterVolume();
-            //_effectsVolumeSlider.value = _audioData.GetEffectsVolume();
-            //_musicVolumeSlider.value = _audioData.GetMusicVolume();
-
-            //_masterChanger = new(_allSources, _audioData.GetMasterVolume());
-            //_effectsChanger = new(_effectsSources, _audioData.GetEffectsVolume());
-            //_musicChanger = new(_musicSources, _audioData.GetMusicVolume());
+            _masterChanger = new(_allSources, _audioData.GetMasterVolume());
+            _effectsChanger = new(_effectsSources, _audioData.GetEffectsVolume());
+            _musicChanger = new(_musicSources, _audioData.GetMusicVolume());
             VolumeChangeView masterChangerView = new(_masterChanger, _masterVolumeSlider);
             VolumeChangeView effectsChangerView = new(_effectsChanger, _effectsVolumeSlider);
             VolumeChangeView musicChangerView = new(_musicChanger, _musicVolumeSlider);
@@ -55,16 +40,9 @@ namespace Assets.Source.Sound.AudioMixer
 
         public void SaveSettings()
         {
-            SoundSettingsData soundSettingsData = new()
-            {
-                MasterVolume = _masterVolumeSlider.value,
-                EffectVolume = _effectsVolumeSlider.value,
-                MusicVolume = _musicVolumeSlider.value,
-            };
-            _saveService.SavingSoundSettings(soundSettingsData);
-            //_audioData.SaveMasterVolume(_masterVolumeSlider.value);
-            //_audioData.SaveEffectsVolume(_effectsVolumeSlider.value);
-            //_audioData.SaveMusicVolume(_musicVolumeSlider.value);
+            _audioData.SaveMasterVolume(_masterVolumeSlider.value);
+            _audioData.SaveEffectsVolume(_effectsVolumeSlider.value);
+            _audioData.SaveMusicVolume(_musicVolumeSlider.value);
         }
 
         public void AddMusicSource(AudioSource music)

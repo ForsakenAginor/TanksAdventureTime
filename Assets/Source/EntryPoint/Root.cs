@@ -49,7 +49,8 @@ namespace Assets.Source.EntryPoint
         [SerializeField] private int _bounty;
         private CurrencyCalculator _currencyCalculator;
         private int _currentLevel;
-        // private LevelData _levelData;
+        //private LevelData _levelData;
+
         //
         [SerializeField] private SaveService _saveService;
         //
@@ -66,10 +67,9 @@ namespace Assets.Source.EntryPoint
 
         private void Start()
         {
-            //_soundInitializer.Init();
-            // _levelData = new();
+            _soundInitializer.Init();
+            //_levelData = new();
             // _currentLevel = _levelData.GetLevel();
-            _currentLevel = _saveService.Level;
             DifficultySystem difficultySystem = new(_currentLevel);
 
             LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
@@ -86,7 +86,7 @@ namespace Assets.Source.EntryPoint
             _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
 
-            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _saveService.Level); //_levelData.GetLevel());
+            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);// _levelData.GetLevel());
 
             CurrencyData currencyData = new();
             Wallet wallet = new(currencyData);
@@ -101,31 +101,21 @@ namespace Assets.Source.EntryPoint
             Time.timeScale = 0f;
         }
 
-        //
-        private void InitSound()
-        {
-            Debug.Log("ED");
-            _soundInitializer.Init();
-        }
-        //
-
         private void OnEnable()
         {
-            //
-            _saveService.SaveGameData.Loaded += InitSound;
-            //
+            _saveService.Loaded += SetLevel;
             _playerDamageTaker.PlayerDied += OnPlayerDied;
             _winCondition.PlayerWon += OnPlayerWon;
         }
 
         private void OnDisable()
         {
-            //
-            _saveService.SaveGameData.Loaded -= InitSound;
-            //
+            _saveService.Loaded -= SetLevel;
             _playerDamageTaker.PlayerDied -= OnPlayerDied;
             _winCondition.PlayerWon -= OnPlayerWon;
         }
+
+        private void SetLevel() => _currentLevel = _saveService.Level;
 
         public void Respawn()
         {

@@ -6,26 +6,25 @@ public class SaveGameData
 {
     private GameData _gameData;
 
-    public event Action Loaded;
+    public event Action<GameData> Loaded;
 
     public void Save(GameData gameData)
     {
         string json = JsonUtility.ToJson(gameData);
         Debug.Log(json);
-        PlayerAccount.SetCloudSaveData(json);
-        //PlayerPrefs.SetString("data", json);
+        //PlayerAccount.SetCloudSaveData(json);
+        PlayerPrefs.SetString("data", json);
     }
 
-    public GameData Load()
+    public void Load()
     {
-        PlayerAccount.GetCloudSaveData(Load);
-        //Load(PlayerPrefs.GetString("data"));
-        return _gameData;
+        // PlayerAccount.GetCloudSaveData(Load);
+        Load(PlayerPrefs.GetString("data"));
     }
 
     private void Load(string value)
     {
         _gameData = JsonUtility.FromJson<GameData>(value);
-        Loaded?.Invoke();
+        Loaded?.Invoke(_gameData);
     }
 }

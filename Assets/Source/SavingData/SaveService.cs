@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SaveService : MonoBehaviour
@@ -5,7 +6,7 @@ public class SaveService : MonoBehaviour
     private SaveGameData _saveGameData = new();
     private GameData _gameData = new();
 
-    public SaveGameData SaveGameData => _saveGameData;
+    public event Action Loaded;
 
     private string[] _products;
 
@@ -17,21 +18,11 @@ public class SaveService : MonoBehaviour
 
     public int CompletedTraining { get; private set; }
 
-    private void Awake()
-    {
-        LoadProgresss();
-        Level = _gameData.Level;
-        Coins = _gameData.Coins;
-        Helper = _gameData.Helper;
-        CompletedTraining = _gameData.CompletedTraining;
-        _products = new string[] { "Cot", "Popa", "Dada" };
-        Debug.Log($"{Level} {Coins} {Helper} {CompletedTraining}");
-        Debug.Log($" {_gameData.MasterVolume} {_gameData.MusicVolume} {_gameData.EffectVolume}");
-    }
-    public void LoadProgresss()
-    {
-        _gameData = _saveGameData.Load();
-    }
+    private void Start() => _saveGameData.Load();
+
+    private void OnEnable() => _saveGameData.Loaded += Fill;
+
+    private void OnDisable() => _saveGameData.Loaded -= Fill;
 
     public void SaveLevel(int level)
     {
@@ -53,26 +44,23 @@ public class SaveService : MonoBehaviour
 
     public int GetPlayerHelper()
     {
-        _gameData = _saveGameData.Load();
         return _gameData.Helper;
     }
 
-    public void SavingSoundSettings(SoundSettingsData soundSettingsData)
+    public void SaveProducts(string[] products)
     {
-        _gameData.EffectVolume = soundSettingsData.EffectVolume;
-        _gameData.MusicVolume = soundSettingsData.MusicVolume;
-        _gameData.MasterVolume = soundSettingsData.MasterVolume;
+        _products = products;
         _saveGameData.Save(_gameData);
     }
 
-    public SoundSettingsData LoadSoundSettingData()
+    private void Fill(GameData gameData)
     {
-        _gameData = _saveGameData.Load();
-        return new SoundSettingsData()
-        {
-            EffectVolume = _gameData.EffectVolume,
-            MasterVolume = _gameData.MasterVolume,
-            MusicVolume = _gameData.MusicVolume
-        };
+        _gameData = gameData;
+        Level = _gameData.Level;
+        Coins = _gameData.Coins;
+        Helper = _gameData.Helper;
+        CompletedTraining = _gameData.CompletedTraining;
+        Debug.Log($"{Level} {Coins} {Helper} {CompletedTraining}");
+        Loaded?.Invoke();
     }
 }
