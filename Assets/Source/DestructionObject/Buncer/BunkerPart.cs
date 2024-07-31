@@ -1,11 +1,10 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BunkerPart : MonoBehaviour
 {
     [SerializeField] private Transform _destruction;
 
-    private DestroyedPartBunker[] _buncerDestructionObjects;
+    private DestroyedPartBunker[] _bunkerDestructionObjects;
     private Transform _transform;
 
     public bool IsDestroyed { get; private set; } = false;
@@ -19,8 +18,8 @@ public class BunkerPart : MonoBehaviour
         _destruction.gameObject.SetActive(true);
         gameObject.SetActive(false);
 
-        for (int i = 0; i < _buncerDestructionObjects.Length; i++)
-            _buncerDestructionObjects[i].React(_transform);
+        for (int i = 0; i < _bunkerDestructionObjects.Length; i++)
+            _bunkerDestructionObjects[i].React(_transform);
 
         IsDestroyed = true;
     }
@@ -28,9 +27,9 @@ public class BunkerPart : MonoBehaviour
     private void Init()
     {
         _transform = transform;
-        _buncerDestructionObjects = new DestroyedPartBunker[_destruction.childCount];
+        _bunkerDestructionObjects = new DestroyedPartBunker[_destruction.childCount];
 
-        for (int i = 0; i < _buncerDestructionObjects.Length; i++)
-            _buncerDestructionObjects[i] = _destruction.GetChild(i).AddComponent<DestroyedPartBunker>();
+        for (int i = 0; i < _bunkerDestructionObjects.Length; i++)
+            _bunkerDestructionObjects[i] = _destruction.GetChild(i).gameObject.AddComponent<DestroyedPartBunker>();
     }
 }

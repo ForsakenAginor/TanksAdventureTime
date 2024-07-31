@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Source/Editor/UXML/GoodsStyle.uss?fileID=7433441132597879392&amp;guid=ff4f931724c71da4db5d047b3b8b20c1&amp;type=3#GoodsStyle" />
+    <ui:Label tabindex="-1" text="Goods" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" style="opacity: 1; white-space: nowrap; -unity-text-align: upper-center; font-size: 18px;" />
+    <ui:ListView focusable="true" name="MainList" class="background" />
+</ui:UXML>

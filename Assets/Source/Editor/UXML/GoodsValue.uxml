@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Source/Editor/UXML/GoodsStyle.uss?fileID=7433441132597879392&amp;guid=ff4f931724c71da4db5d047b3b8b20c1&amp;type=3#GoodsStyle" />
+    <ui:VisualElement name="Item" class="overflowBackground" style="flex-grow: 0; flex-direction: column; flex-shrink: 0; max-width: 100%; margin-top: 7px; margin-left: 0;">
+        <ui:VisualElement name="Line_0" class="row" style="max-width: initial;">
+            <ui:VisualElement name="Panel_1" style="flex-grow: 1; max-width: initial;">
+                <ui:Label tabindex="0" text="Purchase" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PurchaseLabel" class="text" style="max-width: initial; -unity-text-align: middle-center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Panel_2" style="flex-grow: 0; max-width: initial; flex-direction: row-reverse;">
+                <ui:Button text="-" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteItem" style="min-width: 7%; height: 16px; max-width: initial; white-space: nowrap;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Line_1" class="row" style="max-width: initial; flex-direction: row;">
+            <ui:Label tabindex="0" text="Value" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ValueLable" class="text" style="max-width: initial; -unity-text-align: middle-center;" />
+            <ui:VisualElement name="Panel_1" style="flex-grow: 1; max-width: initial;">
+                <ui:IntegerField name="IntValue" style="min-width: 60px; display: none;" />
+                <ui:FloatField name="FloatValue" style="min-width: 60px; display: none;" />
+                <ui:Toggle name="BoolValue" style="min-width: 60px; display: none;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="Line_2" class="row" style="flex-direction: row; max-width: initial;">
+            <ui:Label tabindex="-1" text="Price" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PriceLabel" class="text" style="max-width: initial; -unity-text-align: middle-center;" />
+            <ui:VisualElement name="Panel_1" style="flex-grow: 1; max-width: initial;">
+                <ui:IntegerField name="Price" style="max-width: initial;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

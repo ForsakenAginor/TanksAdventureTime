@@ -16,11 +16,11 @@ namespace Enemies
         [SerializeField] private HitConfiguration _hitConfiguration;
         [SerializeField] private ParticleSystem _deathParticle;
         [SerializeField] private AudioSource _deathSound;
-        [SerializeField] private string _deathLayerName = "Ignore Raycast";
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _thinkDelay;
         [SerializeField] private EnemyTypes _enemyType;
+        [SerializeField] private string _deathLayerName = "Ignore Raycast";
         [SerializeField] private Animator _animator;
 
         [Header("Building")]
@@ -129,16 +129,10 @@ namespace Enemies
             _machine = new FiniteStateMachine<CharacterState>();
             _rotator = new CharacterRotator(_rotationSpeed, _rotationPoint, _target);
             _thinker = new CharacterThinker(_thinkDelay);
-            _presenter = new EnemyPresenter(
-                _machine,
-                _thinker,
-                _collision,
-                new EnemyTestHealth(_maxHealth),
-                _hitConfiguration,
-                _death);
             _weapon = CreateWeapon(_target, audioCreationCallback);
             _fieldOfView = CreateFieldOfView();
             _death = CreateDeathEffect();
+            _presenter = new EnemyPresenter(_machine, _thinker, _collision, GetHealth(), _hitConfiguration, _death);
 
             if (_isOnBuilding == false || _enemyType == EnemyTypes.Bunker)
                 return;
@@ -149,32 +143,29 @@ namespace Enemies
 
         private void InitMachine()
         {
+            _machine.AddStates(CreateStates());
+
             if (_animation != null)
             {
-                _machine.AddStates(CreateStates());
                 _animation.Init(_animator, () => _machine.SetState(typeof(CharacterIdleState)));
                 return;
             }
 
-            _machine.AddStates(CreateNonAnimatedStates());
             _machine.SetState(typeof(CharacterIdleState));
         }
 
         private IWeapon CreateWeapon(IDamageableTarget target, Action<AudioSource> audioCreationCallback)
         {
-            AudioPitcher sound = new AudioPitcher(_fireSound, _minPitch, _maxPitch);
-
             switch (_enemyType)
             {
                 case EnemyTypes.Standard:
                 case EnemyTypes.Bunker:
-                    return new Gun(_hitTemplate, _viewPoint, _target, _shootingEffect, sound, audioCreationCallback);
+                    return new Gun(_hitTemplate, _viewPoint, _target, _shootingEffect, audioCreationCallback);
 
                 case EnemyTypes.Mortar:
                     return new Mortar(
                         _viewPoint,
                         _target,
-                        sound,
                         new EnemyProjectileFactory(
                             _projectile,
                             _hitTemplate,
@@ -229,6 +220,26 @@ namespace Enemies
                         _destroyToken);
 
                 case EnemyTypes.Bunker:
+                    return new BunkerDeathEffect(_deathParticle, _deathSound);
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private IDamageable GetHealth()
+        {
+            switch (_enemyType)
+            {
+                case EnemyTypes.Standard:
+                case EnemyTypes.Mortar:
+                    return new EnemyTestHealth(_maxHealth);
+
+                case EnemyTypes.Bunker:
+                    return TryGetComponent(out Bunker bunker)
+                        ? bunker.Init(_maxHealth)
+                        : throw new ArgumentNullException(nameof(Bunker));
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -247,32 +258,40 @@ namespace Enemies
 
         private Dictionary<Type, FiniteStateMachineState<CharacterState>> CreateStates()
         {
-            return new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
-            {
-                {
-                    typeof(CharacterIdleState),
-                    new CharacterIdleState(_machine, _fieldOfView, _animation)
-                },
-                {
-                    typeof(CharacterAttackState),
-                    new CharacterAttackState(_machine, _fieldOfView, _rotator, _weapon, _animation)
-                },
-            };
-        }
+            AudioPitcher sound = new AudioPitcher(_fireSound, _minPitch, _maxPitch);
 
-        private Dictionary<Type, FiniteStateMachineState<CharacterState>> CreateNonAnimatedStates()
-        {
-            return new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
+            switch (_enemyType)
             {
-                {
-                    typeof(CharacterIdleState),
-                    new CharacterIdleState(_machine, _fieldOfView)
-                },
-                {
-                    typeof(CharacterAttackState),
-                    new CharacterAttackState(_machine, _fieldOfView, _rotator, _weapon)
-                },
-            };
+                case EnemyTypes.Standard:
+                case EnemyTypes.Mortar:
+                    return new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
+                    {
+                        {
+                            typeof(CharacterIdleState),
+                            new CharacterIdleState(_machine, _fieldOfView, _animation)
+                        },
+                        {
+                            typeof(CharacterAttackState),
+                            new SingleAttackState(_machine, _fieldOfView, _rotator, _weapon, sound, _animation)
+                        },
+                    };
+
+                case EnemyTypes.Bunker:
+                    return new Dictionary<Type, FiniteStateMachineState<CharacterState>>()
+                    {
+                        {
+                            typeof(CharacterIdleState),
+                            new CharacterIdleState(_machine, _fieldOfView)
+                        },
+                        {
+                            typeof(CharacterAttackState),
+                            new LoopAttackState(_machine, _fieldOfView, _rotator, _weapon, sound)
+                        },
+                    };
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void OnDrawGizmos()

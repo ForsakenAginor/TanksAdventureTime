@@ -7,13 +7,13 @@ using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.OnDeathEffect;
-using Assets.Source.Shop;
 using Assets.Source.Sound.AudioMixer;
 using Assets.Source.UI;
 using Assets.Source.UI.Menu.Leaderboard;
 using PlayerHelpers;
 using System;
 using System.Collections.Generic;
+using Shops;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint

@@ -19,6 +19,7 @@
 
         public override void Enter()
         {
+            OnEntered();
             PlayAnimation(CharacterAnimations.Fire);
             _rotator.StartRotation();
         }
@@ -26,14 +27,28 @@
         public override void Exit()
         {
             _rotator.StopRotation();
+            OnExited();
         }
 
         public override void Update()
         {
             _weapon.Shoot();
+            OnUpdated();
 
             if (FieldOfView.CanView() == false || FieldOfView.IsBlockingByWall() == true)
                 SetState<CharacterIdleState>();
+        }
+
+        public virtual void OnEntered()
+        {
+        }
+
+        public virtual void OnExited()
+        {
+        }
+
+        public virtual void OnUpdated()
+        {
         }
     }
 }

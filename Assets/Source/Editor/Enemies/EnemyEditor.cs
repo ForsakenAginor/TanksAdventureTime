@@ -44,6 +44,13 @@ namespace Enemies
 
         private SerializedProperty _debugTarget;
 
+        public override void OnInspectorGUI()
+        {
+            DrawMain();
+            DrawAdditions();
+            serializedObject.ApplyModifiedProperties();
+        }
+
         private void OnEnable()
         {
             _animator = serializedObject.FindProperty(nameof(_animator));
@@ -82,22 +89,13 @@ namespace Enemies
             _debugTarget = serializedObject.FindProperty(nameof(_debugTarget));
         }
 
-        public override void OnInspectorGUI()
-        {
-            DrawMain();
-            DrawAdditions();
-            serializedObject.ApplyModifiedProperties();
-        }
-
         private void DrawMain()
         {
             EditorGUILayout.PropertyField(_viewPoint);
-            EditorGUILayout.PropertyField(_thinkDelay);
             EditorGUILayout.PropertyField(_rotationPoint);
             EditorGUILayout.PropertyField(_hitConfiguration);
             EditorGUILayout.PropertyField(_deathParticle);
             EditorGUILayout.PropertyField(_deathSound);
-            EditorGUILayout.PropertyField(_deathLayerName);
             EditorGUILayout.PropertyField(_maxHealth);
             EditorGUILayout.PropertyField(_rotationSpeed);
 
@@ -110,6 +108,7 @@ namespace Enemies
 
             if ((EnemyTypes)_enemyType.enumValueIndex != EnemyTypes.Bunker)
             {
+                EditorGUILayout.PropertyField(_deathLayerName);
                 EditorGUILayout.PropertyField(_animator);
                 EditorGUILayout.PropertyField(_isOnBuilding);
                 EditorGUILayout.PropertyField(_ownCollider);
