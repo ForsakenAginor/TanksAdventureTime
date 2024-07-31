@@ -11,7 +11,6 @@ namespace Assets.Source.UI
         private void Start()
         {
             _soundInitializer.Init();
-
 #if UNITY_WEBGL && !UNITY_EDITOR
         YandexGamesSdk.GameReady();
 #endif
