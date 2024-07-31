@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Lean.Localization;
 using UnityEngine;
@@ -16,8 +18,9 @@ namespace Shops
         [SerializeField] private float _forbidDuration;
         [SerializeField] private float _forbidStrength;
 
-        private RectTransform _purchasePoint;
         private Action _onClickCallback;
+        private CancellationToken _token;
+        private RectTransform _purchasePoint;
 
         public GoodNames Good { get; private set; }
 
@@ -25,6 +28,7 @@ namespace Shops
         {
             Good = good;
             _onClickCallback = onClickCallback;
+            _token = destroyCancellationToken;
             _purchasePoint = (RectTransform)_purchase.transform;
             _title.TranslationName = Good.ToString();
             _layout.enabled = false;
@@ -38,12 +42,7 @@ namespace Shops
 
         public void ShowFailure()
         {
-            _purchasePoint.DOShakeAnchorPos(_forbidDuration);
-            _purchasePoint.DOShakeRotation(_forbidDuration, _forbidStrength);
-            _purchasePoint.DOShakeScale(_forbidDuration);
-            Color start = _purchase.image.color;
-            _purchase.image.DOColor(Color.red, _forbidDuration / (float)ValueConstants.Two).OnComplete(
-                () => _purchase.image.DOColor(start, _forbidDuration / (float)ValueConstants.Two));
+            PlayAnimation().Forget();
         }
 
         public void HidePrice()
@@ -66,5 +65,21 @@ namespace Shops
         public abstract void ShowMaximum();
 
         public abstract void ShowNext((object currentValue, object nextValue, int price) purchase);
+
+        private async UniTaskVoid PlayAnimation()
+        {
+            SetButtonInteractable(false);
+            Color start = _purchase.image.color;
+
+            await UniTask.WhenAll(
+                _purchasePoint.DOShakeAnchorPos(_forbidDuration).WithCancellation(_token),
+                _purchasePoint.DOShakeRotation(_forbidDuration, _forbidStrength).WithCancellation(_token),
+                _purchasePoint.DOShakeScale(_forbidDuration).WithCancellation(_token),
+                _purchase.image.DOColor(Color.red, _forbidDuration / (float)ValueConstants.Two)
+                    .WithCancellation(_token));
+
+            await _purchase.image.DOColor(start, _forbidDuration / (float)ValueConstants.Two).WithCancellation(_token);
+            SetButtonInteractable(true);
+        }
     }
 }
