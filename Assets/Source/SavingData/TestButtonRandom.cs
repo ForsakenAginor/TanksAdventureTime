@@ -20,5 +20,6 @@ public class TestButtonRandom : MonoBehaviour
     {
         _saveService.SaveLevel(Random.Range(1, 6));
         _saveService.SavePlayerHelper(Random.Range(1, 6));
+        _saveService.SaveCompletedTraining(true);
     }
 }

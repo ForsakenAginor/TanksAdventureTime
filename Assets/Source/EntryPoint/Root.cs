@@ -47,20 +47,12 @@ namespace Assets.Source.EntryPoint
         [Header("GameProgress")]
         [SerializeField] private WinCondition _winCondition;
         [SerializeField] private int _bounty;
+        [SerializeField] private SaveService _saveService;
         private CurrencyCalculator _currencyCalculator;
         private int _currentLevel;
-        //private LevelData _levelData;
-
-        //
-        [SerializeField] private SaveService _saveService;
-        //
 
         [Header("Other")]
         [SerializeField] private Silencer _silencer;
-
-        //
-        public int CurrentLevel => _currentLevel;
-        //
 
         public Action PlayerDied;
         public Action PlayerRespawned;
@@ -68,8 +60,6 @@ namespace Assets.Source.EntryPoint
         private void Start()
         {
             _soundInitializer.Init();
-            //_levelData = new();
-            // _currentLevel = _levelData.GetLevel();
             DifficultySystem difficultySystem = new(_currentLevel);
 
             LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
@@ -85,8 +75,6 @@ namespace Assets.Source.EntryPoint
             _enemiesManager = new(_enemies);
             _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
-
-            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);// _levelData.GetLevel());
 
             CurrencyData currencyData = new();
             Wallet wallet = new(currencyData);
@@ -115,7 +103,6 @@ namespace Assets.Source.EntryPoint
             _winCondition.PlayerWon -= OnPlayerWon;
         }
 
-        private void SetLevel() => _currentLevel = _saveService.Level;
 
         public void Respawn()
         {
@@ -124,6 +111,12 @@ namespace Assets.Source.EntryPoint
             _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();
             PlayerRespawned.Invoke();
+        }
+
+        private void SetLevel()
+        {
+            _currentLevel = _saveService.Level;
+            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
         }
 
         private void OnPlayerWon()
@@ -135,7 +128,6 @@ namespace Assets.Source.EntryPoint
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
             _saveService.SaveLevel(++_currentLevel);
-            //_levelData.SaveLevel(++_currentLevel);
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }

@@ -18,7 +18,7 @@ public class SaveService : MonoBehaviour
 
     public int CompletedTraining { get; private set; }
 
-    private void Start() => _saveGameData.Load();
+    private void Awake() => _saveGameData.Load();
 
     private void OnEnable() => _saveGameData.Loaded += Fill;
 
@@ -60,7 +60,7 @@ public class SaveService : MonoBehaviour
         Coins = _gameData.Coins;
         Helper = _gameData.Helper;
         CompletedTraining = _gameData.CompletedTraining;
-        Debug.Log($"{Level} {Coins} {Helper} {CompletedTraining}");
+        Debug.Log($"Fill {Level} {Coins} {Helper} {CompletedTraining}");
         Loaded?.Invoke();
     }
 }
