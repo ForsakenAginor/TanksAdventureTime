@@ -15,9 +15,8 @@ namespace Characters
             Transform viewPoint,
             IPlayerTarget target,
             ParticleSystem shootingEffect,
-            AudioPitcher sound,
             Action<AudioSource> audioCreationCallback)
-            : base(viewPoint, target, sound)
+            : base(viewPoint, target)
         {
             _hitPool = new ObjectPool<HitEffect>(hitEffect);
             _shootingEffect = shootingEffect;

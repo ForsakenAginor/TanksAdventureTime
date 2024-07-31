@@ -10,9 +10,8 @@ namespace Characters
         public Mortar(
             Transform viewPoint,
             IDamageableTarget target,
-            AudioPitcher sound,
             IProjectileFactory factory)
-            : base(viewPoint, target, sound)
+            : base(viewPoint, target)
         {
             _factory = factory;
         }

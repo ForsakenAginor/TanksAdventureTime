@@ -200,7 +200,13 @@ namespace PlayerHelpers
                     },
                     {
                         typeof(CharacterAttackState),
-                        new CharacterAttackState(_machine, _fieldOfView, _rotator, _weapon, _animation)
+                        new SingleAttackState(
+                            _machine,
+                            _fieldOfView,
+                            _rotator,
+                            _weapon,
+                            new AudioPitcher(_fireSound, _minPitch, _maxPitch),
+                            _animation)
                     },
                 });
 
@@ -243,7 +249,6 @@ namespace PlayerHelpers
             return new MachineGun(
                 _viewPoint,
                 null,
-                new AudioPitcher(_fireSound, _minPitch, _maxPitch),
                 _shootingEffect);
         }
 
@@ -261,7 +266,6 @@ namespace PlayerHelpers
             return new Mortar(
                 _viewPoint,
                 null,
-                new AudioPitcher(_fireSound, _minPitch, _maxPitch),
                 new PlayerHelperProjectileFactory(
                     _projectile,
                     _hitTemplate,
