@@ -2,7 +2,7 @@
 
 namespace Shops
 {
-    public class Wallet
+    public class Wallet : IWallet
     {
         private CurrencyData _currencyData;
         private int _currentCurrency;
