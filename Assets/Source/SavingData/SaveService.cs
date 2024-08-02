@@ -2,7 +2,7 @@ using Shops;
 using System;
 using UnityEngine;
 
-public class SaveService : MonoBehaviour
+public class SaveService : MonoBehaviour, ISave
 {
     private SaveGameData _saveGameData = new();
     private GameData _gameData = new();
@@ -78,5 +78,16 @@ public class SaveService : MonoBehaviour
         }
 
         Loaded?.Invoke();
+    }
+
+    public int GetCurrency()
+    {
+        return Currency;
+    }
+
+    public void Save(int currency)
+    {
+        _gameData.Currency = currency;
+        _saveGameData.Save(_gameData);
     }
 }
