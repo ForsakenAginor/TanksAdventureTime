@@ -1,7 +1,11 @@
-﻿namespace Shops
+﻿using System;
+
+namespace Shops
 {
     public interface ICard
     {
+        public event Action<ICard> Clicked;
+
         public GoodNames Good { get; }
 
         public void ShowFailure();
