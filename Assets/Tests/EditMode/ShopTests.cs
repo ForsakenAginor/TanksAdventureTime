@@ -64,7 +64,7 @@ public class ShopTests
         Action<ICard> onCardCreated = null)
     {
         var goodsContent = CreateTestGoodsContent();
-        Wallet wallet = new Wallet(new CurrencyData());
+        Wallet wallet = new Wallet(new SaveService());
         Shop shop = new Shop(goodsContent, CreateStartPurchases());
         List<(GoodNames good, object value)> viewContent =
             goodsContent.Select(item => (item.Key, item.Value[0].value)).ToList();

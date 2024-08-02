@@ -1,3 +1,4 @@
+using Shops;
 using System;
 using UnityEngine;
 
@@ -8,11 +9,9 @@ public class SaveService : MonoBehaviour
 
     public event Action Loaded;
 
-    private string[] _products;
-
     public int Level { get; private set; }
 
-    public int Coins { get; private set; }
+    public int Currency { get; private set; }
 
     public int Helper { get; private set; }
 
@@ -24,43 +23,60 @@ public class SaveService : MonoBehaviour
 
     private void OnDisable() => _saveGameData.Loaded -= Fill;
 
-    public void SaveLevel(int level)
+    public void Save()
+    {
+        _saveGameData.Save(_gameData);
+    }
+
+    public void SetCurrencyData(int currency)
+    {
+        _gameData.Currency = currency;
+    }
+
+    public void SetLevelData(int level)
     {
         _gameData.Level = level;
-        _saveGameData.Save(_gameData);
     }
 
-    public void SaveCompletedTraining(bool isCompletedTraining)
+    public void SetCompletedTrainingData(bool isCompletedTraining)
     {
         _gameData.CompletedTraining = isCompletedTraining ? 1 : 0;
-        _saveGameData.Save(_gameData);
     }
 
-    public void SavePlayerHelper(int indexHelper)
+    public void SetPlayerHelperData(int indexHelper)
     {
         _gameData.Helper = indexHelper;
-        _saveGameData.Save(_gameData);
     }
 
-    public int GetPlayerHelper()
+    public int GetPlayerHelperData()
     {
         return _gameData.Helper;
     }
 
-    public void SaveProducts(string[] products)
+    public void SavePurchasesData(Purchases<int> purchases)
     {
-        _products = products;
-        _saveGameData.Save(_gameData);
+        _gameData.Purchases = purchases;
+    }
+
+    public Purchases<int> GetPurchasesData()
+    {
+        return _gameData.Purchases;
     }
 
     private void Fill(GameData gameData)
     {
         _gameData = gameData;
         Level = _gameData.Level;
-        Coins = _gameData.Coins;
+        Currency = _gameData.Currency;
         Helper = _gameData.Helper;
         CompletedTraining = _gameData.CompletedTraining;
-        Debug.Log($"Fill {Level} {Coins} {Helper} {CompletedTraining}");
+        Debug.Log($"Fill {Level} {Currency} {Helper} {CompletedTraining}");
+
+        if (_gameData.Purchases.Objects.Count != 0)
+        {
+            Debug.Log($"Key {_gameData.Purchases.Objects[0].Key}, Value {_gameData.Purchases.Objects[0].Value}");
+        }
+
         Loaded?.Invoke();
     }
 }

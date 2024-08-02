@@ -57,9 +57,24 @@ namespace Assets.Source.EntryPoint
         public Action PlayerDied;
         public Action PlayerRespawned;
 
-        private void Start()
+        private void OnEnable()
+        {
+            _saveService.Loaded += StartRoot;
+            _playerDamageTaker.PlayerDied += OnPlayerDied;
+            _winCondition.PlayerWon += OnPlayerWon;
+        }
+
+        private void OnDisable()
+        {
+            _saveService.Loaded -= StartRoot;
+            _playerDamageTaker.PlayerDied -= OnPlayerDied;
+            _winCondition.PlayerWon -= OnPlayerWon;
+        }
+
+        private void StartRoot()
         {
             _soundInitializer.Init();
+            _currentLevel = _saveService.Level;
             DifficultySystem difficultySystem = new(_currentLevel);
 
             LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
@@ -75,9 +90,9 @@ namespace Assets.Source.EntryPoint
             _enemiesManager = new(_enemies);
             _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
+            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
 
-            CurrencyData currencyData = new();
-            Wallet wallet = new(currencyData);
+            Wallet wallet = new(_saveService);
             _currencyCalculator = new(_bounty, wallet);
 
             InterstitialAdvertiseShower advertiseShower = new(_silencer);
@@ -89,21 +104,6 @@ namespace Assets.Source.EntryPoint
             Time.timeScale = 0f;
         }
 
-        private void OnEnable()
-        {
-            _saveService.Loaded += SetLevel;
-            _playerDamageTaker.PlayerDied += OnPlayerDied;
-            _winCondition.PlayerWon += OnPlayerWon;
-        }
-
-        private void OnDisable()
-        {
-            _saveService.Loaded -= SetLevel;
-            _playerDamageTaker.PlayerDied -= OnPlayerDied;
-            _winCondition.PlayerWon -= OnPlayerWon;
-        }
-
-
         public void Respawn()
         {
             _playerDamageTaker.transform.SetPositionAndRotation(_spawnPoint, Quaternion.identity);
@@ -111,12 +111,6 @@ namespace Assets.Source.EntryPoint
             _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();
             PlayerRespawned.Invoke();
-        }
-
-        private void SetLevel()
-        {
-            _currentLevel = _saveService.Level;
-            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
         }
 
         private void OnPlayerWon()
@@ -127,7 +121,8 @@ namespace Assets.Source.EntryPoint
 #if UNITY_WEBGL && !UNITY_EDITOR
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
-            _saveService.SaveLevel(++_currentLevel);
+            _saveService.SetLevelData(++_currentLevel);
+            _saveService.Save();
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }
