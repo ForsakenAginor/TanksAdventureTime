@@ -12,23 +12,32 @@ public abstract class UpdatableConfiguration<TK, TV> : ScriptableObject
 
     private void OnValidate()
     {
-        foreach (var pair in Create().Where(pair => _content.Exists(item => Equals(item.Key, pair.Key)) == false))
-            _content.Add(pair);
-
-        OnValidateEnd();
+        UpdateContent(_content);
+        OnEndValidate();
     }
 
-    public virtual void OnValidateEnd()
+    public virtual void OnEndValidate()
     {
     }
 
-    private List<SerializedPair<TK, TV>> Create()
+    public void UpdateContent<T1, T2>(List<SerializedPair<T1, T2>> content)
     {
-        List<SerializedPair<TK, TV>> result = new ();
-        TV value = default;
+        foreach (SerializedPair<T1, T2> pair in Create<T1, T2>())
+        {
+            if (content.Exists(item => Equals(item.Key, pair.Key)) == true)
+                continue;
 
-        foreach (TK type in Enum.GetValues(typeof(TK)))
-            result.Add(new SerializedPair<TK, TV>(type, value));
+            content.Add(pair);
+        }
+    }
+
+    private List<SerializedPair<T1, T2>> Create<T1, T2>()
+    {
+        List<SerializedPair<T1, T2>> result = new ();
+        T2 value = default;
+
+        foreach (T1 type in Enum.GetValues(typeof(T1)))
+            result.Add(new SerializedPair<T1, T2>(type, value));
 
         return result;
     }

@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 4794532120847902451}
   - component: {fileID: 8476237355795666608}
   m_Layer: 5
-  m_Name: Header
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 8745012722513950813}
   - component: {fileID: 4383065089165163031}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

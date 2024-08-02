@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -9,29 +10,31 @@ namespace Shops
     [CustomEditor(typeof(Goods))]
     public class GoodsEditor : Editor
     {
-        private const string AddButton = "AddButton";
-        private const string MainList = "MainList";
-        private const string Item = "Item";
-        private const string ItemGood = "ItemGood";
-        private const string DeleteItem = "DeleteItem";
-        private const string ItemValue = "ItemValue";
-        private const string ValueList = "ValueList";
-        private const string Foldout = "Foldout";
-        private const string Key = "Key";
-        private const string Value = "Value";
-        private const string IntValue = "IntValue";
-        private const string FloatValue = "FloatValue";
-        private const string BoolValue = "BoolValue";
-        private const string Price = "Price";
+        private const string AddButton = nameof(AddButton);
+        private const string MainList = nameof(MainList);
+        private const string Item = nameof(Item);
+        private const string ItemGood = nameof(ItemGood);
+        private const string Icon = nameof(Icon);
+        private const string IconField = nameof(IconField);
+        private const string DeleteItem = nameof(DeleteItem);
+        private const string ItemValue = nameof(ItemValue);
+        private const string ValueList = nameof(ValueList);
+        private const string Foldout = nameof(Foldout);
+        private const string Key = nameof(Key);
+        private const string Value = nameof(Value);
+        private const string IntValue = nameof(IntValue);
+        private const string FloatValue = nameof(FloatValue);
+        private const string BoolValue = nameof(BoolValue);
+        private const string Price = nameof(Price);
 
         [SerializeField] private VisualTreeAsset _tree;
         [SerializeField] private VisualTreeAsset _goodItem;
         [SerializeField] private VisualTreeAsset _goodValue;
 
         private SerializedProperty _content;
+        private SerializedProperty _icons;
         private VisualElement _root;
         private VisualElement _holder;
-        private Goods _goods;
 
         public override VisualElement CreateInspectorGUI()
         {
@@ -43,8 +46,8 @@ namespace Shops
 
         private void OnEnable()
         {
-            _goods = (Goods)target;
             _content = serializedObject.FindProperty(nameof(_content));
+            _icons = serializedObject.FindProperty(nameof(_icons));
         }
 
         private VisualElement CreateElement(int id)
@@ -55,14 +58,28 @@ namespace Shops
             SerializedProperty goodValue = pairValue.FindPropertyRelative(nameof(SerializedPair<object, object>.Key));
             SerializedProperty valuesList = pairValue.FindPropertyRelative(Value);
 
+            SerializedProperty iconProperty = _icons
+                .GetArrayElementAtIndex(FindIconId((GoodNames)itemKey.enumValueIndex))
+                .FindPropertyRelative(Value);
+            Sprite icon = iconProperty.objectReferenceValue as Sprite;
+
             VisualElement element = CloneItem(_goodItem);
             Foldout foldout = element.Q<Foldout>(Foldout);
             EnumField itemValueField = element.Q<EnumField>(ItemValue);
             ListView valuesListView = element.Q<ListView>(ValueList);
+            PropertyField iconField = element.Q<PropertyField>(IconField);
+            VisualElement iconHolder = element.Q<VisualElement>(Icon);
 
-            element.Q<Button>(DeleteItem).RegisterCallback<ClickEvent>(_ => OnDeleteContent(id));
             element.Q<Button>(AddButton).RegisterCallback<ClickEvent>(_ => OnAddValue(valuesList));
             element.Q<EnumField>(ItemGood).BindProperty(itemKey);
+
+            iconField.BindProperty(iconProperty);
+            iconHolder.style.backgroundImage = new StyleBackground(icon);
+            iconField.RegisterValueChangeCallback(
+                callback =>
+                    iconHolder.style.backgroundImage =
+                        new StyleBackground(callback.changedProperty.objectReferenceValue as Sprite));
+
             itemValueField.BindProperty(goodValue);
             itemValueField.RegisterValueChangedCallback(_ => ReDraw());
 
@@ -112,6 +129,17 @@ namespace Shops
             return element.Q<VisualElement>(Item);
         }
 
+        private int FindIconId(GoodNames good)
+        {
+            for (int i = 0; i < _icons.arraySize; i++)
+            {
+                if ((GoodNames)_icons.GetArrayElementAtIndex(i).FindPropertyRelative(Key).enumValueIndex == good)
+                    return i;
+            }
+
+            throw new ArgumentOutOfRangeException(nameof(List<SerializedPair<GoodNames, Sprite>>));
+        }
+
         private void ReDraw()
         {
             _holder.RemoveFromHierarchy();
@@ -126,11 +154,6 @@ namespace Shops
                 _holder.Add(CreateElement(i));
 
             contentList.hierarchy.Add(_holder);
-        }
-
-        private void OnDeleteContent(int id)
-        {
-            OnSerializeModified(() => { _content.DeleteArrayElementAtIndex(id); });
         }
 
         private void OnDeleteValue(int id, SerializedProperty valuesList)

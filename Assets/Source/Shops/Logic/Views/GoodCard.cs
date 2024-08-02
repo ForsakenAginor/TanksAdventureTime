@@ -3,6 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Lean.Localization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,32 +13,37 @@ namespace Shops
     {
         [SerializeField] private LeanLocalizedTextMeshProUGUI _title;
         [SerializeField] private LeanLocalizedTextMeshProUGUI _purchaseLabel;
+        [SerializeField] private TextMeshProUGUI _price;
+        [SerializeField] private Image _image;
         [SerializeField] private Button _purchase;
-        [SerializeField] private GameObject _price;
-        [SerializeField] private VerticalLayoutGroup _layout;
+        [SerializeField] private GameObject _priceObject;
         [SerializeField] private float _forbidDuration;
         [SerializeField] private float _forbidStrength;
 
-        private Action _onClickCallback;
         private CancellationToken _token;
         private RectTransform _purchasePoint;
 
+        public event Action<ICard> Clicked;
+
         public GoodNames Good { get; private set; }
 
-        public void Init(GoodNames good, Action onClickCallback)
+        public Image Icon => _image;
+
+        public ICard Init(GoodNames good, Sprite icon)
         {
             Good = good;
-            _onClickCallback = onClickCallback;
+            _image.sprite = icon;
             _token = destroyCancellationToken;
             _purchasePoint = (RectTransform)_purchase.transform;
             _title.TranslationName = Good.ToString();
-            _layout.enabled = false;
-            _purchase.onClick.AddListener(_onClickCallback.Invoke);
+
+            _purchase.onClick.AddListener(OnClick);
+            return this;
         }
 
         public void Dispose()
         {
-            _purchase.onClick.RemoveListener(_onClickCallback.Invoke);
+            _purchase.onClick.RemoveListener(OnClick);
         }
 
         public void ShowFailure()
@@ -45,11 +51,18 @@ namespace Shops
             PlayAnimation().Forget();
         }
 
-        public void HidePrice()
+        public void SetPrice(int value)
         {
-            _layout.enabled = true;
-            _price.SetActive(false);
-            _layout.enabled = false;
+            _price.SetText(value.ToString());
+        }
+
+        public void HidePrice(Action onHidCallback = null)
+        {
+            if (_priceObject.activeSelf == false)
+                return;
+
+            _priceObject.SetActive(false);
+            onHidCallback?.Invoke();
         }
 
         public void ChangeButtonTranslation(string translationName)
@@ -72,14 +85,19 @@ namespace Shops
             Color start = _purchase.image.color;
 
             await UniTask.WhenAll(
-                _purchasePoint.DOShakeAnchorPos(_forbidDuration).WithCancellation(_token),
+                _purchasePoint.DOShakeAnchorPos(_forbidDuration, _forbidStrength).WithCancellation(_token),
                 _purchasePoint.DOShakeRotation(_forbidDuration, _forbidStrength).WithCancellation(_token),
-                _purchasePoint.DOShakeScale(_forbidDuration).WithCancellation(_token),
+                _purchasePoint.DOShakeScale(_forbidDuration, _forbidDuration).WithCancellation(_token),
                 _purchase.image.DOColor(Color.red, _forbidDuration / (float)ValueConstants.Two)
                     .WithCancellation(_token));
 
             await _purchase.image.DOColor(start, _forbidDuration / (float)ValueConstants.Two).WithCancellation(_token);
             SetButtonInteractable(true);
+        }
+
+        private void OnClick()
+        {
+            Clicked?.Invoke(this);
         }
     }
 }

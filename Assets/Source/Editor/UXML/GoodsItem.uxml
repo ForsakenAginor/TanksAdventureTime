@@ -6,6 +6,10 @@
                 <ui:VisualElement name="ItemContainer" style="flex-grow: 0; flex-direction: column; margin-top: 10px; margin-right: 3px; max-width: initial;">
                     <ui:EnumField label="Good" name="ItemGood" style="max-width: initial;" />
                 </ui:VisualElement>
+                <ui:VisualElement name="GoodImageContainer" style="flex-grow: 0; flex-direction: column; margin-top: 10px; margin-right: 3px; max-width: initial;">
+                    <uie:PropertyField label="Icon" name="IconField" />
+                    <ui:VisualElement name="Icon" style="flex-grow: 1; min-width: 100px; min-height: 100px; background-image: none; max-width: 100px; max-height: 100px; height: 100px; width: 100px; margin-top: 10px; margin-bottom: 10px; margin-right: 50px;" />
+                </ui:VisualElement>
                 <ui:VisualElement name="ItemValueContainer" style="margin-top: 5px; margin-right: 3px; max-width: initial;">
                     <ui:EnumField label="Value Type" name="ItemValue" style="max-width: initial;" />
                     <ui:Foldout text="Values" class="overflowBackground" style="margin-top: 7px; margin-bottom: 10px; max-width: initial;">
@@ -17,7 +21,7 @@
                 </ui:VisualElement>
             </ui:Foldout>
         </ui:VisualElement>
-        <ui:VisualElement name="Panel2" style="flex-direction: row-reverse;">
+        <ui:VisualElement name="Panel2" style="flex-direction: row-reverse; display: none;">
             <ui:Button text="-" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DeleteItem" style="height: 16px; min-width: 7%;" />
         </ui:VisualElement>
     </ui:VisualElement>

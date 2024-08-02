@@ -2,7 +2,9 @@
 {
     public enum GoodNames
     {
+        MachineGun,
+        Grenade,
         ReloadSpeed,
-        AmmoCount,
+        Health,
     }
 }
