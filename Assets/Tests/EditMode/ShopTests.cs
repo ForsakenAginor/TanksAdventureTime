@@ -28,7 +28,7 @@ public class ShopTests
 
     private Dictionary<GoodNames, List<(object value, int price)>> CreateTestGoodsContent()
     {
-        return new ()
+        return new()
         {
             {
                 GoodNames.AmmoCount,
@@ -51,7 +51,7 @@ public class ShopTests
 
     private Purchases<int> CreateStartPurchases()
     {
-        List<SerializedPair<GoodNames, int>> values = new ()
+        List<SerializedPair<GoodNames, int>> values = new()
         {
             new (GoodNames.AmmoCount, 0),
             new (GoodNames.ReloadSpeed, 0),
@@ -61,7 +61,7 @@ public class ShopTests
 
     private (Wallet wallet, Shop shop, ShopView shopView, ShopPresenter presenter) CreateBundle()
     {
-        Wallet wallet = new Wallet(new CurrencyData());
+        Wallet wallet = new Wallet(new SaveService());//(new CurrencyData());
         Shop shop = new Shop(CreateTestGoodsContent(), CreateStartPurchases());
         ShopView shopView = new ShopView();
         ShopPresenter presenter = new ShopPresenter(wallet, shop, shopView);

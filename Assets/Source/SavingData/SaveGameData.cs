@@ -12,13 +12,11 @@ public class SaveGameData
     {
         string json = JsonUtility.ToJson(gameData);
         PlayerAccount.SetCloudSaveData(json);
-        // PlayerPrefs.SetString("data", json);
     }
 
     public void Load()
     {
         PlayerAccount.GetCloudSaveData(Load);
-        // Load(PlayerPrefs.GetString("data"));
     }
 
     private void Load(string value)
