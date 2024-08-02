@@ -25,4 +25,9 @@ public class AudioPitcher
         _sound.pitch = Random.Range(_minValue, _maxValue);
         _sound.Play();
     }
+
+    public void Stop()
+    {
+        _sound.Stop();
+    }
 }

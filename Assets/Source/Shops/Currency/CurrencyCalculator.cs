@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Source.Shop
+namespace Shops
 {
     public class CurrencyCalculator
     {

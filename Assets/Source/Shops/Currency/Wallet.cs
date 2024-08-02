@@ -1,16 +1,18 @@
 ﻿using System;
 
-namespace Assets.Source.Shop
+namespace Shops
 {
     public class Wallet
     {
-        private CurrencyData _currencyData;
+        private SaveService _saveService;
         private int _currentCurrency;
 
-        public Wallet(CurrencyData currencyData)
+        public int CurrentCurrency => _currentCurrency;
+        public Wallet(SaveService saveService)
         {
-            _currencyData = currencyData != null ? currencyData : throw new ArgumentNullException(nameof(currencyData));
-            _currentCurrency = _currencyData.GetCurrency();
+            _saveService = saveService != null ? saveService : throw new ArgumentNullException(nameof(saveService));
+            _currentCurrency = _saveService.Currency;
+            _saveService = saveService;
         }
 
         public void AddCurrency(int amount)
@@ -19,7 +21,8 @@ namespace Assets.Source.Shop
                 throw new ArgumentOutOfRangeException(nameof(amount));
 
             _currentCurrency += amount;
-            _currencyData.Save(_currentCurrency);
+            _saveService.SetCurrencyData(_currentCurrency);
+            _saveService.Save();
         }
 
         public bool TrySpentCurrency(int amount)
@@ -31,7 +34,8 @@ namespace Assets.Source.Shop
                 return false;
 
             _currentCurrency -= amount;
-            _currencyData.Save(_currentCurrency);
+            _saveService.SetCurrencyData(_currentCurrency);
+            _saveService.Save();
             return true;
         }
     }

@@ -1,18 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Characters
 {
     public abstract class CharacterWeapon<TI> : IWeapon, ISwitchable<TI>
         where TI : IDamageableTarget
     {
-        private readonly AudioPitcher _sound;
-
-        public CharacterWeapon(Transform viewPoint, TI target, AudioPitcher sound)
+        public CharacterWeapon(Transform viewPoint, TI target)
         {
             ViewPoint = viewPoint;
             Target = target;
-            _sound = sound;
         }
 
         public Transform ViewPoint { get; }
@@ -24,7 +20,6 @@ namespace Characters
             if (Target == null)
                 return;
 
-            _sound.Play();
             OnShoot();
         }
 

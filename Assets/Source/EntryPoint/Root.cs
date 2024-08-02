@@ -7,13 +7,13 @@ using Assets.Source.LevelGeneration;
 using Assets.Source.Player;
 using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.OnDeathEffect;
-using Assets.Source.Shop;
 using Assets.Source.Sound.AudioMixer;
 using Assets.Source.UI;
 using Assets.Source.UI.Menu.Leaderboard;
 using PlayerHelpers;
 using System;
 using System.Collections.Generic;
+using Shops;
 using UnityEngine;
 
 namespace Assets.Source.EntryPoint
@@ -47,9 +47,9 @@ namespace Assets.Source.EntryPoint
         [Header("GameProgress")]
         [SerializeField] private WinCondition _winCondition;
         [SerializeField] private int _bounty;
+        [SerializeField] private SaveService _saveService;
         private CurrencyCalculator _currencyCalculator;
         private int _currentLevel;
-        private LevelData _levelData;
 
         [Header("Other")]
         [SerializeField] private Silencer _silencer;
@@ -57,14 +57,27 @@ namespace Assets.Source.EntryPoint
         public Action PlayerDied;
         public Action PlayerRespawned;
 
-        private void Start()
+        private void OnEnable()
+        {
+            _saveService.Loaded += StartRoot;
+            _playerDamageTaker.PlayerDied += OnPlayerDied;
+            _winCondition.PlayerWon += OnPlayerWon;
+        }
+
+        private void OnDisable()
+        {
+            _saveService.Loaded -= StartRoot;
+            _playerDamageTaker.PlayerDied -= OnPlayerDied;
+            _winCondition.PlayerWon -= OnPlayerWon;
+        }
+
+        private void StartRoot()
         {
             _soundInitializer.Init();
-            _levelData = new ();
-            _currentLevel = _levelData.GetLevel();
-            DifficultySystem difficultySystem = new (_currentLevel);
+            _currentLevel = _saveService.Level;
+            DifficultySystem difficultySystem = new(_currentLevel);
 
-            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
+            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
@@ -74,35 +87,21 @@ namespace Assets.Source.EntryPoint
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
-            _enemiesManager = new (_enemies);
+            _enemiesManager = new(_enemies);
             _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
+            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
 
-            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _levelData.GetLevel());
+            Wallet wallet = new(_saveService);
+            _currencyCalculator = new(_bounty, wallet);
 
-            CurrencyData currencyData = new ();
-            Wallet wallet = new (currencyData);
-            _currencyCalculator = new (_bounty, wallet);
-
-            InterstitialAdvertiseShower advertiseShower = new (_silencer);
+            InterstitialAdvertiseShower advertiseShower = new(_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             StickyAd.Show();
             advertiseShower.ShowAdvertise();
 #endif
             Time.timeScale = 0f;
-        }
-
-        private void OnEnable()
-        {
-            _playerDamageTaker.PlayerDied += OnPlayerDied;
-            _winCondition.PlayerWon += OnPlayerWon;
-        }
-
-        private void OnDisable()
-        {
-            _playerDamageTaker.PlayerDied -= OnPlayerDied;
-            _winCondition.PlayerWon -= OnPlayerWon;
         }
 
         public void Respawn()
@@ -117,12 +116,13 @@ namespace Assets.Source.EntryPoint
         private void OnPlayerWon()
         {
             _playerBehaviour.Stop();
-            LeaderboardScoreSaver leaderboardScoreSaver = new ();
+            LeaderboardScoreSaver leaderboardScoreSaver = new();
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
-            _levelData.SaveLevel(++_currentLevel);
+            _saveService.SetLevelData(++_currentLevel);
+            _saveService.Save();
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }

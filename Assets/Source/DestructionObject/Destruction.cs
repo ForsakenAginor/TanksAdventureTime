@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DestructionObject
@@ -33,7 +32,9 @@ namespace DestructionObject
             _cancellation = new CancellationTokenSource();
             _startY = _transform.position.y;
             Init();
-            WaitWaking().Forget();
+
+            if (Waked != null)
+                WaitWaking().Forget();
         }
 
         private void OnDestroy()
@@ -48,8 +49,11 @@ namespace DestructionObject
             _panelDestruction.gameObject.SetActive(true);
             gameObject.SetActive(false);
 
-            StopWaiting();
-            Waked?.Invoke();
+            if (Waked != null)
+            {
+                StopWaiting();
+                Waked.Invoke();
+            }
 
             Destroyed?.Invoke(_panelDestruction.GetComponentsInChildren<MeshRenderer>().ToList());
         }
@@ -61,7 +65,7 @@ namespace DestructionObject
             for (int i = 0; i < _transformObjects.Length; i++)
             {
                 _transformObjects[i] = _panelDestruction.GetChild(i);
-                _transformObjects[i].AddComponent<DestroyedPart>();
+                _transformObjects[i].gameObject.AddComponent<DestroyedPart>();
             }
         }
 
