@@ -2,17 +2,17 @@
 
 namespace Shops
 {
-    public class Wallet
+    public class Wallet : IWallet
     {
-        private SaveService _saveService;
+        private ISave _save;
         private int _currentCurrency;
 
         public int CurrentCurrency => _currentCurrency;
-        public Wallet(SaveService saveService)
+        public Wallet(ISave save)
         {
-            _saveService = saveService != null ? saveService : throw new ArgumentNullException(nameof(saveService));
-            _currentCurrency = _saveService.Currency;
-            _saveService = saveService;
+            _save = save != null ? save : throw new ArgumentNullException(nameof(save));
+            _currentCurrency = _save.GetCurrency();
+            _save = save;
         }
 
         public void AddCurrency(int amount)
@@ -21,8 +21,7 @@ namespace Shops
                 throw new ArgumentOutOfRangeException(nameof(amount));
 
             _currentCurrency += amount;
-            _saveService.SetCurrencyData(_currentCurrency);
-            _saveService.Save();
+            _save.Save(_currentCurrency);
         }
 
         public bool TrySpentCurrency(int amount)
@@ -34,8 +33,7 @@ namespace Shops
                 return false;
 
             _currentCurrency -= amount;
-            _saveService.SetCurrencyData(_currentCurrency);
-            _saveService.Save();
+            _save.Save(_currentCurrency);
             return true;
         }
     }

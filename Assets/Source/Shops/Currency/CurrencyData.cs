@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Shops
 {
-    public class CurrencyData
+    public class CurrencyData : ISave
     {
         private const string CurrencyVariableName = "Currency";
 
