@@ -51,21 +51,35 @@ public class ShopTests
             });
     }
 
+    [Test]
+    public void DidReachMaximum()
+    {
+        ImitateShop(
+            bundle =>
+            {
+                int startMoney = 1000;
+                bundle.Item2.AddCurrency(startMoney);
+                TestCard card = (TestCard)bundle.Item1.Find(card => card.Good == GoodNames.MachineGun);
+                card.Click();
+                Assert.IsTrue(card.IsMaximum);
+            });
+    }
+
     private void ImitateShop(Action<(List<ICard>, Wallet, Shop, ShopView, ShopPresenter)> shopCallback = null)
     {
         List<ICard> cards = new ();
-        (Wallet wallet, Shop shop, ShopView shopView, ShopPresenter presenter) bundle = CreateBundle(cards.Add);
-        bundle.presenter.Enable();
-        shopCallback?.Invoke((cards, bundle.wallet, bundle.shop, bundle.shopView, bundle.presenter));
-        bundle.presenter.Disable();
+        (Wallet, Shop, ShopView, ShopPresenter) bundle = CreateBundle(cards.Add);
+        bundle.Item4.Enable();
+        shopCallback?.Invoke((cards, bundle.Item1, bundle.Item2, bundle.Item3, bundle.Item4));
+        bundle.Item4.Disable();
     }
 
-    private (Wallet wallet, Shop shop, ShopView shopView, ShopPresenter presenter) CreateBundle(
+    private (Wallet, Shop, ShopView, ShopPresenter) CreateBundle(
         Action<ICard> onCardCreated = null)
     {
         var goodsContent = CreateTestGoodsContent();
         Wallet wallet = new Wallet(new CurrencyData());
-        Shop shop = new Shop(goodsContent, CreateStartPurchases());
+        Shop shop = new Shop(goodsContent, CreateStartPurchases(), _ => { });
         List<(GoodNames good, object value)> viewContent =
             goodsContent.Select(item => (item.Key, item.Value[0].value)).ToList();
         ShopView shopView = new ShopView(viewContent, new TestCardFactory(onCardCreated), null);
@@ -104,12 +118,12 @@ public class ShopTests
         };
     }
 
-    private Purchases<int> CreateStartPurchases()
+    private Purchases CreateStartPurchases()
     {
         List<SerializedPair<GoodNames, int>> values = Enum.GetValues(typeof(GoodNames))
             .Cast<GoodNames>()
             .Select(type => new SerializedPair<GoodNames, int>(type, 0)).ToList();
 
-        return new Purchases<int>(values);
+        return new Purchases(values);
     }
 }

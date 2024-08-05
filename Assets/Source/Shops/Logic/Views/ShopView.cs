@@ -12,9 +12,12 @@ namespace Shops
         private readonly List<ISelectable> _selectables = new ();
         private readonly List<ICard> _cards = new ();
         private readonly ICardFactory _factory;
-        private readonly Action<GoodNames> _selectionCallback;
+        private readonly Action<int> _selectionCallback;
 
-        public ShopView(List<(GoodNames good, object value)> goodsContent, ICardFactory factory, Action<GoodNames> selectionCallback)
+        public ShopView(
+            List<(GoodNames good, object value)> goodsContent,
+            ICardFactory factory,
+            Action<int> selectionCallback)
         {
             _factory = factory;
             _selectionCallback = selectionCallback;
@@ -49,7 +52,7 @@ namespace Shops
                 selectable.Deselect();
 
             target.Select();
-            _selectionCallback?.Invoke(((ICard)target).Good);
+            _selectionCallback?.Invoke((int)((ICard)target).Good);
         }
 
         private void CreateCards(List<(GoodNames good, object value)> goodsContent)
@@ -64,6 +67,7 @@ namespace Shops
 
                 _selectables.Add((ISelectable)card);
             }
+
             Debug.Log("Created");
         }
 

@@ -15,7 +15,7 @@ namespace Shops
             UpdateContent(_icons);
         }
 
-        public Dictionary<GoodNames, List<(object value, int price)>> GetContent()
+        public Dictionary<GoodNames, List<(object value, int price)>> GetFormattedContent()
         {
             Dictionary<GoodNames, List<(object value, int price)>> result = new ();
 

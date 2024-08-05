@@ -2,8 +2,8 @@
 
 namespace Shops
 {
-    public interface IReadOnlyCharacteristics<T>
+    public interface IReadOnlyCharacteristics
     {
-        public IReadOnlyList<SerializedPair<GoodNames, T>> Content { get; }
+        public Dictionary<GoodNames, object> GetContent(Goods goods);
     }
 }
