@@ -19,7 +19,11 @@ namespace Assets.Source.UI
 #if UNITY_WEBGL && !UNITY_EDITOR
         YandexGamesSdk.GameReady();
 #endif
-            _shop.Init(new Wallet(_saveService));
+            _shop.Init(
+                new Wallet(_saveService),
+                _saveService.SavePurchasesData,
+                _saveService.SetPlayerHelperData,
+                _saveService.GetPurchasesData());
         }
     }
 }

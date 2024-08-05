@@ -24,15 +24,17 @@ namespace Shops
 
         public void Init(
             IWallet wallet,
-            Action<GoodNames> selectionCallback = null,
-            Purchases<int> purchases = null,
+            Action<Purchases> purchaseChangeCallback,
+            Action<int> selectionCallback,
+            IReadOnlyCharacteristics purchases,
             bool haveSelectedHelper = false,
             PlayerHelperTypes selectedHelper = PlayerHelperTypes.MachineGun)
         {
-            Dictionary<GoodNames, List<(object value, int price)>> goodsContent = _goods.GetContent();
-            List<(GoodNames good, object value)> viewContent =
-                goodsContent.Select(item => (item.Key, item.Value[(int)ValueConstants.Zero].value)).ToList();
-            purchases ??= CreateStartPurchases();
+            Dictionary<GoodNames, List<(object value, int price)>> goodsContent = _goods.GetFormattedContent();
+            List<(GoodNames good, object value)> viewContent = goodsContent
+                .Select(item => (item.Key, item.Value[(int)ValueConstants.Zero].value))
+                .ToList();
+            ExpandPurchases((Purchases)purchases);
 
             _factory = new CardFactory(
                 ConvertTemplates(),
@@ -40,7 +42,7 @@ namespace Shops
                 _holder,
                 GetSelected(selectedHelper),
                 haveSelectedHelper);
-            _model = new Shop(goodsContent, purchases);
+            _model = new Shop(goodsContent, (Purchases)purchases, purchaseChangeCallback);
             _view = new ShopView(viewContent, _factory, selectionCallback);
             _presenter = new ShopPresenter(wallet, _model, _view);
 
@@ -54,15 +56,6 @@ namespace Shops
                 item => item);
         }
 
-        private Purchases<int> CreateStartPurchases()
-        {
-            List<SerializedPair<GoodNames, int>> values = Enum.GetValues(typeof(GoodNames))
-                .Cast<GoodNames>()
-                .Select(type => new SerializedPair<GoodNames, int>(type, (int)ValueConstants.Zero)).ToList();
-
-            return new Purchases<int>(values);
-        }
-
         private GoodNames GetSelected(PlayerHelperTypes helperType)
         {
             return helperType switch
@@ -71,6 +64,21 @@ namespace Shops
                 PlayerHelperTypes.Grenade => GoodNames.Grenade,
                 _ => throw new ArgumentOutOfRangeException(nameof(helperType), helperType, null)
             };
+        }
+
+        private void ExpandPurchases(Purchases purchases)
+        {
+            IEnumerable<SerializedPair<GoodNames, int>> content = Enum.GetValues(typeof(GoodNames))
+                .Cast<GoodNames>()
+                .Select(type => new SerializedPair<GoodNames, int>(type, (int)ValueConstants.Zero));
+
+            foreach (SerializedPair<GoodNames, int> pair in content)
+            {
+                if (purchases.Objects.Exists(item => Equals(item.Key, pair.Key)) == false)
+                    continue;
+
+                purchases.Objects.Add(pair);
+            }
         }
     }
 }
