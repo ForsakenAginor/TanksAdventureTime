@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Shops
@@ -6,18 +7,17 @@ namespace Shops
     public class Shop
     {
         private readonly Dictionary<GoodNames, List<(object value, int price)>> _goodsContent;
-        private readonly Purchases<int> _purchases;
-        private readonly Purchases<object> _playerCharacteristics;
+        private readonly Purchases _purchases;
+        private readonly Action<Purchases> _purchaseChangeCallback;
 
-        public Shop(Dictionary<GoodNames, List<(object value, int price)>> goodsContent, Purchases<int> purchases)
+        public Shop(
+            Dictionary<GoodNames, List<(object value, int price)>> goodsContent,
+            Purchases purchases,
+            Action<Purchases> purchaseChangeCallback)
         {
             _goodsContent = goodsContent;
             _purchases = purchases;
-        }
-
-        public IReadOnlyCharacteristics<int> GetPurchases()
-        {
-            return _purchases;
+            _purchaseChangeCallback = purchaseChangeCallback;
         }
 
         public bool TryGetPrice(GoodNames good, out int price)
@@ -51,8 +51,10 @@ namespace Shops
         {
             SerializedPair<GoodNames, int> unpacked = _purchases.Objects.Find(item => item.Key == good);
             int id = _purchases.Objects.IndexOf(unpacked);
+            
             unpacked.Value++;
             _purchases.Objects[id] = unpacked;
+            _purchaseChangeCallback.Invoke(_purchases);
         }
     }
 }
