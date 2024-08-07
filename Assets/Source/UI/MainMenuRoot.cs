@@ -21,7 +21,7 @@ namespace Assets.Source.UI
 #endif
             _shop.Init(
                 new Wallet(_saveService),
-                _saveService.SavePurchasesData,
+                _saveService.SetPurchasesData,
                 _saveService.SetPlayerHelperData,
                 _saveService.GetPurchasesData());
         }
