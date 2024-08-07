@@ -1,5 +1,6 @@
+using System;
 using Shops;
-using System.Collections.Generic;
+using System.Linq;
 
 public class GameData
 {
@@ -7,5 +8,19 @@ public class GameData
     public int Currency = 0;
     public int Helper = 0;
     public int CompletedTraining = 0;
-    public Purchases<int> Purchases = new(new List<SerializedPair<GoodNames, int>>());
+    public IReadOnlyCharacteristics Purchases;
+
+    public GameData()
+    {
+        Purchases = CreateStartPurchases();
+    }
+
+    private Purchases CreateStartPurchases()
+    {
+        return new Purchases(
+            Enum.GetValues(typeof(GoodNames))
+                .Cast<GoodNames>()
+                .Select(type => new SerializedPair<GoodNames, int>(type, (int)ValueConstants.Zero))
+                .ToList());
+    }
 }

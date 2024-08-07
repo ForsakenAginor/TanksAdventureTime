@@ -2,7 +2,7 @@
 
 namespace Shops
 {
-    public class Wallet
+    public class Wallet : IWallet
     {
         private ISave _save;
         private int _currentCurrency;

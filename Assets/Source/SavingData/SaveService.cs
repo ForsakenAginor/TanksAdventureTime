@@ -53,12 +53,12 @@ public class SaveService : MonoBehaviour, ISave
         return _gameData.Helper;
     }
 
-    public void SavePurchasesData(Purchases<int> purchases)
+    public void SavePurchasesData(IReadOnlyCharacteristics purchases)
     {
         _gameData.Purchases = purchases;
     }
 
-    public Purchases<int> GetPurchasesData()
+    public IReadOnlyCharacteristics GetPurchasesData()
     {
         return _gameData.Purchases;
     }
@@ -72,9 +72,9 @@ public class SaveService : MonoBehaviour, ISave
         CompletedTraining = _gameData.CompletedTraining;
         Debug.Log($"Fill {Level} {Currency} {Helper} {CompletedTraining}");
 
-        if (_gameData.Purchases.Objects.Count != 0)
+        if (((Purchases)_gameData.Purchases).Objects.Count != 0)
         {
-            Debug.Log($"Key {_gameData.Purchases.Objects[0].Key}, Value {_gameData.Purchases.Objects[0].Value}");
+            Debug.Log($"Key {((Purchases)_gameData.Purchases).Objects[0].Key}, Value {((Purchases)_gameData.Purchases).Objects[0].Value}");
         }
 
         Loaded?.Invoke();
