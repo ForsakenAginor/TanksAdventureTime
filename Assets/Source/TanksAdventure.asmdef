@@ -1,0 +1,26 @@
+{
+    "name": "TanksAdventure",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8f22d867f50f3884892cfde18442bbf9",
+        "GUID:ef7e0e3eb213f324c87b70a782844fb6",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:4307f53044263cf4b835bd812fc161a4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+        "GUID:218c8d088c76f5f45b9b3de347da2c05",
+        "GUID:3cf9a93b8a0ff5647becf82d3d0c52cc",
+        "GUID:e781f00ee9be82446b3c25858542bc05"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

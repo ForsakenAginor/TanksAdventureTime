@@ -1,0 +1,37 @@
+.background {
+    background-color: var(--unity-colors-default-background);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right-width: 10px;
+    border-left-width: 15px;
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+}
+
+.overflowBackground {
+    background-color: rgba(200, 200, 200, 0.12);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left-color: rgba(94, 94, 94, 0.12);
+    border-right-color: rgba(94, 94, 94, 0.12);
+    border-top-color: rgba(94, 94, 94, 0.12);
+    border-bottom-color: rgba(94, 94, 94, 0.12);
+    border-right-width: 15px;
+    border-left-width: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.text {
+    -unity-text-align: middle-center;
+    margin-right: 5px;
+}
+
+.row {
+    flex-direction: row;
+    max-width: 100%;
+}

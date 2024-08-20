@@ -9,9 +9,8 @@ namespace Characters
         public MachineGun(
             Transform viewPoint,
             IDamageableTarget target,
-            AudioPitcher sound,
             ParticleSystem shootingEffect)
-            : base(viewPoint, target, sound)
+            : base(viewPoint, target)
         {
             _shootingEffect = shootingEffect;
         }

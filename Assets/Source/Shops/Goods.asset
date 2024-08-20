@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222c1e706e2e4fb59377027fa59526ae, type: 3}
+  m_Name: Goods
+  m_EditorClassIdentifier: 
+  _content:
+  - Key: 0
+    Value:
+      Key: 2
+      Value:
+      - Key:
+          _intValue: 0
+          _floatValue: 0
+          _boolValue: 0
+        Value: 0
+      - Key:
+          _intValue: 0
+          _floatValue: 0
+          _boolValue: 1
+        Value: 100
+  - Key: 1
+    Value:
+      Key: 2
+      Value:
+      - Key:
+          _intValue: 0
+          _floatValue: 0
+          _boolValue: 0
+        Value: 0
+      - Key:
+          _intValue: 0
+          _floatValue: 0
+          _boolValue: 1
+        Value: 250
+  - Key: 2
+    Value:
+      Key: 1
+      Value:
+      - Key:
+          _intValue: 0
+          _floatValue: 4
+          _boolValue: 0
+        Value: 0
+      - Key:
+          _intValue: 0
+          _floatValue: 3
+          _boolValue: 0
+        Value: 50
+  - Key: 3
+    Value:
+      Key: 0
+      Value:
+      - Key:
+          _intValue: 100
+          _floatValue: 0
+          _boolValue: 0
+        Value: 0
+      - Key:
+          _intValue: 120
+          _floatValue: 0
+          _boolValue: 0
+        Value: 50
+  _icons:
+  - Key: 0
+    Value: {fileID: 21300000, guid: 18be61328b5bbb8458fecce0f3954a60, type: 3}
+  - Key: 1
+    Value: {fileID: 21300000, guid: 900711e3984428a4cbf767ae1ff3a056, type: 3}
+  - Key: 2
+    Value: {fileID: 21300000, guid: 66cf2f4b3b9020d418cd456fcd35f96c, type: 3}
+  - Key: 3
+    Value: {fileID: 21300000, guid: 4445a577d04bec345b5a4ccaccfbe356, type: 3}

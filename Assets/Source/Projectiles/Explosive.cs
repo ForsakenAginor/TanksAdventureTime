@@ -1,11 +1,10 @@
-﻿using Characters;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Projectiles
 {
-    public class Explosive : IExplosive, ISwitchable<IDamageableTarget>
+    public class Explosive : IExplosive
     {
-        private IDamageableTarget _target;
+        private readonly IDamageableTarget _target;
 
         public Explosive(IDamageableTarget target)
         {
@@ -14,18 +13,10 @@ namespace Projectiles
 
         public void Explode(Vector3 position, float radius)
         {
-            if (_target == null)
-                return;
-
             if (Vector3.Distance(position, _target.Position) > radius)
                 return;
 
             _target.TakeHit(HitTypes.Explosion);
-        }
-
-        public void Switch(IDamageableTarget target)
-        {
-            _target = target;
         }
     }
 }

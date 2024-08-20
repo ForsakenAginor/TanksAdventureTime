@@ -618,7 +618,6 @@ GameObject:
   - component: {fileID: 3570726916893518861}
   - component: {fileID: 943769012894932150}
   - component: {fileID: 3299246712903500584}
-  - component: {fileID: 1437184180521437051}
   m_Layer: 8
   m_Name: Test_Bunker
   m_TagString: Untagged
@@ -671,19 +670,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b07e990d004d479f70d96aa2adf609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1972832887099460244}
   _viewPoint: {fileID: 5792801174571578285}
   _rotationPoint: {fileID: 8916210979578220419}
   _hitConfiguration: {fileID: 11400000, guid: bf039960d2b59cb439a380d28f2c7083, type: 2}
   _deathParticle: {fileID: 6155566765927651412}
   _deathSound: {fileID: 5122952310504517396}
-  _deathDisappearDuration: 2
   _deathLayerName: Ignore Raycast
   _maxHealth: 100
   _rotationSpeed: 5
   _thinkDelay: 0.5
   _enemyType: 2
-  _isDebug: 0
+  _animator: {fileID: 1972832887099460244}
   _isOnBuilding: 0
   _supportStructure: {fileID: 0}
   _ownCollider: {fileID: 0}
@@ -703,6 +700,7 @@ MonoBehaviour:
   _projectileType: 0
   _distanceBetween: 0
   _clusterCount: 0
+  _isDebug: 0
   _debugTarget: {fileID: 0}
 --- !u!114 &3299246712903500584
 MonoBehaviour:
@@ -714,18 +712,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3dd72c2f0ead4b8cba1c77e004952b10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1437184180521437051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1028367903104469339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea15071c93848eabffcf36481fb73ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1035143581593196190

@@ -7,10 +7,10 @@
 
         public CharacterAttackState(
             FiniteStateMachine<CharacterState> machine,
-            CharacterAnimation animation,
             IFieldOfView fieldOfView,
             CharacterRotator rotator,
-            IWeapon weapon)
+            IWeapon weapon,
+            CharacterAnimation animation = null)
             : base(machine, animation, fieldOfView)
         {
             _rotator = rotator;
@@ -19,6 +19,7 @@
 
         public override void Enter()
         {
+            OnEntered();
             PlayAnimation(CharacterAnimations.Fire);
             _rotator.StartRotation();
         }
@@ -26,14 +27,28 @@
         public override void Exit()
         {
             _rotator.StopRotation();
+            OnExited();
         }
 
         public override void Update()
         {
             _weapon.Shoot();
+            OnUpdated();
 
             if (FieldOfView.CanView() == false || FieldOfView.IsBlockingByWall() == true)
                 SetState<CharacterIdleState>();
+        }
+
+        public virtual void OnEntered()
+        {
+        }
+
+        public virtual void OnExited()
+        {
+        }
+
+        public virtual void OnUpdated()
+        {
         }
     }
 }
