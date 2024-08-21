@@ -7,13 +7,14 @@ namespace Shops
         private ISave _save;
         private int _currentCurrency;
 
-        public int CurrentCurrency => _currentCurrency;
         public Wallet(ISave save)
         {
             _save = save != null ? save : throw new ArgumentNullException(nameof(save));
             _currentCurrency = _save.GetCurrency();
             _save = save;
         }
+
+        public int CurrentCurrency => _currentCurrency;
 
         public void AddCurrency(int amount)
         {
