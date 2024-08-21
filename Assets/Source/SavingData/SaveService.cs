@@ -17,8 +17,8 @@ public class SaveService : MonoBehaviour, ISave
 
     public int CompletedTraining { get; private set; }
 
-    private void Awake() => _saveGameData.Load();
-
+    private void Start() => _saveGameData.Load();
+    
     private void OnEnable() => _saveGameData.Loaded += Fill;
 
     private void OnDisable() => _saveGameData.Loaded -= Fill;
