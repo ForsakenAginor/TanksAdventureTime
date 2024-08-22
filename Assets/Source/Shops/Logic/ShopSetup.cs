@@ -68,26 +68,17 @@ namespace Shops
 
         private void ExpandPurchases(Purchases purchases)
         {
-            //*******************************
-            Debug.Log("Before expand");
-            purchases.Objects.ForEach(o => { Debug.Log($"{o.Key} {o.Value}");});
-            //*******************************
             IEnumerable<SerializedPair<GoodNames, int>> content = Enum.GetValues(typeof(GoodNames))
                 .Cast<GoodNames>()
                 .Select(type => new SerializedPair<GoodNames, int>(type, (int)ValueConstants.Zero));
 
             foreach (SerializedPair<GoodNames, int> pair in content)
             {
-                if (purchases.Objects.Exists(item => Equals(item.Key, pair.Key)) == false)
+                if (purchases.Objects.Exists(item => item.Key == pair.Key) == true)
                     continue;
 
                 purchases.Objects.Add(pair);
             }
-
-            //*******************************
-            Debug.Log("After expand");
-            purchases.Objects.ForEach(o => { Debug.Log($"{o.Key} {o.Value}"); });
-            //*******************************
         }
     }
 }

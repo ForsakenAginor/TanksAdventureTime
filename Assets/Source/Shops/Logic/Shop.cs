@@ -47,6 +47,12 @@ namespace Shops
             return true;
         }
 
+        public object GetCurrentValue(GoodNames good)
+        {
+            int index = _purchases.Objects.First(item => item.Key == good).Value;
+            return _goodsContent[good][index].value;
+        }
+
         public void Buy(GoodNames good)
         {
             SerializedPair<GoodNames, int> unpacked = _purchases.Objects.Find(item => item.Key == good);
