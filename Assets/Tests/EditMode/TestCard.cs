@@ -1,6 +1,5 @@
 ﻿using System;
 using Shops;
-using UnityEngine;
 
 public class TestCard : ICard
 {
@@ -27,7 +26,7 @@ public class TestCard : ICard
         DidFailed = true;
     }
 
-    public void ShowMaximum()
+    public void ShowMaximum(object currentValue)
     {
         IsMaximum = true;
     }

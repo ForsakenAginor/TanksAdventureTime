@@ -15,8 +15,8 @@ public class ShopTests
             () => ImitateShop(
                 bundle =>
                 {
-                    bundle.Item3.Buy(GoodNames.MachineGun);
-                    ((TestCard)bundle.Item1[(int)GoodNames.MachineGun]).Click();
+                    bundle.Item3.Buy(GoodNames.Health);
+                    ((TestCard)bundle.Item1.Find(card => card.Good == GoodNames.Health)).Click();
                 }));
     }
 
@@ -45,9 +45,9 @@ public class ShopTests
         ImitateShop(
             bundle =>
             {
-                TestCard card = (TestCard)bundle.Item1.Find(card => card.Good == GoodNames.MachineGun);
+                TestCard card = (TestCard)bundle.Item1.Find(card => card.Good == GoodNames.Health);
                 card.Click();
-                Assert.IsTrue(card.DidFailed);
+                Assert.IsTrue(card.DidFailed == true);
             });
     }
 
