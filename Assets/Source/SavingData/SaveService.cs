@@ -15,6 +15,8 @@ public class SaveService : MonoBehaviour, ISave
 
     public int Helper => _gameData.Helper;
 
+    public bool HadHelper => _gameData.HadHelper;
+
     public int CompletedTraining => _gameData.CompletedTraining;
 
     private void Start() => _saveGameData.Load();
@@ -50,6 +52,7 @@ public class SaveService : MonoBehaviour, ISave
     public void SetPlayerHelperData(int indexHelper)
     {
         _gameData.Helper = indexHelper;
+        _gameData.HadHelper = true;
         Save();
     }
 
