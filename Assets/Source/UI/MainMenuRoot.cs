@@ -2,6 +2,7 @@
 using Agava.YandexGames;
 #endif
 using Assets.Source.Sound.AudioMixer;
+using PlayerHelpers;
 using Shops;
 using TMPro;
 using UnityEngine;
@@ -21,13 +22,27 @@ namespace Assets.Source.UI
 #if UNITY_WEBGL && !UNITY_EDITOR
         YandexGamesSdk.GameReady();
 #endif
-            Wallet wallet = new (_saveService);
-            WalletView walletView = new (wallet, _currencyView);
-            _shop.Init(
-                wallet,
-                _saveService.SavePurchasesData,
-                _saveService.SetPlayerHelperData,
-                _saveService.GetPurchasesData());
+            Wallet wallet = new(_saveService);
+            WalletView walletView = new(wallet, _currencyView);
+
+            if (_saveService.Helper == 0)
+            {
+                _shop.Init(
+                    wallet,
+                    _saveService.SavePurchasesData,
+                    _saveService.SetPlayerHelperData,
+                    _saveService.GetPurchasesData());
+            }
+            else
+            {
+                _shop.Init(
+                    wallet,
+                    _saveService.SavePurchasesData,
+                    _saveService.SetPlayerHelperData,
+                    _saveService.GetPurchasesData(),
+                    true,
+                    (PlayerHelperTypes)_saveService.Helper);
+            }
         }
     }
 }
