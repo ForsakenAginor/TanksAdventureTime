@@ -54,10 +54,6 @@ namespace Shops
             
             unpacked.Value++;
             _purchases.Objects[id] = unpacked;
-            //*******************************
-            UnityEngine.Debug.Log("After buying");
-            _purchases.Objects.ForEach(o => { UnityEngine.Debug.Log($"{o.Key} {o.Value}"); });
-            //*******************************
             _purchaseChangeCallback.Invoke(_purchases);
         }
     }
