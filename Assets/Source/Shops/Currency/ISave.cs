@@ -1,5 +1,5 @@
 public interface ISave
 {
     public int GetCurrency();
-    public void Save(int currency);
+    public void SetCurrencyData(int currency);
 }

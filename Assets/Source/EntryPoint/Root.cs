@@ -47,11 +47,11 @@ namespace Assets.Source.EntryPoint
         [Header("GameProgress")]
         [SerializeField] private WinCondition _winCondition;
         [SerializeField] private int _bounty;
-        [SerializeField] private SaveService _saveService;
         private CurrencyCalculator _currencyCalculator;
         private int _currentLevel;
 
         [Header("Other")]
+        [SerializeField] private SaveService _saveService;
         [SerializeField] private Silencer _silencer;
 
         public Action PlayerDied;
@@ -122,7 +122,6 @@ namespace Assets.Source.EntryPoint
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
             _saveService.SetLevelData(++_currentLevel);
-            _saveService.Save();
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }

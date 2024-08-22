@@ -1,16 +1,9 @@
-using Assets.Source.Difficulty;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NewBehaviourScript : MonoBehaviour
 {
     [SerializeField] private Button _button;
-    private LevelData _levelData;
-
-    private void Start()
-    {
-        _levelData = new LevelData();
-    }
 
     private void OnEnable()
     {
@@ -24,6 +17,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void AbortProgress()
     {
-        _levelData.SaveLevel(1);
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 }
