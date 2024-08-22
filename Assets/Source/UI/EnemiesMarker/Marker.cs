@@ -15,7 +15,7 @@ namespace Assets.Source.UI.EnemiesMarker
 
         private void FixedUpdate()
         {
-            if (_enemies.Count() == 0)
+            if (_enemies == null || _enemies.Count() == 0)
                 return;
 
             Vector3 closest = _enemies.

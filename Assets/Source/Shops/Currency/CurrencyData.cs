@@ -15,7 +15,7 @@ namespace Shops
             return PlayerPrefs.GetInt(CurrencyVariableName);
         }
 
-        public void Save(int currency)
+        public void SetCurrencyData(int currency)
         {
             if (currency < 0)
                 throw new ArgumentOutOfRangeException(nameof(currency));
