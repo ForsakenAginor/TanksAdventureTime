@@ -122,7 +122,6 @@ namespace Assets.Source.EntryPoint
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
             _saveService.SetLevelData(++_currentLevel);
-            _saveService.Save();
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }

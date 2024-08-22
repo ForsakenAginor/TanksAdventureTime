@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class SaveService : MonoBehaviour, ISave
 {
-    private SaveGameData _saveGameData = new();
-    private GameData _gameData = new();
+    private SaveGameData _saveGameData = new ();
+    private GameData _gameData = new ();
 
     public event Action Loaded;
 
-    public int Level { get; private set; }
+    public int Level => _gameData.Level;
 
-    public int Currency { get; private set; }
+    public int Currency => _gameData.Currency;
 
-    public int Helper { get; private set; }
+    public int Helper => _gameData.Helper;
 
-    public int CompletedTraining { get; private set; }
+    public int CompletedTraining => _gameData.CompletedTraining;
 
     private void Start() => _saveGameData.Load();
     
@@ -23,29 +23,34 @@ public class SaveService : MonoBehaviour, ISave
 
     private void OnDisable() => _saveGameData.Loaded -= Fill;
 
-    public void Save()
+
+    public int GetCurrency()
     {
-        _saveGameData.Save(_gameData);
+        return Currency;
     }
 
-    public void SetCurrencyData(int currency)
+    public void SetCurrencyData(int amount)
     {
-        _gameData.Currency = currency;
+        _gameData.Currency = amount;
+        Save();
     }
 
     public void SetLevelData(int level)
     {
         _gameData.Level = level;
+        Save();
     }
 
     public void SetCompletedTrainingData(bool isCompletedTraining)
     {
         _gameData.CompletedTraining = isCompletedTraining ? 1 : 0;
+        Save();
     }
 
     public void SetPlayerHelperData(int indexHelper)
     {
         _gameData.Helper = indexHelper;
+        Save();
     }
 
     public int GetPlayerHelperData()
@@ -55,7 +60,8 @@ public class SaveService : MonoBehaviour, ISave
 
     public void SavePurchasesData(IReadOnlyCharacteristics purchases)
     {
-        _gameData.Purchases = purchases;
+        _gameData.Purchases = purchases as Purchases;
+        Save();
     }
 
     public IReadOnlyCharacteristics GetPurchasesData()
@@ -63,14 +69,14 @@ public class SaveService : MonoBehaviour, ISave
         return _gameData.Purchases;
     }
 
+    private void Save()
+    {
+        _saveGameData.Save(_gameData);
+    }
+
     private void Fill(GameData gameData)
     {
         _gameData = gameData;
-        Level = _gameData.Level;
-        Currency = _gameData.Currency;
-        Helper = _gameData.Helper;
-        CompletedTraining = _gameData.CompletedTraining;
-        Debug.Log($"Fill {Level} {Currency} {Helper} {CompletedTraining}");
 
         if (((Purchases)_gameData.Purchases).Objects.Count != 0)
         {
@@ -78,16 +84,5 @@ public class SaveService : MonoBehaviour, ISave
         }
 
         Loaded?.Invoke();
-    }
-
-    public int GetCurrency()
-    {
-        return Currency;
-    }
-
-    public void Save(int currency)
-    {
-        _gameData.Currency = currency;
-        _saveGameData.Save(_gameData);
     }
 }

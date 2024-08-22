@@ -24,7 +24,7 @@ namespace Shops
                 throw new ArgumentOutOfRangeException(nameof(amount));
 
             _currentCurrency += amount;
-            _save.Save(_currentCurrency);
+            _save.SetCurrencyData(_currentCurrency);
             CurrencyAmountChanged?.Invoke(_currentCurrency);
         }
 
@@ -37,7 +37,7 @@ namespace Shops
                 return false;
 
             _currentCurrency -= amount;
-            _save.Save(_currentCurrency);
+            _save.SetCurrencyData(_currentCurrency);
             CurrencyAmountChanged?.Invoke(_currentCurrency);
             return true;
         }

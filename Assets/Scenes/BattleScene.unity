@@ -1667,9 +1667,8 @@ GameObject:
   - component: {fileID: 167760594}
   - component: {fileID: 167760593}
   - component: {fileID: 167760592}
-  - component: {fileID: 167760591}
   m_Layer: 5
-  m_Name: AbortProgress
+  m_Name: AddCurrency
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1695,19 +1694,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -190}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &167760591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 167760589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4168abc0c1eded43b286c4e9ec136fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 167760592}
 --- !u!114 &167760592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1751,7 +1737,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 167760593}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1658892150}
+        m_TargetAssemblyTypeName: SaveService, TanksAdventure
+        m_MethodName: SetCurrencyData
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5000
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &167760593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6490,7 +6488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AbortProgress
+  m_text: AddCurrency
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10118,7 +10116,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 179
+  m_fontSize: 162
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
