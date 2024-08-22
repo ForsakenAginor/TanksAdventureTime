@@ -14,6 +14,8 @@ namespace Shops
             _save = save;
         }
 
+        public event Action<int> CurrencyAmountChanged;
+
         public int CurrentCurrency => _currentCurrency;
 
         public void AddCurrency(int amount)
@@ -23,6 +25,7 @@ namespace Shops
 
             _currentCurrency += amount;
             _save.Save(_currentCurrency);
+            CurrencyAmountChanged?.Invoke(_currentCurrency);
         }
 
         public bool TrySpentCurrency(int amount)
@@ -35,6 +38,7 @@ namespace Shops
 
             _currentCurrency -= amount;
             _save.Save(_currentCurrency);
+            CurrencyAmountChanged?.Invoke(_currentCurrency);
             return true;
         }
     }
