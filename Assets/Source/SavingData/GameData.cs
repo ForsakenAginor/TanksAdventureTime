@@ -8,6 +8,7 @@ public class GameData
     public int Currency = 0;
     public int Helper = 0;
     public int CompletedTraining = 0;
+    public bool HadHelper = false;
     public Purchases Purchases;
 
     public GameData()

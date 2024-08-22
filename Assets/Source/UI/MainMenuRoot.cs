@@ -25,24 +25,13 @@ namespace Assets.Source.UI
             Wallet wallet = new(_saveService);
             WalletView walletView = new(wallet, _currencyView);
 
-            if (_saveService.Helper == 0)
-            {
-                _shop.Init(
-                    wallet,
-                    _saveService.SavePurchasesData,
-                    _saveService.SetPlayerHelperData,
-                    _saveService.GetPurchasesData());
-            }
-            else
-            {
-                _shop.Init(
-                    wallet,
-                    _saveService.SavePurchasesData,
-                    _saveService.SetPlayerHelperData,
-                    _saveService.GetPurchasesData(),
-                    true,
-                    (PlayerHelperTypes)_saveService.Helper);
-            }
+            _shop.Init(
+                wallet,
+                _saveService.SavePurchasesData,
+                _saveService.SetPlayerHelperData,
+                _saveService.GetPurchasesData(),
+                _saveService.HadHelper,
+                (PlayerHelperTypes)_saveService.Helper);
         }
     }
 }
