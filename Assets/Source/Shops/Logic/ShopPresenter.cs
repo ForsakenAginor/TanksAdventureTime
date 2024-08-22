@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Shops
 {
@@ -41,7 +42,12 @@ namespace Shops
         private void OnGoingBuy(ICard card)
         {
             if (_shop.TryGetPrice(card.Good, out int price) == false)
-                throw new IndexOutOfRangeException();
+            {
+                if (TrySelect(card) == false)
+                    throw new IndexOutOfRangeException(nameof(card));
+
+                return;
+            }
 
             if (_wallet.TrySpentCurrency(price) == false)
             {
@@ -57,7 +63,7 @@ namespace Shops
         {
             if (_shop.TryGetNextPurchase(card.Good, out var purchase) == false)
             {
-                card.ShowMaximum();
+                card.ShowMaximum(_shop.GetCurrentValue(card.Good));
                 selectionHandler?.Invoke(card);
                 return;
             }
@@ -67,10 +73,16 @@ namespace Shops
 
         private void OnSelectableClick(ICard card)
         {
+            TrySelect(card);
+        }
+
+        private bool TrySelect(ICard card)
+        {
             if (card is ISelectable target == false)
-                return;
+                return false;
 
             _shopView.Select(target);
+            return true;
         }
     }
 }

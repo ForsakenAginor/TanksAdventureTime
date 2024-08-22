@@ -10,7 +10,7 @@ namespace Shops
 
         public void ShowFailure();
 
-        public void ShowMaximum();
+        public void ShowMaximum(object currentValue = null);
 
         public void ShowNext((object currentValue, object nextValue, int price) purchase);
     }
