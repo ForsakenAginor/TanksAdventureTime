@@ -2,6 +2,7 @@ using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.Input;
 using Assets.Source.Player.MovingEffect;
 using Assets.Source.Player.Weapons;
+using Cinemachine;
 using Projectiles;
 using Shops;
 using System;
@@ -54,6 +55,7 @@ namespace Assets.Source.Player
         private AbilityInputHandler _abilitySystem;
 
         [Header("Other")]
+        [SerializeField] private CinemachineVirtualCamera _virtualCamera;
         private PlayerInput _playerInput;
 
         private void OnValidate()
@@ -105,7 +107,8 @@ namespace Assets.Source.Player
             _player.Init(_movingSystem, _aimSystem, playerSoundHandler, _fireSystem, _playerDamageTaker);
 
             _health = new Health((int)purchasedData[GoodNames.Health]);
-            _playerDamageTaker.Init(_health);
+            VirtualCameraShaker shaker = new (_virtualCamera, destroyCancellationToken);
+            _playerDamageTaker.Init(_health, shaker);
             _healthViews.ToList().ForEach(o => o.Init(_health));
         }
     }
