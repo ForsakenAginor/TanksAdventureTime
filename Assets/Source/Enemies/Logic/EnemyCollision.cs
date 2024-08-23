@@ -39,7 +39,7 @@ namespace Enemies
 
         public void React()
         {
-            TakeHit(HitTypes.Explosion);
+            TakeHit(HitTypes.PlayerExplosion);
         }
 
         public void SetPriority(TargetPriority priority)

@@ -16,7 +16,7 @@ namespace Enemies
         [SerializeField] private HitConfiguration _hitConfiguration;
         [SerializeField] private ParticleSystem _deathParticle;
         [SerializeField] private AudioSource _deathSound;
-        [SerializeField] private float _maxHealth = 100f;
+        [SerializeField] private int _maxHealth = 100;
         [SerializeField] private float _rotationSpeed;
         [SerializeField] private float _thinkDelay;
         [SerializeField] private EnemyTypes _enemyType;
@@ -233,7 +233,7 @@ namespace Enemies
             {
                 case EnemyTypes.Standard:
                 case EnemyTypes.Mortar:
-                    return new EnemyTestHealth(_maxHealth);
+                    return new EnemyHealth(_maxHealth);
 
                 case EnemyTypes.Bunker:
                     return TryGetComponent(out Bunker bunker)
