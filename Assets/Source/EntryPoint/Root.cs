@@ -76,9 +76,14 @@ namespace Assets.Source.EntryPoint
         {
             _soundInitializer.Init();
             _currentLevel = _saveService.Level;
-            DifficultySystem difficultySystem = new(_currentLevel);
+            DifficultySystem difficultySystem = new (_currentLevel);
 
-            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
+            if (difficultySystem.CurrentConfiguration.Bunkers > 0 && _saveService.HadHelper == false)
+            {
+                throw new NotImplementedException();
+            }
+
+            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
@@ -93,7 +98,7 @@ namespace Assets.Source.EntryPoint
             _playerInitializer.Init(dictionary, _playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
-            _enemiesManager = new(_enemies);
+            _enemiesManager = new (_enemies);
 
             if (_saveService.HadHelper)
                 _playerHelper.Init(_enemies, (PlayerHelperTypes)_saveService.Helper, OnAudioCreated, HelperInitCallback);
@@ -101,10 +106,10 @@ namespace Assets.Source.EntryPoint
             _winCondition.Init(_enemiesManager.AlivedEnemies);
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
 
-            Wallet wallet = new(_saveService);
-            _currencyCalculator = new(_bounty, wallet);
+            Wallet wallet = new (_saveService);
+            _currencyCalculator = new (_bounty, wallet);
 
-            InterstitialAdvertiseShower advertiseShower = new(_silencer);
+            InterstitialAdvertiseShower advertiseShower = new (_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             StickyAd.Show();
