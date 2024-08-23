@@ -8,6 +8,7 @@ namespace Assets.Source.Player.HealthSystem
     {
         private readonly int _bulletDamage = 1;
         private readonly int _explosionDamage = 10;
+        private VirtualCameraShaker _shaker;
         private Health _health;
         private Transform _transform;
         private Collider _collider;
@@ -29,7 +30,7 @@ namespace Assets.Source.Player.HealthSystem
                     break;
 
                 case HitTypes.Explosion:
-                    _health.TakeDamage(_explosionDamage);
+                    TakeExplosiveDamage();
                     break;
 
                 default:
@@ -52,9 +53,10 @@ namespace Assets.Source.Player.HealthSystem
             _health.Died -= OnDied;
         }
 
-        public void Init(Health health)
+        public void Init(Health health, VirtualCameraShaker shaker)
         {
             _health = health != null ? health : throw new ArgumentNullException(nameof(health));
+            _shaker = shaker != null ? shaker : throw new ArgumentNullException(nameof(shaker));
             _isWorking = true;
             _health.Died += OnDied;
         }
@@ -73,6 +75,12 @@ namespace Assets.Source.Player.HealthSystem
         private void OnDied()
         {
             PlayerDied?.Invoke();
+        }
+
+        private void TakeExplosiveDamage()
+        {
+            _shaker.Shake();
+            _health.TakeDamage(_explosionDamage);
         }
     }
 }

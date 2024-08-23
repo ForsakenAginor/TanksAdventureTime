@@ -9717,6 +9717,7 @@ MonoBehaviour:
   _healthViews:
   - {fileID: 1494637075}
   - {fileID: 1494637074}
+  _virtualCamera: {fileID: 984683718}
 --- !u!114 &1494637074
 MonoBehaviour:
   m_ObjectHideFlags: 0
