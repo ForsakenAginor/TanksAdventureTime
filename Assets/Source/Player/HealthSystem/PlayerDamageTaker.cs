@@ -8,6 +8,7 @@ namespace Assets.Source.Player.HealthSystem
     {
         private readonly int _bulletDamage = 1;
         private readonly int _explosionDamage = 10;
+
         private VirtualCameraShaker _shaker;
         private Health _health;
         private Transform _transform;
@@ -16,31 +17,9 @@ namespace Assets.Source.Player.HealthSystem
 
         public event Action PlayerDied;
 
-        public Vector3 GetClosestPoint(Vector3 position) => _collider.ClosestPoint(position);
-
-        public void TakeHit(HitTypes type)
-        {
-            if (_isWorking == false)
-                return;
-
-            switch(type)
-            {
-                case HitTypes.Bullet:
-                    _health.TakeDamage(_bulletDamage);
-                    break;
-
-                case HitTypes.Explosion:
-                    TakeExplosiveDamage();
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
         public Vector3 Position => _transform.position;
 
-        public TargetPriority Priority => throw new System.NotImplementedException();
+        public TargetPriority Priority { get; private set; } = TargetPriority.High;
 
         private void Awake()
         {
@@ -61,14 +40,38 @@ namespace Assets.Source.Player.HealthSystem
             _health.Died += OnDied;
         }
 
+        public Vector3 GetClosestPoint(Vector3 position) => _collider.ClosestPoint(position);
+
+        public void TakeHit(HitTypes type)
+        {
+            if (_isWorking == false)
+                return;
+
+            switch (type)
+            {
+                case HitTypes.Bullet:
+                    _health.TakeDamage(_bulletDamage);
+                    break;
+
+                case HitTypes.Explosion:
+                    TakeExplosiveDamage();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         public void Continue()
         {
             _isWorking = true;
             _health.Restore(_health.Maximum);
+            Priority = TargetPriority.High;
         }
 
         public void StopWorking()
         {
+            Priority = TargetPriority.None;
             _isWorking = false;
         }
 

@@ -10,14 +10,12 @@ namespace Characters
         private const float MinDelay = 0f;
         private const float MaxDelay = 0.5f;
 
-        private readonly CancellationTokenSource _cancellation;
         private readonly TimeSpan _time;
 
-        private bool _isBusy;
+        private CancellationTokenSource _cancellation;
 
         public CharacterThinker(float delay)
         {
-            _cancellation = new CancellationTokenSource();
             _time = TimeSpan.FromSeconds(delay + Random.Range(MinDelay, MaxDelay));
         }
 
@@ -25,13 +23,14 @@ namespace Characters
 
         public void Start()
         {
-            _isBusy = true;
+            _cancellation = new CancellationTokenSource();
             Update().Forget();
         }
 
         public void Stop()
         {
-            _isBusy = false;
+            if (_cancellation == null)
+                return;
 
             if (_cancellation.IsCancellationRequested == true)
                 return;
@@ -42,7 +41,7 @@ namespace Characters
 
         private async UniTaskVoid Update()
         {
-            while (_isBusy == true)
+            while (_cancellation.IsCancellationRequested == false)
             {
                 await UniTask.Delay(_time, cancellationToken: _cancellation.Token);
                 Updated?.Invoke();
