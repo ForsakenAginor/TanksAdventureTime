@@ -674,7 +674,7 @@ MonoBehaviour:
     Text: MACHINE GUN
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u041F\u0423\u041B\u0415\u041C\u0401\u0422"
+    Text: "\u041F\u0423\u041B\u0415\u041C\u0415\u0422"
     Object: {fileID: 0}
 --- !u!1 &761154671
 GameObject:
