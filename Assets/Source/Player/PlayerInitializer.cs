@@ -2,9 +2,10 @@ using Assets.Source.Player.HealthSystem;
 using Assets.Source.Player.Input;
 using Assets.Source.Player.MovingEffect;
 using Assets.Source.Player.Weapons;
-using PlayerHelpers;
 using Projectiles;
+using Shops;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -26,7 +27,6 @@ namespace Assets.Source.Player
         [SerializeField] private PidRegulator _pidRegulator = new();
 
         [Header("Shooting")]
-        [SerializeField] private float _shootCooldown;
         [SerializeField] private AudioSource _shootingAudioSource;
         [SerializeField] private SpawnableProjectile _projectile;
         [SerializeField] private HitEffect _hitEffect;
@@ -43,7 +43,6 @@ namespace Assets.Source.Player
         private PlayerBehaviour _player;
 
         [Header("HealthSystem")]
-        [SerializeField] private int _maxHealth;
         [SerializeField] private HealthView[] _healthViews;
         private PlayerDamageTaker _playerDamageTaker;
         private Health _health;
@@ -59,12 +58,6 @@ namespace Assets.Source.Player
 
         private void OnValidate()
         {
-            if (_maxHealth <= 0)
-                throw new ArgumentOutOfRangeException(nameof(_maxHealth));
-
-            if(_shootCooldown < 0)
-                throw new ArgumentOutOfRangeException(nameof(_shootCooldown));
-
             _cannonBarrel.localEulerAngles = new Vector3(
                                             -_attackAngle,
                                             (float)ValueConstants.Zero,
@@ -76,10 +69,13 @@ namespace Assets.Source.Player
             _playerInput?.DisposeInputSystem();
         }
 
-        public void Init(PlayerDamageTaker playerDamageTaker, PlayerBehaviour player, Action<AudioSource> onAudioCreated)
+        public void Init(Dictionary<GoodNames, object> purchasedData, PlayerDamageTaker playerDamageTaker, PlayerBehaviour player, Action<AudioSource> onAudioCreated)
         {
             _playerDamageTaker = playerDamageTaker != null ? playerDamageTaker : throw new ArgumentNullException(nameof(player));
             _player = player != null ? player : throw new ArgumentNullException(nameof(player));
+            
+            if(purchasedData == null)
+                throw new ArgumentNullException(nameof(purchasedData));
 
             PlayerWeapon weapon = new PlayerWeapon(
                                     new PlayerProjectileFactory(
@@ -95,10 +91,10 @@ namespace Assets.Source.Player
             _playerInput = new();
             _movingSystem = new(_playerInput, _rigidbody, _speed, _rotationSpeed);
             _aimSystem = new(_playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
-            _fireSystem = new(_playerInput, weapon, _shootCooldown);
+            _fireSystem = new(_playerInput, weapon, (float)purchasedData[GoodNames.ReloadSpeed]);
             _abilitySystem = new(_playerInput);
 
-            _cooldownView.Init(_fireSystem, _shootCooldown);
+            _cooldownView.Init(_fireSystem, (float)purchasedData[GoodNames.ReloadSpeed]);
 
             PlayerSoundHandler playerSoundHandler = new(_fireSystem, _movingSystem, _shootingAudioSource, _movingAudioSource);
             _flashCreator.Init(_flashhEffectPrefab, _shootPoint, _fireSystem);
@@ -108,7 +104,7 @@ namespace Assets.Source.Player
 
             _player.Init(_movingSystem, _aimSystem, playerSoundHandler, _fireSystem);
 
-            _health = new Health(_maxHealth);
+            _health = new Health((int)purchasedData[GoodNames.Health]);
             _playerDamageTaker.Init(_health);
             _healthViews.ToList().ForEach(o => o.Init(_health));
         }

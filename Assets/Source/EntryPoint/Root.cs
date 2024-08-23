@@ -86,14 +86,11 @@ namespace Assets.Source.EntryPoint
                                                 OnAudioCreated,
                                                 OnEnemySpawned);
 
-            var hz = (int)((ValueTuple<object, int>) _saveService.GetPurchasesData().GetContent(_goods)[GoodNames.Health]).Item1;
-            var hz2 = (int)_saveService.GetPurchasesData().GetContent(_goods)[GoodNames.Health];
+            var dictionary = _saveService.GetPurchasesData().GetContent(_goods);
+            int health = (int)dictionary[GoodNames.Health];
+            float reloadTime = (float)dictionary[GoodNames.ReloadSpeed];
 
-            Debug.Log(hz);
-            Debug.Log(hz2);
-            //Debug.Log(health);
-            //Debug.Log(reloadTime);
-            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
+            _playerInitializer.Init(dictionary, _playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
             _enemiesManager = new(_enemies);
