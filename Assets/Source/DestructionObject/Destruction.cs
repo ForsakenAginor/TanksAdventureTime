@@ -84,7 +84,7 @@ namespace DestructionObject
 
         private bool CanWakeUp()
         {
-            return _rigidbody.IsSleeping() == false && _startY - _transform.position.y > FallOffset;
+            return _startY - _transform.position.y > FallOffset;
         }
     }
 }
