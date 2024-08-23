@@ -10,6 +10,7 @@ namespace Assets.Source.Difficulty
         private readonly float _mediumScaleFactor = 0.5f;
         private readonly float _largecaleFactor = 0.2f;
         private readonly float _obstaclesScaleFactor = 0.25f;
+        private readonly float _bunkersScaleFactor = 0.25f;
 
         private readonly LevelConfiguration _currentConfiguration;
 
@@ -28,7 +29,8 @@ namespace Assets.Source.Difficulty
                                         _maxConfiguration.MilitaryLargeBuildings);
             int obstacles = Math.Min(_minConfiguration.Obstacles + (int)(level * _obstaclesScaleFactor),
                                         _maxConfiguration.Obstacles);
-            int bunkers = 1;
+            int bunkers = Math.Min(_minConfiguration.Bunkers + (int)(level * _bunkersScaleFactor),
+                                        _maxConfiguration.Bunkers);
 
             _currentConfiguration = new(smallSpots, mediumSpots, largeSpots, obstacles, bunkers);
         }
