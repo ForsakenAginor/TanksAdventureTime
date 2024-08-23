@@ -1,4 +1,5 @@
-﻿using Assets.Source.Player.Input;
+﻿using Assets.Source.Player.HealthSystem;
+using Assets.Source.Player.Input;
 using System;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Assets.Source.Player
         private AimInputHandler _aimSystem;
         private PlayerSoundHandler _playerSoundHandler;
         private FireInputHandler _fireSystem;
+        private PlayerDamageTaker _playerDamageTaker;
         private bool _isWorking;
 
         private void FixedUpdate()
@@ -24,12 +26,14 @@ namespace Assets.Source.Player
             _aimSystem.Aim();
         }
 
-        public void Init(MovingInputHandler movingSystem, AimInputHandler aimSystem, PlayerSoundHandler playerSoundHandler, FireInputHandler fireSystem)
+        public void Init(MovingInputHandler movingSystem, AimInputHandler aimSystem,
+            PlayerSoundHandler playerSoundHandler, FireInputHandler fireSystem, PlayerDamageTaker playerDamageTaker)
         {
             _movingSystem = movingSystem != null ? movingSystem : throw new ArgumentNullException(nameof(movingSystem));
             _aimSystem = aimSystem != null ? aimSystem : throw new ArgumentNullException(nameof(aimSystem));
             _playerSoundHandler = playerSoundHandler != null ? playerSoundHandler : throw new ArgumentNullException(nameof(_playerSoundHandler));
             _fireSystem = fireSystem != null ? fireSystem : throw new ArgumentNullException(nameof(fireSystem));
+            _playerDamageTaker = playerDamageTaker != null ? playerDamageTaker : throw new ArgumentNullException(nameof(playerDamageTaker));
             _isWorking = true;
         }
 
@@ -43,6 +47,7 @@ namespace Assets.Source.Player
             _playerSoundHandler.Stop();
             _aimSystem.CancelAim();
             _fireSystem.StopWorking();
+            _playerDamageTaker.StopWorking();
         }
 
         public void Continue()
@@ -53,6 +58,7 @@ namespace Assets.Source.Player
             _isWorking = true;
             _playerSoundHandler.Continue();
             _fireSystem.StartWorking();
+            _playerDamageTaker.Continue();
         }
     }
 }

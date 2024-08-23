@@ -6,9 +6,12 @@ namespace Assets.Source.Player.HealthSystem
     [RequireComponent(typeof(Collider))]
     public class PlayerDamageTaker : MonoBehaviour, IPlayerTarget, IPermanentKiller
     {
+        private readonly int _bulletDamage = 1;
+        private readonly int _explosionDamage = 10;
         private Health _health;
         private Transform _transform;
         private Collider _collider;
+        private bool _isWorking;
 
         public event Action PlayerDied;
 
@@ -16,8 +19,22 @@ namespace Assets.Source.Player.HealthSystem
 
         public void TakeHit(HitTypes type)
         {
-            if (type != HitTypes.Explosion)
+            if (_isWorking == false)
                 return;
+
+            switch(type)
+            {
+                case HitTypes.Bullet:
+                    _health.TakeDamage(_bulletDamage);
+                    break;
+
+                case HitTypes.Explosion:
+                    _health.TakeDamage(_explosionDamage);
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public Vector3 Position => _transform.position;
@@ -38,22 +55,24 @@ namespace Assets.Source.Player.HealthSystem
         public void Init(Health health)
         {
             _health = health != null ? health : throw new ArgumentNullException(nameof(health));
+            _isWorking = true;
             _health.Died += OnDied;
+        }
+
+        public void Continue()
+        {
+            _isWorking = true;
+            _health.Restore(_health.Maximum);
+        }
+
+        public void StopWorking()
+        {
+            _isWorking = false;
         }
 
         private void OnDied()
         {
             PlayerDied?.Invoke();
-        }
-
-        public void TestTakeDamage(int amount)
-        {
-            _health.TakeDamage(amount);
-        }
-
-        public void Respawn()
-        {
-            _health.Restore(_health.Maximum);
         }
     }
 }
