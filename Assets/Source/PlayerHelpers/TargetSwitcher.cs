@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Characters;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace PlayerHelpers
@@ -14,7 +12,6 @@ namespace PlayerHelpers
         private readonly Transform _transform;
         private readonly ImaginaryFieldOfView _fieldOfView;
 
-        private CancellationTokenSource _cancellation;
         private IDamageableTarget _current;
 
         public TargetSwitcher(
@@ -29,59 +26,39 @@ namespace PlayerHelpers
             _fieldOfView = fieldOfView;
         }
 
-        public void StartSearching()
+        public void Search()
         {
-            _cancellation = new CancellationTokenSource();
-            Search().Forget();
+            Vector3 currentPosition = _transform.position;
+            IDamageableTarget resultTarget = _current;
+
+            if (_current != null && (_current.Priority == TargetPriority.None || _fieldOfView.CanView(_current) == false))
+                resultTarget = null;
+
+            IReadOnlyCollection<IDamageableTarget> available = GetTargetsInRadius();
+
+            if (available.Any())
+                resultTarget = GetTarget(currentPosition, available);
+
+            if (_current == resultTarget)
+                return;
+
+            _current = resultTarget;
+            Notify();
         }
 
-        public void StopSearching()
-        {
-            _cancellation.Cancel();
-            _cancellation.Dispose();
-        }
-
-        private async UniTaskVoid Search()
-        {
-            while (_cancellation.IsCancellationRequested == false)
-            {
-                Vector3 currentPosition = _transform.position;
-                IDamageableTarget resultTarget = _current;
-
-                if (_current != null &&
-                    (_current.Priority == TargetPriority.None || _fieldOfView.CanView(_current) == false))
-                {
-                    resultTarget = null;
-                }
-
-                IReadOnlyCollection<IDamageableTarget> available = await GetTargetsInRadius();
-
-                if (available.Any())
-                    resultTarget = await GetTarget(currentPosition, available);
-
-                if (_current != resultTarget)
-                {
-                    _current = resultTarget;
-                    await Notify();
-                }
-
-                await UniTask.NextFrame(PlayerLoopTiming.FixedUpdate, _cancellation.Token);
-            }
-        }
-
-        private async UniTask<IDamageableTarget> GetTarget(
+        private IDamageableTarget GetTarget(
             Vector3 currentPosition,
             IReadOnlyCollection<IDamageableTarget> targets)
         {
-            TargetPriority priority = await FindHightestPriority(targets);
+            TargetPriority priority = FindHightestPriority(targets);
 
             if (_current == null || _current.Priority < priority)
-                return await FindTarget(await FindPrioritizedTargets(priority, targets), currentPosition);
+                return FindTarget(FindPrioritizedTargets(priority, targets), currentPosition);
 
             return _current;
         }
 
-        private async UniTask<List<IDamageableTarget>> GetTargetsInRadius()
+        private List<IDamageableTarget> GetTargetsInRadius()
         {
             List<IDamageableTarget> result = new List<IDamageableTarget>();
 
@@ -100,23 +77,22 @@ namespace PlayerHelpers
                     result.Add(target);
             }
 
-            return await UniTask.FromResult(result);
+            return result;
         }
 
-        private async UniTask<TargetPriority> FindHightestPriority(IEnumerable<IDamageableTarget> targets)
+        private TargetPriority FindHightestPriority(IEnumerable<IDamageableTarget> targets)
         {
-            return await UniTask.FromResult(
-                (TargetPriority)Mathf.Max(targets.Select(target => (int)target.Priority).ToArray()));
+            return (TargetPriority)Mathf.Max(targets.Select(target => (int)target.Priority).ToArray());
         }
 
-        private async UniTask<IEnumerable<IDamageableTarget>> FindPrioritizedTargets(
+        private IEnumerable<IDamageableTarget> FindPrioritizedTargets(
             TargetPriority priority,
             IEnumerable<IDamageableTarget> hightestPriorityTargets)
         {
-            return await UniTask.FromResult(hightestPriorityTargets.Where(target => target.Priority == priority));
+            return hightestPriorityTargets.Where(target => target.Priority == priority);
         }
 
-        private async UniTask<IDamageableTarget> FindTarget(
+        private IDamageableTarget FindTarget(
             IEnumerable<IDamageableTarget> prioritizedTargets,
             Vector3 position)
         {
@@ -134,15 +110,13 @@ namespace PlayerHelpers
                 result = target;
             }
 
-            return await UniTask.FromResult(result);
+            return result;
         }
 
-        private async UniTask Notify()
+        private void Notify()
         {
             foreach (ISwitchable<IDamageableTarget> switchable in _switchableObjects)
                 switchable.Switch(_current);
-
-            await UniTask.CompletedTask;
         }
     }
 }

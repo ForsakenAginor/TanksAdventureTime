@@ -52,7 +52,7 @@ namespace PlayerHelpers
 
         private void OnDestroy()
         {
-            _presenter.Disable();
+            _presenter?.Disable();
         }
 
         private void OnDrawGizmos()
@@ -171,21 +171,19 @@ namespace PlayerHelpers
         {
             (Action onEnable, Action onDisable) activationHandler = (() =>
             {
-                _switcher.StartSearching();
                 _thinker.Start();
                 _drawer.StartDraw();
                 _explosive?.StartTracking();
                 _gameObject.SetActive(true);
             }, () =>
             {
-                _switcher.StopSearching();
                 _thinker.Stop();
                 _drawer.StopDraw();
                 _explosive?.StopTracking();
                 _gameObject.SetActive(false);
             });
 
-            _presenter = new PlayerHelperPresenter(_machine, _thinker, activationHandler);
+            _presenter = new PlayerHelperPresenter(_machine, _thinker, _switcher, activationHandler);
             presenterInitCallback?.Invoke(activationHandler);
         }
 
