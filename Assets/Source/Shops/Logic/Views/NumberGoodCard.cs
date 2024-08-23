@@ -12,9 +12,11 @@ namespace Shops
         [SerializeField] private TextMeshProUGUI _nextGrade;
         [SerializeField] private List<GameObject> _hideObjects;
 
-        public override void ShowMaximum()
+        public override void ShowMaximum(object currentValue = null)
         {
             ChangeButtonTranslation(Max);
+            _currentGrade.SetText(FormatValue(currentValue));
+            SetButtonInteractable(false);
             HidePrice(HideGrade);
         }
 

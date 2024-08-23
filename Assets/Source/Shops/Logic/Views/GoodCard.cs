@@ -75,7 +75,7 @@ namespace Shops
             _purchase.interactable = value;
         }
 
-        public abstract void ShowMaximum();
+        public abstract void ShowMaximum(object currentValue = null);
 
         public abstract void ShowNext((object currentValue, object nextValue, int price) purchase);
 

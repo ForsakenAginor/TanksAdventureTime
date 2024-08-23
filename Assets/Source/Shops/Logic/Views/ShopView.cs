@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Shops
 {
@@ -67,8 +66,6 @@ namespace Shops
 
                 _selectables.Add((ISelectable)card);
             }
-
-            Debug.Log("Created");
         }
 
         private ICard CreateCard(GoodNames good, object value)

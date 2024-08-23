@@ -16,10 +16,15 @@ namespace Shops
 
         public Dictionary<GoodNames, object> GetContent(Goods goods)
         {
-            return goods.GetFormattedContent()
-                .ToDictionary<KeyValuePair<GoodNames, List<(object value, int price)>>, GoodNames, object>(
-                    pair => pair.Key,
-                    pair => pair.Value[Objects.Find(item => item.Key == pair.Key).Value]);
+            Dictionary<GoodNames, object> result = new ();
+
+            foreach (KeyValuePair<GoodNames, List<(object value, int price)>> pair in goods.GetFormattedContent())
+            {
+                int id = Objects.Find(item => item.Key == pair.Key).Value;
+                result.Add(pair.Key, pair.Value[id].value);
+            }
+
+            return result;
         }
     }
 }

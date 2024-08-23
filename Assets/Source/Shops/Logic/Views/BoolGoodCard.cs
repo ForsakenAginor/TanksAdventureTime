@@ -17,7 +17,7 @@ namespace Shops
             return base.Init(good, icon);
         }
 
-        public override void ShowMaximum()
+        public override void ShowMaximum(object currentValue = null)
         {
             ChangeButtonTranslation(GetLabel());
             HidePrice(HighLightImage);
@@ -49,11 +49,8 @@ namespace Shops
 
         private string GetLabel()
         {
-            if (_didSelect == false)
-                return Choose;
-
-            SetButtonInteractable(false);
-            return Selected;
+            SetButtonInteractable(_didSelect == false);
+            return _didSelect == false ? Choose : Selected;
         }
 
         private void HighLightImage()
