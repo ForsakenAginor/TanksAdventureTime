@@ -4,12 +4,13 @@ namespace Assets.Source.Difficulty
 {
     public class DifficultySystem
     {
-        private readonly LevelConfiguration _minConfiguration = new(3, 1, 0, 0);
-        private readonly LevelConfiguration _maxConfiguration = new(10, 10, 2, 4);
+        private readonly LevelConfiguration _minConfiguration = new(3, 1, 0, 0, 0);
+        private readonly LevelConfiguration _maxConfiguration = new(10, 10, 2, 4, 1);
         private readonly float _smallScaleFactor = 0.5f;
         private readonly float _mediumScaleFactor = 0.5f;
         private readonly float _largecaleFactor = 0.2f;
         private readonly float _obstaclesScaleFactor = 0.25f;
+        private readonly float _bunkersScaleFactor = 0.25f;
 
         private readonly LevelConfiguration _currentConfiguration;
 
@@ -28,8 +29,10 @@ namespace Assets.Source.Difficulty
                                         _maxConfiguration.MilitaryLargeBuildings);
             int obstacles = Math.Min(_minConfiguration.Obstacles + (int)(level * _obstaclesScaleFactor),
                                         _maxConfiguration.Obstacles);
+            int bunkers = Math.Min(_minConfiguration.Bunkers + (int)(level * _bunkersScaleFactor),
+                                        _maxConfiguration.Bunkers);
 
-            _currentConfiguration = new(smallSpots, mediumSpots, largeSpots, obstacles);
+            _currentConfiguration = new(smallSpots, mediumSpots, largeSpots, obstacles, bunkers);
         }
 
         public LevelConfiguration CurrentConfiguration => _currentConfiguration;
