@@ -13979,6 +13979,7 @@ MonoBehaviour:
   _winCondition: {fileID: 2112200519}
   _bounty: 100
   _saveService: {fileID: 1658892150}
+  _goods: {fileID: 11400000, guid: 9970bf14542229e498c2167d6a46de0e, type: 2}
   _silencer: {fileID: 2112200520}
 --- !u!114 &2112200517
 MonoBehaviour:

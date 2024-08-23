@@ -52,6 +52,7 @@ namespace Assets.Source.EntryPoint
 
         [Header("Other")]
         [SerializeField] private SaveService _saveService;
+        [SerializeField] private Goods _goods;
         [SerializeField] private Silencer _silencer;
 
         public Action PlayerDied;
@@ -84,11 +85,19 @@ namespace Assets.Source.EntryPoint
                                                 _playerDamageTaker,
                                                 OnAudioCreated,
                                                 OnEnemySpawned);
+
+            var hz = (int)((ValueTuple<object, int>) _saveService.GetPurchasesData().GetContent(_goods)[GoodNames.Health]).Item1;
+            var hz2 = (int)_saveService.GetPurchasesData().GetContent(_goods)[GoodNames.Health];
+
+            Debug.Log(hz);
+            Debug.Log(hz2);
+            //Debug.Log(health);
+            //Debug.Log(reloadTime);
             _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
             _spawnPoint = _playerDamageTaker.transform.position;
 
             _enemiesManager = new(_enemies);
-            _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
+            _playerHelper.Init(_enemies, (PlayerHelperTypes)_saveService.Helper, OnAudioCreated, HelperInitCallback);
             _winCondition.Init(_enemiesManager.AlivedEnemies);
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
 
