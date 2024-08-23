@@ -13,6 +13,7 @@ namespace Assets.Source.LevelGeneration
         private readonly List<Transform> _mediumSpots;
         private readonly List<Transform> _largeSpots;
         private readonly List<Transform> _obstaclesSpots;
+        private readonly List<Transform> _bunkerSpots;
         private readonly LevelConfiguration _configuration;
         private readonly Spawner _spawner;
         private readonly IPlayerTarget _player;
@@ -38,6 +39,7 @@ namespace Assets.Source.LevelGeneration
             _mediumSpots = spots.MediumBuildingSpots.ToList();
             _largeSpots = spots.LargeBuildingSpots.ToList();
             _obstaclesSpots = spots.ObstaclesSpots.ToList();
+            _bunkerSpots = spots.BunkerSpots.ToList();
 
             Generate(audioSourceAddedCallBack, targetSpawnedCallback);
         }
@@ -51,6 +53,7 @@ namespace Assets.Source.LevelGeneration
             CivilianPoint[] mediumCivilianPresets = ChoseCivilianPresets(PointPresetSize.Medium);
             CivilianPoint[] largeCivilianPresets = ChoseCivilianPresets(PointPresetSize.Large);
             ObstaclesPoint[] obstaclesPresets = ChoseObstaclesPresets();
+            BunkerPoint[] bunkerPresets = ChoseBunkerPresets();
 
             if (_smallSpots.Count() < _configuration.MilitarySmallBuildings)
                 throw new Exception("wrong level configuration: not enought small spots)");
@@ -81,6 +84,9 @@ namespace Assets.Source.LevelGeneration
 
             amount = _configuration.Obstacles;
             InitializeObstaclesPoints(SpawnRandomBuildings(amount, obstaclesPresets, _obstaclesSpots), audioSourceAddedCallBack);
+
+            amount = _configuration.Bunkers;
+            InitializeBunkerPoints(SpawnRandomBuildings(amount, bunkerPresets, _bunkerSpots), audioSourceAddedCallBack, targetSpawnedCallback);
         }
 
         private IEnumerable<Point> SpawnRandomBuildings(int amount, Point[] buildings, List<Transform> spots)
@@ -123,6 +129,14 @@ namespace Assets.Source.LevelGeneration
                 ToArray();
         }
 
+        private BunkerPoint[] ChoseBunkerPresets()
+        {
+            return _presets.Presets.
+                Where(o => o.Prefab is BunkerPoint).
+                Select(o => o.Prefab as BunkerPoint).
+                ToArray();
+        }
+
         private void InitializeMilitaryPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack, Action<IDamageableTarget> targetSpawnedCallback)
         {
             points.
@@ -137,6 +151,14 @@ namespace Assets.Source.LevelGeneration
                 Select(o => o as ObstaclesPoint).
                 ToList().
                 ForEach(o => o.Init(_player, audioSourceAddedCallBack));
+        }
+
+        private void InitializeBunkerPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack, Action<IDamageableTarget> targetSpawnedCallback)
+        {
+            points.
+                Select(o => o as BunkerPoint).
+                ToList().
+                ForEach(o => o.Init(_player, audioSourceAddedCallBack, targetSpawnedCallback));
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Assets.Source.LevelGeneration
         [SerializeField] private Transform[] _mediumBuildingSpots;
         [SerializeField] private Transform[] _largeBuildingSpots;
         [SerializeField] private Transform[] _obstaclesSpots;
+        [SerializeField] private Transform[] _bunkerSpots;
 
         public IEnumerable<Transform> SmallBuildingSpots => _smallBuildingSpots;
 
@@ -17,5 +18,7 @@ namespace Assets.Source.LevelGeneration
         public IEnumerable<Transform> LargeBuildingSpots => _largeBuildingSpots;
 
         public IEnumerable<Transform> ObstaclesSpots => _obstaclesSpots;
+
+        public IEnumerable<Transform> BunkerSpots => _bunkerSpots;
     }
 }
