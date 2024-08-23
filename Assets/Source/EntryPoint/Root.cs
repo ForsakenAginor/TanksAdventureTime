@@ -80,7 +80,8 @@ namespace Assets.Source.EntryPoint
 
             if (difficultySystem.CurrentConfiguration.Bunkers > 0 && _saveService.HadHelper == false)
             {
-                throw new NotImplementedException();
+                _uIManager.ShowHelperAttentionPanel();
+                _saveService.SetPlayerHelperData((int)PlayerHelperTypes.MachineGun);
             }
 
             LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
