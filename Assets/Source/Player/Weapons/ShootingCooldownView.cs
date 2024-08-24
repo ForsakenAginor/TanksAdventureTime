@@ -14,6 +14,11 @@ public class ShootingCooldownView : MonoBehaviour
     private float _remainingTime;
     private FireInputHandler _inputHandler;
 
+    private void Start()
+    {
+        DisplayChargeStatus();
+    }
+
     private void Update()
     {
         if (_inputHandler == null)
