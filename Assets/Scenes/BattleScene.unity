@@ -5669,7 +5669,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 917273801}
   m_OnClick:
     m_PersistentCalls:
@@ -13832,6 +13832,7 @@ MonoBehaviour:
   _buildingSpots: {fileID: 1714307929}
   _uIManager: {fileID: 2112200517}
   _victoryEffect: {fileID: 152089875}
+  _startButton: {fileID: 917273803}
   _playerBehaviour: {fileID: 1494637071}
   _playerDamageTaker: {fileID: 33908297208026066}
   _playerInitializer: {fileID: 1494637072}
