@@ -52,7 +52,6 @@ namespace Assets.Source.Player
         private MovingInputHandler _movingSystem;
         private AimInputHandler _aimSystem;
         private FireInputHandler _fireSystem;
-        private AbilityInputHandler _abilitySystem;
 
         [Header("Other")]
         [SerializeField] private CinemachineVirtualCamera _virtualCamera;
@@ -94,7 +93,6 @@ namespace Assets.Source.Player
             _movingSystem = new(_playerInput, _rigidbody, _speed, _rotationSpeed);
             _aimSystem = new(_playerInput, _cannon, _pidRegulator, _camera, _rigidbody.transform);
             _fireSystem = new(_playerInput, weapon, (float)purchasedData[GoodNames.ReloadSpeed]);
-            _abilitySystem = new(_playerInput);
 
             _cooldownView.Init(_fireSystem, (float)purchasedData[GoodNames.ReloadSpeed]);
 
