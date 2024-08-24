@@ -30,12 +30,8 @@ namespace Assets.Source.UI
 
         private void Start()
         {
-            /* 
-            uncomment that on publishing
-
             if(Device.IsMobile == false)
                 _mobileInputCanvas.SetActive(false);
-            */
         }
 
         public void Init(IEnumerable<ITarget> enemies, Transform player, int levelNumber)
