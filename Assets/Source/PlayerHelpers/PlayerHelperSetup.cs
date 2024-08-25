@@ -126,6 +126,11 @@ namespace PlayerHelpers
             _presenter.Enable();
         }
 
+        public void Init()
+        {
+            gameObject.SetActive(false);
+        }
+
         public void Switch(IDamageableTarget target)
         {
             _target = target;

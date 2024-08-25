@@ -17,6 +17,7 @@ namespace Enemies
             _collider.enabled = false;
 
             _structure.Waked += OnSupportDestroyed;
+            _structure.StartWaking();
         }
 
         public void Dispose()
