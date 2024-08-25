@@ -11,15 +11,15 @@ namespace Assets.Source.UI.Menu
 
         private void OnEnable()
         {
-            _toggleButton.onClick.AddListener(ShowTargetPanel);
+            _toggleButton.onClick.AddListener(OnButtonClick);
         }
 
         private void OnDisable()
         {
-            _toggleButton.onClick.RemoveListener(ShowTargetPanel);
+            _toggleButton.onClick.RemoveListener(OnButtonClick);
         }
 
-        private void ShowTargetPanel()
+        private void OnButtonClick()
         {
             _holderPanel.SetActive(false);
             _targetPanel.SetActive(true);
