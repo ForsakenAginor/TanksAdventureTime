@@ -43,9 +43,10 @@ public class TrainingMobilePlatform : MonoBehaviour
 
     private void NextTraining()
     {
+        int element = 1;
         _trainings[_currentTrainingIndex].enabled = false;
 
-        if (_currentTrainingIndex == _trainings.Count - 1)
+        if (_currentTrainingIndex == _trainings.Count - element)
         {
             gameObject.SetActive(false);
             return;

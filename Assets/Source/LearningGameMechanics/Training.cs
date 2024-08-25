@@ -2,16 +2,19 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class Training : ActivitySwitch
+public abstract class Training : ImageDisplayControl
 {
     [SerializeField] private Transform _inputObject;
     [SerializeField] private Transform _backGroundPanel;
 
+    public abstract event Action Canceled;
+
+    private float _minTimeScale = 0;
+    private float _maxTimeScale = 1;
     protected InputSystem InputSystem { get; private set; }
 
     public bool IsPress { get; private set; } = false;
 
-    public abstract event Action Canceled;
 
     private void Awake()
     {
@@ -24,7 +27,7 @@ public abstract class Training : ActivitySwitch
         gameObject.SetActive(true);
         _inputObject.gameObject.SetActive(true);
         _backGroundPanel.gameObject.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = _minTimeScale;
     }
 
     public void DisableInputObject()
@@ -35,7 +38,7 @@ public abstract class Training : ActivitySwitch
     public void InputActive(InputAction.CallbackContext callbackContext)
     {
         _backGroundPanel.gameObject.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = _maxTimeScale;
         IsPress = true;
         TurnOff();
     }

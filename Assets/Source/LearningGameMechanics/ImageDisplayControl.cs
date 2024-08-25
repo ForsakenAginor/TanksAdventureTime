@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class ActivitySwitch : MonoBehaviour
+public abstract class ImageDisplayControl : MonoBehaviour
 {
     [SerializeField] private Image _imageMobilePlatform;
 

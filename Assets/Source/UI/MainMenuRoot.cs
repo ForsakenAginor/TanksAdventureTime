@@ -25,8 +25,8 @@ namespace Assets.Source.UI
         private void Start()
         {
             _soundInitializer.Init();
-            Wallet wallet = new (_saveService);
-            WalletView walletView = new (wallet, _currencyView);
+            Wallet wallet = new(_saveService);
+            WalletView walletView = new(wallet, _currencyView);
 
             _shop.Init(
                 wallet,
@@ -53,7 +53,7 @@ namespace Assets.Source.UI
         {
             const int CompletedTraining = 0;
 
-            if (_saveService.CompletedTraining == CompletedTraining)
+            if (_saveService.CompletedTrainingOnComputer == CompletedTraining)
             {
                 if (Device.IsMobile)
                     _mobileTutorialPanel.SetActive(true);
@@ -68,7 +68,7 @@ namespace Assets.Source.UI
 
         private void CompleteTutorial()
         {
-            _saveService.SetCompletedTrainingData(true);
+            _saveService.SetCompletedTrainingComputerData(true);
         }
     }
 }

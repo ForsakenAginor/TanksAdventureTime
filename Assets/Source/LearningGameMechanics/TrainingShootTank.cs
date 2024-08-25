@@ -20,7 +20,6 @@ public class TrainingShootTank : Training
 
     private void OnCanceled(InputAction.CallbackContext context)
     {
-        Debug.Log("SHoot");
         Canceled?.Invoke();
     }
 }
