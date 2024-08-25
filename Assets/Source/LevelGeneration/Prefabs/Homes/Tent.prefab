@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1123121208235186358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8395371759942251774}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 723488518433459256}
   - component: {fileID: 8152503860478542245}
   - component: {fileID: 7045419783145219834}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3888569645844697848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 2144303367349265468}
   - component: {fileID: 6804452296567180635}
   - component: {fileID: 7381723979378362671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5473153795970341838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 151755166268490470}
   - component: {fileID: 5651989397230758126}
   - component: {fileID: 1392336180205352543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent.cell2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 7286951247397640057}
   - component: {fileID: 5824329934546193093}
   - component: {fileID: 7320175932926229742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 3220701676669917068}
   - component: {fileID: 2724570168966632715}
   - component: {fileID: 2573357555847234269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -805,7 +805,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6183431740684509369}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 2734370587887652404}
   - component: {fileID: 6702934417762279360}
   - component: {fileID: 7912082609362177749}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent.cell3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 5196081381454527137}
   - component: {fileID: 626093320692190349}
   - component: {fileID: 8190948358829080452}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1111,7 +1111,7 @@ GameObject:
   - component: {fileID: 5834808491320271138}
   - component: {fileID: 4490049280381046232}
   - component: {fileID: 7369497800719061039}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent.cell1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 5542643287486587704}
   - component: {fileID: 5489255214191767861}
   - component: {fileID: 2649564801790630949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1396,7 +1396,7 @@ GameObject:
   - component: {fileID: 6570674471832697409}
   - component: {fileID: 6661673511561518226}
   - component: {fileID: 2631621766057181806}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 5371178633231123494}
   - component: {fileID: 6663890927531874449}
   - component: {fileID: 9041689759322192531}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1666,7 +1666,7 @@ GameObject:
   - component: {fileID: 8557945632564284372}
   - component: {fileID: 1277667314239304283}
   - component: {fileID: 5694664169588062204}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent.cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,7 +1797,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1257012900843893014}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1838,7 +1838,7 @@ GameObject:
   - component: {fileID: 2917896965293870049}
   - component: {fileID: 1152062145684425669}
   - component: {fileID: 3714033545586816839}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1973,7 +1973,7 @@ GameObject:
   - component: {fileID: 5075468313686453712}
   - component: {fileID: 3878845544929334317}
   - component: {fileID: 7473270425875883088}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2109,7 +2109,7 @@ GameObject:
   - component: {fileID: 6343080722436138755}
   - component: {fileID: 8969072699755610250}
   - component: {fileID: 5242821815737667469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2258,7 +2258,7 @@ GameObject:
   - component: {fileID: 9143452996827311689}
   - component: {fileID: 1441664395814836620}
   - component: {fileID: 7779134221697355594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2389,7 +2389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2198299497577659162}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2426,7 +2426,7 @@ GameObject:
   - component: {fileID: 584572966858739988}
   - component: {fileID: 8076734005985326172}
   - component: {fileID: 5976502278192453523}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent.cell4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2561,7 +2561,7 @@ GameObject:
   - component: {fileID: 1297320817697910163}
   - component: {fileID: 6953919406485578045}
   - component: {fileID: 5642152261433686329}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2692,7 +2692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6770143540620161010}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2733,7 +2733,7 @@ GameObject:
   - component: {fileID: 1448240796372427966}
   - component: {fileID: 882846523296666875}
   - component: {fileID: 1835129616823845677}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2868,7 +2868,7 @@ GameObject:
   - component: {fileID: 3495216163197633753}
   - component: {fileID: 2360746331764931859}
   - component: {fileID: 5845114949421444197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3003,7 +3003,7 @@ GameObject:
   - component: {fileID: 5227969968017620470}
   - component: {fileID: 6909609567282295382}
   - component: {fileID: 5906941917616819620}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent1.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3138,7 +3138,7 @@ GameObject:
   - component: {fileID: 8039705355934207067}
   - component: {fileID: 2571492815380114444}
   - component: {fileID: 2518492560683502322}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tent.cell5
   m_TagString: Untagged
   m_Icon: {fileID: 0}

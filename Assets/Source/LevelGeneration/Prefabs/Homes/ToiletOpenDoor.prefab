@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5274821735066249487}
   - component: {fileID: 9082153006211919208}
   - component: {fileID: 7320352521192487481}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7227557841872109416}
   - component: {fileID: 1861980692363609951}
   - component: {fileID: 2140957366851650240}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3498737722278542568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 449500972206650822}
   - component: {fileID: 6009102614865657383}
   - component: {fileID: 8699675934244307007}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4109198413555204386}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ToiletOpenDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 2843435315043738642}
   - component: {fileID: 8530408756064304704}
   - component: {fileID: 5093344544091522579}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 7162917925776675206}
   - component: {fileID: 7567284260798014246}
   - component: {fileID: 8800294096973675641}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 3470973003270129213}
   - component: {fileID: 2408787105305690319}
   - component: {fileID: 5581222760195709434}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 8447494135250656337}
   - component: {fileID: 3406920449702613166}
   - component: {fileID: 513991519187122481}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2959840872205338437}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1081,7 +1081,7 @@ GameObject:
   - component: {fileID: 3971154680765424624}
   - component: {fileID: 7940481517135855835}
   - component: {fileID: 6501311588461956197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1212,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6150015654949741558}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1250,7 +1250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8573119870039968785}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1287,7 +1287,7 @@ GameObject:
   - component: {fileID: 4321885652649437550}
   - component: {fileID: 8316652187971804489}
   - component: {fileID: 1187513235252584966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 4828467381357116506}
   - component: {fileID: 3265980671518226470}
   - component: {fileID: 4305092336587199146}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 3801535052523812010}
   - component: {fileID: 1174201810314216894}
   - component: {fileID: 8935907628918507114}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1690,7 +1690,7 @@ GameObject:
   - component: {fileID: 8644118199365846656}
   - component: {fileID: 2879670820166167883}
   - component: {fileID: 6170818855486386175}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1824,7 +1824,7 @@ GameObject:
   - component: {fileID: 4953979934040921221}
   - component: {fileID: 7739059095344253870}
   - component: {fileID: 3841644168313577751}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1959,7 +1959,7 @@ GameObject:
   - component: {fileID: 4229407000588159374}
   - component: {fileID: 591666687871314552}
   - component: {fileID: 8142497636177204765}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2095,7 +2095,7 @@ GameObject:
   - component: {fileID: 8850386492082452441}
   - component: {fileID: 2276561006332268264}
   - component: {fileID: 455732255553383102}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2242,7 +2242,7 @@ GameObject:
   - component: {fileID: 6247676753944983111}
   - component: {fileID: 7382083254202508949}
   - component: {fileID: 7133046351796584651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2378,7 +2378,7 @@ GameObject:
   - component: {fileID: 3807525189422743221}
   - component: {fileID: 4734010443412524702}
   - component: {fileID: 1590824941831449594}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2526,7 +2526,7 @@ GameObject:
   - component: {fileID: 4006589622338504522}
   - component: {fileID: 8628897036766366127}
   - component: {fileID: 8268315755685218005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2657,7 +2657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1542858511836810062}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2701,7 +2701,7 @@ GameObject:
   - component: {fileID: 7015036222141536829}
   - component: {fileID: 8118521182688867729}
   - component: {fileID: 5268412192878603413}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2835,7 +2835,7 @@ GameObject:
   - component: {fileID: 5202910167065429487}
   - component: {fileID: 6279302028212452149}
   - component: {fileID: 520201191340201551}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2969,7 +2969,7 @@ GameObject:
   - component: {fileID: 3458431028126691324}
   - component: {fileID: 9055687184614210239}
   - component: {fileID: 3629510088482456650}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3103,7 +3103,7 @@ GameObject:
   - component: {fileID: 7419690925035261441}
   - component: {fileID: 2366504112103299909}
   - component: {fileID: 538490615478748724}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3237,7 +3237,7 @@ GameObject:
   - component: {fileID: 7642237979153259680}
   - component: {fileID: 7243503485491847832}
   - component: {fileID: 5291157386670619341}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3368,7 +3368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2327364542484815001}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3405,7 +3405,7 @@ GameObject:
   - component: {fileID: 6613837713206109145}
   - component: {fileID: 4764857156251897942}
   - component: {fileID: 583166382110203340}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3540,7 +3540,7 @@ GameObject:
   - component: {fileID: 6984913568707046648}
   - component: {fileID: 5289945984955254110}
   - component: {fileID: 655452423658110582}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3675,7 +3675,7 @@ GameObject:
   - component: {fileID: 5609256888803597117}
   - component: {fileID: 2102725370974030080}
   - component: {fileID: 28682432610750791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3809,7 +3809,7 @@ GameObject:
   - component: {fileID: 7120018293636297843}
   - component: {fileID: 6332218169986005601}
   - component: {fileID: 6848805634804610318}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3944,7 +3944,7 @@ GameObject:
   - component: {fileID: 1334428869797948228}
   - component: {fileID: 1431732579558841007}
   - component: {fileID: 4465978025606272170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4078,7 +4078,7 @@ GameObject:
   - component: {fileID: 3583782933065326873}
   - component: {fileID: 6997776905810794456}
   - component: {fileID: 8077431165391799402}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4209,7 +4209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3968755163623322125}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4253,7 +4253,7 @@ GameObject:
   - component: {fileID: 5680924422622374531}
   - component: {fileID: 2075996153574377789}
   - component: {fileID: 6005661645380417256}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4383,7 +4383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2124742677221115131}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4420,7 +4420,7 @@ GameObject:
   - component: {fileID: 885626562464974577}
   - component: {fileID: 7843048598139856323}
   - component: {fileID: 1139428646274259156}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4554,7 +4554,7 @@ GameObject:
   - component: {fileID: 5244403656836632969}
   - component: {fileID: 7472993216309283425}
   - component: {fileID: 7340744468164511896}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4690,7 +4690,7 @@ GameObject:
   - component: {fileID: 8432070807578177153}
   - component: {fileID: 3477715418287627628}
   - component: {fileID: 1794542322270985280}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4838,7 +4838,7 @@ GameObject:
   - component: {fileID: 6060399311379715886}
   - component: {fileID: 5558281282822572333}
   - component: {fileID: 3649939258050639671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4973,7 +4973,7 @@ GameObject:
   - component: {fileID: 2809768167100168499}
   - component: {fileID: 1190940933404071781}
   - component: {fileID: 4631210023731632352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5107,7 +5107,7 @@ GameObject:
   - component: {fileID: 9205804021033396544}
   - component: {fileID: 6188514607914623123}
   - component: {fileID: 2273208024379044095}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5242,7 +5242,7 @@ GameObject:
   - component: {fileID: 3214074213332655600}
   - component: {fileID: 2565425184118724714}
   - component: {fileID: 2604265504072772804}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5376,7 +5376,7 @@ GameObject:
   - component: {fileID: 2809794061693566575}
   - component: {fileID: 1988198106549522555}
   - component: {fileID: 1040560038876173360}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5511,7 +5511,7 @@ GameObject:
   - component: {fileID: 7461411883191470575}
   - component: {fileID: 1633943875394669674}
   - component: {fileID: 3913144675180507534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5645,7 +5645,7 @@ GameObject:
   - component: {fileID: 5805860757425572425}
   - component: {fileID: 1488494002759835729}
   - component: {fileID: 8675654813075696209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5776,7 +5776,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8234993415861595210}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5807,7 +5807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765860588348233516}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5843,7 +5843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6983607556866587006}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5881,7 +5881,7 @@ GameObject:
   - component: {fileID: 5118848096881486998}
   - component: {fileID: 5674098145968599960}
   - component: {fileID: 8232678805013160323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6029,7 +6029,7 @@ GameObject:
   - component: {fileID: 5652163938318034818}
   - component: {fileID: 1946402436702888101}
   - component: {fileID: 8012608025388658392}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6163,7 +6163,7 @@ GameObject:
   - component: {fileID: 6958327790848665049}
   - component: {fileID: 8431693455755179373}
   - component: {fileID: 153150310340811093}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6299,7 +6299,7 @@ GameObject:
   - component: {fileID: 1631471154665804775}
   - component: {fileID: 8829764610874160030}
   - component: {fileID: 2222929046262329319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6447,7 +6447,7 @@ GameObject:
   - component: {fileID: 5550311781639843481}
   - component: {fileID: 1454038246047375608}
   - component: {fileID: 4709572326810699648}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6582,7 +6582,7 @@ GameObject:
   - component: {fileID: 5845489297913035645}
   - component: {fileID: 6226530314040290267}
   - component: {fileID: 1471109876826505344}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6717,7 +6717,7 @@ GameObject:
   - component: {fileID: 680979701572510550}
   - component: {fileID: 2413147881496741535}
   - component: {fileID: 7521647655821356408}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6851,7 +6851,7 @@ GameObject:
   - component: {fileID: 8180224638102383024}
   - component: {fileID: 6876883363005803633}
   - component: {fileID: 7200428390359796380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6985,7 +6985,7 @@ GameObject:
   - component: {fileID: 2994562377897032730}
   - component: {fileID: 8801154605438517824}
   - component: {fileID: 1648446062769509809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7103,7 +7103,7 @@ GameObject:
   - component: {fileID: 2690910460593439759}
   - component: {fileID: 6764325295009237421}
   - component: {fileID: 3984671223804867015}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7237,7 +7237,7 @@ GameObject:
   - component: {fileID: 4298113834545154499}
   - component: {fileID: 6367831707944738654}
   - component: {fileID: 2957779510605885368}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ochko_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7371,7 +7371,7 @@ GameObject:
   - component: {fileID: 3670298186236583962}
   - component: {fileID: 7536777259432009852}
   - component: {fileID: 3290065639816128603}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7505,7 +7505,7 @@ GameObject:
   - component: {fileID: 8288565185344145545}
   - component: {fileID: 9128604954164292048}
   - component: {fileID: 7432986311439861254}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7636,7 +7636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6869231220418455373}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7676,7 +7676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1549376407055817616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7713,7 +7713,7 @@ GameObject:
   - component: {fileID: 3918959960325690530}
   - component: {fileID: 3753536820548237520}
   - component: {fileID: 5290019717517505900}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7848,7 +7848,7 @@ GameObject:
   - component: {fileID: 2594145251931890569}
   - component: {fileID: 4679721388573885545}
   - component: {fileID: 2527134169550349859}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}

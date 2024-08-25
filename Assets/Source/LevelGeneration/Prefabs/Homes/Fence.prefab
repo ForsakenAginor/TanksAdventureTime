@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 619770244655048015}
   - component: {fileID: 8986231497349528445}
   - component: {fileID: 7878681110878896396}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 7934529087589871603}
   - component: {fileID: 7608032296889900710}
   - component: {fileID: 4521068111340667107}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 4426489259142718760}
   - component: {fileID: 9220248311585913283}
   - component: {fileID: 7109200481619325181}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 3033062208783015773}
   - component: {fileID: 6144529905408058625}
   - component: {fileID: 7087259256211288401}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 5819582977713237173}
   - component: {fileID: 7834414269723837271}
   - component: {fileID: 9170473338491724733}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 8081329334807438296}
   - component: {fileID: 8957112180017339893}
   - component: {fileID: 5009949444987873212}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 3560286083948994550}
   - component: {fileID: 6707020230056979526}
   - component: {fileID: 8829118396596784352}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1085,7 +1085,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4001568487705585490}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 1040717710133693459}
   - component: {fileID: 626581856730038919}
   - component: {fileID: 2450969136762405368}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Barrier_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
