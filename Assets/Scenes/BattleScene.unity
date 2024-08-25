@@ -10154,7 +10154,7 @@ MonoBehaviour:
     _minOut: -40
   _shootingAudioSource: {fileID: 1804559871}
   _projectile: {fileID: 8374450373478926076, guid: 4b74b785d7fb43d479f284adbe70b782, type: 3}
-  _hitEffect: {fileID: 4500890358154097124, guid: c6301ec001754f74d9b7392fc346ed57, type: 3}
+  _hitEffect: {fileID: -1298408947994979477, guid: 1dbc518224e49f34095aab42fe05751a, type: 3}
   _attackAngle: 2
   _shootPoint: {fileID: 2081640899}
   _cannonBarrel: {fileID: 4411870589481956}
@@ -10664,7 +10664,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 162
+  m_fontSize: 141.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
