@@ -2,12 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class Training : ImageDisplayControl
+public abstract class Training : TrainingImage
 {
     [SerializeField] private Transform _inputObject;
     [SerializeField] private Transform _backGroundPanel;
 
-    public abstract event Action Canceled;
+    public event Action Canceled;
 
     private float _minTimeScale = 0;
     private float _maxTimeScale = 1;
@@ -35,11 +35,16 @@ public abstract class Training : ImageDisplayControl
         _inputObject.gameObject.SetActive(false);
     }
 
-    public void InputActive(InputAction.CallbackContext callbackContext)
+    protected void OnInputActive(InputAction.CallbackContext callbackContext)
     {
         _backGroundPanel.gameObject.SetActive(false);
         Time.timeScale = _maxTimeScale;
         IsPress = true;
         TurnOff();
+    }
+
+    protected void OnCanceled(InputAction.CallbackContext context)
+    {
+        Canceled?.Invoke();
     }
 }

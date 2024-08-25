@@ -48,6 +48,7 @@ public class TrainingMobilePlatform : MonoBehaviour
 
         if (_currentTrainingIndex == _trainings.Count - element)
         {
+            _saveService.SetCompletedTrainingMobileData(true);
             gameObject.SetActive(false);
             return;
         }

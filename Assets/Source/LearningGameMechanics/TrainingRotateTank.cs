@@ -1,24 +1,28 @@
-using System;
-using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class TrainingRotateTank : Training
 {
-    public override event Action Canceled;
-
     private void OnEnable()
     {
-        InputSystem.Player.Rotate.started += InputActive;
+        InputSystem.Player.Rotate.started += OnInputActive;
         InputSystem.Player.Rotate.canceled += OnCanceled;
     }
 
     private void OnDisable()
     {
-        InputSystem.Player.Rotate.started -= InputActive;
+        InputSystem.Player.Rotate.started -= OnInputActive;
         InputSystem.Player.Rotate.canceled -= OnCanceled;
     }
 
-    private void OnCanceled(InputAction.CallbackContext context)
+    protected override void TrainingStart()
     {
-        Canceled?.Invoke();
+        DOTween.Sequence().SetUpdate(UpdateType.Normal, true)
+                         .Append(ImageTransform.DOLocalMoveX(50, 0.5f))
+                         .Append(ImageTransform.DOLocalMoveX(-50, 1))
+                         .Append(ImageTransform.DOLocalMoveX(0, 0.5f))
+                         .Append(ImageTransform.DOLocalMoveY(50, 0.5f))
+                         .Append(ImageTransform.DOLocalMoveY(-50, 1))
+                         .Append(ImageTransform.DOLocalMoveY(0, 0.5f))
+                         .SetLoops(-1);
     }
 }

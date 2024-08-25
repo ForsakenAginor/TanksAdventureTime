@@ -53,7 +53,7 @@ public class SaveService : MonoBehaviour, ISave
 
     public void SetCompletedTrainingMobileData(bool isCompletedTraining)
     {
-        _gameData.CompletedTrainingOnComputer = GetCompletedTrainingValue(isCompletedTraining);
+        _gameData.CompletedTrainingOnMobile = GetCompletedTrainingValue(isCompletedTraining);
         Save();
     }
 
