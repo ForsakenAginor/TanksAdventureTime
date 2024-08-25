@@ -1,0 +1,466 @@
+fileFormatVersion: 2
+guid: d79e1910a82e87545b47ea9c324a90a5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hands-isometric-set_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1393
+        width: 285
+        height: 527
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b04c010ea4633438fd5db138fa58b4
+      internalID: 1508398009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_3
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1862
+        width: 52
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26717a7b89ae9e49bad3f2eef571ff9
+      internalID: -587677703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_4
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1796
+        width: 58
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adf98291d4de5d148863227926c624ea
+      internalID: 26824957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_5
+      rect:
+        serializedVersion: 2
+        x: 1573
+        y: 1404
+        width: 294
+        height: 440
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6c2940fcf6c8f47be692e83b8a4e69
+      internalID: -660054822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_6
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 1308
+        width: 587
+        height: 471
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8670d5892a21065489454617ffbdf741
+      internalID: 644405965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_30
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 747
+        width: 360
+        height: 573
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff550f0bc885554bb7dcf7df5a41785
+      internalID: 1753824405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_39
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 758
+        width: 407
+        height: 478
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1af1df74d69684ead33244bf1fe65b
+      internalID: 643569317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_41
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 780
+        width: 482
+        height: 414
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d2c8bd0e878c4948a02713eda1d50b5
+      internalID: -394122498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_65
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 82
+        width: 674
+        height: 530
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3adb5e2946b30945a70f298a619cd33
+      internalID: -1468486565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_68
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 90
+        width: 314
+        height: 489
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c48c246c0687634daf3c573c2f04a81
+      internalID: -393244185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hands-isometric-set_71
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 113
+        width: 348
+        height: 463
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6582beee40276b49975fd5738f7fdca
+      internalID: -1917998860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      hands-isometric-set_0: 843270962
+      hands-isometric-set_1: 1508398009
+      hands-isometric-set_10: -4752081
+      hands-isometric-set_11: 801379626
+      hands-isometric-set_12: -1953887094
+      hands-isometric-set_13: 1252874339
+      hands-isometric-set_14: 1192326412
+      hands-isometric-set_15: -2014972806
+      hands-isometric-set_16: 712342329
+      hands-isometric-set_17: 1630019236
+      hands-isometric-set_18: 1533278911
+      hands-isometric-set_19: -707821452
+      hands-isometric-set_2: -1137991630
+      hands-isometric-set_20: -655719749
+      hands-isometric-set_21: -1868055596
+      hands-isometric-set_22: 861781750
+      hands-isometric-set_23: -458548610
+      hands-isometric-set_24: 100526606
+      hands-isometric-set_25: 562328623
+      hands-isometric-set_26: 508182099
+      hands-isometric-set_27: 68954310
+      hands-isometric-set_28: 285699420
+      hands-isometric-set_29: 1248629572
+      hands-isometric-set_3: -587677703
+      hands-isometric-set_30: 1753824405
+      hands-isometric-set_31: 576930009
+      hands-isometric-set_32: -1111760102
+      hands-isometric-set_33: -1312795368
+      hands-isometric-set_34: 580408573
+      hands-isometric-set_35: -1057815621
+      hands-isometric-set_36: -515201220
+      hands-isometric-set_37: 1659600083
+      hands-isometric-set_38: 1870583579
+      hands-isometric-set_39: 643569317
+      hands-isometric-set_4: 26824957
+      hands-isometric-set_40: 403371317
+      hands-isometric-set_41: -394122498
+      hands-isometric-set_42: -568698096
+      hands-isometric-set_43: 1790334102
+      hands-isometric-set_44: 807327326
+      hands-isometric-set_45: 878421091
+      hands-isometric-set_46: -907608728
+      hands-isometric-set_47: -1005209134
+      hands-isometric-set_48: -1459544897
+      hands-isometric-set_49: -178621801
+      hands-isometric-set_5: -660054822
+      hands-isometric-set_50: 1276197540
+      hands-isometric-set_51: -712380065
+      hands-isometric-set_52: -59930159
+      hands-isometric-set_53: -1081381225
+      hands-isometric-set_54: 1741101814
+      hands-isometric-set_55: 699975020
+      hands-isometric-set_56: -2103507736
+      hands-isometric-set_57: -1359199872
+      hands-isometric-set_58: -1636295465
+      hands-isometric-set_59: -1076997075
+      hands-isometric-set_6: 644405965
+      hands-isometric-set_60: 1948670283
+      hands-isometric-set_61: 300427596
+      hands-isometric-set_62: 1538693418
+      hands-isometric-set_63: 993173073
+      hands-isometric-set_64: -2112964188
+      hands-isometric-set_65: -1468486565
+      hands-isometric-set_66: 1586862922
+      hands-isometric-set_67: -1309521700
+      hands-isometric-set_68: -393244185
+      hands-isometric-set_69: 1326211558
+      hands-isometric-set_7: -693724865
+      hands-isometric-set_70: -131631408
+      hands-isometric-set_71: -1917998860
+      hands-isometric-set_72: 2855476
+      hands-isometric-set_73: -1732883636
+      hands-isometric-set_74: 1791323152
+      hands-isometric-set_75: -1116109267
+      hands-isometric-set_76: 611447677
+      hands-isometric-set_77: 931532143
+      hands-isometric-set_78: -1708609730
+      hands-isometric-set_79: -606254776
+      hands-isometric-set_8: 1770380156
+      hands-isometric-set_80: -377050909
+      hands-isometric-set_81: 676407720
+      hands-isometric-set_82: -1705313766
+      hands-isometric-set_83: -424807155
+      hands-isometric-set_84: 1692857324
+      hands-isometric-set_85: -992484937
+      hands-isometric-set_86: -882170110
+      hands-isometric-set_87: -79115736
+      hands-isometric-set_88: 574488293
+      hands-isometric-set_89: 926148998
+      hands-isometric-set_9: -389660034
+      hands-isometric-set_90: 1167055071
+      hands-isometric-set_91: -1585232106
+      hands-isometric-set_92: -234104411
+      hands-isometric-set_93: 404646285
+      hands-isometric-set_94: -394058603
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
