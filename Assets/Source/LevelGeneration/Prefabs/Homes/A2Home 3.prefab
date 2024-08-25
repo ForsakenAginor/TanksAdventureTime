@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4514383029862144632}
   - component: {fileID: 8408688920887233198}
   - component: {fileID: 3489761414567685163}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4352927693460345067}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 8055415950227756357}
   - component: {fileID: 5622761057752571415}
   - component: {fileID: 827876894235800817}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 3305911405989709606}
   - component: {fileID: 3295378985386727573}
   - component: {fileID: 7687261663301508421}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 8945060337037780143}
   - component: {fileID: 6222780810916173871}
   - component: {fileID: 6946706255508332535}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -583,7 +583,7 @@ GameObject:
   - component: {fileID: 614580120444427976}
   - component: {fileID: 7101426291969918786}
   - component: {fileID: 6350887966559177255}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3354127224896054843}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 66018803796514864}
   - component: {fileID: 7688933848796096517}
   - component: {fileID: 5951462446241144298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5227563818147777341}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -920,7 +920,7 @@ GameObject:
   - component: {fileID: 8540970876410639070}
   - component: {fileID: 5064313151061925862}
   - component: {fileID: 2501396325609338363}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1063,7 +1063,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6784058859792148991}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,7 +1104,7 @@ GameObject:
   - component: {fileID: 7352339783718149234}
   - component: {fileID: 8342216941862770688}
   - component: {fileID: 3621351675318019999}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1239,7 +1239,7 @@ GameObject:
   - component: {fileID: 9056211998640215270}
   - component: {fileID: 4091477983552044771}
   - component: {fileID: 2571724002517739755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1373,7 +1373,7 @@ GameObject:
   - component: {fileID: 5762359810575915729}
   - component: {fileID: 4181503046349205304}
   - component: {fileID: 3977213039592712650}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1507,7 +1507,7 @@ GameObject:
   - component: {fileID: 1866913678608034331}
   - component: {fileID: 934155858991805030}
   - component: {fileID: 3556493136532666536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1642,7 +1642,7 @@ GameObject:
   - component: {fileID: 8371645297641983422}
   - component: {fileID: 1321294573004085524}
   - component: {fileID: 3403181084703581451}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1776,7 +1776,7 @@ GameObject:
   - component: {fileID: 8909363926948340959}
   - component: {fileID: 2564818832008356526}
   - component: {fileID: 6607325624709882259}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1911,7 +1911,7 @@ GameObject:
   - component: {fileID: 6778684298132860167}
   - component: {fileID: 8409943188410822494}
   - component: {fileID: 7918379267273154899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2041,7 +2041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2953211686804715838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2078,7 +2078,7 @@ GameObject:
   - component: {fileID: 6125400169342007969}
   - component: {fileID: 157671648592981131}
   - component: {fileID: 3894052308308950499}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2212,7 +2212,7 @@ GameObject:
   - component: {fileID: 2065126226792215711}
   - component: {fileID: 69446093448948876}
   - component: {fileID: 8721457759292045869}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2343,7 +2343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1038614970748372957}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2376,7 +2376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7885283027465393846}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2409,7 +2409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630256353009391690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2447,7 +2447,7 @@ GameObject:
   - component: {fileID: 6768542137887532964}
   - component: {fileID: 7782044988776783994}
   - component: {fileID: 461992286598591847}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2582,7 +2582,7 @@ GameObject:
   - component: {fileID: 5159399481596651577}
   - component: {fileID: 6355398540975461843}
   - component: {fileID: 8143509366423078502}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2713,7 +2713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5268862437324176391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2755,7 +2755,7 @@ GameObject:
   - component: {fileID: 1574782979541095215}
   - component: {fileID: 4441012898400673822}
   - component: {fileID: 6847335844089710287}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2889,7 +2889,7 @@ GameObject:
   - component: {fileID: 6660858716107951669}
   - component: {fileID: 5487899408071524951}
   - component: {fileID: 2449729410411368839}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3019,7 +3019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010994760979234975}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,7 +3059,7 @@ GameObject:
   - component: {fileID: 2001800354147014520}
   - component: {fileID: 8680479997105782611}
   - component: {fileID: 6245264231292988352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3189,7 +3189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3984352102174098016}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3227,7 +3227,7 @@ GameObject:
   - component: {fileID: 4924391676795811985}
   - component: {fileID: 8570248078809304891}
   - component: {fileID: 2521026507514119532}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3361,7 +3361,7 @@ GameObject:
   - component: {fileID: 5536873885596414006}
   - component: {fileID: 9073873591866105508}
   - component: {fileID: 2935472778031119377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3496,7 +3496,7 @@ GameObject:
   - component: {fileID: 2406083339473262510}
   - component: {fileID: 8405808303393232034}
   - component: {fileID: 9064520387765295281}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3631,7 +3631,7 @@ GameObject:
   - component: {fileID: 2625960760300395302}
   - component: {fileID: 2381345214720410887}
   - component: {fileID: 3776485197322203143}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3778,7 +3778,7 @@ GameObject:
   - component: {fileID: 7116418829553455889}
   - component: {fileID: 6358572400165334496}
   - component: {fileID: 5766977310735293828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3912,7 +3912,7 @@ GameObject:
   - component: {fileID: 7694614988223397270}
   - component: {fileID: 3700337397413705898}
   - component: {fileID: 6131492855727126653}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4043,7 +4043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1368922714003439953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4082,7 +4082,7 @@ GameObject:
   - component: {fileID: 7542506777955623690}
   - component: {fileID: 2435143558908049706}
   - component: {fileID: 4540465863367901308}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4225,7 +4225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8961201012644457124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4262,7 +4262,7 @@ GameObject:
   - component: {fileID: 4767762516584379552}
   - component: {fileID: 3556826477866126607}
   - component: {fileID: 2676354976616392859}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4396,7 +4396,7 @@ GameObject:
   - component: {fileID: 2677915449963860311}
   - component: {fileID: 3593388887306835348}
   - component: {fileID: 7849728042742716467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4530,7 +4530,7 @@ GameObject:
   - component: {fileID: 2632018969220748364}
   - component: {fileID: 2230970226933724674}
   - component: {fileID: 8842018421319110534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4664,7 +4664,7 @@ GameObject:
   - component: {fileID: 2910778758230306701}
   - component: {fileID: 7014747918667215390}
   - component: {fileID: 8663578878608523803}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4795,7 +4795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1605429093727231742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4832,7 +4832,7 @@ GameObject:
   - component: {fileID: 1016365713008037405}
   - component: {fileID: 3147320643405040408}
   - component: {fileID: 2311840012487558466}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4966,7 +4966,7 @@ GameObject:
   - component: {fileID: 255068250434459077}
   - component: {fileID: 301883408674276194}
   - component: {fileID: 4889668488018497235}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5100,7 +5100,7 @@ GameObject:
   - component: {fileID: 7612201250147315738}
   - component: {fileID: 7302051845725612509}
   - component: {fileID: 5613121550346742153}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5235,7 +5235,7 @@ GameObject:
   - component: {fileID: 6580168133506202035}
   - component: {fileID: 6376387275729813451}
   - component: {fileID: 5229736746377351068}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5370,7 +5370,7 @@ GameObject:
   - component: {fileID: 673447422923370027}
   - component: {fileID: 7979841720499459690}
   - component: {fileID: 5162806877257861609}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5504,7 +5504,7 @@ GameObject:
   - component: {fileID: 5651640348109270760}
   - component: {fileID: 6107663063850879360}
   - component: {fileID: 6595834259785064423}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5639,7 +5639,7 @@ GameObject:
   - component: {fileID: 8548291374762633394}
   - component: {fileID: 4542375621673557542}
   - component: {fileID: 5613936248727671537}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5773,7 +5773,7 @@ GameObject:
   - component: {fileID: 1741352424095834369}
   - component: {fileID: 325365594991732845}
   - component: {fileID: 3156256695353331116}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5907,7 +5907,7 @@ GameObject:
   - component: {fileID: 3565868057218788781}
   - component: {fileID: 2848539871678220994}
   - component: {fileID: 2185351891150288597}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6038,7 +6038,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 113580820530910517}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6076,7 +6076,7 @@ GameObject:
   - component: {fileID: 7294867396019085885}
   - component: {fileID: 4451738942593947648}
   - component: {fileID: 7183551562753197655}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6219,7 +6219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6740748946839485583}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6262,7 +6262,7 @@ GameObject:
   - component: {fileID: 1007220083427581758}
   - component: {fileID: 4860093161525823463}
   - component: {fileID: 6576006214902603894}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6397,7 +6397,7 @@ GameObject:
   - component: {fileID: 8916853449699363581}
   - component: {fileID: 8788273807034008113}
   - component: {fileID: 1885476812975154545}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6540,7 +6540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2339652080234368769}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6574,7 +6574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7376930855336295839}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6612,7 +6612,7 @@ GameObject:
   - component: {fileID: 2651369169559547652}
   - component: {fileID: 5608999297181588237}
   - component: {fileID: 7326807628504740806}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6746,7 +6746,7 @@ GameObject:
   - component: {fileID: 7482926370452574635}
   - component: {fileID: 3190982536701684724}
   - component: {fileID: 5395814470192574354}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6880,7 +6880,7 @@ GameObject:
   - component: {fileID: 4290963324825426540}
   - component: {fileID: 9024767761199671728}
   - component: {fileID: 4432421975622442670}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7014,7 +7014,7 @@ GameObject:
   - component: {fileID: 8568099346357904590}
   - component: {fileID: 1966058850740443640}
   - component: {fileID: 1962666847792333220}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7150,7 +7150,7 @@ GameObject:
   - component: {fileID: 3596912780296900102}
   - component: {fileID: 6925647952534476896}
   - component: {fileID: 7340637729682363740}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7297,7 +7297,7 @@ GameObject:
   - component: {fileID: 5199053700262891225}
   - component: {fileID: 3245696019207411489}
   - component: {fileID: 4351849660817313318}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7431,7 +7431,7 @@ GameObject:
   - component: {fileID: 2539478414660173317}
   - component: {fileID: 5507883092987120573}
   - component: {fileID: 4738866606742862827}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7565,7 +7565,7 @@ GameObject:
   - component: {fileID: 1614298985583462556}
   - component: {fileID: 373677934753913194}
   - component: {fileID: 4504165621049426080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7701,7 +7701,7 @@ GameObject:
   - component: {fileID: 802368553291016078}
   - component: {fileID: 4055274240288710787}
   - component: {fileID: 1162484586222291599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7849,7 +7849,7 @@ GameObject:
   - component: {fileID: 6904008579776844547}
   - component: {fileID: 7980485837718528426}
   - component: {fileID: 7271589549846542014}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7984,7 +7984,7 @@ GameObject:
   - component: {fileID: 8968494201971762760}
   - component: {fileID: 3947422965371584091}
   - component: {fileID: 2735951780155172070}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel.cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8120,7 +8120,7 @@ GameObject:
   - component: {fileID: 4107562332515365164}
   - component: {fileID: 7719810019578226706}
   - component: {fileID: 2821010523159100500}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8269,7 +8269,7 @@ GameObject:
   - component: {fileID: 7924841925198306587}
   - component: {fileID: 3590842809811960343}
   - component: {fileID: 1392915804578336639}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8418,7 +8418,7 @@ GameObject:
   - component: {fileID: 3510323609928416024}
   - component: {fileID: 3953991492177505902}
   - component: {fileID: 2986761999230786043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8561,7 +8561,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4452007497061746430}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8599,7 +8599,7 @@ GameObject:
   - component: {fileID: 4413901936863010552}
   - component: {fileID: 5663447081806367739}
   - component: {fileID: 7827070105504879295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8734,7 +8734,7 @@ GameObject:
   - component: {fileID: 5171625048533831878}
   - component: {fileID: 6231980550726023853}
   - component: {fileID: 3525937465192237706}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8868,7 +8868,7 @@ GameObject:
   - component: {fileID: 9079290747364395286}
   - component: {fileID: 7980263746066307017}
   - component: {fileID: 6855297894762803844}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel.cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9003,7 +9003,7 @@ GameObject:
   - component: {fileID: 338181596864737977}
   - component: {fileID: 5658726027718231931}
   - component: {fileID: 4930187938412699201}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9137,7 +9137,7 @@ GameObject:
   - component: {fileID: 467308510478054055}
   - component: {fileID: 1785063789241306346}
   - component: {fileID: 4833625418703663208}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9271,7 +9271,7 @@ GameObject:
   - component: {fileID: 1766879097541029545}
   - component: {fileID: 7860252345795201644}
   - component: {fileID: 5008204680161235488}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9407,7 +9407,7 @@ GameObject:
   - component: {fileID: 5493489704343713962}
   - component: {fileID: 4036507208976434158}
   - component: {fileID: 1841943837163282504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9554,7 +9554,7 @@ GameObject:
   - component: {fileID: 201474257306625828}
   - component: {fileID: 7560285783002159444}
   - component: {fileID: 5543510536821216072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9688,7 +9688,7 @@ GameObject:
   - component: {fileID: 8941765736872145512}
   - component: {fileID: 766580150672068646}
   - component: {fileID: 4582337416284161700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9794,7 +9794,7 @@ GameObject:
   - component: {fileID: 210287721246735477}
   - component: {fileID: 7974904208232682157}
   - component: {fileID: 4321140672278937491}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9928,7 +9928,7 @@ GameObject:
   - component: {fileID: 7849404894870821841}
   - component: {fileID: 9050857863303411416}
   - component: {fileID: 8590260946852299701}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10063,7 +10063,7 @@ GameObject:
   - component: {fileID: 3876570079956602813}
   - component: {fileID: 1845652674395711113}
   - component: {fileID: 8340550235820141202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10194,7 +10194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3452217994898708541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10232,7 +10232,7 @@ GameObject:
   - component: {fileID: 675000826553570549}
   - component: {fileID: 177414675786945528}
   - component: {fileID: 6707575873392666760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10380,7 +10380,7 @@ GameObject:
   - component: {fileID: 7697095279849045336}
   - component: {fileID: 9027403830792607597}
   - component: {fileID: 1497447778953754926}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10514,7 +10514,7 @@ GameObject:
   - component: {fileID: 5388721296979737531}
   - component: {fileID: 3627450115897811718}
   - component: {fileID: 7492787474721735607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel.cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10645,7 +10645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4039830199699704902}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10686,7 +10686,7 @@ GameObject:
   - component: {fileID: 767640949697895235}
   - component: {fileID: 3284170752847917976}
   - component: {fileID: 8252005099790224570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10821,7 +10821,7 @@ GameObject:
   - component: {fileID: 8321433873085432480}
   - component: {fileID: 429751469424559814}
   - component: {fileID: 1366093541537376810}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10956,7 +10956,7 @@ GameObject:
   - component: {fileID: 3093097668326807844}
   - component: {fileID: 4940321141066527208}
   - component: {fileID: 7827798491965912456}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11092,7 +11092,7 @@ GameObject:
   - component: {fileID: 6139103219528507698}
   - component: {fileID: 1795067704696497407}
   - component: {fileID: 5805055579380282840}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11241,7 +11241,7 @@ GameObject:
   - component: {fileID: 8602189586972414598}
   - component: {fileID: 1835046824471063411}
   - component: {fileID: 4124771404745449022}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11388,7 +11388,7 @@ GameObject:
   - component: {fileID: 7373962776104952330}
   - component: {fileID: 9033366246186374886}
   - component: {fileID: 4561760802312107158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11518,7 +11518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3499766363877108908}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11534,7 +11534,7 @@ Transform:
   m_GameObject: {fileID: 3332376773237807842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 3.0600002, y: 14.009998, z: 4.409493}
+  m_LocalPosition: {x: 3.0600002, y: 13.799998, z: 4.409493}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11555,7 +11555,7 @@ GameObject:
   - component: {fileID: 1536267002186871148}
   - component: {fileID: 2280961306775508431}
   - component: {fileID: 3377046197668836089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11690,7 +11690,7 @@ GameObject:
   - component: {fileID: 6758079622900821140}
   - component: {fileID: 6158799623627045836}
   - component: {fileID: 6379955826946631305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11820,7 +11820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5302252148847134395}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11858,7 +11858,7 @@ GameObject:
   - component: {fileID: 7398923494956353296}
   - component: {fileID: 5433391055055539676}
   - component: {fileID: 462047608022782147}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11992,7 +11992,7 @@ GameObject:
   - component: {fileID: 8850306608853035952}
   - component: {fileID: 4885303441859601311}
   - component: {fileID: 1872582943903992818}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12122,7 +12122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7160293068398311703}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12160,7 +12160,7 @@ GameObject:
   - component: {fileID: 8042648148701953997}
   - component: {fileID: 4345680391360817899}
   - component: {fileID: 2604590717292721515}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12308,7 +12308,7 @@ GameObject:
   - component: {fileID: 7118408617201902688}
   - component: {fileID: 5798387769229558312}
   - component: {fileID: 9136676277288699045}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12442,7 +12442,7 @@ GameObject:
   - component: {fileID: 7829831910453066092}
   - component: {fileID: 2417512287589264826}
   - component: {fileID: 5791578110226484005}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12577,7 +12577,7 @@ GameObject:
   - component: {fileID: 3324094447141045417}
   - component: {fileID: 6618361311027051563}
   - component: {fileID: 6378564898622223567}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12712,7 +12712,7 @@ GameObject:
   - component: {fileID: 791365182387845530}
   - component: {fileID: 3120748199035149532}
   - component: {fileID: 988524518850810826}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12847,7 +12847,7 @@ GameObject:
   - component: {fileID: 8180854064026444076}
   - component: {fileID: 345445499814141808}
   - component: {fileID: 2400099172446001791}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12977,7 +12977,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2247812592173472968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13018,7 +13018,7 @@ GameObject:
   - component: {fileID: 1359029178246074393}
   - component: {fileID: 1716148001226318951}
   - component: {fileID: 5248607123675652613}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13152,7 +13152,7 @@ GameObject:
   - component: {fileID: 6707310338450053741}
   - component: {fileID: 4164228157222578173}
   - component: {fileID: 6824872121395848449}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13282,7 +13282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5237359122530621978}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13320,7 +13320,7 @@ GameObject:
   - component: {fileID: 7992270576487149508}
   - component: {fileID: 5245633314406050739}
   - component: {fileID: 5226547378775246716}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13450,7 +13450,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1866856004019143623}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13484,7 +13484,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3162848931287767543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13517,7 +13517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6051308048110386628}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13554,7 +13554,7 @@ GameObject:
   - component: {fileID: 8747787685167922453}
   - component: {fileID: 5560573837481414848}
   - component: {fileID: 5138074405053678281}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13688,7 +13688,7 @@ GameObject:
   - component: {fileID: 1428729921924157702}
   - component: {fileID: 7181105057266188473}
   - component: {fileID: 3220200552918441254}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13822,7 +13822,7 @@ GameObject:
   - component: {fileID: 8628151134368051607}
   - component: {fileID: 5814736132161004158}
   - component: {fileID: 5330065047602940362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13956,7 +13956,7 @@ GameObject:
   - component: {fileID: 2166768770693654843}
   - component: {fileID: 7732516034788274289}
   - component: {fileID: 6977266199563850932}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14091,7 +14091,7 @@ GameObject:
   - component: {fileID: 1721121076252283150}
   - component: {fileID: 1614470670575334202}
   - component: {fileID: 7043190453731815870}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14239,7 +14239,7 @@ GameObject:
   - component: {fileID: 4424737063362538863}
   - component: {fileID: 5415635515423517628}
   - component: {fileID: 6502497393455340816}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14369,7 +14369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2650049224349833222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14405,7 +14405,7 @@ GameObject:
   - component: {fileID: 2858219396668384674}
   - component: {fileID: 2452402766617578989}
   - component: {fileID: 5965174946846654732}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14553,7 +14553,7 @@ GameObject:
   - component: {fileID: 8776595024760476951}
   - component: {fileID: 6229131707350290315}
   - component: {fileID: 5708689155573290455}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14683,7 +14683,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7231077129594365569}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14725,7 +14725,7 @@ GameObject:
   - component: {fileID: 5907335793958156921}
   - component: {fileID: 5967758322962628861}
   - component: {fileID: 610015230420026971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14860,7 +14860,7 @@ GameObject:
   - component: {fileID: 2742034382338050951}
   - component: {fileID: 7144040028515764534}
   - component: {fileID: 5534627841117977293}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15009,7 +15009,7 @@ GameObject:
   - component: {fileID: 7984736099617149025}
   - component: {fileID: 6651476363719139028}
   - component: {fileID: 1612811511022725427}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15143,7 +15143,7 @@ GameObject:
   - component: {fileID: 4071640627196165091}
   - component: {fileID: 4272479007447941043}
   - component: {fileID: 9219093014915480638}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15273,7 +15273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5251956414732136172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15306,7 +15306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4212782307025734323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15339,7 +15339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3793592680558819343}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel6 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15376,7 +15376,7 @@ GameObject:
   - component: {fileID: 4849161696023110774}
   - component: {fileID: 9115311985813243470}
   - component: {fileID: 1515178378804103730}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15510,7 +15510,7 @@ GameObject:
   - component: {fileID: 5822479076426567856}
   - component: {fileID: 7776418402547376946}
   - component: {fileID: 4655277362201731051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15645,7 +15645,7 @@ GameObject:
   - component: {fileID: 5557481549160606233}
   - component: {fileID: 2110425742645013150}
   - component: {fileID: 5187654098841457838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15789,7 +15789,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8504898627451898119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: A2Home 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15850,7 +15850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1283680118112037657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15888,7 +15888,7 @@ GameObject:
   - component: {fileID: 8988546116439086692}
   - component: {fileID: 6976801665639018665}
   - component: {fileID: 7291371861539266663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16036,7 +16036,7 @@ GameObject:
   - component: {fileID: 1538910256837532520}
   - component: {fileID: 3568221787243608895}
   - component: {fileID: 2564622477055576911}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16172,7 +16172,7 @@ GameObject:
   - component: {fileID: 101180572810239623}
   - component: {fileID: 3253680063669740384}
   - component: {fileID: 5596299055216853251}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16319,7 +16319,7 @@ GameObject:
   - component: {fileID: 2370108278781364308}
   - component: {fileID: 2343182112088854310}
   - component: {fileID: 6447562133392363402}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16453,7 +16453,7 @@ GameObject:
   - component: {fileID: 2479839548463446174}
   - component: {fileID: 24520609860792955}
   - component: {fileID: 3795599592211403561}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16583,7 +16583,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6169476524708602056}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16616,7 +16616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8451406853159940626}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel6 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16653,7 +16653,7 @@ GameObject:
   - component: {fileID: 4005326215183183112}
   - component: {fileID: 7189194855906431572}
   - component: {fileID: 1871953979229739889}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16787,7 +16787,7 @@ GameObject:
   - component: {fileID: 4929249680765857456}
   - component: {fileID: 6509484610518045265}
   - component: {fileID: 4400738877251034509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16917,7 +16917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2691587682232127129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16950,7 +16950,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6867315901121599831}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16996,7 +16996,7 @@ GameObject:
   - component: {fileID: 861574897507391498}
   - component: {fileID: 3547128894048281388}
   - component: {fileID: 3058978427882320864}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17130,7 +17130,7 @@ GameObject:
   - component: {fileID: 7922884123892091395}
   - component: {fileID: 8769080654424452817}
   - component: {fileID: 8490017473567686338}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17260,7 +17260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3760276661913475781}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17307,7 +17307,7 @@ GameObject:
   - component: {fileID: 2467893993913284168}
   - component: {fileID: 2013792393453936699}
   - component: {fileID: 8687725148685398418}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17323,7 +17323,7 @@ Transform:
   m_GameObject: {fileID: 5284152928785688005}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.44, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17454,7 +17454,7 @@ GameObject:
   - component: {fileID: 7239614575006433476}
   - component: {fileID: 2356807629327347261}
   - component: {fileID: 7753624147217906755}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17585,7 +17585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3765836309774914436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17601,7 +17601,7 @@ Transform:
   m_GameObject: {fileID: 5470903888616061458}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.652872, y: 9.86, z: 5.0904927}
+  m_LocalPosition: {x: 2.652872, y: 9.65, z: 5.0904927}
   m_LocalScale: {x: 0.5186632, y: 1, z: 0.6455877}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17622,7 +17622,7 @@ GameObject:
   - component: {fileID: 1075007459098067748}
   - component: {fileID: 447714576963741352}
   - component: {fileID: 4568628842926159700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17757,7 +17757,7 @@ GameObject:
   - component: {fileID: 2871429817243725968}
   - component: {fileID: 5302669729526837038}
   - component: {fileID: 6407565990751078060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17905,7 +17905,7 @@ GameObject:
   - component: {fileID: 3656402089722589518}
   - component: {fileID: 775307701321987916}
   - component: {fileID: 7180138049849772024}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18035,7 +18035,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887427776998535326}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18075,7 +18075,7 @@ GameObject:
   - component: {fileID: 3594760361635978329}
   - component: {fileID: 8090311904657867520}
   - component: {fileID: 3983706827595886500}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18210,7 +18210,7 @@ GameObject:
   - component: {fileID: 5461884250686446770}
   - component: {fileID: 1083960709876154367}
   - component: {fileID: 7588837127415051388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18344,7 +18344,7 @@ GameObject:
   - component: {fileID: 207872506500776813}
   - component: {fileID: 7734298055437271373}
   - component: {fileID: 7185123891889160428}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18474,7 +18474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4379212052179730195}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18511,7 +18511,7 @@ GameObject:
   - component: {fileID: 6293550891252659067}
   - component: {fileID: 2119716661981256247}
   - component: {fileID: 3106924174719419360}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18641,7 +18641,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 983171296679783231}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18678,7 +18678,7 @@ GameObject:
   - component: {fileID: 2713932512346565280}
   - component: {fileID: 1780580565977979970}
   - component: {fileID: 3084929900623149429}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18808,7 +18808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7158138180170875946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18848,7 +18848,7 @@ GameObject:
   - component: {fileID: 784457248341632023}
   - component: {fileID: 2042905237491061708}
   - component: {fileID: 4869135531634450958}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18979,7 +18979,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3307048129175506064}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19018,7 +19018,7 @@ GameObject:
   - component: {fileID: 5369195796167942584}
   - component: {fileID: 3017486701397608579}
   - component: {fileID: 1419609206385033712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19167,7 +19167,7 @@ GameObject:
   - component: {fileID: 2375789448006524214}
   - component: {fileID: 5389214291748774154}
   - component: {fileID: 3873310133943459304}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19301,7 +19301,7 @@ GameObject:
   - component: {fileID: 1781686573064459769}
   - component: {fileID: 3166755581284808664}
   - component: {fileID: 2200992013775771750}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19437,7 +19437,7 @@ GameObject:
   - component: {fileID: 8362818774312498126}
   - component: {fileID: 8217917684743164651}
   - component: {fileID: 653476031843310930}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19580,7 +19580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1972642670172496065}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19617,7 +19617,7 @@ GameObject:
   - component: {fileID: 1137970542243402971}
   - component: {fileID: 2657735095781265671}
   - component: {fileID: 6603051954454865767}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19751,7 +19751,7 @@ GameObject:
   - component: {fileID: 3764869284815635836}
   - component: {fileID: 2901693298335996408}
   - component: {fileID: 2161790821823660821}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19886,7 +19886,7 @@ GameObject:
   - component: {fileID: 4958045331109967075}
   - component: {fileID: 3081306445911909805}
   - component: {fileID: 2941585466956764528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20033,7 +20033,7 @@ GameObject:
   - component: {fileID: 5889950920267826074}
   - component: {fileID: 7940036194744678022}
   - component: {fileID: 6953450787092611424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20168,7 +20168,7 @@ GameObject:
   - component: {fileID: 8694652693426178689}
   - component: {fileID: 593037234464893965}
   - component: {fileID: 1241563361275913466}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20315,7 +20315,7 @@ GameObject:
   - component: {fileID: 1990354275458214969}
   - component: {fileID: 2354010768261184075}
   - component: {fileID: 3863624917345948874}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20450,7 +20450,7 @@ GameObject:
   - component: {fileID: 6533442842118541100}
   - component: {fileID: 2632024227788099337}
   - component: {fileID: 1170787322999076825}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20585,7 +20585,7 @@ GameObject:
   - component: {fileID: 3519944279870700031}
   - component: {fileID: 5425584523869621742}
   - component: {fileID: 2192452553459082824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20715,7 +20715,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4846084579230800972}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel3 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20748,7 +20748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3295367495228020754}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20791,7 +20791,7 @@ GameObject:
   - component: {fileID: 1932804697299102555}
   - component: {fileID: 6335734396012249827}
   - component: {fileID: 9099585480991782569}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20926,7 +20926,7 @@ GameObject:
   - component: {fileID: 6273994405999653090}
   - component: {fileID: 8043352190282837471}
   - component: {fileID: 7267121797237365390}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21056,7 +21056,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2540969252596733184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21093,7 +21093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3473617961029140262}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21127,7 +21127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3527032184300365227}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21170,7 +21170,7 @@ GameObject:
   - component: {fileID: 695625848922913328}
   - component: {fileID: 4135009268807655286}
   - component: {fileID: 455145188606107377}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21317,7 +21317,7 @@ GameObject:
   - component: {fileID: 6712288708573772136}
   - component: {fileID: 6856442362217664774}
   - component: {fileID: 3826356713177522202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21452,7 +21452,7 @@ GameObject:
   - component: {fileID: 8688564193767099525}
   - component: {fileID: 4614987237041057621}
   - component: {fileID: 1943349826550683570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21587,7 +21587,7 @@ GameObject:
   - component: {fileID: 1145691402186304186}
   - component: {fileID: 5869410015778968344}
   - component: {fileID: 7708242738369042289}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21717,7 +21717,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1871431247855682217}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21754,7 +21754,7 @@ GameObject:
   - component: {fileID: 4411128250484878554}
   - component: {fileID: 4892873143130452489}
   - component: {fileID: 4443185824064821028}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21884,7 +21884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5366471821368139583}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21900,7 +21900,7 @@ Transform:
   m_GameObject: {fileID: 7020751148537701724}
   serializedVersion: 2
   m_LocalRotation: {x: -0.03714842, y: -0.70613027, z: 0.037148423, w: 0.7061303}
-  m_LocalPosition: {x: 3.06, y: 14.2, z: 4.48}
+  m_LocalPosition: {x: 3.06, y: 13.99, z: 4.48}
   m_LocalScale: {x: 0.6999999, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21921,7 +21921,7 @@ GameObject:
   - component: {fileID: 6969387640895743749}
   - component: {fileID: 3340223614806199993}
   - component: {fileID: 1086906184230979330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22055,7 +22055,7 @@ GameObject:
   - component: {fileID: 7076370631329196473}
   - component: {fileID: 756470274574139302}
   - component: {fileID: 3448080883288363240}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22186,7 +22186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5143422816573015590}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22227,7 +22227,7 @@ GameObject:
   - component: {fileID: 3574523432316706742}
   - component: {fileID: 3941847822294807280}
   - component: {fileID: 5577522893035049008}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22361,7 +22361,7 @@ GameObject:
   - component: {fileID: 8411994297437479789}
   - component: {fileID: 2470950673869585512}
   - component: {fileID: 5395666938018989124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22496,7 +22496,7 @@ GameObject:
   - component: {fileID: 4848055888177843397}
   - component: {fileID: 8771059574464920465}
   - component: {fileID: 4825206417965714899}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22631,7 +22631,7 @@ GameObject:
   - component: {fileID: 5742843741431738066}
   - component: {fileID: 9071270722212901835}
   - component: {fileID: 6368480672341507342}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22766,7 +22766,7 @@ GameObject:
   - component: {fileID: 1006847009957269856}
   - component: {fileID: 5399382185532697497}
   - component: {fileID: 1888399445311647800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22900,7 +22900,7 @@ GameObject:
   - component: {fileID: 1783632858849210526}
   - component: {fileID: 5228149327717945184}
   - component: {fileID: 750909837395241559}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23030,7 +23030,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2468807529596592319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23072,7 +23072,7 @@ GameObject:
   - component: {fileID: 7265194852411667598}
   - component: {fileID: 5178408542781824378}
   - component: {fileID: 7184556869612797588}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23207,7 +23207,7 @@ GameObject:
   - component: {fileID: 691148218986782738}
   - component: {fileID: 1786405161659597926}
   - component: {fileID: 3430984415422247604}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23342,7 +23342,7 @@ GameObject:
   - component: {fileID: 4229536838444219035}
   - component: {fileID: 6174002808130815344}
   - component: {fileID: 1501492124548324994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23472,7 +23472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4424364580293878544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23509,7 +23509,7 @@ GameObject:
   - component: {fileID: 7221599984360475677}
   - component: {fileID: 842929514130504053}
   - component: {fileID: 8239856900683027779}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23643,7 +23643,7 @@ GameObject:
   - component: {fileID: 5022298343183454520}
   - component: {fileID: 3688607868727046158}
   - component: {fileID: 1153861318914140072}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23774,7 +23774,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3076565404530550206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23811,7 +23811,7 @@ GameObject:
   - component: {fileID: 8906624199851181961}
   - component: {fileID: 4791765904921733475}
   - component: {fileID: 5726419662250916222}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23945,7 +23945,7 @@ GameObject:
   - component: {fileID: 7095355417399950007}
   - component: {fileID: 3921208510997677689}
   - component: {fileID: 6398353233574681649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24081,7 +24081,7 @@ GameObject:
   - component: {fileID: 6556719775209276675}
   - component: {fileID: 869384251869479145}
   - component: {fileID: 6522622104268889264}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24229,7 +24229,7 @@ GameObject:
   - component: {fileID: 5282547973197134278}
   - component: {fileID: 1379631883884754023}
   - component: {fileID: 1308726437324871962}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24376,7 +24376,7 @@ GameObject:
   - component: {fileID: 7717839909160919388}
   - component: {fileID: 5775734562677738215}
   - component: {fileID: 8990366294952880134}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24510,7 +24510,7 @@ GameObject:
   - component: {fileID: 2184417989104513721}
   - component: {fileID: 7187244738623638507}
   - component: {fileID: 998534401976070983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24645,7 +24645,7 @@ GameObject:
   - component: {fileID: 7042462976892974232}
   - component: {fileID: 8107317301901216897}
   - component: {fileID: 784177355949256598}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24779,7 +24779,7 @@ GameObject:
   - component: {fileID: 6502533165337381401}
   - component: {fileID: 3668147794869413973}
   - component: {fileID: 602559113870712464}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24913,7 +24913,7 @@ GameObject:
   - component: {fileID: 5606657344822364135}
   - component: {fileID: 7066937399671644113}
   - component: {fileID: 6225448811346759265}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25049,7 +25049,7 @@ GameObject:
   - component: {fileID: 963144768062584020}
   - component: {fileID: 9034187407586121527}
   - component: {fileID: 2088661491494665744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25197,7 +25197,7 @@ GameObject:
   - component: {fileID: 6638038317113245244}
   - component: {fileID: 9173200596621881008}
   - component: {fileID: 4957652712588909129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25327,7 +25327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5910080704783679766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25360,7 +25360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1245900500463626819}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25397,7 +25397,7 @@ GameObject:
   - component: {fileID: 3447962352351314016}
   - component: {fileID: 2374271624159231926}
   - component: {fileID: 1517049473246066612}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25527,7 +25527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6111389691132758626}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25564,7 +25564,7 @@ GameObject:
   - component: {fileID: 8697520505647090282}
   - component: {fileID: 2847184334195682582}
   - component: {fileID: 5186449925398883381}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25694,7 +25694,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2376547309748316190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25733,7 +25733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3245160730674932130}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25766,7 +25766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7121628644194987459}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25804,7 +25804,7 @@ GameObject:
   - component: {fileID: 456183971895880480}
   - component: {fileID: 7550145586876404997}
   - component: {fileID: 1130434167831915679}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25939,7 +25939,7 @@ GameObject:
   - component: {fileID: 7232607862959234818}
   - component: {fileID: 6683294899956550650}
   - component: {fileID: 6215930049679538039}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26073,7 +26073,7 @@ GameObject:
   - component: {fileID: 7337920700917921675}
   - component: {fileID: 3253220850955450618}
   - component: {fileID: 4839995899847766835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DoorPanel.cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26208,7 +26208,7 @@ GameObject:
   - component: {fileID: 5867512397278268047}
   - component: {fileID: 1870935475640049470}
   - component: {fileID: 4204214428296042441}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26338,7 +26338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8674385274019415811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26380,7 +26380,7 @@ GameObject:
   - component: {fileID: 6253079037456964736}
   - component: {fileID: 3042200009885775959}
   - component: {fileID: 141563106154010119}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26515,7 +26515,7 @@ GameObject:
   - component: {fileID: 4004325759518644204}
   - component: {fileID: 6385875565310356794}
   - component: {fileID: 925405271514899504}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26662,7 +26662,7 @@ GameObject:
   - component: {fileID: 6270304129220670812}
   - component: {fileID: 3325944838593334557}
   - component: {fileID: 8453839427990220744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26796,7 +26796,7 @@ GameObject:
   - component: {fileID: 5948996654792754705}
   - component: {fileID: 8260058680342061260}
   - component: {fileID: 2645442456040466878}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel1_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26930,7 +26930,7 @@ GameObject:
   - component: {fileID: 2114104177236257872}
   - component: {fileID: 4017044321352936025}
   - component: {fileID: 5094833265993837558}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27060,7 +27060,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2733811251607298333}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27098,7 +27098,7 @@ GameObject:
   - component: {fileID: 2283522934116510553}
   - component: {fileID: 280656749176138550}
   - component: {fileID: 6636279785478268209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27232,7 +27232,7 @@ GameObject:
   - component: {fileID: 1744337991226095936}
   - component: {fileID: 1946570386676192424}
   - component: {fileID: 4410250471646777456}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27366,7 +27366,7 @@ GameObject:
   - component: {fileID: 3674785669634857750}
   - component: {fileID: 1413607157340502255}
   - component: {fileID: 1782312085660378060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27501,7 +27501,7 @@ GameObject:
   - component: {fileID: 6319295917867189523}
   - component: {fileID: 610343785790380785}
   - component: {fileID: 1961721072865874007}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27636,7 +27636,7 @@ GameObject:
   - component: {fileID: 7111751646405889311}
   - component: {fileID: 2091305190521377174}
   - component: {fileID: 7464187335373937997}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27766,7 +27766,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3450906849403444766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27804,7 +27804,7 @@ GameObject:
   - component: {fileID: 7454198176641464849}
   - component: {fileID: 3261098229076970835}
   - component: {fileID: 4883306673827320663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27951,7 +27951,7 @@ GameObject:
   - component: {fileID: 9147237151085465342}
   - component: {fileID: 910790300176788910}
   - component: {fileID: 2339074655339133327}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel8_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28081,7 +28081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3274772372969022202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Panel6 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28114,7 +28114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5886909972990570629}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28152,7 +28152,7 @@ GameObject:
   - component: {fileID: 4951831315372731968}
   - component: {fileID: 6559275633955232518}
   - component: {fileID: 5078734191374642999}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28300,7 +28300,7 @@ GameObject:
   - component: {fileID: 7763030074458344}
   - component: {fileID: 2660137196175309227}
   - component: {fileID: 5418252367735281948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28438,7 +28438,7 @@ GameObject:
   - component: {fileID: 7590818724715685759}
   - component: {fileID: 6206954678011073235}
   - component: {fileID: 7365233715178682028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28648,7 +28648,7 @@ GameObject:
   - component: {fileID: 6433723109194474453}
   - component: {fileID: 3553190260431687157}
   - component: {fileID: 5501475569005392948}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28783,7 +28783,7 @@ GameObject:
   - component: {fileID: 721132198883523276}
   - component: {fileID: 4054368361996933403}
   - component: {fileID: 5774658114617667111}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28918,7 +28918,7 @@ GameObject:
   - component: {fileID: 4139357624589785902}
   - component: {fileID: 6217650667969940161}
   - component: {fileID: 4577970028555855944}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29053,7 +29053,7 @@ GameObject:
   - component: {fileID: 2360884172328696961}
   - component: {fileID: 2014611703999968236}
   - component: {fileID: 9034527353743079323}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Skeleton_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29187,7 +29187,7 @@ GameObject:
   - component: {fileID: 3637984777207957713}
   - component: {fileID: 3627552393877826874}
   - component: {fileID: 3584776494040971662}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29322,7 +29322,7 @@ GameObject:
   - component: {fileID: 3398649965174919776}
   - component: {fileID: 8205165837871583658}
   - component: {fileID: 3289526339610746624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29453,7 +29453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8203852353997414260}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29491,7 +29491,7 @@ GameObject:
   - component: {fileID: 5912769220548484514}
   - component: {fileID: 6377950166353027064}
   - component: {fileID: 5562163743839836349}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel4_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29626,7 +29626,7 @@ GameObject:
   - component: {fileID: 598040569263154438}
   - component: {fileID: 6411636217021436951}
   - component: {fileID: 2730305921561081002}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel3_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29760,7 +29760,7 @@ GameObject:
   - component: {fileID: 4098442086139120084}
   - component: {fileID: 464062459965896843}
   - component: {fileID: 268617679876595729}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balca_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29894,7 +29894,7 @@ GameObject:
   - component: {fileID: 2191327689912147849}
   - component: {fileID: 6016722645342701356}
   - component: {fileID: 7226632524447866985}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30029,7 +30029,7 @@ GameObject:
   - component: {fileID: 4251022169937448303}
   - component: {fileID: 5311997202727130136}
   - component: {fileID: 255412410598918352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Roof_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30164,7 +30164,7 @@ GameObject:
   - component: {fileID: 8255066977615167529}
   - component: {fileID: 4681553178188567884}
   - component: {fileID: 5375279846549163000}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pnalel1_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}

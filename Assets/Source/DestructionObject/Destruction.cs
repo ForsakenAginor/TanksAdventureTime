@@ -22,6 +22,7 @@ namespace DestructionObject
         private float _startY;
 
         public event Action Waked;
+
         public event Action<List<MeshRenderer>> Destroyed;
 
         private void Awake()
@@ -29,12 +30,8 @@ namespace DestructionObject
             _transform = transform;
             _rigidbody = GetComponent<Rigidbody>();
             _rigidbody.Sleep();
-            _cancellation = new CancellationTokenSource();
             _startY = _transform.position.y;
-            Init();
-
-            if (Waked != null)
-                WaitWaking().Forget();
+            InitParts();
         }
 
         private void OnDestroy()
@@ -58,7 +55,16 @@ namespace DestructionObject
             Destroyed?.Invoke(_panelDestruction.GetComponentsInChildren<MeshRenderer>().ToList());
         }
 
-        private void Init()
+        public void StartWaking()
+        {
+            if (_cancellation != null)
+                return;
+
+            _cancellation = new CancellationTokenSource();
+            WaitWaking().Forget();
+        }
+
+        private void InitParts()
         {
             _transformObjects = new Transform[_panelDestruction.childCount];
 
@@ -77,6 +83,12 @@ namespace DestructionObject
 
         private void StopWaiting()
         {
+            if (_cancellation == null)
+                return;
+
+            if (_cancellation.IsCancellationRequested == true)
+                return;
+
             _cancellation?.Cancel();
             _cancellation?.Dispose();
             _cancellation = null;
@@ -84,7 +96,7 @@ namespace DestructionObject
 
         private bool CanWakeUp()
         {
-            return _startY - _transform.position.y > FallOffset;
+            return _rigidbody.IsSleeping() == false && _startY - _transform.position.y > FallOffset;
         }
     }
 }
