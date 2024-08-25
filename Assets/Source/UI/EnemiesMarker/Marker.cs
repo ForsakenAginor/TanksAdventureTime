@@ -31,6 +31,7 @@ namespace Assets.Source.UI.EnemiesMarker
                     _image.gameObject.SetActive(true);
 
                 MoveMarkerImage(closest);
+                Debug.Log("Marker moved");
             }
             else
             {
@@ -45,6 +46,7 @@ namespace Assets.Source.UI.EnemiesMarker
             _player = player != null ? player : throw new ArgumentNullException(nameof(player));
             _image = marker != null ? marker : throw new ArgumentNullException(nameof(marker));
             _minDistance = minDistance > 0 ? minDistance : throw new ArgumentNullException(nameof(minDistance));
+            Debug.Log("Marker was initialized");
         }
 
         private void MoveMarkerImage(Vector3 enemyPosition)
@@ -77,6 +79,7 @@ namespace Assets.Source.UI.EnemiesMarker
             height *= multiplier;
 
             _image.localPosition = new Vector3(width, height, 0);
+            Debug.Log(_image.localPosition);
             float zRotation = Mathf.Rad2Deg * Mathf.Acos(cos);
             zRotation = sin < 0 ? zRotation : -zRotation;
             _image.rotation = Quaternion.Euler(0, 0, zRotation);

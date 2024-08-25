@@ -103,6 +103,8 @@ namespace Assets.Source.EntryPoint
 
             if (_saveService.HadHelper)
                 _playerHelper.Init(_enemies, (PlayerHelperTypes)_saveService.Helper, OnAudioCreated, HelperInitCallback);
+            else
+                _playerHelper.Init();
 
             _winCondition.Init(_enemiesManager.AlivedEnemies);
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
