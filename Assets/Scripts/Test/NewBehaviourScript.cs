@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,5 +20,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
+#if UNITY_WEBGL && !UNITY_EDITOR
+        PlayerAccount.SetCloudSaveData("");
+#endif
     }
 }
