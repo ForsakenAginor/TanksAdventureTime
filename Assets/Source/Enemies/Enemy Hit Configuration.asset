@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ece46d9a63b548da9b90cd0852d50c10, type: 3}
-  m_Name: EnemyHitConfiguration
+  m_Name: Enemy Hit Configuration
   m_EditorClassIdentifier: 
   _content:
   - Key: 0
-    Value: 25
+    Value: 22
   - Key: 1
-    Value: 200
+    Value: 75
   - Key: 2
     Value: 10000
+  - Key: 3
+    Value: 200

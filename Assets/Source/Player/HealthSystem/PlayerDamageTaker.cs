@@ -6,23 +6,20 @@ namespace Assets.Source.Player.HealthSystem
     [RequireComponent(typeof(Collider))]
     public class PlayerDamageTaker : MonoBehaviour, IPlayerTarget, IPermanentKiller
     {
+        private readonly int _bulletDamage = 1;
+        private readonly int _explosionDamage = 10;
+
+        private VirtualCameraShaker _shaker;
         private Health _health;
         private Transform _transform;
         private Collider _collider;
+        private bool _isWorking;
 
         public event Action PlayerDied;
 
-        public Vector3 GetClosestPoint(Vector3 position) => _collider.ClosestPoint(position);
-
-        public void TakeHit(HitTypes type)
-        {
-            if (type != HitTypes.Explosion)
-                return;
-        }
-
         public Vector3 Position => _transform.position;
 
-        public TargetPriority Priority => throw new System.NotImplementedException();
+        public TargetPriority Priority { get; private set; } = TargetPriority.High;
 
         private void Awake()
         {
@@ -35,10 +32,47 @@ namespace Assets.Source.Player.HealthSystem
             _health.Died -= OnDied;
         }
 
-        public void Init(Health health)
+        public void Init(Health health, VirtualCameraShaker shaker)
         {
             _health = health != null ? health : throw new ArgumentNullException(nameof(health));
+            _shaker = shaker != null ? shaker : throw new ArgumentNullException(nameof(shaker));
+            _isWorking = true;
             _health.Died += OnDied;
+        }
+
+        public Vector3 GetClosestPoint(Vector3 position) => _collider.ClosestPoint(position);
+
+        public void TakeHit(HitTypes type)
+        {
+            if (_isWorking == false)
+                return;
+
+            switch (type)
+            {
+                case HitTypes.Bullet:
+                    _health.TakeDamage(_bulletDamage);
+                    break;
+
+                case HitTypes.Explosion:
+                    TakeExplosiveDamage();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void Continue()
+        {
+            _isWorking = true;
+            _health.Restore(_health.Maximum);
+            Priority = TargetPriority.High;
+        }
+
+        public void StopWorking()
+        {
+            Priority = TargetPriority.None;
+            _isWorking = false;
         }
 
         private void OnDied()
@@ -46,14 +80,10 @@ namespace Assets.Source.Player.HealthSystem
             PlayerDied?.Invoke();
         }
 
-        public void TestTakeDamage(int amount)
+        private void TakeExplosiveDamage()
         {
-            _health.TakeDamage(amount);
-        }
-
-        public void Respawn()
-        {
-            _health.Restore(_health.Maximum);
+            _shaker.Shake();
+            _health.TakeDamage(_explosionDamage);
         }
     }
 }

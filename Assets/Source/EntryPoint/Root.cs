@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using Shops;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Source.EntryPoint
 {
@@ -28,6 +29,7 @@ namespace Assets.Source.EntryPoint
         [Header("UI objects")]
         [SerializeField] private UIManager _uIManager;
         [SerializeField] private VictoryEffect _victoryEffect;
+        [SerializeField] private Button _startButton;
 
         [Header("Player")]
         [SerializeField] private PlayerBehaviour _playerBehaviour;
@@ -52,55 +54,68 @@ namespace Assets.Source.EntryPoint
 
         [Header("Other")]
         [SerializeField] private SaveService _saveService;
+        [SerializeField] private Goods _goods;
         [SerializeField] private Silencer _silencer;
+        private Dictionary<GoodNames, object> _savedData;
 
         public Action PlayerDied;
         public Action PlayerRespawned;
 
         private void OnEnable()
         {
-            _saveService.Loaded += StartRoot;
+            _saveService.Loaded += Init;
             _playerDamageTaker.PlayerDied += OnPlayerDied;
             _winCondition.PlayerWon += OnPlayerWon;
+            _startButton.onClick.AddListener(InitializePlayer);
         }
 
         private void OnDisable()
         {
-            _saveService.Loaded -= StartRoot;
+            _saveService.Loaded -= Init;
             _playerDamageTaker.PlayerDied -= OnPlayerDied;
             _winCondition.PlayerWon -= OnPlayerWon;
+            _startButton.onClick.RemoveListener(InitializePlayer);
         }
 
-        private void StartRoot()
+        private void Init()
         {
             _soundInitializer.Init();
             _currentLevel = _saveService.Level;
-            DifficultySystem difficultySystem = new(_currentLevel);
+            DifficultySystem difficultySystem = new (_currentLevel);
 
-            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
+            if (difficultySystem.CurrentConfiguration.Bunkers > 0 && _saveService.HadHelper == false)
+            {
+                _uIManager.ShowHelperAttentionPanel();
+                _saveService.SetPlayerHelperData((int)PlayerHelperTypes.MachineGun);
+            }
+
+            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
                                                 _playerDamageTaker,
                                                 OnAudioCreated,
                                                 OnEnemySpawned);
-            _playerInitializer.Init(_playerDamageTaker, _playerBehaviour, OnAudioCreated);
-            _spawnPoint = _playerDamageTaker.transform.position;
 
-            _enemiesManager = new(_enemies);
-            _playerHelper.Init(_enemies, PlayerHelperTypes.MachineGun, OnAudioCreated, HelperInitCallback);
+            _savedData = _saveService.GetPurchasesData().GetContent(_goods);            
+            _spawnPoint = _playerDamageTaker.transform.position;
+            _enemiesManager = new (_enemies);
+
+            if (_saveService.HadHelper)
+                _playerHelper.Init(_enemies, (PlayerHelperTypes)_saveService.Helper, OnAudioCreated, HelperInitCallback);
+
             _winCondition.Init(_enemiesManager.AlivedEnemies);
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
-
-            Wallet wallet = new(_saveService);
-            _currencyCalculator = new(_bounty, wallet);
-
-            InterstitialAdvertiseShower advertiseShower = new(_silencer);
+            Wallet wallet = new (_saveService);
+            _currencyCalculator = new (_bounty, wallet);
+            InterstitialAdvertiseShower advertiseShower = new (_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             StickyAd.Show();
             advertiseShower.ShowAdvertise();
 #endif
+
+            _startButton.interactable = true;
             Time.timeScale = 0f;
         }
 
@@ -108,9 +123,8 @@ namespace Assets.Source.EntryPoint
         {
             _playerDamageTaker.transform.SetPositionAndRotation(_spawnPoint, Quaternion.identity);
             _onDeathEffectInitializer.Init();
-            _playerDamageTaker.Respawn();
             _playerBehaviour.Continue();
-            PlayerRespawned.Invoke();
+            PlayerRespawned?.Invoke();
         }
 
         private void OnPlayerWon()
@@ -130,7 +144,7 @@ namespace Assets.Source.EntryPoint
         private void OnPlayerDied()
         {
             _playerBehaviour.Stop();
-            PlayerDied.Invoke();
+            PlayerDied?.Invoke();
             _onDeathEffectInitializer.CreateEffect();
             _uIManager.ShowLosingPanel();
         }
@@ -155,6 +169,11 @@ namespace Assets.Source.EntryPoint
                 throw new ArgumentNullException(nameof(target));
 
             _enemies.Add(target);
+        }
+
+        private void InitializePlayer()
+        {
+            _playerInitializer.Init(_savedData, _playerDamageTaker, _playerBehaviour, OnAudioCreated);
         }
     }
 }

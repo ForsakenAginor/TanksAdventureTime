@@ -26,7 +26,7 @@ MonoBehaviour:
           _intValue: 0
           _floatValue: 0
           _boolValue: 1
-        Value: 100
+        Value: 1000
   - Key: 1
     Value:
       Key: 2
@@ -40,7 +40,7 @@ MonoBehaviour:
           _intValue: 0
           _floatValue: 0
           _boolValue: 1
-        Value: 250
+        Value: 2000
   - Key: 2
     Value:
       Key: 1
@@ -52,9 +52,104 @@ MonoBehaviour:
         Value: 0
       - Key:
           _intValue: 0
+          _floatValue: 3.9
+          _boolValue: 0
+        Value: 100
+      - Key:
+          _intValue: 0
+          _floatValue: 3.8
+          _boolValue: 0
+        Value: 150
+      - Key:
+          _intValue: 0
+          _floatValue: 3.7
+          _boolValue: 0
+        Value: 200
+      - Key:
+          _intValue: 0
+          _floatValue: 3.6
+          _boolValue: 0
+        Value: 250
+      - Key:
+          _intValue: 0
+          _floatValue: 3.5
+          _boolValue: 0
+        Value: 300
+      - Key:
+          _intValue: 0
+          _floatValue: 3.4
+          _boolValue: 0
+        Value: 350
+      - Key:
+          _intValue: 0
+          _floatValue: 3.3
+          _boolValue: 0
+        Value: 400
+      - Key:
+          _intValue: 0
+          _floatValue: 3.2
+          _boolValue: 0
+        Value: 450
+      - Key:
+          _intValue: 0
+          _floatValue: 3.1
+          _boolValue: 0
+        Value: 500
+      - Key:
+          _intValue: 0
           _floatValue: 3
           _boolValue: 0
-        Value: 50
+        Value: 550
+      - Key:
+          _intValue: 0
+          _floatValue: 2.9
+          _boolValue: 0
+        Value: 600
+      - Key:
+          _intValue: 0
+          _floatValue: 2.8
+          _boolValue: 0
+        Value: 650
+      - Key:
+          _intValue: 0
+          _floatValue: 2.7
+          _boolValue: 0
+        Value: 700
+      - Key:
+          _intValue: 0
+          _floatValue: 2.6
+          _boolValue: 0
+        Value: 750
+      - Key:
+          _intValue: 0
+          _floatValue: 2.5
+          _boolValue: 0
+        Value: 800
+      - Key:
+          _intValue: 0
+          _floatValue: 2.4
+          _boolValue: 0
+        Value: 850
+      - Key:
+          _intValue: 0
+          _floatValue: 2.3
+          _boolValue: 0
+        Value: 900
+      - Key:
+          _intValue: 0
+          _floatValue: 2.2
+          _boolValue: 0
+        Value: 950
+      - Key:
+          _intValue: 0
+          _floatValue: 2.1
+          _boolValue: 0
+        Value: 1000
+      - Key:
+          _intValue: 0
+          _floatValue: 2
+          _boolValue: 0
+        Value: 1050
   - Key: 3
     Value:
       Key: 0
@@ -65,10 +160,70 @@ MonoBehaviour:
           _boolValue: 0
         Value: 0
       - Key:
-          _intValue: 120
+          _intValue: 150
           _floatValue: 0
           _boolValue: 0
-        Value: 50
+        Value: 200
+      - Key:
+          _intValue: 200
+          _floatValue: 0
+          _boolValue: 0
+        Value: 200
+      - Key:
+          _intValue: 250
+          _floatValue: 0
+          _boolValue: 0
+        Value: 200
+      - Key:
+          _intValue: 300
+          _floatValue: 0
+          _boolValue: 0
+        Value: 200
+      - Key:
+          _intValue: 350
+          _floatValue: 0
+          _boolValue: 0
+        Value: 200
+      - Key:
+          _intValue: 400
+          _floatValue: 0
+          _boolValue: 0
+        Value: 350
+      - Key:
+          _intValue: 450
+          _floatValue: 0
+          _boolValue: 0
+        Value: 350
+      - Key:
+          _intValue: 500
+          _floatValue: 0
+          _boolValue: 0
+        Value: 350
+      - Key:
+          _intValue: 600
+          _floatValue: 0
+          _boolValue: 0
+        Value: 350
+      - Key:
+          _intValue: 700
+          _floatValue: 0
+          _boolValue: 0
+        Value: 500
+      - Key:
+          _intValue: 800
+          _floatValue: 0
+          _boolValue: 0
+        Value: 500
+      - Key:
+          _intValue: 900
+          _floatValue: 0
+          _boolValue: 0
+        Value: 500
+      - Key:
+          _intValue: 1000
+          _floatValue: 0
+          _boolValue: 0
+        Value: 500
   _icons:
   - Key: 0
     Value: {fileID: 21300000, guid: 18be61328b5bbb8458fecce0f3954a60, type: 3}

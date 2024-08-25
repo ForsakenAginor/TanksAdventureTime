@@ -38,6 +38,12 @@ namespace PlayerHelpers
 
         public void StopDraw()
         {
+            if (_cancellation == null)
+                return;
+
+            if (_cancellation.IsCancellationRequested == true)
+                return;
+
             _cancellation.Cancel();
             _cancellation.Dispose();
         }

@@ -7,15 +7,18 @@ namespace PlayerHelpers
     {
         private readonly FiniteStateMachine<CharacterState> _machine;
         private readonly CharacterThinker _thinker;
+        private readonly TargetSwitcher _switcher;
         private readonly (Action onEnable, Action onDisable) _activationHandler;
 
         public PlayerHelperPresenter(
             FiniteStateMachine<CharacterState> machine,
             CharacterThinker thinker,
+            TargetSwitcher switcher,
             (Action onEnable, Action onDisable) activationHandler)
         {
             _machine = machine;
             _thinker = thinker;
+            _switcher = switcher;
             _activationHandler = activationHandler;
         }
 
@@ -36,6 +39,7 @@ namespace PlayerHelpers
 
         private void OnUpdated()
         {
+            _switcher.Search();
             _machine.Update();
         }
     }

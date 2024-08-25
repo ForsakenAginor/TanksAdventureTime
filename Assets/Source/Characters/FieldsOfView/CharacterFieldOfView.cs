@@ -39,7 +39,7 @@ namespace Characters
 
         private bool HaveTarget()
         {
-            return Target != null;
+            return Target != null && Target.Priority != TargetPriority.None;
         }
     }
 }

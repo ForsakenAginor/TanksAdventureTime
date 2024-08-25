@@ -16,6 +16,7 @@ namespace Assets.Source.UI
         [SerializeField] private GameObject _buttonsPanel;
         [SerializeField] private float _delay;
         [SerializeField] private LevelLabel _levelLabel;
+        [SerializeField] private GameObject _helperAttentionPanel;
 
         [Header("Marker")]
         [SerializeField] private float _minDistance;
@@ -29,12 +30,8 @@ namespace Assets.Source.UI
 
         private void Start()
         {
-            /* 
-            uncomment that on publishing
-
             if(Device.IsMobile == false)
                 _mobileInputCanvas.SetActive(false);
-            */
         }
 
         public void Init(IEnumerable<ITarget> enemies, Transform player, int levelNumber)
@@ -64,6 +61,11 @@ namespace Assets.Source.UI
             _buttonsPanel.SetActive(false);
             _mobileInputCanvas.SetActive(false);
             _winingPanel.SetActive(true);
+        }
+
+        public void ShowHelperAttentionPanel()
+        {
+            _helperAttentionPanel.SetActive(true);
         }
 
         private IEnumerator DisplayLosingPanel()

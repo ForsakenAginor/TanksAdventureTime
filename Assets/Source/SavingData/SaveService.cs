@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SaveService : MonoBehaviour, ISave
 {
-    private SaveGameData _saveGameData = new ();
-    private GameData _gameData = new ();
+    private SaveGameData _saveGameData = new();
+    private GameData _gameData = new();
 
     public event Action Loaded;
 
@@ -15,10 +15,14 @@ public class SaveService : MonoBehaviour, ISave
 
     public int Helper => _gameData.Helper;
 
-    public int CompletedTraining => _gameData.CompletedTraining;
+    public bool HadHelper => _gameData.HadHelper;
+
+    public int CompletedTrainingOnComputer => _gameData.CompletedTrainingOnComputer;
+
+    public int CompletedTrainingOnMobile => _gameData.CompletedTrainingOnMobile;
 
     private void Start() => _saveGameData.Load();
-    
+
     private void OnEnable() => _saveGameData.Loaded += Fill;
 
     private void OnDisable() => _saveGameData.Loaded -= Fill;
@@ -41,15 +45,22 @@ public class SaveService : MonoBehaviour, ISave
         Save();
     }
 
-    public void SetCompletedTrainingData(bool isCompletedTraining)
+    public void SetCompletedTrainingComputerData(bool isCompletedTraining)
     {
-        _gameData.CompletedTraining = isCompletedTraining ? 1 : 0;
+        _gameData.CompletedTrainingOnComputer = GetCompletedTrainingValue(isCompletedTraining);
+        Save();
+    }
+
+    public void SetCompletedTrainingMobileData(bool isCompletedTraining)
+    {
+        _gameData.CompletedTrainingOnMobile = GetCompletedTrainingValue(isCompletedTraining);
         Save();
     }
 
     public void SetPlayerHelperData(int indexHelper)
     {
         _gameData.Helper = indexHelper;
+        _gameData.HadHelper = true;
         Save();
     }
 
@@ -72,6 +83,13 @@ public class SaveService : MonoBehaviour, ISave
     private void Save()
     {
         _saveGameData.Save(_gameData);
+    }
+
+    private int GetCompletedTrainingValue(bool isCompletedTraining)
+    {
+        int minValue = 0;
+        int maxValue = 1;
+        return isCompletedTraining ? maxValue : minValue;
     }
 
     private void Fill(GameData gameData)

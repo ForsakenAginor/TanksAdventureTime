@@ -3,4 +3,5 @@
     Bullet,
     Explosion,
     PermanentDeath,
+    PlayerExplosion,
 }
