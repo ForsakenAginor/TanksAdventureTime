@@ -1,6 +1,7 @@
 ﻿using Assets.Source.Player.Weapons;
 using Cysharp.Threading.Tasks;
 using System;
+using UnityEngine.EventSystems;
 
 namespace Assets.Source.Player.Input
 {
@@ -35,6 +36,9 @@ namespace Assets.Source.Player.Input
         private void OnInputReceived()
         {
             if (_isWorking == false)
+                return;
+
+            if (EventSystem.current.IsPointerOverGameObject())
                 return;
 
             Shoot();
