@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -84,7 +84,7 @@ TextureImporter:
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -119,6 +119,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -126,10 +139,10 @@ TextureImporter:
       name: hands-isometric-set_1
       rect:
         serializedVersion: 2
-        x: 147
-        y: 1393
-        width: 285
-        height: 527
+        x: 130
+        y: 1372
+        width: 302
+        height: 562
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,55 +157,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hands-isometric-set_3
-      rect:
-        serializedVersion: 2
-        x: 944
-        y: 1862
-        width: 52
-        height: 70
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d26717a7b89ae9e49bad3f2eef571ff9
-      internalID: -587677703
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: hands-isometric-set_4
-      rect:
-        serializedVersion: 2
-        x: 992
-        y: 1796
-        width: 58
-        height: 65
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: adf98291d4de5d148863227926c624ea
-      internalID: 26824957
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: hands-isometric-set_5
       rect:
         serializedVersion: 2
-        x: 1573
-        y: 1404
-        width: 294
-        height: 440
+        x: 1563
+        y: 1391
+        width: 312
+        height: 465
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +181,10 @@ TextureImporter:
       name: hands-isometric-set_6
       rect:
         serializedVersion: 2
-        x: 733
+        x: 706
         y: 1308
-        width: 587
-        height: 471
+        width: 629
+        height: 637
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,10 +223,10 @@ TextureImporter:
       name: hands-isometric-set_39
       rect:
         serializedVersion: 2
-        x: 112
-        y: 758
-        width: 407
-        height: 478
+        x: 99
+        y: 743
+        width: 440
+        height: 512
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,10 +265,10 @@ TextureImporter:
       name: hands-isometric-set_65
       rect:
         serializedVersion: 2
-        x: 702
-        y: 82
-        width: 674
-        height: 530
+        x: 689
+        y: 66
+        width: 707
+        height: 546
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,10 +286,10 @@ TextureImporter:
       name: hands-isometric-set_68
       rect:
         serializedVersion: 2
-        x: 147
-        y: 90
-        width: 314
-        height: 489
+        x: 138
+        y: 78
+        width: 329
+        height: 520
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,10 +307,10 @@ TextureImporter:
       name: hands-isometric-set_71
       rect:
         serializedVersion: 2
-        x: 1518
-        y: 113
-        width: 348
-        height: 463
+        x: 1508
+        y: 100
+        width: 362
+        height: 481
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
