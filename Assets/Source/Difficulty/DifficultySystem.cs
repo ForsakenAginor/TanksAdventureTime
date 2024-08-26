@@ -5,7 +5,7 @@ namespace Assets.Source.Difficulty
     public class DifficultySystem
     {
         private readonly LevelConfiguration _minConfiguration = new(3, 1, 0, 0, 0);
-        private readonly LevelConfiguration _maxConfiguration = new(10, 10, 2, 4, 1);
+        private readonly LevelConfiguration _maxConfiguration = new(10, 10, 2, 4, 2);
         private readonly float _smallScaleFactor = 0.5f;
         private readonly float _mediumScaleFactor = 0.5f;
         private readonly float _largecaleFactor = 0.2f;
