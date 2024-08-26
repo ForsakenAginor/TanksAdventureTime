@@ -1,4 +1,5 @@
-﻿using Assets.Source.Player.Weapons;
+﻿using Agava.WebUtility;
+using Assets.Source.Player.Weapons;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine.EventSystems;
@@ -38,7 +39,7 @@ namespace Assets.Source.Player.Input
             if (_isWorking == false)
                 return;
 
-            if (EventSystem.current.IsPointerOverGameObject())
+            if (Device.IsMobile == false && EventSystem.current.IsPointerOverGameObject())
                 return;
 
             Shoot();
