@@ -6377,25 +6377,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementRange: 50
+  m_MovementRange: 75
   m_DynamicOriginRange: 100
   m_ControlPath: <Gamepad>/rightStick
   m_Behaviour: 0
-  m_UseIsolatedInputActions: 0
+  m_UseIsolatedInputActions: 1
   m_PointerDownAction:
-    m_Name: 
+    m_Name: Pointer Down
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 10556c85-ba11-4c9f-88ea-39e778a24ff5
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
   m_PointerMoveAction:
-    m_Name: 
+    m_Name: Pointer Move
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 3bdb9584-c12f-4310-a378-d0e8c904cb08
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -8541,25 +8541,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9d677f1681015749b15c436eec6d880, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementRange: 50
+  m_MovementRange: 75
   m_DynamicOriginRange: 100
   m_ControlPath: <Gamepad>/leftStick
   m_Behaviour: 0
-  m_UseIsolatedInputActions: 0
+  m_UseIsolatedInputActions: 1
   m_PointerDownAction:
-    m_Name: 
+    m_Name: Pointer Down
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 639f9200-cccb-4a6b-91b3-4be52f9a4ff3
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
   m_PointerMoveAction:
-    m_Name: 
+    m_Name: Pointer Move
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 05765cfd-03c0-4e6d-b7df-2b5102aa0133
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
