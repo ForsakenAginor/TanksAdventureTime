@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DestructionObject
+namespace Assets.Source.DestructionObject
 {
     public class Ground : MonoBehaviour
     {

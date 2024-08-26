@@ -1,14 +1,16 @@
-using DestructionObject;
 using System.Linq;
 using UnityEngine;
 
-public class DestructionObjectsMeshUnitor : MonoBehaviour
+namespace Assets.Source.DestructionObject
 {
-    [SerializeField] private Transform _parent;
-
-    private void Start()
+    public class DestructionObjectsMeshUnitor : MonoBehaviour
     {
-        GetComponentsInChildren<Destruction>().ToList().ForEach(o => o.transform.parent = _parent);
-        StaticBatchingUtility.Combine(_parent.gameObject);
+        [SerializeField] private Transform _parent;
+
+        private void Start()
+        {
+            GetComponentsInChildren<Destruction>().ToList().ForEach(o => o.transform.parent = _parent);
+            StaticBatchingUtility.Combine(_parent.gameObject);
+        }
     }
 }

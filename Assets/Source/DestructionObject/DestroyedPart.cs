@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DestructionObject
+namespace Assets.Source.DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Collider))]
@@ -22,7 +22,7 @@ namespace DestructionObject
             float minValue = 5f;
             float maxValue = 10f;
             float timeDie = Random.Range(minValue, maxValue);
-             Invoke(DieObject, timeDie);
+            Invoke(DieObject, timeDie);
         }
 
         private void DisableObject()

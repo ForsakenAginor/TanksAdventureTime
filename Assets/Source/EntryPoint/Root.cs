@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Shops;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Source.SavingData;
 
 namespace Assets.Source.EntryPoint
 {
@@ -81,7 +82,7 @@ namespace Assets.Source.EntryPoint
         {
             _soundInitializer.Init();
             _currentLevel = _saveService.Level;
-            DifficultySystem difficultySystem = new (_currentLevel);
+            DifficultySystem difficultySystem = new(_currentLevel);
 
             if (difficultySystem.CurrentConfiguration.Bunkers > 0 && _saveService.HadHelper == false)
             {
@@ -89,7 +90,7 @@ namespace Assets.Source.EntryPoint
                 _saveService.SetPlayerHelperData((int)PlayerHelperTypes.MachineGun);
             }
 
-            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
+            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
@@ -97,9 +98,9 @@ namespace Assets.Source.EntryPoint
                                                 OnAudioCreated,
                                                 OnEnemySpawned);
 
-            _savedData = _saveService.GetPurchasesData().GetContent(_goods);            
+            _savedData = _saveService.GetPurchasesData().GetContent(_goods);
             _spawnPoint = _playerDamageTaker.transform.position;
-            _enemiesManager = new (_enemies);
+            _enemiesManager = new(_enemies);
 
             if (_saveService.HadHelper)
                 _playerHelper.Init(_enemies, (PlayerHelperTypes)_saveService.Helper, OnAudioCreated, HelperInitCallback);
@@ -108,9 +109,9 @@ namespace Assets.Source.EntryPoint
 
             _winCondition.Init(_enemiesManager.AlivedEnemies);
             _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
-            Wallet wallet = new (_saveService);
-            _currencyCalculator = new (_bounty, wallet);
-            InterstitialAdvertiseShower advertiseShower = new (_silencer);
+            Wallet wallet = new(_saveService);
+            _currencyCalculator = new(_bounty, wallet);
+            InterstitialAdvertiseShower advertiseShower = new(_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             StickyAd.Show();

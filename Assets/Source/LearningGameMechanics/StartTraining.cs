@@ -1,24 +1,28 @@
+using Assets.Source.SavingData;
 using UnityEngine;
 
-public class StartTraining : MonoBehaviour
+namespace Assets.Source.LearningGameMechanics
 {
-    [SerializeField] private TrainingMobilePlatform _trainingMobilePlatform;
-    [SerializeField] private SaveService _saveService;
-
-    private void OnEnable() => _saveService.Loaded += OnStartTraining;
-
-    private void OnDisable() => _saveService.Loaded -= OnStartTraining;
-
-    private void OnStartTraining()
+    public class StartTraining : MonoBehaviour
     {
-        int minValue = 0;
-        int maxValue = 1;
-        bool isTraining = true ? _saveService.CompletedTrainingOnMobile == maxValue :
-                                 _saveService.CompletedTrainingOnMobile == minValue;
+        [SerializeField] private TrainingMobilePlatform _trainingMobilePlatform;
+        [SerializeField] private SaveService _saveService;
 
-        if (isTraining == true) return;
+        private void OnEnable() => _saveService.Loaded += OnStartTraining;
 
-        if (Application.isMobilePlatform)
-            _trainingMobilePlatform.gameObject.SetActive(true);
+        private void OnDisable() => _saveService.Loaded -= OnStartTraining;
+
+        private void OnStartTraining()
+        {
+            int minValue = 0;
+            int maxValue = 1;
+            bool isTraining = true ? _saveService.CompletedTrainingOnMobile == maxValue :
+                                     _saveService.CompletedTrainingOnMobile == minValue;
+
+            if (isTraining == true) return;
+
+            if (Application.isMobilePlatform)
+                _trainingMobilePlatform.gameObject.SetActive(true);
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace DestructionObject
+namespace Assets.Source.DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Destruction : MonoBehaviour, IPermanentKiller, IReactive, ISupportStructure
@@ -59,6 +59,7 @@ namespace DestructionObject
         {
             if (_cancellation != null)
                 return;
+
 
             _cancellation = new CancellationTokenSource();
             WaitWaking().Forget();

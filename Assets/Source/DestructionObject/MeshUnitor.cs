@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 
-public class MeshUnitor : MonoBehaviour
+namespace Assets.Source.DestructionObject
 {
-    private void Start()
+    public class MeshUnitor : MonoBehaviour
     {
-        StaticBatchingUtility.Combine(gameObject);
+        private void Start()
+        {
+            StaticBatchingUtility.Combine(gameObject);
+        }
     }
 }

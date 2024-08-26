@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class DestroyableObject : MonoBehaviour, IReactive
+namespace Assets.Source.DestructionObject
 {
-    public void React()
+    public class DestroyableObject : MonoBehaviour, IReactive
     {
-        gameObject.SetActive(false);
+        public void React()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
