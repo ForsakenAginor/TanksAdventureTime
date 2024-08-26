@@ -1893,12 +1893,12 @@ MonoBehaviour:
   entries:
   - Language: Russian
     Text: "\u0427\u0442\u043E\u0431\u044B \u043F\u0435\u0440\u0435\u0439\u0442\u0438
-      \u043D\u0430 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C
+      \u043D\u0430 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0439 \u0443\u0440\u043E\u0432\u0435\u043D\u044C,
       \u0412\u044B \u0434\u043E\u043B\u0436\u043D\u044B \u0443\u043D\u0438\u0447\u0442\u043E\u0436\u0438\u0442\u044C
       \u0432\u0441\u0435\u0445 \u043F\u0440\u043E\u0442\u0438\u0432\u043D\u0438\u043A\u043E\u0432"
     Object: {fileID: 0}
   - Language: English
-    Text: To go to the next level you must destroy all opponents
+    Text: To move to the next level, you must destroy all opponents
     Object: {fileID: 0}
   - Language: Turkish
     Text: "Bir sonraki seviyeye ge\xE7mek i\xE7in t\xFCm rakipleri yok etmelisiniz"

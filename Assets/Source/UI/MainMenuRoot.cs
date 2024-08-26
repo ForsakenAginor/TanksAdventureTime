@@ -23,21 +23,6 @@ namespace Assets.Source.UI
         [SerializeField] private TextMeshProUGUI _currencyView;
         [SerializeField] private SaveService _saveService;
 
-        private void Start()
-        {
-            _soundInitializer.Init();
-            Wallet wallet = new(_saveService);
-            WalletView walletView = new(wallet, _currencyView);
-
-            _shop.Init(
-                wallet,
-                _saveService.SavePurchasesData,
-                _saveService.SetPlayerHelperData,
-                _saveService.GetPurchasesData(),
-                _saveService.HadHelper,
-                (PlayerHelperTypes)_saveService.Helper);
-        }
-
         private void OnEnable()
         {
             _saveService.Loaded += OnSaveLoaded;
@@ -61,6 +46,18 @@ namespace Assets.Source.UI
                 else
                     _pcTutorialPanel.SetActive(true);
             }
+
+            _soundInitializer.Init();
+            Wallet wallet = new(_saveService);
+            WalletView walletView = new(wallet, _currencyView);
+
+            _shop.Init(
+                wallet,
+                _saveService.SavePurchasesData,
+                _saveService.SetPlayerHelperData,
+                _saveService.GetPurchasesData(),
+                _saveService.HadHelper,
+                (PlayerHelperTypes)_saveService.Helper);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             YandexGamesSdk.GameReady();
