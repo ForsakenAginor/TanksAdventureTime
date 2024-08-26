@@ -30,8 +30,10 @@ namespace Assets.Source.UI
 
         private void Start()
         {
+#if !UNITY_EDITOR
             if(Device.IsMobile == false)
                 _mobileInputCanvas.SetActive(false);
+#endif
         }
 
         public void Init(IEnumerable<ITarget> enemies, Transform player, int levelNumber)
