@@ -1,8 +1,7 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.LearningGameMechanics
+namespace LearningGameMechanics
 {
     public abstract class TrainingImage : MonoBehaviour
     {

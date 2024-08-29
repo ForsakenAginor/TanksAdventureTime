@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using Assets.Source.SavingData;
+using SavingData;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.LearningGameMechanics
+namespace LearningGameMechanics
 {
     public class TrainingMobilePlatform : MonoBehaviour
     {
@@ -15,25 +15,25 @@ namespace Assets.Source.LearningGameMechanics
 
         private void OnEnable()
         {
-            _playButton.onClick.AddListener(FillTraining);
+            _playButton.onClick.AddListener(OnFillTraining);
 
             for (int i = 0; i < _trainings.Count; i++)
             {
-                _trainings[i].Canceled += NextTraining;
+                _trainings[i].Canceled += OnNextTraining;
             }
         }
 
         private void OnDisable()
         {
-            _playButton.onClick.RemoveListener(FillTraining);
+            _playButton.onClick.RemoveListener(OnFillTraining);
 
             for (int i = 0; i < _trainings.Count; i++)
             {
-                _trainings[i].Canceled -= NextTraining;
+                _trainings[i].Canceled -= OnNextTraining;
             }
         }
 
-        private void FillTraining()
+        private void OnFillTraining()
         {
             foreach (var training in _trainings)
             {
@@ -44,14 +44,14 @@ namespace Assets.Source.LearningGameMechanics
             _trainings[_currentTrainingIndex].EnableInputObject();
         }
 
-        private void NextTraining()
+        private void OnNextTraining()
         {
             int element = 1;
             _trainings[_currentTrainingIndex].enabled = false;
 
             if (_currentTrainingIndex == _trainings.Count - element)
             {
-                _saveService.SetCompletedTrainingMobileData(true);
+                _saveService.SaveCompletedTrainingMobileData(true);
                 gameObject.SetActive(false);
                 return;
             }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Source.DestructionObject
+namespace DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Collider))]

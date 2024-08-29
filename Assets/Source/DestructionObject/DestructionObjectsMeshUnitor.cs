@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Source.DestructionObject
+namespace DestructionObject
 {
     public class DestructionObjectsMeshUnitor : MonoBehaviour
     {

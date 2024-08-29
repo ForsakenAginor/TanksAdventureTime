@@ -1,8 +1,8 @@
-using Shops;
 using System;
+using Shops;
 using UnityEngine;
 
-namespace Assets.Source.SavingData
+namespace SavingData
 {
     public class SaveService : MonoBehaviour, ISave
     {
@@ -25,9 +25,9 @@ namespace Assets.Source.SavingData
 
         private void Start() => _saveGameData.Load();
 
-        private void OnEnable() => _saveGameData.Loaded += Fill;
+        private void OnEnable() => _saveGameData.Loaded += OnFill;
 
-        private void OnDisable() => _saveGameData.Loaded -= Fill;
+        private void OnDisable() => _saveGameData.Loaded -= OnFill;
 
 
         public int GetCurrency()
@@ -35,31 +35,31 @@ namespace Assets.Source.SavingData
             return Currency;
         }
 
-        public void SetCurrencyData(int amount)
+        public void SaveCurrencyData(int amount)
         {
             _gameData.Currency = amount;
             Save();
         }
 
-        public void SetLevelData(int level)
+        public void SaveLevelData(int level)
         {
             _gameData.Level = level;
             Save();
         }
 
-        public void SetCompletedTrainingComputerData(bool isCompletedTraining)
+        public void SaveCompletedTrainingComputerData(bool isCompletedTraining)
         {
             _gameData.CompletedTrainingOnComputer = GetCompletedTrainingValue(isCompletedTraining);
             Save();
         }
 
-        public void SetCompletedTrainingMobileData(bool isCompletedTraining)
+        public void SaveCompletedTrainingMobileData(bool isCompletedTraining)
         {
             _gameData.CompletedTrainingOnMobile = GetCompletedTrainingValue(isCompletedTraining);
             Save();
         }
 
-        public void SetPlayerHelperData(int indexHelper)
+        public void SavePlayerHelperData(int indexHelper)
         {
             _gameData.Helper = indexHelper;
             _gameData.HadHelper = true;
@@ -94,15 +94,9 @@ namespace Assets.Source.SavingData
             return isCompletedTraining ? maxValue : minValue;
         }
 
-        private void Fill(GameData gameData)
+        private void OnFill(GameData gameData)
         {
             _gameData = gameData;
-
-            if (((Purchases)_gameData.Purchases).Objects.Count != 0)
-            {
-                Debug.Log($"Key {((Purchases)_gameData.Purchases).Objects[0].Key}, Value {((Purchases)_gameData.Purchases).Objects[0].Value}");
-            }
-
             Loaded?.Invoke();
         }
     }

@@ -5,7 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Source.DestructionObject
+namespace DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Destruction : MonoBehaviour, IPermanentKiller, IReactive, ISupportStructure

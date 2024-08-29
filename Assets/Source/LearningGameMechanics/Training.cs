@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.Source.LearningGameMechanics
+namespace LearningGameMechanics
 {
     public abstract class Training : TrainingImage
     {

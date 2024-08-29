@@ -14,9 +14,9 @@ using PlayerHelpers;
 using System;
 using System.Collections.Generic;
 using Shops;
+using SavingData;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Source.SavingData;
 
 namespace Assets.Source.EntryPoint
 {
@@ -87,7 +87,7 @@ namespace Assets.Source.EntryPoint
             if (difficultySystem.CurrentConfiguration.Bunkers > 0 && _saveService.HadHelper == false)
             {
                 _uIManager.ShowHelperAttentionPanel();
-                _saveService.SetPlayerHelperData((int)PlayerHelperTypes.MachineGun);
+                _saveService.SavePlayerHelperData((int)PlayerHelperTypes.MachineGun);
             }
 
             LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
@@ -138,7 +138,7 @@ namespace Assets.Source.EntryPoint
 #if UNITY_WEBGL && !UNITY_EDITOR
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
-            _saveService.SetLevelData(++_currentLevel);
+            _saveService.SaveLevelData(++_currentLevel);
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }

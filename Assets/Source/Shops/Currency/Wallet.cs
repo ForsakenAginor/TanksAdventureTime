@@ -1,4 +1,5 @@
 ﻿using System;
+using SavingData;
 
 namespace Shops
 {
@@ -23,7 +24,7 @@ namespace Shops
                 throw new ArgumentOutOfRangeException(nameof(amount));
 
             CurrentCurrency += amount;
-            _save.SetCurrencyData(CurrentCurrency);
+            _save.SaveCurrencyData(CurrentCurrency);
             CurrencyAmountChanged?.Invoke(CurrentCurrency);
         }
 
@@ -36,7 +37,7 @@ namespace Shops
                 return false;
 
             CurrentCurrency -= amount;
-            _save.SetCurrencyData(CurrentCurrency);
+            _save.SaveCurrencyData(CurrentCurrency);
             CurrencyAmountChanged?.Invoke(CurrentCurrency);
             return true;
         }

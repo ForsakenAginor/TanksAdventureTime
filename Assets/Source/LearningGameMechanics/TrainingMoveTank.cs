@@ -1,6 +1,6 @@
 using DG.Tweening;
 
-namespace Assets.Source.LearningGameMechanics
+namespace LearningGameMechanics
 {
     public class TrainingMoveTank : Training
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using SavingData;
 
 namespace Shops
 {
@@ -9,7 +10,7 @@ namespace Shops
             return 0;
         }
 
-        public void SetCurrencyData(int currency)
+        public void SaveCurrencyData(int currency)
         {
             if (currency < 0)
                 throw new ArgumentOutOfRangeException(nameof(currency));

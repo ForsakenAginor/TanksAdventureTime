@@ -1,7 +1,7 @@
-using Assets.Source.SavingData;
+using SavingData;
 using UnityEngine;
 
-namespace Assets.Source.LearningGameMechanics
+namespace LearningGameMechanics
 {
     public class StartTraining : MonoBehaviour
     {
