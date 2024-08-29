@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using PlayerHelpers;
 using UnityEngine;
+using PlayerHelpers;
 
 namespace Shops
 {
