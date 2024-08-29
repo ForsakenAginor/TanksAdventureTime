@@ -29,7 +29,7 @@ namespace SavingProgress
 
         public int GetCurrency()
         {
-            throw new NotImplementedException();
+            return _gameProgress.Currency;
         }
 
         public void SaveCurrency(int amount)
