@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Player.HealthSystem
+namespace Player
 {
     public class Health
     {

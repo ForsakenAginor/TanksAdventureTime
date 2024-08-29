@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Player.HealthSystem
+namespace Player
 {
     public abstract class HealthView : MonoBehaviour
     {
