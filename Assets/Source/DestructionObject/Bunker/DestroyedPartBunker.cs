@@ -6,10 +6,10 @@ namespace DestructionObject
     public class DestroyedPartBunker : MonoBehaviour
     {
         private const string DieObject = nameof(DisableObject);
+        private const float Force = 1000f;
+        private const int Radius = 10;
 
         private Rigidbody _rigidbody;
-        private float _force = 1000f;
-        private float _radius = 10;
 
         private void Awake() => _rigidbody = GetComponent<Rigidbody>();
 
@@ -19,7 +19,8 @@ namespace DestructionObject
             Die();
         }
 
-        private void AddForce(Transform centerObjectPosition) => _rigidbody.AddExplosionForce(_force, centerObjectPosition.position, _radius);
+        private void AddForce(Transform centerObjectPosition) =>
+            _rigidbody.AddExplosionForce(Force, centerObjectPosition.position, Radius);
 
         private void Die()
         {

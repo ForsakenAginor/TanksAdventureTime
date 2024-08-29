@@ -6,11 +6,11 @@ namespace LearningGameMechanics
 {
     public abstract class Training : TrainingImage
     {
+        private const int MinTimeScale = 0;
+        private const int MaxTimeScale = 1;
+
         [SerializeField] private Transform _inputObject;
         [SerializeField] private Transform _backGroundPanel;
-
-        private float _minTimeScale = 0;
-        private float _maxTimeScale = 1;
 
         public event Action Canceled;
 
@@ -29,7 +29,7 @@ namespace LearningGameMechanics
             gameObject.SetActive(true);
             _inputObject.gameObject.SetActive(true);
             _backGroundPanel.gameObject.SetActive(true);
-            Time.timeScale = _minTimeScale;
+            Time.timeScale = MinTimeScale;
         }
 
         public void DisableInputObject()
@@ -40,7 +40,7 @@ namespace LearningGameMechanics
         protected void OnInputActive(InputAction.CallbackContext callbackContext)
         {
             _backGroundPanel.gameObject.SetActive(false);
-            Time.timeScale = _maxTimeScale;
+            Time.timeScale = MaxTimeScale;
             IsPress = true;
             TurnOff();
         }

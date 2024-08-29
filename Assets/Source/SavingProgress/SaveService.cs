@@ -6,14 +6,12 @@ namespace SavingProgress
 {
     public class SaveService : MonoBehaviour, ISave
     {
-        private SaveGameProgress _saveGameProgress = new();
+        private readonly SaveGameProgress _saveGameProgress = new();
         private GameProgress _gameProgress = new();
 
         public event Action Loaded;
 
         public int Level => _gameProgress.Level;
-
-        public int Currency => _gameProgress.Currency;
 
         public int Helper => _gameProgress.Helper;
 
@@ -29,10 +27,9 @@ namespace SavingProgress
 
         private void OnDisable() => _saveGameProgress.Loaded -= OnFill;
 
-
         public int GetCurrency()
         {
-            return Currency;
+            throw new NotImplementedException();
         }
 
         public void SaveCurrency(int amount)
@@ -64,11 +61,6 @@ namespace SavingProgress
             _gameProgress.Helper = indexHelper;
             _gameProgress.HadHelper = true;
             Save();
-        }
-
-        public int GetPlayerHelper()
-        {
-            return _gameProgress.Helper;
         }
 
         public void SavePurchases(IReadOnlyCharacteristics purchases)
