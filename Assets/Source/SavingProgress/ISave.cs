@@ -1,9 +1,9 @@
-namespace SavingData
+namespace SavingProgress
 {
     public interface ISave
     {
         public int GetCurrency();
 
-        public void SaveCurrencyData(int currency);
+        public void SaveCurrency(int currency);
     }
 }

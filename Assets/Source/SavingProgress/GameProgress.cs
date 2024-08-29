@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using Shops;
 
-namespace SavingData
+namespace SavingProgress
 {
-    public class GameData
+    public class GameProgress
     {
         public int Level = 1;
         public int Currency = 0;
@@ -14,7 +14,7 @@ namespace SavingData
         public bool HadHelper = false;
         public Purchases Purchases;
 
-        public GameData()
+        public GameProgress()
         {
             Purchases = CreateStartPurchases();
         }
