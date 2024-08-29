@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Assets.Source.Enemies
+namespace Enemies
 {
     public class EnemiesManager
     {
-        private IEnumerable<IDamageableTarget> _enemies;
+        private readonly IEnumerable<IDamageableTarget> _enemies;
 
         public EnemiesManager(IEnumerable<IDamageableTarget> enemies)
         {
-            _enemies = enemies != null ? enemies : throw new ArgumentNullException(nameof(enemies));
+            _enemies = enemies ?? throw new ArgumentNullException(nameof(enemies));
         }
 
-        public IEnumerable<IDamageableTarget> AlivedEnemies => _enemies.Where(o => o.Priority != TargetPriority.None);
+        public IEnumerable<IDamageableTarget> AliveEnemies => _enemies.Where(o => o.Priority != TargetPriority.None);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace DestructionObject
 {
-    public class MeshUnitor : MonoBehaviour
+    public class MeshCombiner : MonoBehaviour
     {
         private void Start()
         {

@@ -17,15 +17,9 @@ namespace Enemies
         private bool _didExplode;
         private int _ignoreInteraction;
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, _explosionRadius);
-        }
-
         private void OnCollisionEnter()
         {
-            OnExploding();
+            Explode();
         }
 
         public void Init(IExplosive explosive, Action<AudioSource> initCallback)
@@ -36,7 +30,7 @@ namespace Enemies
             initCallback?.Invoke(_sound);
         }
 
-        public void Explode()
+        private void Explode()
         {
             if (_didExplode == true)
                 return;
@@ -46,11 +40,6 @@ namespace Enemies
             _colliderBody.SetActive(false);
             _explosive.Explode(_transform.position, _explosionRadius);
             OnExploded().Forget();
-        }
-
-        public virtual void OnExploding()
-        {
-            Explode();
         }
 
         private async UniTaskVoid OnExploded()
