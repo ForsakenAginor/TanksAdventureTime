@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Source.DestructionObject
+namespace DestructionObject
 {
     public class StaticBatcher : MonoBehaviour
     {
@@ -43,7 +43,6 @@ namespace Assets.Source.DestructionObject
                 _limit *= _multiplier;
                 _parts.Where(o => o.gameObject.activeSelf == false).ToList().ForEach(o => o.transform.parent = null);
                 StaticBatchingUtility.Combine(_parent.gameObject);
-                Debug.Log("Batched");
             }
         }
     }

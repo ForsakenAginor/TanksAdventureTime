@@ -2,7 +2,7 @@ using System;
 using Agava.YandexGames;
 using UnityEngine;
 
-namespace Assets.Source.SavingData
+namespace SavingData
 {
     public class SaveGameData
     {
@@ -32,12 +32,10 @@ namespace Assets.Source.SavingData
             if (PlayerPrefs.HasKey(nameof(_gameData)))
             {
                 Load(PlayerPrefs.GetString(nameof(_gameData)));
-                Debug.Log("\nLoaded\n");
                 return;
             }
 
             _gameData = new();
-            Debug.Log("\nCreated new\n");
             string json = JsonUtility.ToJson(_gameData);
             Load(json);
 #endif

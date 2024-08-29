@@ -2,11 +2,10 @@
 using Agava.YandexGames;
 #endif
 using Agava.WebUtility;
-using Assets.Source.SavingData;
 using Assets.Source.Sound.AudioMixer;
 using PlayerHelpers;
 using Shops;
-using System;
+using SavingData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -54,7 +53,7 @@ namespace Assets.Source.UI
             _shop.Init(
                 wallet,
                 _saveService.SavePurchasesData,
-                _saveService.SetPlayerHelperData,
+                _saveService.SavePlayerHelperData,
                 _saveService.GetPurchasesData(),
                 _saveService.HadHelper,
                 (PlayerHelperTypes)_saveService.Helper);
@@ -66,7 +65,7 @@ namespace Assets.Source.UI
 
         private void CompleteTutorial()
         {
-            _saveService.SetCompletedTrainingComputerData(true);
+            _saveService.SaveCompletedTrainingComputerData(true);
         }
     }
 }

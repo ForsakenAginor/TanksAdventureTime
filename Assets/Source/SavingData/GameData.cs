@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Shops;
 
-namespace Assets.Source.SavingData
+namespace SavingData
 {
     public class GameData
     {

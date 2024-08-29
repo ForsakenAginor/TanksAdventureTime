@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Characters;
+using DestructionObject.Buncer;
 using Projectiles;
 using UnityEngine;
 
@@ -305,7 +306,7 @@ namespace Enemies
             if (_debugTarget == null)
                 return;
 
-            if (_debugTarget.TryGetComponent(out  ITarget target) == false)
+            if (_debugTarget.TryGetComponent(out ITarget target) == false)
                 return;
 
             Vector3 currentPosition = _viewPoint.position;

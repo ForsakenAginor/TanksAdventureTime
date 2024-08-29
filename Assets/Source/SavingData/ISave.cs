@@ -1,6 +1,9 @@
-public interface ISave
+namespace SavingData
 {
-    public int GetCurrency();
+    public interface ISave
+    {
+        public int GetCurrency();
 
-    public void SetCurrencyData(int currency);
+        public void SaveCurrencyData(int currency);
+    }
 }

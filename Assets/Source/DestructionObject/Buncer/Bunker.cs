@@ -2,54 +2,57 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bunker : MonoBehaviour, IDamageable
+namespace DestructionObject.Buncer
 {
-    [SerializeField] private List<BunkerPart> _bunkerDetails;
-
-    private int _minValue = 0;
-    private float _maxHeath = 100;
-    private float _currentHealth;
-    private float _damage;
-
-    public event Action<float> TookDamage;
-    public event Action Died;
-
-    public Bunker Init(float maxHealth)
+    public class Bunker : MonoBehaviour, IDamageable
     {
-        _maxHeath = maxHealth;
-        _currentHealth = _maxHeath;
-        _damage = Mathf.CeilToInt(_currentHealth / _bunkerDetails.Count);
-        return this;
-    }
+        [SerializeField] private List<BunkerPart> _bunkerDetails;
 
-    public void TakeDamage(int value)
-    {
-        TryGetNoDestructionPart(out List<BunkerPart> bunkers);
+        private int _minValue = 0;
+        private float _maxHeath = 100;
+        private float _currentHealth;
+        private float _damage;
 
-        if (bunkers.Count == _minValue)
+        public event Action<float> TookDamage;
+        public event Action Died;
+
+        public Bunker Init(float maxHealth)
         {
-            Died?.Invoke();
-            return;
+            _maxHeath = maxHealth;
+            _currentHealth = _maxHeath;
+            _damage = Mathf.CeilToInt(_currentHealth / _bunkerDetails.Count);
+            return this;
         }
 
-        _currentHealth -= _damage;
-        bunkers[GetRandomPart(bunkers.Count)].React();
-        TookDamage?.Invoke(_currentHealth / _maxHeath);
-    }
+        public void TakeDamage(int value)
+        {
+            TryGetNoDestructionPart(out List<BunkerPart> bunkers);
 
-    private List<BunkerPart> TryGetNoDestructionPart(out List<BunkerPart> bunkerParts)
-    {
-        bunkerParts = new List<BunkerPart>();
+            if (bunkers.Count == _minValue)
+            {
+                Died?.Invoke();
+                return;
+            }
 
-        foreach (var part in _bunkerDetails)
-            if (part.IsDestroyed == false)
-                bunkerParts.Add(part);
+            _currentHealth -= _damage;
+            bunkers[GetRandomPart(bunkers.Count)].React();
+            TookDamage?.Invoke(_currentHealth / _maxHeath);
+        }
 
-        return bunkerParts;
-    }
+        private List<BunkerPart> TryGetNoDestructionPart(out List<BunkerPart> bunkerParts)
+        {
+            bunkerParts = new List<BunkerPart>();
 
-    private int GetRandomPart(int countBunkerPart)
-    {
-        return UnityEngine.Random.Range(_minValue, countBunkerPart);
+            foreach (var part in _bunkerDetails)
+                if (part.IsDestroyed == false)
+                    bunkerParts.Add(part);
+
+            return bunkerParts;
+        }
+
+        private int GetRandomPart(int countBunkerPart)
+        {
+            return UnityEngine.Random.Range(_minValue, countBunkerPart);
+        }
     }
 }
