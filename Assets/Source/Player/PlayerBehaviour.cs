@@ -7,6 +7,8 @@ namespace Player
 {
     public class PlayerBehaviour : MonoBehaviour
     {
+        private const string ExceptionMessage = "PlayerInitializer class not initialized yet";
+
         private MovingInputHandler _movingSystem;
         private AimInputHandler _aimSystem;
         private PlayerSoundHandler _playerSoundHandler;
@@ -26,21 +28,27 @@ namespace Player
             _aimSystem.Aim();
         }
 
-        public void Init(MovingInputHandler movingSystem, AimInputHandler aimSystem,
-            PlayerSoundHandler playerSoundHandler, FireInputHandler fireSystem, PlayerDamageTaker playerDamageTaker)
+        public void Init(
+            MovingInputHandler movingSystem,
+            AimInputHandler aimSystem,
+            PlayerSoundHandler playerSoundHandler,
+            FireInputHandler fireSystem,
+            PlayerDamageTaker playerDamageTaker)
         {
-            _movingSystem = movingSystem != null ? movingSystem : throw new ArgumentNullException(nameof(movingSystem));
-            _aimSystem = aimSystem != null ? aimSystem : throw new ArgumentNullException(nameof(aimSystem));
-            _playerSoundHandler = playerSoundHandler != null ? playerSoundHandler : throw new ArgumentNullException(nameof(_playerSoundHandler));
-            _fireSystem = fireSystem != null ? fireSystem : throw new ArgumentNullException(nameof(fireSystem));
-            _playerDamageTaker = playerDamageTaker != null ? playerDamageTaker : throw new ArgumentNullException(nameof(playerDamageTaker));
+            _movingSystem = movingSystem ?? throw new ArgumentNullException(nameof(movingSystem));
+            _aimSystem = aimSystem ?? throw new ArgumentNullException(nameof(aimSystem));
+            _playerSoundHandler = playerSoundHandler ?? throw new ArgumentNullException(nameof(playerSoundHandler));
+            _fireSystem = fireSystem ?? throw new ArgumentNullException(nameof(fireSystem));
+            _playerDamageTaker = playerDamageTaker != null
+                ? playerDamageTaker
+                : throw new ArgumentNullException(nameof(playerDamageTaker));
             _isWorking = true;
         }
 
         public void Stop()
         {
             if (_aimSystem == null || _playerSoundHandler == null)
-                throw new Exception("PlayerInitializer class not initialized yet");
+                throw new Exception(ExceptionMessage);
 
             _isWorking = false;
             _movingSystem.CancelMove();
@@ -53,7 +61,7 @@ namespace Player
         public void Continue()
         {
             if (_playerSoundHandler == null)
-                throw new Exception("PlayerInitializer class not initialized yet");
+                throw new Exception(ExceptionMessage);
 
             _isWorking = true;
             _playerSoundHandler.Continue();

@@ -17,7 +17,9 @@ namespace Player.Input
         {
             _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
             _playerWeapon = playerWeapon != null ? playerWeapon : throw new ArgumentNullException(nameof(playerWeapon));
-            _shootDelay = shootDelay >= 0 ? (int)(shootDelay * 1000) : throw new ArgumentOutOfRangeException(nameof(shootDelay));
+            _shootDelay = shootDelay >= 0
+                ? (int)(shootDelay * 1000)
+                : throw new ArgumentOutOfRangeException(nameof(shootDelay));
 
             _playerInput.FireInputReceived += OnInputReceived;
         }
