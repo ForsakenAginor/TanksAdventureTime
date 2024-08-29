@@ -18,7 +18,11 @@ namespace Characters
 
         public override void OnShoot()
         {
-            _factory.Create(ViewPoint.position, Target.Position, Target.Position - ViewPoint.position, ViewPoint.forward);
+            _factory.Create(
+                ViewPoint.position,
+                Target.Position,
+                Target.Position - ViewPoint.position,
+                ViewPoint.forward);
         }
     }
 }

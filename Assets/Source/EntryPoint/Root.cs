@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Advertise;
-using Assets.Source.Enemies;
 using Difficulty;
+using Enemies;
 using LevelGeneration;
 using Player;
 using Player.HealthSystem;
@@ -103,8 +103,8 @@ namespace EntryPoint
             else
                 _playerHelper.Init();
 
-            _winCondition.Init(_enemiesManager.AlivedEnemies);
-            _uIManager.Init(_enemiesManager.AlivedEnemies, _playerDamageTaker.transform, _currentLevel);
+            _winCondition.Init(_enemiesManager.AliveEnemies);
+            _uIManager.Init(_enemiesManager.AliveEnemies, _playerDamageTaker.transform, _currentLevel);
             Wallet wallet = new(_saveService);
             _currencyCalculator = new(_bounty, wallet);
             InterstitialAdvertiseShower advertiseShower = new(_silencer);
