@@ -72,9 +72,9 @@ namespace Shops
         {
             return value switch
             {
-                float => _factory.Create(null as NumberGoodCard, good),
-                int => _factory.Create(null as NumberGoodCard, good),
-                bool => _factory.Create(null as BoolGoodCard, good),
+                float => _factory.CreateNumber(good),
+                int => _factory.CreateNumber(good),
+                bool => _factory.CreateBool(good),
                 _ => throw new ArgumentOutOfRangeException(nameof(value), value, Exception)
             };
         }

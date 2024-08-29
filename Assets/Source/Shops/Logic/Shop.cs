@@ -57,7 +57,7 @@ namespace Shops
         {
             SerializedPair<GoodNames, int> unpacked = _purchases.Objects.Find(item => item.Key == good);
             int id = _purchases.Objects.IndexOf(unpacked);
-            
+
             unpacked.Value++;
             _purchases.Objects[id] = unpacked;
             _purchaseChangeCallback.Invoke(_purchases);

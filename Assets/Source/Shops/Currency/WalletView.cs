@@ -13,7 +13,7 @@ namespace Shops
 
         public WalletView(Wallet wallet, TextMeshProUGUI textField)
         {
-            _wallet = wallet != null ? wallet : throw new ArgumentNullException(nameof(wallet));
+            _wallet = wallet ?? throw new ArgumentNullException(nameof(wallet));
             _textMeshProUGUI = textField != null ? textField : throw new ArgumentNullException(nameof(textField));
             OnCurrencyAmountChanged(_wallet.CurrentCurrency);
             _wallet.CurrencyAmountChanged += OnCurrencyAmountChanged;

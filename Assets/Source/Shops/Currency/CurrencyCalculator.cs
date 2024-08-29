@@ -4,13 +4,13 @@ namespace Shops
 {
     public class CurrencyCalculator
     {
-        private int _bounty;
-        private Wallet _wallet;
+        private readonly int _bounty;
+        private readonly Wallet _wallet;
 
         public CurrencyCalculator(int bounty, Wallet wallet)
         {
             _bounty = bounty > 0 ? bounty : throw new ArgumentOutOfRangeException(nameof(bounty));
-            _wallet = wallet != null ? wallet : throw new ArgumentNullException(nameof(wallet));
+            _wallet = wallet ?? throw new ArgumentNullException(nameof(wallet));
         }
 
         public int CalculateTotalBounty(int kills)

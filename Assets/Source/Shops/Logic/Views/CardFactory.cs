@@ -27,12 +27,12 @@ namespace Shops
             _haveSelectedGood = haveSelectedGood;
         }
 
-        public ICard Create(NumberGoodCard target, GoodNames good)
+        public ICard CreateNumber(GoodNames good)
         {
             return Create<NumberGoodCard>().Init(good, _icons[good]);
         }
 
-        public ICard Create(BoolGoodCard target, GoodNames good)
+        public ICard CreateBool(GoodNames good)
         {
             return Create<BoolGoodCard>().Init(good, _icons[good], _haveSelectedGood == true && good == _selectedGood);
         }
