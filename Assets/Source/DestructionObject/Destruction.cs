@@ -13,7 +13,6 @@ namespace DestructionObject
         private const float FallOffset = 0.5f;
 
         [SerializeField] private Transform _panelDestruction;
-        [SerializeField] private ParticleSystem _particleSystem;
 
         private Transform[] _transformObjects;
         private Transform _transform;

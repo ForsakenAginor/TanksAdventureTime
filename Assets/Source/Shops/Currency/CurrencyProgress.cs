@@ -3,7 +3,7 @@ using SavingProgress;
 
 namespace Shops
 {
-    public class CurrencyData : ISave
+    public class CurrencyProgress : ISave
     {
         public int GetCurrency()
         {

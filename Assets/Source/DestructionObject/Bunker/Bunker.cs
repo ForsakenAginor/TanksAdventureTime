@@ -6,9 +6,10 @@ namespace DestructionObject
 {
     public class Bunker : MonoBehaviour, IDamageable
     {
+        private const int MinValue = 0;
+
         [SerializeField] private List<BunkerPart> _bunkerDetails;
 
-        private int _minValue = 0;
         private float _maxHeath = 100;
         private float _currentHealth;
         private float _damage;
@@ -26,9 +27,9 @@ namespace DestructionObject
 
         public void TakeDamage(int value)
         {
-            TryGetNoDestructionPart(out List<BunkerPart> bunkers);
+            List<BunkerPart> bunkers = TryGetNoDestructionPart();
 
-            if (bunkers.Count == _minValue)
+            if (bunkers.Count == MinValue)
             {
                 Died?.Invoke();
                 return;
@@ -39,9 +40,9 @@ namespace DestructionObject
             TookDamage?.Invoke(_currentHealth / _maxHeath);
         }
 
-        private List<BunkerPart> TryGetNoDestructionPart(out List<BunkerPart> bunkerParts)
+        private List<BunkerPart> TryGetNoDestructionPart()
         {
-            bunkerParts = new List<BunkerPart>();
+            List<BunkerPart> bunkerParts = new();
 
             foreach (var part in _bunkerDetails)
                 if (part.IsDestroyed == false)
@@ -52,7 +53,7 @@ namespace DestructionObject
 
         private int GetRandomPart(int countBunkerPart)
         {
-            return UnityEngine.Random.Range(_minValue, countBunkerPart);
+            return UnityEngine.Random.Range(MinValue, countBunkerPart);
         }
     }
 }

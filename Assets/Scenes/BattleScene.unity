@@ -10668,7 +10668,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 162
+  m_fontSize: 179.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14268,7 +14268,6 @@ GameObject:
   - component: {fileID: 2112200516}
   - component: {fileID: 2112200517}
   - component: {fileID: 2112200518}
-  - component: {fileID: 2112200519}
   - component: {fileID: 2112200520}
   m_Layer: 0
   m_Name: Logic
@@ -14319,7 +14318,7 @@ MonoBehaviour:
   _onDeathEffectInitializer: {fileID: 152089873}
   _playerHelper: {fileID: 1215257563}
   _soundInitializer: {fileID: 1624068528}
-  _winCondition: {fileID: 2112200519}
+  _winCondition: {fileID: 0}
   _bounty: 100
   _saveService: {fileID: 1658892150}
   _goods: {fileID: 11400000, guid: 9970bf14542229e498c2167d6a46de0e, type: 2}
@@ -14358,18 +14357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _screen: {fileID: 2134749719}
---- !u!114 &2112200519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2112200514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a01d49e93368f5745be8004a05be170b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2112200520
 MonoBehaviour:
   m_ObjectHideFlags: 0

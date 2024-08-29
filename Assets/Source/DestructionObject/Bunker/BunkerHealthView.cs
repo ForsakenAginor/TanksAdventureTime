@@ -6,20 +6,20 @@ namespace DestructionObject
 {
     public class BunkerHealthView : MonoBehaviour
     {
+        private const int WaitSeconds = 3;
+
         [SerializeField] private Slider _slider;
         [SerializeField] private Bunker _bunker;
 
-        private Camera _camera;
         private Transform _transform;
         private Coroutine _coroutine;
         private WaitForSeconds _waitForSeconds;
-        private float _waitSeconds = 3;
 
         private void Awake()
         {
             _transform = transform;
             _slider.value = _slider.maxValue;
-            _waitForSeconds = new WaitForSeconds(_waitSeconds);
+            _waitForSeconds = new WaitForSeconds(WaitSeconds);
             _slider.gameObject.SetActive(false);
         }
 
@@ -33,17 +33,6 @@ namespace DestructionObject
         {
             _bunker.TookDamage -= OnChangeValue;
             _bunker.Died -= EnableSlider;
-        }
-
-        private void Update() => CameraRotation();
-
-        public void Init(Camera camera) => _camera = camera;
-
-        private void CameraRotation()
-        {
-            if (_camera == null) return;
-
-            _transform.rotation = _camera.transform.rotation;
         }
 
         private void EnableSlider()
