@@ -1,6 +1,5 @@
 ﻿using System;
 using TMPro;
-using UnityEngine;
 
 namespace Shops
 {
@@ -21,7 +20,6 @@ namespace Shops
 
         ~WalletView() => _wallet.CurrencyAmountChanged -= OnCurrencyAmountChanged;
 
-
-        private void OnCurrencyAmountChanged(int currency) => _textMeshProUGUI.text = $"{Symbol}{currency.ToString()}";
+        private void OnCurrencyAmountChanged(int currency) => _textMeshProUGUI.text = $"{Symbol}{currency}";
     }
 }

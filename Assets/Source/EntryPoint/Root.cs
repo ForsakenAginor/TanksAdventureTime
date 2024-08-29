@@ -36,7 +36,7 @@ namespace EntryPoint
         private Vector3 _spawnPoint;
 
         [Header("Enemies")]
-        private readonly List<IDamageableTarget> _enemies = new();
+        private readonly List<IDamageableTarget> _enemies = new ();
         private EnemiesManager _enemiesManager;
 
         [Header("Audio")]
@@ -54,8 +54,8 @@ namespace EntryPoint
         [SerializeField] private Silencer _silencer;
         private Dictionary<GoodNames, object> _savedData;
 
-        public Action PlayerDied;
-        public Action PlayerRespawned;
+        private Action _playerDied;
+        private Action _playerRespawned;
 
         private void OnEnable()
         {
@@ -77,7 +77,7 @@ namespace EntryPoint
         {
             _soundInitializer.Init();
             _currentLevel = _saveService.Level;
-            DifficultySystem difficultySystem = new(_currentLevel);
+            DifficultySystem difficultySystem = new (_currentLevel);
 
             if (difficultySystem.CurrentConfiguration.Bunkers > 0 && _saveService.HadHelper == false)
             {
@@ -85,7 +85,7 @@ namespace EntryPoint
                 _saveService.SavePlayerHelper((int)PlayerHelperTypes.MachineGun);
             }
 
-            LevelGenerator levelGenerator = new(difficultySystem.CurrentConfiguration,
+            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
@@ -95,7 +95,7 @@ namespace EntryPoint
 
             _savedData = _saveService.GetPurchases().GetContent(_goods);
             _spawnPoint = _playerDamageTaker.transform.position;
-            _enemiesManager = new(_enemies);
+            _enemiesManager = new (_enemies);
 
             if (_saveService.HadHelper)
                 _playerHelper.Init(_enemies, (PlayerHelperTypes)_saveService.Helper, OnAudioCreated, HelperInitCallback);
@@ -104,9 +104,9 @@ namespace EntryPoint
 
             _winCondition.Init(_enemiesManager.AliveEnemies);
             _uIManager.Init(_enemiesManager.AliveEnemies, _playerDamageTaker.transform, _currentLevel);
-            Wallet wallet = new(_saveService);
-            _currencyCalculator = new(_bounty, wallet);
-            InterstitialAdvertiseShower advertiseShower = new(_silencer);
+            Wallet wallet = new (_saveService);
+            _currencyCalculator = new (_bounty, wallet);
+            InterstitialAdvertiseShower advertiseShower = new (_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             StickyAd.Show();
@@ -122,13 +122,13 @@ namespace EntryPoint
             _playerDamageTaker.transform.SetPositionAndRotation(_spawnPoint, Quaternion.identity);
             _onDeathEffectInitializer.Init();
             _playerBehaviour.Continue();
-            PlayerRespawned?.Invoke();
+            _playerRespawned?.Invoke();
         }
 
         private void OnPlayerWon()
         {
             _playerBehaviour.Stop();
-            LeaderboardScoreSaver leaderboardScoreSaver = new();
+            LeaderboardScoreSaver leaderboardScoreSaver = new ();
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             leaderboardScoreSaver.SaveScore(_currentLevel);
@@ -138,19 +138,18 @@ namespace EntryPoint
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));
         }
 
-
         private void OnPlayerDied()
         {
             _playerBehaviour.Stop();
-            PlayerDied?.Invoke();
+            _playerDied?.Invoke();
             _onDeathEffectInitializer.CreateEffect();
             _uIManager.ShowLosingPanel();
         }
 
         private void HelperInitCallback((Action onEnable, Action onDisable) tuple)
         {
-            PlayerDied = tuple.onDisable;
-            PlayerRespawned = tuple.onEnable;
+            _playerDied = tuple.onDisable;
+            _playerRespawned = tuple.onEnable;
         }
 
         private void OnAudioCreated(AudioSource source)

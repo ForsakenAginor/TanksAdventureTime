@@ -69,13 +69,13 @@ namespace Player
             var ray = _camera.ScreenPointToRay(vector);
 
             _plane.Raycast(ray, out float enter);
-            Vector3 point = ray.origin + ray.direction * enter;
+            Vector3 point = ray.origin + (ray.direction * enter);
             Vector3 rotatedDirection = point - _transform.position;
             Vector2 result = new (rotatedDirection.x, rotatedDirection.z);
             result.Normalize();
             float angle = _transform.transform.localRotation.eulerAngles.y * Mathf.Deg2Rad;
-            float x = result.x * Mathf.Cos(angle) - result.y * Mathf.Sin(angle);
-            float y = result.y * Mathf.Cos(angle) + result.x * Mathf.Sin(angle);
+            float x = (result.x * Mathf.Cos(angle)) - (result.y * Mathf.Sin(angle));
+            float y = (result.y * Mathf.Cos(angle)) + (result.x * Mathf.Sin(angle));
 
             _aimDirection = new Vector3(x, 0, y);
         }

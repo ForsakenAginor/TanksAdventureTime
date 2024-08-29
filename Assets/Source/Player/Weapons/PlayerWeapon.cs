@@ -26,7 +26,7 @@ namespace Player
         {
             Vector3 forward = _shootPoint.forward;
             Vector3 currentPosition = _shootPoint.position;
-            Vector3 targetPosition = forward * _maxDistance + currentPosition;
+            Vector3 targetPosition = (forward * _maxDistance) + currentPosition;
             targetPosition.y = _transform.position.y;
             _factory.Create(currentPosition, targetPosition, targetPosition - currentPosition, forward);
         }

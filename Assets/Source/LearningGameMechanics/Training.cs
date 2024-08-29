@@ -20,7 +20,7 @@ namespace LearningGameMechanics
 
         private void Awake()
         {
-            InputSystem = new();
+            InputSystem = new ();
             InputSystem.Enable();
         }
 

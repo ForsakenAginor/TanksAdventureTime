@@ -32,8 +32,8 @@ namespace Player
 
         private void Awake()
         {
-            _deathCameraSwitcher = new(_followCamera, _deathCamera, _brain.m_DefaultBlend.m_Time);
-            _cannonDestructionEffect = new(_cannon, _effectSpeed, _distance, _height);
+            _deathCameraSwitcher = new (_followCamera, _deathCamera, _brain.m_DefaultBlend.m_Time);
+            _cannonDestructionEffect = new (_cannon, _effectSpeed, _distance, _height);
         }
 
         public void CreateEffect()
@@ -48,8 +48,7 @@ namespace Player
 
         public void Init()
         {
-            if (_onDeathEffects != null)
-                _onDeathEffects.ToList().ForEach(o => o.ReturnToNormalState());
+            _onDeathEffects?.ToList().ForEach(o => o.ReturnToNormalState());
         }
     }
 }

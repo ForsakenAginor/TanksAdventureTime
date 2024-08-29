@@ -11,7 +11,6 @@ namespace Projectiles
         [SerializeField] private SphereCollider _collider;
 
         private Rigidbody _rigidbody;
-        private Transform _transform;
         private IAimParticle _aim;
         private IExplosive _explosive;
         private Action<Vector3> _onExplodedCallback;

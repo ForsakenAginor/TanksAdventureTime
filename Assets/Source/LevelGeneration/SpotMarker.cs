@@ -4,7 +4,7 @@ namespace LevelGeneration
 {
     public class SpotMarker : MonoBehaviour
     {
-        [SerializeField] private  Vector3 _cube;
+        [SerializeField] private Vector3 _cube;
 
         private void OnDrawGizmos()
         {

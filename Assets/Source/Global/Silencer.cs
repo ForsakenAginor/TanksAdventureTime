@@ -11,7 +11,7 @@ public class Silencer : MonoBehaviour
 
     private void OnEnable()
     {
-        _gameState = new(_maxValue, _maxValue, false);
+        _gameState = new (_maxValue, _maxValue, false);
         WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
         Application.focusChanged += OnFocusChanged;
     }
@@ -30,7 +30,7 @@ public class Silencer : MonoBehaviour
         if (volume < _minValue && volume > _maxValue)
             throw new ArgumentOutOfRangeException(nameof(volume));
 
-        _gameState = new(timeScale, volume, isPausing);
+        _gameState = new (timeScale, volume, isPausing);
     }
 
     private void OnFocusChanged(bool isFocused)
@@ -59,7 +59,7 @@ public class Silencer : MonoBehaviour
     {
         if (_inApp)
         {
-            _gameState = new(Time.timeScale, AudioListener.volume, AudioListener.pause);
+            _gameState = new (Time.timeScale, AudioListener.volume, AudioListener.pause);
             _inApp = false;
         }
 

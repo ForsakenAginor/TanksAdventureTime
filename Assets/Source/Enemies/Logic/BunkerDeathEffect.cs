@@ -7,8 +7,6 @@ namespace Enemies
         private readonly ParticleSystem _particle;
         private readonly AudioSource _sound;
 
-        private bool _isDying;
-
         public BunkerDeathEffect(ParticleSystem particle, AudioSource sound)
         {
             _particle = particle;
@@ -17,9 +15,6 @@ namespace Enemies
 
         public void Die()
         {
-            if (_isDying == true)
-                return;
-
             _particle.Play();
             _sound.Play();
         }

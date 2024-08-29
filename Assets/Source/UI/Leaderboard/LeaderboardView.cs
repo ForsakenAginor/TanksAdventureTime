@@ -8,7 +8,7 @@ namespace UI
         [SerializeField] private Transform _holder;
         [SerializeField] private LeaderboardElement _prefab;
 
-        private List<LeaderboardElement> _spawnedElements = new();
+        private List<LeaderboardElement> _spawnedElements = new ();
 
         internal void ConstructLeaderboard(List<LeaderboardPlayer> leaderboardPlayers)
         {
@@ -28,7 +28,7 @@ namespace UI
             foreach (var element in _spawnedElements)
                 Destroy(element.gameObject);
 
-            _spawnedElements = new();
+            _spawnedElements = new ();
         }
     }
 }

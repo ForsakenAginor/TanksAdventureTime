@@ -33,7 +33,7 @@ namespace Player
             float half = 0.5f;
             Vector3 position = _cannon.position;
             float xPosition = position.x + _distance;
-            float zPosition = position.z + _distance * half;
+            float zPosition = position.z + (_distance * half);
             float yTopPosition = position.y + _height;
             float yBottomPosition = position.y - 1.5f;
             _cannon.DOMoveX(xPosition, _effectSpeed).SetEase(Ease.Linear);

@@ -13,9 +13,8 @@ public static class Vector3Extensions
         return forward * Mathf.Sqrt(
             Mathf.Abs(
                 gravity * x * x /
-                ((float)ValueConstants.Two * (y - Mathf.Tan(angleRadian) * x) * Mathf.Cos(angleRadian) *
-                 Mathf.Cos(angleRadian)))
-        );
+                ((float)ValueConstants.Two * (y - (Mathf.Tan(angleRadian) * x)) * Mathf.Cos(angleRadian) *
+                 Mathf.Cos(angleRadian))));
     }
 
     public static List<Vector3> CalculateTrajectory(
@@ -32,10 +31,10 @@ public static class Vector3Extensions
 
         for (float i = 0f; i < direction.magnitude; i += TrajectoryStep)
         {
-            Vector3 position = currentPosition + velocity * i + gravity * i * i / (float)ValueConstants.Two;
+            Vector3 position = currentPosition + (velocity * i) + (gravity * i * i / (float)ValueConstants.Two);
 
-            if (currentPosition.y >= targetPosition.y && position.y < targetPosition.y ||
-                currentPosition.y < targetPosition.y && position.y < targetPosition.y && last.y > targetPosition.y)
+            if ((currentPosition.y >= targetPosition.y && position.y < targetPosition.y) ||
+                (currentPosition.y < targetPosition.y && position.y < targetPosition.y && last.y > targetPosition.y))
                 break;
 
             result.Add(position);

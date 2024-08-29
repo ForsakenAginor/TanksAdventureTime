@@ -34,7 +34,7 @@ namespace SavingProgress
                 return;
             }
 
-            _gameProgress = new();
+            _gameProgress = new ();
             string json = JsonUtility.ToJson(_gameProgress);
             Load(json);
 #endif

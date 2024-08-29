@@ -18,7 +18,6 @@ namespace Enemies
 
         public event Action Died;
 
-
         public void TakeDamage(int value)
         {
             if (value < _minHealth)

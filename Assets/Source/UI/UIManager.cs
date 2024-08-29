@@ -70,7 +70,7 @@ namespace UI
 
         private IEnumerator DisplayLosingPanel()
         {
-            WaitForSeconds delay = new(_delay);
+            WaitForSeconds delay = new (_delay);
             yield return delay;
             _losingPanel.SetActive(true);
         }

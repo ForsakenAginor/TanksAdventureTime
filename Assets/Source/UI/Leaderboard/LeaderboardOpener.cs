@@ -7,7 +7,7 @@ namespace UI
 {
     public class LeaderboardOpener : MonoBehaviour
     {
-        private readonly LevelData _levelData = new();
+        private readonly LevelData _levelData = new ();
 
         [SerializeField] private YandexLeaderboard _leaderboard;
         [SerializeField] private GameObject _leaderboardPanel;
