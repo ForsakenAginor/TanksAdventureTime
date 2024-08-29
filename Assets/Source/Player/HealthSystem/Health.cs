@@ -5,6 +5,7 @@ namespace Player.HealthSystem
     public class Health
     {
         private readonly int _maximum;
+
         private int _current;
 
         public Health(int amount)

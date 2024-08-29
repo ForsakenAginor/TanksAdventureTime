@@ -15,8 +15,8 @@ namespace Sound
         {
             if (PlayerPrefs.HasKey(MasterVolumeVariableName))
                 return PlayerPrefs.GetFloat(MasterVolumeVariableName);
-            else
-                return MaximumVolume;
+
+            return MaximumVolume;
         }
 
         public void SaveMasterVolume(float value)
@@ -32,8 +32,8 @@ namespace Sound
         {
             if (PlayerPrefs.HasKey(EffectsVolumeVariableName))
                 return PlayerPrefs.GetFloat(EffectsVolumeVariableName);
-            else
-                return MaximumVolume;
+
+            return MaximumVolume;
         }
 
         public void SaveEffectsVolume(float value)
@@ -49,8 +49,8 @@ namespace Sound
         {
             if (PlayerPrefs.HasKey(MusicVolumeVariableName))
                 return PlayerPrefs.GetFloat(MusicVolumeVariableName);
-            else
-                return MaximumVolume;
+
+            return MaximumVolume;
         }
 
         public void SaveMusicVolume(float value)

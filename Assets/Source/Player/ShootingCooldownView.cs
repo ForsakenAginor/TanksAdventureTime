@@ -12,6 +12,7 @@ namespace Player
 
         [SerializeField] private TextMeshProUGUI _textField;
         [SerializeField] private LeanLocalizedTextMeshProUGUI _localizedText;
+
         private float _cooldown;
         private float _remainingTime;
         private FireInputHandler _inputHandler;
@@ -26,7 +27,7 @@ namespace Player
             if (_inputHandler == null)
                 return;
 
-            if(_remainingTime > 0 )
+            if (_remainingTime > 0)
             {
                 _remainingTime -= Time.deltaTime;
                 _textField.text = _remainingTime.ToString("0.00");
@@ -39,7 +40,7 @@ namespace Player
 
         private void OnDestroy()
         {
-            _inputHandler.ShotFired -= OnShotFired;        
+            _inputHandler.ShotFired -= OnShotFired;
         }
 
         public void Init(FireInputHandler inputHandler, float cooldown)
@@ -55,6 +56,7 @@ namespace Player
         {
             _remainingTime = _cooldown;
         }
+
         private void DisplayChargeStatus()
         {
             _localizedText.TranslationName = ReadyStatus;

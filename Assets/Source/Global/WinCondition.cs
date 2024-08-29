@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class WinCondition : MonoBehaviour
 {
-    private IEnumerable<IDamageableTarget> _alivedEnemies;
+    private IEnumerable<IDamageableTarget> _aliveEnemies;
 
     public event Action PlayerWon;
 
     private void FixedUpdate()
     {
-        if (_alivedEnemies == null)
+        if (_aliveEnemies == null)
             return;
 
-        if (_alivedEnemies.Count() == 0)
+        if (_aliveEnemies.Any() == false)
             PlayerWon?.Invoke();
     }
 
     public void Init(IEnumerable<IDamageableTarget> enemies)
     {
-        _alivedEnemies = enemies != null ? enemies : throw new ArgumentNullException(nameof(enemies));
+        _aliveEnemies = enemies ?? throw new ArgumentNullException(nameof(enemies));
     }
 }

@@ -6,8 +6,8 @@ namespace Player.HealthSystem
     [RequireComponent(typeof(Collider))]
     public class PlayerDamageTaker : MonoBehaviour, IPlayerTarget, IPermanentKiller
     {
-        private readonly int _bulletDamage = 1;
-        private readonly int _explosionDamage = 10;
+        private const int BulletDamage = 1;
+        private const int ExplosionDamage = 10;
 
         private VirtualCameraShaker _shaker;
         private Health _health;
@@ -34,8 +34,8 @@ namespace Player.HealthSystem
 
         public void Init(Health health, VirtualCameraShaker shaker)
         {
-            _health = health != null ? health : throw new ArgumentNullException(nameof(health));
-            _shaker = shaker != null ? shaker : throw new ArgumentNullException(nameof(shaker));
+            _health = health ?? throw new ArgumentNullException(nameof(health));
+            _shaker = shaker ?? throw new ArgumentNullException(nameof(shaker));
             _isWorking = true;
             _health.Died += OnDied;
         }
@@ -50,13 +50,15 @@ namespace Player.HealthSystem
             switch (type)
             {
                 case HitTypes.Bullet:
-                    _health.TakeDamage(_bulletDamage);
+                    _health.TakeDamage(BulletDamage);
                     break;
 
                 case HitTypes.Explosion:
                     TakeExplosiveDamage();
                     break;
 
+                case HitTypes.PermanentDeath:
+                case HitTypes.PlayerExplosion:
                 default:
                     break;
             }
@@ -83,7 +85,7 @@ namespace Player.HealthSystem
         private void TakeExplosiveDamage()
         {
             _shaker.Shake();
-            _health.TakeDamage(_explosionDamage);
+            _health.TakeDamage(ExplosionDamage);
         }
     }
 }

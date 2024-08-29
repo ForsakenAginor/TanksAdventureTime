@@ -12,9 +12,9 @@ namespace Player.HealthSystem
             _health.HealthChanged -= OnHealthChanged;
         }
 
-        public virtual void Init(Health health)
+        public void Init(Health health)
         {
-            _health = health != null ? health : throw new ArgumentNullException(nameof(health));
+            _health = health ?? throw new ArgumentNullException(nameof(health));
             _health.HealthChanged += OnHealthChanged;
             OnHealthChanged(health.Current, health.Maximum);
         }

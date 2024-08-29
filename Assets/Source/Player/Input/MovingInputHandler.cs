@@ -15,14 +15,17 @@ namespace Player.Input
 
         public MovingInputHandler(PlayerInput playerInput, Rigidbody rigidbody, float speed, float rotationSpeed)
         {
-            _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
+            _playerInput = playerInput ?? throw new ArgumentNullException(nameof(playerInput));
             _rigidbody = rigidbody != null ? rigidbody : throw new ArgumentNullException(nameof(rigidbody));
             _transform = _rigidbody.transform;
             _speed = speed > 0 ? speed : throw new ArgumentOutOfRangeException(nameof(speed));
-            _rotationSpeed = rotationSpeed > 0 ? rotationSpeed : throw new ArgumentOutOfRangeException(nameof(rotationSpeed));
+            _rotationSpeed = rotationSpeed > 0
+                ? rotationSpeed
+                : throw new ArgumentOutOfRangeException(nameof(rotationSpeed));
         }
 
         public event Action MoveStarted;
+
         public event Action MoveEnded;
 
         public void Moving()
@@ -45,7 +48,7 @@ namespace Player.Input
             if (Mathf.Approximately(input.y, 0f) == false)
                 movingDirection = (_transform.forward * input.y).normalized;
 
-            _rigidbody.velocity = movingDirection * _speed * Time.deltaTime;
+            _rigidbody.velocity = movingDirection * (_speed * Time.deltaTime);
             _transform.Rotate(Vector3.up, input.x * Time.deltaTime * _rotationSpeed);
             SetIsMoved(true);
         }

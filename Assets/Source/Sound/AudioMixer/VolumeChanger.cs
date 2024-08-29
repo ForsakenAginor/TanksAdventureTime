@@ -6,7 +6,10 @@ namespace Sound
 {
     public class VolumeChanger
     {
+        private const string Warning = " is already added to VolumeChanger";
+
         private readonly List<AudioSource> _audioSources;
+
         private float _previousVolumeValue;
 
         public VolumeChanger(List<AudioSource> audioSources, float volumeValue = 1f)
@@ -38,7 +41,7 @@ namespace Sound
                 throw new ArgumentNullException(nameof(audioSource));
 
             if (_audioSources.Contains(audioSource))
-                throw new Exception($"{audioSource} is alredy added to VolumeChanger");
+                throw new Exception(audioSource + Warning);
 
             audioSource.volume *= _previousVolumeValue;
             _audioSources.Add(audioSource);

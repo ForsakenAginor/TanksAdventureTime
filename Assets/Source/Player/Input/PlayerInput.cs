@@ -6,11 +6,11 @@ namespace Player.Input
 {
     public class PlayerInput
     {
-        private InputSystem _input;
+        private readonly InputSystem _input;
 
         public PlayerInput()
         {
-            _input = new();
+            _input = new InputSystem();
             _input.Enable();
             _input.Player.Rotate.performed += OnRotateInputReceived;
             _input.Player.Fire.started += OnFireInputReceived;

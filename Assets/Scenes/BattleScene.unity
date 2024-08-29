@@ -1505,11 +1505,11 @@ MonoBehaviour:
   _brain: {fileID: 921600378}
   _explosionEffect: {fileID: 19800002, guid: 990c2328597308a46a8f3d888b380296, type: 3}
   _fireEffect: {fileID: 19800002, guid: 47fd4bfb1804201488355f589f12342a, type: 3}
-  _spanwPoint: {fileID: 599302492}
+  _spawnPoint: {fileID: 599302492}
   _cannon: {fileID: 4083561215216004}
   _effectSpeed: 1
   _distance: 5
-  _heigth: 5
+  _height: 5
   _audioSource: {fileID: 1656304740}
 --- !u!114 &152089874
 MonoBehaviour:
@@ -10167,7 +10167,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   _flashCreator: {fileID: 1494637076}
-  _flashhEffectPrefab: {fileID: 19813786, guid: d91f339235d9537468975cb977380698, type: 3}
+  _flashEffectPrefab: {fileID: 0}
   _cooldownView: {fileID: 1494637077}
   _healthViews:
   - {fileID: 1494637075}
@@ -10668,7 +10668,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 179.1
+  m_fontSize: 162
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14269,6 +14269,7 @@ GameObject:
   - component: {fileID: 2112200517}
   - component: {fileID: 2112200518}
   - component: {fileID: 2112200520}
+  - component: {fileID: 2112200521}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -14318,7 +14319,7 @@ MonoBehaviour:
   _onDeathEffectInitializer: {fileID: 152089873}
   _playerHelper: {fileID: 1215257563}
   _soundInitializer: {fileID: 1624068528}
-  _winCondition: {fileID: 0}
+  _winCondition: {fileID: 2112200521}
   _bounty: 100
   _saveService: {fileID: 1658892150}
   _goods: {fileID: 11400000, guid: 9970bf14542229e498c2167d6a46de0e, type: 2}
@@ -14367,6 +14368,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cace159373293d4bbe711744672d4f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2112200521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112200514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33a74d6a10aa7b445a86011c72fe9440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2117524356

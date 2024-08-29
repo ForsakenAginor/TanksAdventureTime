@@ -6,19 +6,29 @@ namespace Player
 {
     public class PlayerSoundHandler
     {
+        private const int VolumeMultiplier = 2;
+
         private readonly FireInputHandler _fireSystem;
         private readonly MovingInputHandler _movingSystem;
         private readonly AudioSource _shootingAudioSource;
         private readonly AudioSource _movingAudioSource;
-        private readonly int _volumeMultiplier = 2;
+
         private bool _isBoosted;
 
-        public PlayerSoundHandler(FireInputHandler fireSystem, MovingInputHandler movingSystem, AudioSource shootingAudioSource, AudioSource movingAudioSource)
+        public PlayerSoundHandler(
+            FireInputHandler fireSystem,
+            MovingInputHandler movingSystem,
+            AudioSource shootingAudioSource,
+            AudioSource movingAudioSource)
         {
-            _fireSystem = fireSystem != null ? fireSystem : throw new ArgumentNullException(nameof(fireSystem));
-            _movingSystem = movingSystem != null ? movingSystem : throw new ArgumentNullException(nameof(movingSystem));
-            _shootingAudioSource = shootingAudioSource != null ? shootingAudioSource : throw new ArgumentNullException(nameof(shootingAudioSource));
-            _movingAudioSource = movingAudioSource != null ? movingAudioSource : throw new ArgumentNullException(nameof(movingAudioSource));
+            _fireSystem = fireSystem ?? throw new ArgumentNullException(nameof(fireSystem));
+            _movingSystem = movingSystem ?? throw new ArgumentNullException(nameof(movingSystem));
+            _shootingAudioSource = shootingAudioSource != null
+                ? shootingAudioSource
+                : throw new ArgumentNullException(nameof(shootingAudioSource));
+            _movingAudioSource = movingAudioSource != null
+                ? movingAudioSource
+                : throw new ArgumentNullException(nameof(movingAudioSource));
 
             _fireSystem.ShotFired += OnShotFired;
             _movingSystem.MoveStarted += OnMoveStarted;
@@ -71,14 +81,14 @@ namespace Player
         private void BoostEngineVolume()
         {
             float currentVolume = _movingAudioSource.volume;
-            _movingAudioSource.volume = currentVolume * _volumeMultiplier;
+            _movingAudioSource.volume = currentVolume * VolumeMultiplier;
             _isBoosted = true;
         }
 
         private void ReduceEngineVolume()
         {
             float currentVolume = _movingAudioSource.volume;
-            _movingAudioSource.volume = currentVolume / _volumeMultiplier;
+            _movingAudioSource.volume = currentVolume / VolumeMultiplier;
             _isBoosted = false;
         }
     }

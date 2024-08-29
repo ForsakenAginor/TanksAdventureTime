@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Sound
 {
     [RequireComponent(typeof(AudioSource))]
-    public class RandomMulsicChoser : MonoBehaviour
+    public class RandomMusicChooser : MonoBehaviour
     {
         [SerializeField] private AudioClip[] _clips;
 
