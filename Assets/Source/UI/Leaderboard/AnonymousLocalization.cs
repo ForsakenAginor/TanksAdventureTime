@@ -2,11 +2,11 @@ using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Source.UI.Menu.Leaderboard
+namespace UI
 {
     [RequireComponent(typeof(LeanLocalizedTextMeshProUGUI))]
     [RequireComponent(typeof(TextMeshProUGUI))]
-    public class AnonymousLocalizator : MonoBehaviour
+    public class AnonymousLocalization : MonoBehaviour
     {
         private LeanLocalizedTextMeshProUGUI _localizedText;
         private TextMeshProUGUI _textMeshProUGUI;

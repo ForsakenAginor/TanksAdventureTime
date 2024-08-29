@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Source.Player.OnDeathEffect
+namespace Player
 {
     public class ExplosionSpawner : MonoBehaviour, ICancelableOnDeathEffect
     {

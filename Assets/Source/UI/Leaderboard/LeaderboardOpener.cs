@@ -1,9 +1,9 @@
 using Agava.YandexGames;
-using Assets.Source.Difficulty;
+using Difficulty;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.UI.Menu.Leaderboard
+namespace UI
 {
     public class LeaderboardOpener : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DestructionObject.Buncer
+namespace DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
     public class DestroyedPartBunker : MonoBehaviour

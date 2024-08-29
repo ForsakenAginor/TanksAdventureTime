@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-namespace Assets.Source.UI.Menu.Cinemachine
+namespace UI
 {
     public class CinemachineModifier : MonoBehaviour
     {

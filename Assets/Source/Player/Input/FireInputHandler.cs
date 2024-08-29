@@ -1,10 +1,9 @@
-﻿using Agava.WebUtility;
-using Assets.Source.Player.Weapons;
+﻿using System;
+using Agava.WebUtility;
 using Cysharp.Threading.Tasks;
-using System;
 using UnityEngine.EventSystems;
 
-namespace Assets.Source.Player.Input
+namespace Player.Input
 {
     public class FireInputHandler
     {

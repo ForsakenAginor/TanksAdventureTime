@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Source.LevelGeneration
+namespace LevelGeneration
 {
     [CreateAssetMenu(fileName = "PointPreset")]
     public class PointPreset : ScriptableObject

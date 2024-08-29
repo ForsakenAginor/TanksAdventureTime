@@ -1,11 +1,10 @@
-using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.UI.Menu.Leaderboard
+namespace UI
 {
     [RequireComponent(typeof(Button))]
-    public class AutorizationButtonHandler : MonoBehaviour
+    public class AuthorizationButtonHandler : MonoBehaviour
     {
         [SerializeField] private LeaderboardOpener _leaderboardOpener;
         [SerializeField] private GameObject _holderPanel;

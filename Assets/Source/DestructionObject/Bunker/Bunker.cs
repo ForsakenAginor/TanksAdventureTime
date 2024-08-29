@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DestructionObject.Buncer
+namespace DestructionObject
 {
     public class Bunker : MonoBehaviour, IDamageable
     {

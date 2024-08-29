@@ -1,10 +1,10 @@
-using Assets.Source.Difficulty;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Difficulty;
 using UnityEngine;
 
-namespace Assets.Source.LevelGeneration
+namespace LevelGeneration
 {
     public class LevelGenerator
     {

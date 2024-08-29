@@ -1,8 +1,8 @@
-﻿using Cinemachine;
-using System.Linq;
+﻿using System.Linq;
+using Cinemachine;
 using UnityEngine;
 
-namespace Assets.Source.Player.OnDeathEffect
+namespace Player
 {
     public class OnDeathEffectInitializer : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace Assets.Source.LevelGeneration
+﻿namespace LevelGeneration
 {
     public enum PointPresetSize
     {

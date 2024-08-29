@@ -1,10 +1,9 @@
-using Agava.WebUtility;
-using Assets.Source.EntryPoint;
 using System.Linq;
+using EntryPoint;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.Advertise
+namespace Advertise
 {
     [RequireComponent(typeof(Button))]
     public class ShowAdvertiseButtonHandler : MonoBehaviour

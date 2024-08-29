@@ -1,7 +1,7 @@
 ﻿using Lean.Localization;
 using UnityEngine;
 
-namespace Assets.Source.UI.Menu.Leaderboard
+namespace UI
 {
     internal class LeaderboardElement : MonoBehaviour
     {

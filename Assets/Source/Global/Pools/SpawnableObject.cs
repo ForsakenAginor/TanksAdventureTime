@@ -24,22 +24,6 @@ public class SpawnableObject : MonoBehaviour
         return Pull<T>();
     }
 
-    public T Pull<T>(Transform parent)
-        where T : SpawnableObject
-    {
-        Transform.SetParent(parent);
-        return Pull<T>();
-    }
-
-    public T Pull<T>(Transform parent, Vector3 position)
-        where T : SpawnableObject
-    {
-        if (Transform.parent != parent)
-            Transform.SetParent(parent);
-
-        return Pull<T>(position);
-    }
-
     public void Push()
     {
         _spawner.Push(this);

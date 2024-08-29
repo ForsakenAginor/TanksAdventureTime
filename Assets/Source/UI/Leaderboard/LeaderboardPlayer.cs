@@ -1,4 +1,4 @@
-﻿namespace Assets.Source.UI.Menu.Leaderboard
+﻿namespace UI
 {
     internal class LeaderboardPlayer
     {

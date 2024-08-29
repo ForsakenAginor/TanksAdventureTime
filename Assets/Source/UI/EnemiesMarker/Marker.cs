@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Source.UI.EnemiesMarker
+namespace UI
 {
     public class Marker : MonoBehaviour
     {

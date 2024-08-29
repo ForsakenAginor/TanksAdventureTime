@@ -1,18 +1,17 @@
 ﻿using System;
 
-namespace Assets.Source.Difficulty
+namespace Difficulty
 {
     public class DifficultySystem
     {
-        private readonly LevelConfiguration _minConfiguration = new(3, 1, 0, 0, 0);
-        private readonly LevelConfiguration _maxConfiguration = new(10, 10, 2, 4, 2);
-        private readonly float _smallScaleFactor = 0.5f;
-        private readonly float _mediumScaleFactor = 0.5f;
-        private readonly float _largecaleFactor = 0.2f;
-        private readonly float _obstaclesScaleFactor = 0.25f;
-        private readonly float _bunkersScaleFactor = 0.25f;
+        private const float SmallScaleFactor = 0.5f;
+        private const float MediumScaleFactor = 0.5f;
+        private const float LargeScaleFactor = 0.2f;
+        private const float ObstaclesScaleFactor = 0.25f;
+        private const float BunkersScaleFactor = 0.25f;
 
-        private readonly LevelConfiguration _currentConfiguration;
+        private readonly LevelConfiguration _minConfiguration = new (3, 1, 0, 0, 0);
+        private readonly LevelConfiguration _maxConfiguration = new (10, 10, 2, 4, 2);
 
         public DifficultySystem(int level)
         {
@@ -21,20 +20,25 @@ namespace Assets.Source.Difficulty
 
             level--;
 
-            int smallSpots = Math.Min(_minConfiguration.MilitarySmallBuildings + (int)(level * _smallScaleFactor),
-                                        _maxConfiguration.MilitarySmallBuildings);
-            int mediumSpots = Math.Min(_minConfiguration.MilitaryMediumBuildings + (int)(level * _mediumScaleFactor),
-                                        _maxConfiguration.MilitaryMediumBuildings);
-            int largeSpots = Math.Min(_minConfiguration.MilitaryLargeBuildings + (int)(level * _largecaleFactor),
-                                        _maxConfiguration.MilitaryLargeBuildings);
-            int obstacles = Math.Min(_minConfiguration.Obstacles + (int)(level * _obstaclesScaleFactor),
-                                        _maxConfiguration.Obstacles);
-            int bunkers = Math.Min(_minConfiguration.Bunkers + (int)(level * _bunkersScaleFactor),
-                                        _maxConfiguration.Bunkers);
+            int smallSpots = Math.Min(
+                _minConfiguration.MilitarySmallBuildings + (int)(level * SmallScaleFactor),
+                _maxConfiguration.MilitarySmallBuildings);
+            int mediumSpots = Math.Min(
+                _minConfiguration.MilitaryMediumBuildings + (int)(level * MediumScaleFactor),
+                _maxConfiguration.MilitaryMediumBuildings);
+            int largeSpots = Math.Min(
+                _minConfiguration.MilitaryLargeBuildings + (int)(level * LargeScaleFactor),
+                _maxConfiguration.MilitaryLargeBuildings);
+            int obstacles = Math.Min(
+                _minConfiguration.Obstacles + (int)(level * ObstaclesScaleFactor),
+                _maxConfiguration.Obstacles);
+            int bunkers = Math.Min(
+                _minConfiguration.Bunkers + (int)(level * BunkersScaleFactor),
+                _maxConfiguration.Bunkers);
 
-            _currentConfiguration = new(smallSpots, mediumSpots, largeSpots, obstacles, bunkers);
+            CurrentConfiguration = new LevelConfiguration(smallSpots, mediumSpots, largeSpots, obstacles, bunkers);
         }
 
-        public LevelConfiguration CurrentConfiguration => _currentConfiguration;
+        public LevelConfiguration CurrentConfiguration { get; }
     }
 }

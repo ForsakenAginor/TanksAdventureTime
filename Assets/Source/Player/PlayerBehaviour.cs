@@ -1,9 +1,9 @@
-﻿using Assets.Source.Player.HealthSystem;
-using Assets.Source.Player.Input;
-using System;
+﻿using System;
+using Player.HealthSystem;
+using Player.Input;
 using UnityEngine;
 
-namespace Assets.Source.Player
+namespace Player
 {
     public class PlayerBehaviour : MonoBehaviour
     {

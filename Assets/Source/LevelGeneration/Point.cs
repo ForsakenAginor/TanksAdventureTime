@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Source.LevelGeneration
+namespace LevelGeneration
 {
     public abstract class Point : MonoBehaviour
     {

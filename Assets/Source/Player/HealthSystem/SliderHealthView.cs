@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.Player.HealthSystem
+namespace Player.HealthSystem
 {
     public class SliderHealthView : HealthView
     {

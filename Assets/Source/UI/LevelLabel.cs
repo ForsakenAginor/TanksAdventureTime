@@ -1,9 +1,9 @@
-using Lean.Localization;
 using System;
+using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Source.UI
+namespace UI
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     [RequireComponent(typeof(LeanLocalizedTextMeshProUGUI))]

@@ -1,8 +1,5 @@
-namespace Assets.Source.Global.Enums
+public enum Scenes
 {
-    public enum Scenes
-    {
-        MainMenu,
-        BattleScene,
-    }
+    MainMenu,
+    BattleScene,
 }

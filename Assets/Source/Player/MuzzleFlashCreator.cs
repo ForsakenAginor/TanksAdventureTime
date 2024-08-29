@@ -1,8 +1,8 @@
-using Assets.Source.Player.Input;
 using System;
+using Player.Input;
 using UnityEngine;
 
-namespace Assets.Source.Player.Weapons
+namespace Player
 {
     public class MuzzleFlashCreator : MonoBehaviour
     {

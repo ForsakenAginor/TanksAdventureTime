@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.UI
+namespace UI
 {
     public class UnPauseGameButton : MonoBehaviour
     {

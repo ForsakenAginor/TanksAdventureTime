@@ -1,9 +1,8 @@
-using Assets.Source.Global.Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Source.UI
+namespace UI
 {
     [RequireComponent(typeof(Button))]
     public class ExitButtonHandler : MonoBehaviour

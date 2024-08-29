@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.Sound.AudioMixer
+namespace Sound
 {
     public class VolumeSaver : MonoBehaviour
     {

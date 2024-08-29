@@ -1,11 +1,11 @@
-using Cinemachine;
-using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Assets.Source.Player.OnDeathEffect
+namespace Player
 {
     public class OnDeathCameraSwitcher : ICancelableOnDeathEffect
     {

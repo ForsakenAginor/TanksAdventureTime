@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DestructionObject.Buncer
+namespace DestructionObject
 {
     public class BunkerHealthView : MonoBehaviour
     {

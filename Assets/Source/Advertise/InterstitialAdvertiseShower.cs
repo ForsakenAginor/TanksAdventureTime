@@ -1,9 +1,8 @@
 using System;
 using Agava.YandexGames;
-using Assets.Source.Global;
 using UnityEngine;
 
-namespace Assets.Source.Advertise
+namespace Advertise
 {
     public class InterstitialAdvertiseShower
     {

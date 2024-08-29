@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Source.Player.Input
+namespace Player.Input
 {
     [Serializable]
     public class PidRegulator

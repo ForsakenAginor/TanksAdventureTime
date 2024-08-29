@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Source.Sound.AudioMixer
+namespace Sound
 {
     public class AudioData
     {

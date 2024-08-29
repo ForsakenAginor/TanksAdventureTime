@@ -1,7 +1,7 @@
 using System;
 using Lean.Localization;
 
-namespace Assets.Source.Localization
+namespace Localization
 {
     public class LocalizationInitializer
     {

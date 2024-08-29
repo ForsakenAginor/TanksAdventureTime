@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Source.Player.HealthSystem
+namespace Player.HealthSystem
 {
     [RequireComponent(typeof(Collider))]
     public class PlayerDamageTaker : MonoBehaviour, IPlayerTarget, IPermanentKiller

@@ -1,9 +1,9 @@
-﻿using Enemies;
+﻿using System;
+using Enemies;
 using Projectiles;
-using System;
 using UnityEngine;
 
-namespace Assets.Source.LevelGeneration
+namespace LevelGeneration
 {
     public class MilitaryPoint : Point
     {

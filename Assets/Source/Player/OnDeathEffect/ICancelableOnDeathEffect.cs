@@ -1,4 +1,4 @@
-﻿namespace Assets.Source.Player.OnDeathEffect
+﻿namespace Player
 {
     public interface ICancelableOnDeathEffect
     {

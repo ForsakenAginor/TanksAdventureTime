@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.Source.Player.HealthSystem
+namespace Player.HealthSystem
 {
     public class Health
     {

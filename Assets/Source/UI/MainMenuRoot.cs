@@ -2,15 +2,15 @@
 using Agava.YandexGames;
 #endif
 using Agava.WebUtility;
-using Assets.Source.Sound.AudioMixer;
 using PlayerHelpers;
-using Shops;
 using SavingProgress;
+using Shops;
+using Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.UI
+namespace UI
 {
     public class MainMenuRoot : MonoBehaviour
     {

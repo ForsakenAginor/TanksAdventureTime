@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Characters;
-using DestructionObject.Buncer;
+using DestructionObject;
 using Projectiles;
 using UnityEngine;
 

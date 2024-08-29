@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DestructionObject.Buncer
+namespace DestructionObject
 {
     public class BunkerPart : MonoBehaviour
     {

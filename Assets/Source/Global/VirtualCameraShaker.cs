@@ -13,7 +13,7 @@ public class VirtualCameraShaker
     private readonly CancellationToken _token;
 
     private Collider _collider;
-    private float _timer = 0f;
+    private float _timer;
 
     public VirtualCameraShaker(
         CinemachineVirtualCamera virtualCamera,

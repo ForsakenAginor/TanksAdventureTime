@@ -2,30 +2,33 @@ using Agava.WebUtility;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialOpener : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private GameObject _pcPanel;
-    [SerializeField] private GameObject _mobilePanel;
-    [SerializeField] private GameObject _holderPanel;
-    [SerializeField] private Button _toggleButton;
-
-    private void OnEnable()
+    public class TutorialOpener : MonoBehaviour
     {
-        _toggleButton.onClick.AddListener(OnButtonClick);
-    }
+        [SerializeField] private GameObject _pcPanel;
+        [SerializeField] private GameObject _mobilePanel;
+        [SerializeField] private GameObject _holderPanel;
+        [SerializeField] private Button _toggleButton;
 
-    private void OnDisable()
-    {
-        _toggleButton.onClick.RemoveListener(OnButtonClick);
-    }
+        private void OnEnable()
+        {
+            _toggleButton.onClick.AddListener(OnButtonClick);
+        }
 
-    private void OnButtonClick()
-    {
-        _holderPanel.SetActive(false);
+        private void OnDisable()
+        {
+            _toggleButton.onClick.RemoveListener(OnButtonClick);
+        }
 
-        if (Device.IsMobile)
-            _mobilePanel.SetActive(true);
-        else
-            _pcPanel.SetActive(true);
+        private void OnButtonClick()
+        {
+            _holderPanel.SetActive(false);
+
+            if (Device.IsMobile)
+                _mobilePanel.SetActive(true);
+            else
+                _pcPanel.SetActive(true);
+        }
     }
 }

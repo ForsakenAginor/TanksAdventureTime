@@ -1,7 +1,7 @@
 ﻿using Projectiles;
 using UnityEngine;
 
-namespace Assets.Source.Player.Weapons
+namespace Player
 {
     public class PlayerWeapon : IWeapon
     {

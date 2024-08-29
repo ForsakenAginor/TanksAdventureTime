@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Source.LevelGeneration
+namespace LevelGeneration
 {
     public class PointPresetCollection : MonoBehaviour
     {

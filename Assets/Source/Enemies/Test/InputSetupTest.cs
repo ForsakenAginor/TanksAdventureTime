@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Assets.Source.Player.Input;
-using Assets.Source.Player.Weapons;
+using Player;
+using Player.Input;
 using Projectiles;
 using UnityEngine;
 

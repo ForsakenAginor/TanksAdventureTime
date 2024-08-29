@@ -1,6 +1,6 @@
 using Agava.YandexGames;
 
-namespace Assets.Source.UI.Menu.Leaderboard
+namespace UI
 {
     public class LeaderboardScoreSaver
     {

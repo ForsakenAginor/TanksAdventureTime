@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Agava.YandexGames;
 using UnityEngine;
 
-namespace Assets.Source.UI.Menu.Leaderboard
+namespace UI
 {
     public class YandexLeaderboard : MonoBehaviour
     {

@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using TMPro;
-using System;
+﻿using System;
 using Cysharp.Threading.Tasks;
+using TMPro;
+using UnityEngine;
 
-namespace Assets.Source.UI
+namespace UI
 {
     public class VictoryEffect : MonoBehaviour
     {

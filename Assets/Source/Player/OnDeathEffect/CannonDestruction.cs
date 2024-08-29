@@ -1,8 +1,8 @@
-using UnityEngine;
-using DG.Tweening;
 using System;
+using DG.Tweening;
+using UnityEngine;
 
-namespace Assets.Source.Player.OnDeathEffect
+namespace Player
 {
     public class CannonDestruction : ICancelableOnDeathEffect
     {

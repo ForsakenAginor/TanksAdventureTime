@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Source.LevelGeneration
+namespace LevelGeneration
 {
     public class SpotMarker : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Source.Sound
+namespace Sound
 {
     [RequireComponent(typeof(AudioSource))]
     public class RandomMulsicChoser : MonoBehaviour

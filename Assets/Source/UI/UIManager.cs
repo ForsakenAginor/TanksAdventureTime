@@ -1,11 +1,9 @@
-using Agava.WebUtility;
-using Assets.Source.UI.EnemiesMarker;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Source.UI
+namespace UI
 {
     [RequireComponent(typeof(Marker))]
     public class UIManager : MonoBehaviour

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Source.UI.Menu.Leaderboard
+namespace UI
 {
     internal class LeaderboardView : MonoBehaviour
     {

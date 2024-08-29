@@ -1,24 +1,20 @@
-using Agava.YandexGames;
-using Assets.Source.Advertise;
-using Assets.Source.Difficulty;
-using Assets.Source.Enemies;
-using Assets.Source.Global;
-using Assets.Source.LevelGeneration;
-using Assets.Source.Player;
-using Assets.Source.Player.HealthSystem;
-using Assets.Source.Player.OnDeathEffect;
-using Assets.Source.Sound.AudioMixer;
-using Assets.Source.UI;
-using Assets.Source.UI.Menu.Leaderboard;
-using PlayerHelpers;
 using System;
 using System.Collections.Generic;
-using Shops;
+using Advertise;
+using Assets.Source.Enemies;
+using Difficulty;
+using LevelGeneration;
+using Player;
+using Player.HealthSystem;
+using PlayerHelpers;
 using SavingProgress;
+using Shops;
+using Sound;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.EntryPoint
+namespace EntryPoint
 {
     public class Root : MonoBehaviour
     {

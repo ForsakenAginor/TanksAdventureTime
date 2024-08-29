@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.UI.Menu
+namespace UI
 {
     public class MenuSwitcher : MonoBehaviour
     {

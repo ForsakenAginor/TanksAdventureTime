@@ -1,9 +1,9 @@
-﻿using Enemies;
-using System;
+﻿using System;
 using System.Linq;
+using Enemies;
 using UnityEngine;
 
-namespace Assets.Source.LevelGeneration
+namespace LevelGeneration
 {
     public class BunkerPoint : Point
     {

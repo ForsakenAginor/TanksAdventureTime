@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Assets.Source.Player.HealthSystem
+namespace Player.HealthSystem
 {
     public class TextHealthView : HealthView
     {

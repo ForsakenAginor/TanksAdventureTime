@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Source.UI
+namespace UI
 {
     [RequireComponent(typeof(Button))]
     public class Unpauser : MonoBehaviour

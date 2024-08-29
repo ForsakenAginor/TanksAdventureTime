@@ -12,7 +12,7 @@ public class ObjectPool<T> : IPushable
         _spawnableObject = spawnableObject;
     }
 
-    public virtual void Push(SpawnableObject spawnableObject)
+    public void Push(SpawnableObject spawnableObject)
     {
         PushOnInitialize(spawnableObject);
     }
@@ -23,22 +23,6 @@ public class ObjectPool<T> : IPushable
             PushOnInitialize(Object.Instantiate(_spawnableObject, position, Quaternion.identity).Init(this));
 
         return _spawnQueue.Dequeue().Pull<T>(position);
-    }
-
-    public T Pull(Transform parent)
-    {
-        if (_spawnQueue.Count == 0)
-            PushOnInitialize(Object.Instantiate(_spawnableObject, parent).Init(this));
-
-        return _spawnQueue.Dequeue().Pull<T>(parent);
-    }
-
-    public T Pull(Transform parent, Vector3 position)
-    {
-        if (_spawnQueue.Count == 0)
-            PushOnInitialize(Object.Instantiate(_spawnableObject, parent).Init(this));
-
-        return _spawnQueue.Dequeue().Pull<T>(parent, position);
     }
 
     private void PushOnInitialize(SpawnableObject spawnableObject)

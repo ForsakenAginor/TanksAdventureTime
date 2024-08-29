@@ -1,8 +1,7 @@
-using Cinemachine;
 using System;
 using UnityEngine;
 
-namespace Assets.Source.Player.Input
+namespace Player.Input
 {
     public class AimInputHandler
     {

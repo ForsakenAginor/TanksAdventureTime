@@ -1,16 +1,14 @@
-using Assets.Source.Player.HealthSystem;
-using Assets.Source.Player.Input;
-using Assets.Source.Player.MovingEffect;
-using Assets.Source.Player.Weapons;
-using Cinemachine;
-using Projectiles;
-using Shops;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cinemachine;
+using Player.HealthSystem;
+using Player.Input;
+using Projectiles;
+using Shops;
 using UnityEngine;
 
-namespace Assets.Source.Player
+namespace Player
 {
     public class PlayerInitializer : MonoBehaviour
     {

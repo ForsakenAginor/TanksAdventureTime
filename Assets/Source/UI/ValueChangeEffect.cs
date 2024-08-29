@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using System;
+using System.Collections;
 using TMPro;
-using System;
+using UnityEngine;
 
-namespace Assets.Source.UI
+namespace UI
 {
     public class ValueChangeEffect : MonoBehaviour
     {

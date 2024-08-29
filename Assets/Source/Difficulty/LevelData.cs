@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Source.Difficulty
+namespace Difficulty
 {
     public class LevelData
     {
