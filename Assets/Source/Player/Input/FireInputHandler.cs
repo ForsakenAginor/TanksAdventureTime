@@ -3,7 +3,7 @@ using Agava.WebUtility;
 using Cysharp.Threading.Tasks;
 using UnityEngine.EventSystems;
 
-namespace Player.Input
+namespace Player
 {
     public class FireInputHandler
     {
