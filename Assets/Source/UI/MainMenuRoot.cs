@@ -5,7 +5,7 @@ using Agava.WebUtility;
 using Assets.Source.Sound.AudioMixer;
 using PlayerHelpers;
 using Shops;
-using SavingData;
+using SavingProgress;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,9 +52,9 @@ namespace Assets.Source.UI
 
             _shop.Init(
                 wallet,
-                _saveService.SavePurchasesData,
-                _saveService.SavePlayerHelperData,
-                _saveService.GetPurchasesData(),
+                _saveService.SavePurchases,
+                _saveService.SavePlayerHelper,
+                _saveService.GetPurchases(),
                 _saveService.HadHelper,
                 (PlayerHelperTypes)_saveService.Helper);
 
@@ -65,7 +65,7 @@ namespace Assets.Source.UI
 
         private void CompleteTutorial()
         {
-            _saveService.SaveCompletedTrainingComputerData(true);
+            _saveService.SaveCompletedTrainingComputer(true);
         }
     }
 }

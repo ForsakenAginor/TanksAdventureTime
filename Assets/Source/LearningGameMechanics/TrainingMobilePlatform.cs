@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using SavingData;
+using SavingProgress;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -51,7 +51,7 @@ namespace LearningGameMechanics
 
             if (_currentTrainingIndex == _trainings.Count - element)
             {
-                _saveService.SaveCompletedTrainingMobileData(true);
+                _saveService.SaveCompletedTrainingMobile(true);
                 gameObject.SetActive(false);
                 return;
             }
