@@ -6,7 +6,7 @@ namespace DestructionObject
     {
         [SerializeField] private Transform _destruction;
 
-        private DestroyedPartBunker[] _bunkerDestructionObjects;
+        private BunkerDestroyedPart[] _bunkerDestructionObjects;
         private Transform _transform;
 
         public bool IsDestroyed { get; private set; } = false;
@@ -29,10 +29,10 @@ namespace DestructionObject
         private void Init()
         {
             _transform = transform;
-            _bunkerDestructionObjects = new DestroyedPartBunker[_destruction.childCount];
+            _bunkerDestructionObjects = new BunkerDestroyedPart[_destruction.childCount];
 
             for (int i = 0; i < _bunkerDestructionObjects.Length; i++)
-                _bunkerDestructionObjects[i] = _destruction.GetChild(i).gameObject.AddComponent<DestroyedPartBunker>();
+                _bunkerDestructionObjects[i] = _destruction.GetChild(i).gameObject.AddComponent<BunkerDestroyedPart>();
         }
     }
 }

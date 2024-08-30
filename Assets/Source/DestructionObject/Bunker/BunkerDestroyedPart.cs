@@ -3,7 +3,7 @@ using UnityEngine;
 namespace DestructionObject
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class DestroyedPartBunker : MonoBehaviour
+    public class BunkerDestroyedPart : MonoBehaviour
     {
         private const string DieObject = nameof(DisableObject);
         private const float Force = 1000f;
