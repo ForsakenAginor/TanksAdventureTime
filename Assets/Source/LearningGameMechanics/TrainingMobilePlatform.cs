@@ -9,13 +9,13 @@ namespace LearningGameMechanics
     {
         [SerializeField] private Button _playButton;
         [SerializeField] private SaveService _saveService;
-        [SerializeField] private List<Training> _trainings = new ();
+        [SerializeField] private List<Training> _trainings = new();
 
         private int _currentTrainingIndex = 0;
 
         private void OnEnable()
         {
-            _playButton.onClick.AddListener(OnFillTraining);
+            _playButton.onClick.AddListener(OnFillTrainings);
 
             for (int i = 0; i < _trainings.Count; i++)
             {
@@ -25,7 +25,7 @@ namespace LearningGameMechanics
 
         private void OnDisable()
         {
-            _playButton.onClick.RemoveListener(OnFillTraining);
+            _playButton.onClick.RemoveListener(OnFillTrainings);
 
             for (int i = 0; i < _trainings.Count; i++)
             {
@@ -33,15 +33,15 @@ namespace LearningGameMechanics
             }
         }
 
-        private void OnFillTraining()
+        private void OnFillTrainings()
         {
             foreach (var training in _trainings)
             {
-                training.DisableInputObject();
+                training.DisableTraining();
             }
 
             _trainings[_currentTrainingIndex].TurnOn();
-            _trainings[_currentTrainingIndex].EnableInputObject();
+            _trainings[_currentTrainingIndex].EnableTraining();
         }
 
         private void OnNextTraining()
@@ -57,7 +57,7 @@ namespace LearningGameMechanics
             }
 
             _trainings[++_currentTrainingIndex].TurnOn();
-            _trainings[_currentTrainingIndex].EnableInputObject();
+            _trainings[_currentTrainingIndex].EnableTraining();
         }
     }
 }

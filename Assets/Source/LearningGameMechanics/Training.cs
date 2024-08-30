@@ -20,11 +20,11 @@ namespace LearningGameMechanics
 
         private void Awake()
         {
-            InputSystem = new ();
+            InputSystem = new();
             InputSystem.Enable();
         }
 
-        public void EnableInputObject()
+        public void EnableTraining()
         {
             gameObject.SetActive(true);
             _inputObject.gameObject.SetActive(true);
@@ -32,7 +32,7 @@ namespace LearningGameMechanics
             Time.timeScale = MinTimeScale;
         }
 
-        public void DisableInputObject()
+        public void DisableTraining()
         {
             _inputObject.gameObject.SetActive(false);
         }

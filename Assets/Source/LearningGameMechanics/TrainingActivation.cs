@@ -3,16 +3,16 @@ using UnityEngine;
 
 namespace LearningGameMechanics
 {
-    public class StartTraining : MonoBehaviour
+    public class TrainingActivation : MonoBehaviour
     {
         [SerializeField] private TrainingMobilePlatform _trainingMobilePlatform;
         [SerializeField] private SaveService _saveService;
 
-        private void OnEnable() => _saveService.Loaded += OnStartTraining;
+        private void OnEnable() => _saveService.Loaded += OnActivate;
 
-        private void OnDisable() => _saveService.Loaded -= OnStartTraining;
+        private void OnDisable() => _saveService.Loaded -= OnActivate;
 
-        private void OnStartTraining()
+        private void OnActivate()
         {
             int minValue = 0;
             int maxValue = 1;

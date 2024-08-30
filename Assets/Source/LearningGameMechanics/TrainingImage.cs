@@ -10,9 +10,9 @@ namespace LearningGameMechanics
 
         public Transform ImageTransform => _imageMobilePlatform.transform;
 
-        private void Start() => OnTrainingStart();
+        private void Start() => StartTraining();
 
-        protected abstract void OnTrainingStart();
+        protected abstract void StartTraining();
 
         public void TurnOn()
         {
