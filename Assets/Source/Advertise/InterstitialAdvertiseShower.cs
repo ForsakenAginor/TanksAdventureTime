@@ -21,7 +21,7 @@ namespace Advertise
             InterstitialAd.Show(null, OnCloseAdvertise);
         }
 
-        private void OnCloseAdvertise(bool nonmatterVariable)
+        private void OnCloseAdvertise(bool nonMatterVariable)
         {
             AudioListener.pause = false;
             AudioListener.volume = 1f;

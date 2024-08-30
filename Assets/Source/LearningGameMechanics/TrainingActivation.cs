@@ -5,6 +5,8 @@ namespace LearningGameMechanics
 {
     public class TrainingActivation : MonoBehaviour
     {
+        private const int MaxValue = 1;
+
         [SerializeField] private TrainingMobilePlatform _trainingMobilePlatform;
         [SerializeField] private SaveService _saveService;
 
@@ -14,12 +16,10 @@ namespace LearningGameMechanics
 
         private void OnActivate()
         {
-            int minValue = 0;
-            int maxValue = 1;
-            bool isTraining = true ? _saveService.CompletedTrainingOnMobile == maxValue :
-                                     _saveService.CompletedTrainingOnMobile == minValue;
+            bool isTraining = _saveService.CompletedTrainingOnMobile == MaxValue;
 
-            if (isTraining == true) return;
+            if (isTraining == true)
+                return;
 
             if (Application.isMobilePlatform)
                 _trainingMobilePlatform.gameObject.SetActive(true);
