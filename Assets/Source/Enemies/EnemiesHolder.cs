@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Enemies
 {
-    public class EnemiesManager
+    public class EnemiesHolder
     {
         private readonly IEnumerable<IDamageableTarget> _enemies;
 
-        public EnemiesManager(IEnumerable<IDamageableTarget> enemies)
+        public EnemiesHolder(IEnumerable<IDamageableTarget> enemies)
         {
             _enemies = enemies ?? throw new ArgumentNullException(nameof(enemies));
         }

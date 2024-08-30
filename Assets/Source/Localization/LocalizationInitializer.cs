@@ -12,10 +12,10 @@ namespace Localization
             const string English = nameof(English);
             const string CommandTurkishLanguage = "tr";
             const string CommandRussianLanguage = "ru";
-            const string CommandBelorusLanguage = "be";
+            const string CommandBelarusLanguage = "be";
             const string CommandKazakhstanLanguage = "kk";
             const string CommandUzbekistanLanguage = "uz";
-            const string CommandYaNeZnayChtoEtoLanguage = "uk";
+            const string CommandUkraineLanguage = "uk";
 
             if (language == null)
                 throw new NullReferenceException(nameof(language));
@@ -27,10 +27,10 @@ namespace Localization
                     break;
 
                 case CommandRussianLanguage:
-                case CommandBelorusLanguage:
+                case CommandBelarusLanguage:
                 case CommandKazakhstanLanguage:
                 case CommandUzbekistanLanguage:
-                case CommandYaNeZnayChtoEtoLanguage:
+                case CommandUkraineLanguage:
                     LeanLocalization.SetCurrentLanguageAll(Russian);
                     break;
 

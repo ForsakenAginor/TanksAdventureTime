@@ -50,7 +50,9 @@ namespace DestructionObject
         {
             _slider.gameObject.SetActive(true);
             _slider.value = currentValue;
+
             yield return _waitForSeconds;
+
             _slider.gameObject.SetActive(false);
             StopCoroutine(_coroutine);
         }

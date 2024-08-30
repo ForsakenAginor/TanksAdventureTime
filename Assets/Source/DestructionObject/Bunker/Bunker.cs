@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace DestructionObject
@@ -43,13 +44,7 @@ namespace DestructionObject
 
         private List<BunkerPart> TryGetNoDestructionPart()
         {
-            List<BunkerPart> bunkerParts = new ();
-
-            foreach (var part in _bunkerDetails)
-                if (part.IsDestroyed == false)
-                    bunkerParts.Add(part);
-
-            return bunkerParts;
+            return _bunkerDetails.Where(part => part.IsDestroyed == false).ToList();
         }
 
         private int GetRandomPart(int countBunkerPart)

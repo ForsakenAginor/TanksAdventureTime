@@ -16,7 +16,7 @@ namespace LearningGameMechanics
             InputSystem.Player.Fire.canceled -= OnCanceled;
         }
 
-        protected override void StartTraining()
+        public override void StartTraining()
         {
             int endValue = 50;
             int endValue1 = 0;

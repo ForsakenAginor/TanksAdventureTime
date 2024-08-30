@@ -12,7 +12,7 @@ namespace LearningGameMechanics
 
         private void Start() => StartTraining();
 
-        protected abstract void StartTraining();
+        public abstract void StartTraining();
 
         public void TurnOn()
         {

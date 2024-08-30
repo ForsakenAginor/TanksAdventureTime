@@ -20,8 +20,8 @@ namespace DestructionObject
             _destruction.gameObject.SetActive(true);
             gameObject.SetActive(false);
 
-            for (int i = 0; i < _bunkerDestructionObjects.Length; i++)
-                _bunkerDestructionObjects[i].React(_transform);
+            foreach (var part in _bunkerDestructionObjects)
+                part.React(_transform);
 
             IsDestroyed = true;
         }
