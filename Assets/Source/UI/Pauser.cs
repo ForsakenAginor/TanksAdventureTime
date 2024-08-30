@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace UI
 {
     [RequireComponent(typeof(Button))]
-    public class Pauser : MonoBehaviour
+    public class Pause : MonoBehaviour
     {
         private Button _button;
 
