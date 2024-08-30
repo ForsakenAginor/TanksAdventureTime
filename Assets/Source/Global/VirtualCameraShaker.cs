@@ -12,7 +12,6 @@ public class VirtualCameraShaker
     private readonly CinemachineBasicMultiChannelPerlin _cameraNoise;
     private readonly CancellationToken _token;
 
-    private Collider _collider;
     private float _timer;
 
     public VirtualCameraShaker(

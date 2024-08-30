@@ -1,6 +1,4 @@
 ﻿using System;
-using Player.HealthSystem;
-using Player.Input;
 using UnityEngine;
 
 namespace Player

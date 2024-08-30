@@ -6,8 +6,8 @@ namespace SavingProgress
 {
     public class SaveService : MonoBehaviour, ISave
     {
-        private readonly SaveGameProgress _saveGameProgress = new();
-        private GameProgress _gameProgress = new();
+        private readonly SaveGameProgress _saveGameProgress = new ();
+        private GameProgress _gameProgress = new ();
 
         public event Action Loaded;
 

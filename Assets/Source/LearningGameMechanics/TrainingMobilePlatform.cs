@@ -9,7 +9,7 @@ namespace LearningGameMechanics
     {
         [SerializeField] private Button _playButton;
         [SerializeField] private SaveService _saveService;
-        [SerializeField] private List<Training> _trainings = new();
+        [SerializeField] private List<Training> _trainings = new ();
 
         private int _currentTrainingIndex = 0;
 

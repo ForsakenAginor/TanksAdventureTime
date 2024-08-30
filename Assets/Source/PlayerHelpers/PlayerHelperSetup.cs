@@ -36,7 +36,6 @@ namespace PlayerHelpers
         private CharacterAnimation _animation;
 
         private List<ISwitchable<IDamageableTarget>> _switchableObjects;
-        private Dictionary<PlayerHelperTypes, Func<Action<AudioSource>, Action<IExplosive>, IWeapon>> _weapons;
         private FiniteStateMachine<CharacterState> _machine;
         private CharacterRotator _rotator;
         private CharacterThinker _thinker;

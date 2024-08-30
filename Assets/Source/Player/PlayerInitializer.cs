@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
-using Player.HealthSystem;
-using Player.Input;
 using Projectiles;
 using Shops;
 using UnityEngine;

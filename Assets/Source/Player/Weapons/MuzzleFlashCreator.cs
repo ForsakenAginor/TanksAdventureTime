@@ -1,5 +1,4 @@
 using System;
-using Player.Input;
 using UnityEngine;
 
 namespace Player

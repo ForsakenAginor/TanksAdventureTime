@@ -7,9 +7,10 @@ namespace UI
 {
     public class Marker : MonoBehaviour
     {
+        private readonly float _imageSize = 25;
+
         [SerializeField] private RectTransform _screen;
 
-        private readonly float _imageSize = 25;
         private IEnumerable<ITarget> _enemies;
         private Transform _player;
         private float _minDistance;

@@ -25,7 +25,7 @@ namespace LevelGeneration
             Spawner spawner,
             IPlayerTarget player,
             Action<AudioSource> audioSourceAddedCallBack,
-            Action <IDamageableTarget> targetSpawnedCallback)
+            Action<IDamageableTarget> targetSpawnedCallback)
         {
             _configuration = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
             _presets = presets != null ? presets : throw new ArgumentNullException(nameof(presets));
@@ -91,7 +91,7 @@ namespace LevelGeneration
 
         private IEnumerable<Point> SpawnRandomBuildings(int amount, Point[] buildings, List<Transform> spots)
         {
-            List<Point> result = new();
+            List<Point> result = new ();
 
             while (amount > 0)
             {

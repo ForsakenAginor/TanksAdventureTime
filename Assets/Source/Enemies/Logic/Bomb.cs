@@ -1,5 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
-using System;
+﻿using System;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Enemies

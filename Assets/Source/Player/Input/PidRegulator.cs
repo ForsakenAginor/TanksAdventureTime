@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Player.Input
+namespace Player
 {
     [Serializable]
     public class PidRegulator
@@ -12,7 +12,11 @@ namespace Player.Input
         [SerializeField] private float _maxOut = 1000;
         [SerializeField] private float _minOut = -1000;
 
-        private float _integral, _previousError, _error, _currentDelta, _targetPoint;
+        private float _integral;
+        private float _previousError;
+        private float _error;
+        private float _currentDelta;
+        private float _targetPoint;
 
         public PidRegulator()
         {
@@ -44,10 +48,10 @@ namespace Player.Input
         private float ComputePID(float time, float input)
         {
             _error = _targetPoint - input;
-            _integral = Mathf.Clamp(_integral + _error * time * _ki, _minOut, _maxOut);
+            _integral = Mathf.Clamp(_integral + (_error * time * _ki), _minOut, _maxOut);
             _currentDelta = (_error - _previousError) / time;
             _previousError = _error;
-            return Mathf.Clamp(_error * _kp + _integral + _currentDelta * _kd, _minOut, _maxOut);
+            return Mathf.Clamp((_error * _kp) + _integral + (_currentDelta * _kd), _minOut, _maxOut);
         }
     }
 }

@@ -10167,7 +10167,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   _flashCreator: {fileID: 1494637076}
-  _flashEffectPrefab: {fileID: 0}
+  _flashEffectPrefab: {fileID: 19813786, guid: d91f339235d9537468975cb977380698, type: 3}
   _cooldownView: {fileID: 1494637077}
   _healthViews:
   - {fileID: 1494637075}

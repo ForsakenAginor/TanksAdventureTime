@@ -61,9 +61,9 @@ namespace PlayerHelpers
                     {
                         points.Add(
                             new Vector3(
-                                _lastPosition.x + _radius * Mathf.Cos(i * Mathf.Deg2Rad),
+                                _lastPosition.x + (_radius * Mathf.Cos(i * Mathf.Deg2Rad)),
                                 _lastPosition.y,
-                                _lastPosition.z + _radius * Mathf.Sin(i * Mathf.Deg2Rad)));
+                                _lastPosition.z + (_radius * Mathf.Sin(i * Mathf.Deg2Rad))));
                     }
 
                     _line.positionCount = points.Count;

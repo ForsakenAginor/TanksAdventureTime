@@ -7,7 +7,7 @@ namespace Sound
 {
     public class SoundInitializer : MonoBehaviour
     {
-        private readonly AudioData _audioData = new();
+        private readonly AudioData _audioData = new ();
 
         [Header("AudioSources")]
         [SerializeField] private List<AudioSource> _allSources;
@@ -30,12 +30,12 @@ namespace Sound
             _effectsVolumeSlider.value = _audioData.GetEffectsVolume();
             _musicVolumeSlider.value = _audioData.GetMusicVolume();
 
-            _masterChanger = new(_allSources, _audioData.GetMasterVolume());
-            _effectsChanger = new(_effectsSources, _audioData.GetEffectsVolume());
-            _musicChanger = new(_musicSources, _audioData.GetMusicVolume());
-            VolumeChangeView masterChangerView = new(_masterChanger, _masterVolumeSlider);
-            VolumeChangeView effectsChangerView = new(_effectsChanger, _effectsVolumeSlider);
-            VolumeChangeView musicChangerView = new(_musicChanger, _musicVolumeSlider);
+            _masterChanger = new (_allSources, _audioData.GetMasterVolume());
+            _effectsChanger = new (_effectsSources, _audioData.GetEffectsVolume());
+            _musicChanger = new (_musicSources, _audioData.GetMusicVolume());
+            _ = new VolumeChangeView(_masterChanger, _masterVolumeSlider);
+            _ = new VolumeChangeView(_effectsChanger, _effectsVolumeSlider);
+            _ = new VolumeChangeView(_musicChanger, _musicVolumeSlider);
         }
 
         public void SaveSettings()

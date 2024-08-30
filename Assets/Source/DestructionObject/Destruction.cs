@@ -59,7 +59,6 @@ namespace DestructionObject
             if (_cancellation != null)
                 return;
 
-
             _cancellation = new CancellationTokenSource();
             WaitWaking().Forget();
         }

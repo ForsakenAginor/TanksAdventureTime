@@ -26,7 +26,7 @@ namespace UI
             float step = 0.1f;
             float additiveValue = endValue / duration * step;
             float previousValue = 0;
-            WaitForSeconds delay = new(step);
+            WaitForSeconds delay = new (step);
 
             text.text = $"{previousValue}";
 

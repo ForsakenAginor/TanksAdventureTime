@@ -7,8 +7,6 @@ namespace UI
 {
     public class LeaderboardOpener : MonoBehaviour
     {
-        private readonly LevelData _levelData = new();
-
         [SerializeField] private YandexLeaderboard _leaderboard;
         [SerializeField] private GameObject _leaderboardPanel;
         [SerializeField] private Button _openLeaderboardButton;
@@ -52,12 +50,12 @@ namespace UI
 
         private void OnErrorCallback(string nonmatterValue)
         {
-            _leaderboard.SetPlayerScore(_levelData.GetLevel(), Fill);
+            Fill();
         }
 
         private void OnSuccessCallback()
         {
-            _leaderboard.SetPlayerScore(_levelData.GetLevel(), Fill);
+            Fill();
         }
 
         private void Fill()

@@ -15,6 +15,7 @@ namespace DestructionObject
         private float _damage;
 
         public event Action<float> TookDamage;
+
         public event Action Died;
 
         public Bunker Init(float maxHealth)
@@ -42,7 +43,7 @@ namespace DestructionObject
 
         private List<BunkerPart> TryGetNoDestructionPart()
         {
-            List<BunkerPart> bunkerParts = new();
+            List<BunkerPart> bunkerParts = new ();
 
             foreach (var part in _bunkerDetails)
                 if (part.IsDestroyed == false)

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player.Input
+namespace Player
 {
     public class PlayerInput
     {

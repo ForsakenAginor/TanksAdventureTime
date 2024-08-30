@@ -369,8 +369,8 @@ namespace Enemies
                 case EnemyTypes.Bunker:
                     float angle = _attackAngle / (int)ValueConstants.Two;
                     forward *= _attackRadius;
-                    Vector3 leftPoint = currentPosition + Quaternion.Euler(new Vector3(0f, angle, 0f)) * forward;
-                    Vector3 rightPoint = currentPosition + Quaternion.Euler(new Vector3(0f, -angle, 0f)) * forward;
+                    Vector3 leftPoint = currentPosition + (Quaternion.Euler(new Vector3(0f, angle, 0f)) * forward);
+                    Vector3 rightPoint = currentPosition + (Quaternion.Euler(new Vector3(0f, -angle, 0f)) * forward);
 
                     Gizmos.color = Color.blue;
                     Gizmos.DrawLine(currentPosition, forward + currentPosition);

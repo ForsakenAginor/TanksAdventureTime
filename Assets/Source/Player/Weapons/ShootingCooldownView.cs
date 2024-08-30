@@ -1,6 +1,5 @@
 using System;
 using Lean.Localization;
-using Player.Input;
 using TMPro;
 using UnityEngine;
 
@@ -45,7 +44,7 @@ namespace Player
 
         public void Init(FireInputHandler inputHandler, float cooldown)
         {
-            _inputHandler = inputHandler != null ? inputHandler : throw new ArgumentNullException(nameof(inputHandler));
+            _inputHandler = inputHandler ?? throw new ArgumentNullException(nameof(inputHandler));
             _cooldown = cooldown > 0 ? cooldown : throw new ArgumentOutOfRangeException(nameof(_cooldown));
             DisplayChargeStatus();
 
