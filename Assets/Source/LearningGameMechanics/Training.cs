@@ -9,6 +9,11 @@ namespace LearningGameMechanics
         private const int MinTimeScale = 0;
         private const int MaxTimeScale = 1;
 
+        protected const int FirstPositionValue = 50;
+        protected const int SecondPositionValue = 0;
+        protected const float FirstDuration = 0.5f;
+        protected const int SecondDuration = 1;
+
         [SerializeField] private Transform _inputObject;
         [SerializeField] private Transform _backGroundPanel;
 
