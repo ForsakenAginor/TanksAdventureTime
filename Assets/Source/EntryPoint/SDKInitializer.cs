@@ -15,7 +15,7 @@ namespace EntryPoint
 
         private IEnumerator Start()
         {
-            string language;
+            string language = "ru";
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             while (YandexGamesSdk.IsInitialized == false)
@@ -24,8 +24,6 @@ namespace EntryPoint
             language = YandexGamesSdk.Environment.i18n.lang;
 #else
             yield return null;
-
-            language = "ru";
 #endif
 
             LocalizationInitializer localizationInitializer = new ();

@@ -19,13 +19,11 @@ namespace LearningGameMechanics
 
         public event Action Canceled;
 
-        public bool IsPress { get; private set; } = false;
-
         protected InputSystem InputSystem { get; private set; }
 
         private void Awake()
         {
-            InputSystem = new();
+            InputSystem = new ();
             InputSystem.Enable();
         }
 
@@ -42,15 +40,14 @@ namespace LearningGameMechanics
             _inputObject.gameObject.SetActive(false);
         }
 
-        protected void OnInputActive(InputAction.CallbackContext callbackContext)
+        public void OnInputActive(InputAction.CallbackContext callbackContext)
         {
             _backGroundPanel.gameObject.SetActive(false);
             Time.timeScale = MaxTimeScale;
-            IsPress = true;
             TurnOff();
         }
 
-        protected void OnCanceled(InputAction.CallbackContext context)
+        public void OnCanceled(InputAction.CallbackContext context)
         {
             Canceled?.Invoke();
         }

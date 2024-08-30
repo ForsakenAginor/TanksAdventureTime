@@ -37,7 +37,7 @@ namespace EntryPoint
 
         [Header("Enemies")]
         private readonly List<IDamageableTarget> _enemies = new ();
-        private EnemiesManager _enemiesManager;
+        private EnemiesHolder _enemiesManager;
 
         [Header("Audio")]
         [SerializeField] private SoundInitializer _soundInitializer;

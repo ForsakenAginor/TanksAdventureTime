@@ -16,7 +16,7 @@ namespace LearningGameMechanics
             InputSystem.Player.Move.canceled -= OnCanceled;
         }
 
-        protected override void StartTraining()
+        public override void StartTraining()
         {
             DOTween.Sequence().SetUpdate(UpdateType.Normal, true)
                               .Append(ImageTransform.DOLocalMoveY(FirstPositionValue, FirstDuration))

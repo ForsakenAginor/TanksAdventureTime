@@ -7,9 +7,11 @@ namespace LearningGameMechanics
 {
     public class TrainingMobilePlatform : MonoBehaviour
     {
+        private const int Deductible = 1;
+
         [SerializeField] private Button _playButton;
         [SerializeField] private SaveService _saveService;
-        [SerializeField] private List<Training> _trainings = new();
+        [SerializeField] private List<Training> _trainings = new ();
 
         private int _currentTrainingIndex = 0;
 
@@ -17,28 +19,22 @@ namespace LearningGameMechanics
         {
             _playButton.onClick.AddListener(OnFillTrainings);
 
-            for (int i = 0; i < _trainings.Count; i++)
-            {
-                _trainings[i].Canceled += OnNextTraining;
-            }
+            foreach (Training item in _trainings)
+                item.Canceled += OnNextTraining;
         }
 
         private void OnDisable()
         {
             _playButton.onClick.RemoveListener(OnFillTrainings);
 
-            for (int i = 0; i < _trainings.Count; i++)
-            {
-                _trainings[i].Canceled -= OnNextTraining;
-            }
+            foreach (Training item in _trainings)
+                item.Canceled -= OnNextTraining;
         }
 
         private void OnFillTrainings()
         {
             foreach (var training in _trainings)
-            {
                 training.DisableTraining();
-            }
 
             _trainings[_currentTrainingIndex].TurnOn();
             _trainings[_currentTrainingIndex].EnableTraining();
@@ -46,10 +42,9 @@ namespace LearningGameMechanics
 
         private void OnNextTraining()
         {
-            int element = 1;
             _trainings[_currentTrainingIndex].enabled = false;
 
-            if (_currentTrainingIndex == _trainings.Count - element)
+            if (_currentTrainingIndex == _trainings.Count - Deductible)
             {
                 _saveService.SaveCompletedTrainingMobile(true);
                 gameObject.SetActive(false);

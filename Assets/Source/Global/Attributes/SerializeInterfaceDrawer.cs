@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 [CustomPropertyDrawer(typeof(SerializeInterfaceAttribute))]
 public class SerializeInterfaceDrawer : PropertyDrawer
 {
-    private const string Error = "";
+    private const string Error = "The field is not valid";
 
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
