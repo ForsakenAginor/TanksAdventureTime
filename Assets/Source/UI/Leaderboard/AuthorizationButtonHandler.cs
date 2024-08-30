@@ -32,11 +32,11 @@ namespace UI
             _leaderboardOpener.ShowPanel();
             _holderPanel.SetActive(false);
 #else
-            PlayerAccount.Authorize(OnSuccessAutorize);
+            PlayerAccount.Authorize(OnSuccessAuthorize);
 #endif
         }
 
-        private void OnSuccessAutorize()
+        private void OnSuccessAuthorize()
         {
             _leaderboardOpener.OpenLeaderboard();
             _holderPanel.SetActive(false);

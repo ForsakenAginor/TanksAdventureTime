@@ -7,7 +7,7 @@ using UnityEngine;
 namespace PlayerHelpers
 {
     [RequireComponent(typeof(CharacterAnimation))]
-    public class PlayerHelperSetup : MonoBehaviour, ISwitchable<IDamageableTarget>
+    public class PlayerHelperSetup : MonoBehaviour
     {
         [Header("Main")]
         [SerializeField] private Animator _animator;
@@ -46,64 +46,9 @@ namespace PlayerHelpers
         private IFieldOfView _fieldOfView;
         private SwitchableExplosive _explosive;
 
-        private IDamageableTarget _target;
-        private PlayerHelperTypes _type;
-
         private void OnDestroy()
         {
             _presenter?.Disable();
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (_rotationPoint == null)
-                return;
-
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawWireSphere(_rotationPoint.position, _attackRadius);
-
-            if (_target == null)
-                return;
-
-            Vector3 currentPosition = _viewPoint.position;
-            Vector3 forward = _viewPoint.forward;
-            Vector3 targetPosition = _target.Position;
-
-            switch (_type)
-            {
-                case PlayerHelperTypes.MachineGun:
-                    Gizmos.color = Color.yellow;
-                    Gizmos.DrawLine(currentPosition, targetPosition);
-                    break;
-
-                case PlayerHelperTypes.Grenade:
-                    Vector3 direction = targetPosition - currentPosition;
-                    float angleRadian = _attackAngle * Mathf.Rad2Deg;
-                    Vector3 newForward = forward.RotateAlongY(direction);
-                    List<Vector3> points = newForward.CalculateTrajectory(currentPosition, targetPosition, direction, angleRadian);
-
-                    if (points.Count <= 0)
-                        return;
-
-                    Vector3 middleHeightPosition = points[points.Count / (int)ValueConstants.Two];
-                    middleHeightPosition.y += Vector3.up.y;
-
-                    Gizmos.color = Color.blue;
-
-                    for (int i = 1; i < points.Count; i++)
-                        Gizmos.DrawLine(points[i - 1], points[i]);
-
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawLine(currentPosition, middleHeightPosition);
-                    Gizmos.DrawLine(middleHeightPosition, targetPosition);
-                    Gizmos.color = Color.yellow;
-                    Gizmos.DrawLine(currentPosition, forward + currentPosition);
-                    Gizmos.DrawLine(currentPosition, newForward + currentPosition);
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
 
         public void Init(
@@ -112,7 +57,6 @@ namespace PlayerHelpers
             Action<AudioSource> audioCreationCallback,
             Action<(Action onEnable, Action onDisable)> presenterInitCallback)
         {
-            _type = type;
             _gameObject = gameObject;
             _animation = GetComponent<CharacterAnimation>();
             audioCreationCallback?.Invoke(_fireSound);
@@ -128,11 +72,6 @@ namespace PlayerHelpers
         public void Init()
         {
             gameObject.SetActive(false);
-        }
-
-        public void Switch(IDamageableTarget target)
-        {
-            _target = target;
         }
 
         private void InitParts()
@@ -155,7 +94,6 @@ namespace PlayerHelpers
                 (ISwitchable<IDamageableTarget>)_fieldOfView,
                 _drawer,
                 _rotator,
-                this,
             };
 
             _switchableObjects.Add(
@@ -254,7 +192,9 @@ namespace PlayerHelpers
                 _shootingEffect);
         }
 
-        private IWeapon CreateGrenade(Action<AudioSource> audioCreationCallback, Action<IExplosive> explosiveCreationCallback)
+        private IWeapon CreateGrenade(
+            Action<AudioSource> audioCreationCallback,
+            Action<IExplosive> explosiveCreationCallback)
         {
             _explosive = new SwitchableExplosive(_projectile.ColliderRadius);
             explosiveCreationCallback?.Invoke(_explosive);
@@ -279,7 +219,8 @@ namespace PlayerHelpers
 
         private void ActivateView(PlayerHelperTypes type)
         {
-            SerializedPair<GameObject, AudioClip> pair = _views.Find(item => item.Key == type).Value;
+            SerializedPair<GameObject, AudioClip> pair =
+                _views.Find(item => item.Key == type).Value;
             pair.Key.SetActive(true);
             _fireSound.clip = pair.Value;
         }

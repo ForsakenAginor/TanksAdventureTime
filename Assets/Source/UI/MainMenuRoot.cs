@@ -48,7 +48,7 @@ namespace UI
 
             _soundInitializer.Init();
             Wallet wallet = new (_saveService);
-            WalletView walletView = new (wallet, _currencyView);
+            WalletView _ = new (wallet, _currencyView);
 
             _shop.Init(
                 wallet,

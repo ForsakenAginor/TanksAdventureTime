@@ -19,7 +19,7 @@ namespace Player
         {
             _effectPrefab = effect != null ? effect : throw new ArgumentNullException(nameof(effect));
             _spawnPoint = spawnPoint != null ? spawnPoint : throw new ArgumentNullException(nameof(spawnPoint));
-            _inputHandler = inputHandler != null ? inputHandler : throw new ArgumentNullException(nameof(inputHandler));
+            _inputHandler = inputHandler ?? throw new ArgumentNullException(nameof(inputHandler));
 
             _inputHandler.ShotFired += OnShotFired;
         }

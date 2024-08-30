@@ -16,8 +16,9 @@ namespace UI
         [SerializeField] private LevelLabel _levelLabel;
         [SerializeField] private GameObject _helperAttentionPanel;
 
-        [Header("Marker")]
-        [SerializeField] private float _minDistance;
+        [Header("Marker")] [SerializeField]
+        private float _minDistance;
+
         [SerializeField] private RectTransform _markerImage;
         private Marker _marker;
 
@@ -26,13 +27,13 @@ namespace UI
             _marker = GetComponent<Marker>();
         }
 
+#if !UNITY_EDITOR
         private void Start()
         {
-#if !UNITY_EDITOR
             if(Device.IsMobile == false)
                 _mobileInputCanvas.SetActive(false);
-#endif
         }
+#endif
 
         public void Init(IEnumerable<ITarget> enemies, Transform player, int levelNumber)
         {
@@ -71,7 +72,9 @@ namespace UI
         private IEnumerator DisplayLosingPanel()
         {
             WaitForSeconds delay = new (_delay);
+
             yield return delay;
+
             _losingPanel.SetActive(true);
         }
     }

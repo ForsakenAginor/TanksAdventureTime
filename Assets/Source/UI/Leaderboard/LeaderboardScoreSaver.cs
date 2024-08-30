@@ -11,10 +11,10 @@ namespace UI
             if (PlayerAccount.IsAuthorized == false)
                 return;
 
-            Agava.YandexGames.Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
+            Leaderboard.GetPlayerEntry(LeaderboardName, result =>
             {
                 if (result == null || result.score < score)
-                    Agava.YandexGames.Leaderboard.SetScore(LeaderboardName, score);
+                    Leaderboard.SetScore(LeaderboardName, score);
             });
         }
     }

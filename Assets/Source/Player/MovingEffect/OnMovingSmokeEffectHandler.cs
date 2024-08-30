@@ -11,7 +11,7 @@ namespace Player
         public OnMovingSmokeEffectHandler(ParticleSystem effect, MovingInputHandler movingInput)
         {
             _effect = effect != null ? effect : throw new ArgumentNullException(nameof(effect));
-            _movingInput = movingInput != null ? movingInput : throw new ArgumentNullException(nameof(movingInput));
+            _movingInput = movingInput ?? throw new ArgumentNullException(nameof(movingInput));
 
             _movingInput.MoveStarted += OnMoveStarted;
             _movingInput.MoveEnded += OnMoveEnded;

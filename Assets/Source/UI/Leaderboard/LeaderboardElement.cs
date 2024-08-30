@@ -23,7 +23,12 @@ namespace UI
             }
 
             LeanLocalizedTextMeshProUGUI localizedText =
-                _nameField.gameObject.AddComponent(typeof(LeanLocalizedTextMeshProUGUI)) as LeanLocalizedTextMeshProUGUI;
+                _nameField.gameObject.AddComponent(
+                    typeof(LeanLocalizedTextMeshProUGUI)) as LeanLocalizedTextMeshProUGUI;
+
+            if (localizedText == null)
+                return;
+
             localizedText.TranslationName = AnonymousName;
             localizedText.UpdateLocalization();
         }

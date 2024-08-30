@@ -6,7 +6,11 @@ namespace SavingProgress
 {
     public class SaveService : MonoBehaviour, ISave
     {
+        private const int MinValue = 0;
+        private const int MaxValue = 1;
+
         private readonly SaveGameProgress _saveGameProgress = new ();
+
         private GameProgress _gameProgress = new ();
 
         public event Action Loaded;
@@ -81,9 +85,7 @@ namespace SavingProgress
 
         private int GetCompletedTrainingValue(bool isCompletedTraining)
         {
-            int minValue = 0;
-            int maxValue = 1;
-            return isCompletedTraining ? maxValue : minValue;
+            return isCompletedTraining ? MaxValue : MinValue;
         }
 
         private void OnFill(GameProgress gameData)

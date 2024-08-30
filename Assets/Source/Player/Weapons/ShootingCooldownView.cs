@@ -8,6 +8,7 @@ namespace Player
     public class ShootingCooldownView : MonoBehaviour
     {
         private const string ReadyStatus = "CHARGED";
+        private const string TimeFormat = "0.00";
 
         [SerializeField] private TextMeshProUGUI _textField;
         [SerializeField] private LeanLocalizedTextMeshProUGUI _localizedText;
@@ -29,7 +30,7 @@ namespace Player
             if (_remainingTime > 0)
             {
                 _remainingTime -= Time.deltaTime;
-                _textField.text = _remainingTime.ToString("0.00");
+                _textField.text = _remainingTime.ToString(TimeFormat);
             }
             else if (_remainingTime <= 0 && _textField.text != ReadyStatus)
             {

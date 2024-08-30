@@ -7,7 +7,7 @@ namespace UI
 {
     public class Marker : MonoBehaviour
     {
-        private readonly float _imageSize = 25;
+        private const float ImageSize = 25;
 
         [SerializeField] private RectTransform _screen;
 
@@ -18,7 +18,7 @@ namespace UI
 
         private void FixedUpdate()
         {
-            if (_enemies == null || _enemies.Count() == 0)
+            if (_enemies == null || _enemies.Any() == false)
                 return;
 
             Vector3 closest = _enemies.
@@ -65,8 +65,8 @@ namespace UI
             float screemHeight = _screen.rect.height / 2;
             float width = screenWidth * sin;
             float height = screemHeight * cos;
-            float maxWidth = screenWidth - _imageSize;
-            float maxHeight = screemHeight - _imageSize;
+            float maxWidth = screenWidth - ImageSize;
+            float maxHeight = screemHeight - ImageSize;
             width = Mathf.Clamp(width, -maxWidth, maxWidth);
             height = Mathf.Clamp(height, -maxHeight, maxHeight);
             float multiplier = 1f;

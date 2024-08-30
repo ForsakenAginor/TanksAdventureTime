@@ -87,6 +87,98 @@ namespace Enemies
                 (float)ValueConstants.Zero);
         }
 
+        private void OnDrawGizmos()
+        {
+            if (_isDebug == false)
+                return;
+
+            if (_viewPoint == null || _rotationPoint == null)
+                return;
+
+            if (_debugTarget == null)
+                return;
+
+            if (_debugTarget.TryGetComponent(out ITarget target) == false)
+                return;
+
+            Vector3 currentPosition = _viewPoint.position;
+            Vector3 targetPosition = target.Position;
+            Vector3 forward = _viewPoint.forward;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(currentPosition, _attackRadius);
+
+            switch (_enemyType)
+            {
+                case EnemyTypes.Standard:
+                    break;
+
+                case EnemyTypes.Mortar:
+                    Vector3 direction = targetPosition - currentPosition;
+                    float angleRadian = _attackAngle * Mathf.Rad2Deg;
+                    Vector3 newForward = forward.RotateAlongY(direction);
+                    List<Vector3> points = newForward.CalculateTrajectory(currentPosition, targetPosition, direction, angleRadian);
+
+                    if (points.Count <= 0)
+                        return;
+
+                    Vector3 middleHeightPosition = points[points.Count / (int)ValueConstants.Two];
+                    middleHeightPosition.y += _mortarTrajectoryHeightOffset;
+
+                    Gizmos.color = Color.blue;
+
+                    for (int i = 1; i < points.Count; i++)
+                        Gizmos.DrawLine(points[i - 1], points[i]);
+
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawLine(currentPosition, middleHeightPosition);
+                    Gizmos.DrawLine(middleHeightPosition, targetPosition);
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawLine(currentPosition, forward + currentPosition);
+                    Gizmos.DrawLine(currentPosition, newForward + currentPosition);
+
+                    if (_projectileType != ProjectileTypes.Triple)
+                        return;
+
+                    Gizmos.color = Color.black;
+                    points.Clear();
+                    Vector3 cross = Vector3.Cross(direction, Vector3.up).normalized * _distanceBetween;
+                    Vector3 leftDirection = cross + targetPosition - currentPosition;
+                    Vector3 rightDirection = -cross + targetPosition - currentPosition;
+                    points = forward.RotateAlongY(leftDirection)
+                        .CalculateTrajectory(currentPosition, cross + targetPosition, leftDirection, angleRadian);
+
+                    for (int i = 1; i < points.Count; i++)
+                        Gizmos.DrawLine(points[i - 1], points[i]);
+
+                    points = forward.RotateAlongY(rightDirection)
+                        .CalculateTrajectory(currentPosition, -cross + targetPosition, rightDirection, angleRadian);
+
+                    for (int i = 1; i < points.Count; i++)
+                        Gizmos.DrawLine(points[i - 1], points[i]);
+
+                    break;
+
+                case EnemyTypes.Bunker:
+                    float angle = _attackAngle / (int)ValueConstants.Two;
+                    forward *= _attackRadius;
+                    Vector3 leftPoint = currentPosition + (Quaternion.Euler(new Vector3(0f, angle, 0f)) * forward);
+                    Vector3 rightPoint = currentPosition + (Quaternion.Euler(new Vector3(0f, -angle, 0f)) * forward);
+
+                    Gizmos.color = Color.blue;
+                    Gizmos.DrawLine(currentPosition, forward + currentPosition);
+                    Gizmos.color = Color.green;
+                    Gizmos.DrawLine(currentPosition, leftPoint);
+                    Gizmos.DrawLine(currentPosition, rightPoint);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawLine(currentPosition, targetPosition);
+        }
+
         private void OnDestroy()
         {
             _activator?.Dispose();
@@ -293,98 +385,6 @@ namespace Enemies
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (_isDebug == false)
-                return;
-
-            if (_viewPoint == null || _rotationPoint == null)
-                return;
-
-            if (_debugTarget == null)
-                return;
-
-            if (_debugTarget.TryGetComponent(out ITarget target) == false)
-                return;
-
-            Vector3 currentPosition = _viewPoint.position;
-            Vector3 targetPosition = target.Position;
-            Vector3 forward = _viewPoint.forward;
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(currentPosition, _attackRadius);
-
-            switch (_enemyType)
-            {
-                case EnemyTypes.Standard:
-                    break;
-
-                case EnemyTypes.Mortar:
-                    Vector3 direction = targetPosition - currentPosition;
-                    float angleRadian = _attackAngle * Mathf.Rad2Deg;
-                    Vector3 newForward = forward.RotateAlongY(direction);
-                    List<Vector3> points = newForward.CalculateTrajectory(currentPosition, targetPosition, direction, angleRadian);
-
-                    if (points.Count <= 0)
-                        return;
-
-                    Vector3 middleHeightPosition = points[points.Count / (int)ValueConstants.Two];
-                    middleHeightPosition.y += _mortarTrajectoryHeightOffset;
-
-                    Gizmos.color = Color.blue;
-
-                    for (int i = 1; i < points.Count; i++)
-                        Gizmos.DrawLine(points[i - 1], points[i]);
-
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawLine(currentPosition, middleHeightPosition);
-                    Gizmos.DrawLine(middleHeightPosition, targetPosition);
-                    Gizmos.color = Color.yellow;
-                    Gizmos.DrawLine(currentPosition, forward + currentPosition);
-                    Gizmos.DrawLine(currentPosition, newForward + currentPosition);
-
-                    if (_projectileType != ProjectileTypes.Triple)
-                        return;
-
-                    Gizmos.color = Color.black;
-                    points.Clear();
-                    Vector3 cross = Vector3.Cross(direction, Vector3.up).normalized * _distanceBetween;
-                    Vector3 leftDirection = cross + targetPosition - currentPosition;
-                    Vector3 rightDirection = -cross + targetPosition - currentPosition;
-                    points = forward.RotateAlongY(leftDirection)
-                        .CalculateTrajectory(currentPosition, cross + targetPosition, leftDirection, angleRadian);
-
-                    for (int i = 1; i < points.Count; i++)
-                        Gizmos.DrawLine(points[i - 1], points[i]);
-
-                    points = forward.RotateAlongY(rightDirection)
-                        .CalculateTrajectory(currentPosition, -cross + targetPosition, rightDirection, angleRadian);
-
-                    for (int i = 1; i < points.Count; i++)
-                        Gizmos.DrawLine(points[i - 1], points[i]);
-
-                    break;
-
-                case EnemyTypes.Bunker:
-                    float angle = _attackAngle / (int)ValueConstants.Two;
-                    forward *= _attackRadius;
-                    Vector3 leftPoint = currentPosition + (Quaternion.Euler(new Vector3(0f, angle, 0f)) * forward);
-                    Vector3 rightPoint = currentPosition + (Quaternion.Euler(new Vector3(0f, -angle, 0f)) * forward);
-
-                    Gizmos.color = Color.blue;
-                    Gizmos.DrawLine(currentPosition, forward + currentPosition);
-                    Gizmos.color = Color.green;
-                    Gizmos.DrawLine(currentPosition, leftPoint);
-                    Gizmos.DrawLine(currentPosition, rightPoint);
-                    break;
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawLine(currentPosition, targetPosition);
         }
     }
 }

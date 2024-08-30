@@ -6,6 +6,7 @@ namespace Player
     public class ExplosionSpawner : MonoBehaviour, ICancelableOnDeathEffect
     {
         private const string ExceptionMessage = "ExplosionSpawner class was not initialized yet";
+        private const float EffectScale = 2f;
 
         private ParticleSystem _explosionEffect;
         private ParticleSystem _firEffect;
@@ -27,11 +28,10 @@ namespace Player
             if (fireEffect == null)
                 throw new ArgumentNullException(nameof(fireEffect));
 
-            float effectScale = 2f;
             _explosionEffect = Instantiate(explosionEffect, spawnPoint, Quaternion.identity);
-            _explosionEffect.transform.localScale = Vector3.one * effectScale;
+            _explosionEffect.transform.localScale = Vector3.one * EffectScale;
             _firEffect = Instantiate(fireEffect, spawnPoint, Quaternion.identity);
-            _firEffect.transform.localScale = Vector3.one * effectScale;
+            _firEffect.transform.localScale = Vector3.one * EffectScale;
         }
     }
 }

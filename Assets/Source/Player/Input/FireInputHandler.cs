@@ -15,10 +15,10 @@ namespace Player
 
         public FireInputHandler(PlayerInput playerInput, PlayerWeapon playerWeapon, float shootDelay)
         {
-            _playerInput = playerInput != null ? playerInput : throw new ArgumentNullException(nameof(playerInput));
-            _playerWeapon = playerWeapon != null ? playerWeapon : throw new ArgumentNullException(nameof(playerWeapon));
+            _playerInput = playerInput ?? throw new ArgumentNullException(nameof(playerInput));
+            _playerWeapon = playerWeapon ?? throw new ArgumentNullException(nameof(playerWeapon));
             _shootDelay = shootDelay >= 0
-                ? (int)(shootDelay * 1000)
+                ? TimeSpan.FromSeconds(shootDelay).Seconds
                 : throw new ArgumentOutOfRangeException(nameof(shootDelay));
 
             _playerInput.FireInputReceived += OnInputReceived;

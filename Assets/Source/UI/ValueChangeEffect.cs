@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace UI
 {
@@ -33,7 +34,8 @@ namespace UI
             for (float i = previousValue; i <= endValue; i += additiveValue)
             {
                 yield return delay;
-                previousValue = UnityEngine.Random.Range(previousValue, i);
+
+                previousValue = Random.Range(previousValue, i);
                 text.text = $"{previousValue:0}";
             }
 

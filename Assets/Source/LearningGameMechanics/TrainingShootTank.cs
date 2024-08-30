@@ -18,11 +18,10 @@ namespace LearningGameMechanics
 
         public override void StartTraining()
         {
-
             DOTween.Sequence().SetUpdate(UpdateType.Normal, true)
-                             .Append(ImageTransform.DOLocalMoveY(-FirstPositionValue, FirstDuration))
-                             .Append(ImageTransform.DOLocalMoveY(SecondPositionValue, FirstDuration))
-                             .SetLoops(-SecondDuration);
+                .Append(ImageTransform.DOLocalMoveY(-FirstPositionValue, FirstDuration))
+                .Append(ImageTransform.DOLocalMoveY(SecondPositionValue, FirstDuration))
+                .SetLoops(-SecondDuration);
         }
     }
 }

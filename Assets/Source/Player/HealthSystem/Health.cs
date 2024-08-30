@@ -4,35 +4,31 @@ namespace Player
 {
     public class Health
     {
-        private readonly int _maximum;
-
-        private int _current;
-
         public Health(int amount)
         {
             if (amount <= 0)
                 throw new ArgumentOutOfRangeException(nameof(amount));
 
-            _maximum = amount;
-            _current = amount;
+            Maximum = amount;
+            Current = amount;
         }
 
         public event Action<int, int> HealthChanged;
 
         public event Action Died;
 
-        public int Current => _current;
+        public int Current { get; private set; }
 
-        public int Maximum => _maximum;
+        public int Maximum { get; }
 
         public void Restore(int health)
         {
             if (health <= 0)
                 throw new ArgumentOutOfRangeException(nameof(health));
 
-            _current += health;
-            _current = _current >= _maximum ? _maximum : health;
-            HealthChanged?.Invoke(_current, _maximum);
+            Current += health;
+            Current = Current >= Maximum ? Maximum : health;
+            HealthChanged?.Invoke(Current, Maximum);
         }
 
         public void TakeDamage(int amount)
@@ -40,11 +36,11 @@ namespace Player
             if (amount <= 0)
                 throw new ArgumentOutOfRangeException(nameof(amount));
 
-            _current -= amount;
-            _current = _current > 0 ? _current : 0;
-            HealthChanged?.Invoke(_current, _maximum);
+            Current -= amount;
+            Current = Current > 0 ? Current : 0;
+            HealthChanged?.Invoke(Current, Maximum);
 
-            if (_current == 0)
+            if (Current == 0)
                 Died?.Invoke();
         }
     }
