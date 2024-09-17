@@ -7,6 +7,8 @@ public class WinCondition : MonoBehaviour
 {
     private IEnumerable<IDamageableTarget> _aliveEnemies;
 
+    private bool _isPlayerWon;
+
     public event Action PlayerWinning;
 
     private void FixedUpdate()
@@ -14,8 +16,11 @@ public class WinCondition : MonoBehaviour
         if (_aliveEnemies == null)
             return;
 
-        if (_aliveEnemies.Any() == false)
+        if (_isPlayerWon == false && _aliveEnemies.Any() == false)
+        {
+            _isPlayerWon = true;
             PlayerWinning?.Invoke();
+        }
     }
 
     public void Init(IEnumerable<IDamageableTarget> enemies)
