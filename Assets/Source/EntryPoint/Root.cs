@@ -61,7 +61,7 @@ namespace EntryPoint
         {
             _saveService.Loaded += Init;
             _playerDamageTaker.PlayerDied += OnPlayerDied;
-            _winCondition.PlayerWon += OnPlayerWon;
+            _winCondition.PlayerWinning += OnPlayerWinning;
             _startButton.onClick.AddListener(InitializePlayer);
         }
 
@@ -69,7 +69,7 @@ namespace EntryPoint
         {
             _saveService.Loaded -= Init;
             _playerDamageTaker.PlayerDied -= OnPlayerDied;
-            _winCondition.PlayerWon -= OnPlayerWon;
+            _winCondition.PlayerWinning -= OnPlayerWinning;
             _startButton.onClick.RemoveListener(InitializePlayer);
         }
 
@@ -125,7 +125,7 @@ namespace EntryPoint
             _playerRespawned?.Invoke();
         }
 
-        private void OnPlayerWon()
+        private void OnPlayerWinning()
         {
             _playerBehaviour.Stop();
             LeaderboardScoreSaver leaderboardScoreSaver = new ();

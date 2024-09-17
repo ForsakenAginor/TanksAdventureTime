@@ -8,7 +8,7 @@ namespace Enemies
         private Transform _viewPoint;
         private ISupportStructure _structure;
 
-        public event Action<HitTypes> HitTook;
+        public event Action<HitTypes> HitTaking;
 
         public Vector3 Position => _viewPoint.position;
 
@@ -34,7 +34,7 @@ namespace Enemies
 
         public void TakeHit(HitTypes type)
         {
-            HitTook?.Invoke(type);
+            HitTaking?.Invoke(type);
         }
 
         public void React()

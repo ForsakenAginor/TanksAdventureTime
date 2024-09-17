@@ -15,7 +15,7 @@ namespace DestructionObject
         private float _currentHealth;
         private float _damage;
 
-        public event Action<float> TookDamage;
+        public event Action<float> DamageTaking;
 
         public event Action Died;
 
@@ -39,7 +39,7 @@ namespace DestructionObject
 
             _currentHealth -= _damage;
             bunkers[GetRandomPart(bunkers.Count)].React();
-            TookDamage?.Invoke(_currentHealth / _maxHeath);
+            DamageTaking?.Invoke(_currentHealth / _maxHeath);
         }
 
         private List<BunkerPart> TryGetNoDestructionPart()

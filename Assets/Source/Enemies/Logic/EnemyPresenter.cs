@@ -30,7 +30,7 @@ namespace Enemies
         public void Enable()
         {
             _thinker.Updated += OnUpdated;
-            _collision.HitTook += OnHitTook;
+            _collision.HitTaking += OnHitTaking;
             _health.Died += OnDied;
 
             _thinker.Start();
@@ -39,7 +39,7 @@ namespace Enemies
         public void Disable()
         {
             _thinker.Updated -= OnUpdated;
-            _collision.HitTook -= OnHitTook;
+            _collision.HitTaking -= OnHitTaking;
             _health.Died -= OnDied;
 
             OnDisable();
@@ -50,7 +50,7 @@ namespace Enemies
             _machine.Update();
         }
 
-        private void OnHitTook(HitTypes type)
+        private void OnHitTaking(HitTypes type)
         {
             _health.TakeDamage(_hitConfiguration.GetDamage(type));
         }

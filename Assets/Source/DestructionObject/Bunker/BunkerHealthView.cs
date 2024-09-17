@@ -23,22 +23,22 @@ namespace DestructionObject
 
         private void OnEnable()
         {
-            _bunker.TookDamage += OnChangeValue;
-            _bunker.Died += EnableSlider;
+            _bunker.DamageTaking += OnDamageTaking;
+            _bunker.Died += OnDied;
         }
 
         private void OnDisable()
         {
-            _bunker.TookDamage -= OnChangeValue;
-            _bunker.Died -= EnableSlider;
+            _bunker.DamageTaking -= OnDamageTaking;
+            _bunker.Died -= OnDied;
         }
 
-        private void EnableSlider()
+        private void OnDied()
         {
             _slider.gameObject.SetActive(false);
         }
 
-        private void OnChangeValue(float currentValue)
+        private void OnDamageTaking(float currentValue)
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
