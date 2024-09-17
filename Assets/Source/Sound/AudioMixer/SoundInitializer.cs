@@ -45,15 +45,6 @@ namespace Sound
             _audioData.SaveMusicVolume(_musicVolumeSlider.value);
         }
 
-        public void AddMusicSource(AudioSource music)
-        {
-            if (music == null)
-                throw new ArgumentNullException(nameof(music));
-
-            _masterChanger.AddAudioSource(music);
-            _musicChanger.AddAudioSource(music);
-        }
-
         public void AddEffectSource(AudioSource effect)
         {
             if (effect == null)

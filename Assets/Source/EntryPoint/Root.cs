@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+#if UNITY_WEBGL && !UNITY_EDITOR
 using Advertise;
+#endif
 using Difficulty;
 using Enemies;
 using LevelGeneration;
@@ -85,7 +87,7 @@ namespace EntryPoint
                 _saveService.SavePlayerHelper((int)PlayerHelperTypes.MachineGun);
             }
 
-            LevelGenerator levelGenerator = new (difficultySystem.CurrentConfiguration,
+            LevelGenerator _ = new (difficultySystem.CurrentConfiguration,
                                                 _buildingPresets,
                                                 _buildingSpots,
                                                 _spawner,
@@ -106,11 +108,11 @@ namespace EntryPoint
             _uIManager.Init(_enemiesManager.AliveEnemies, _playerDamageTaker.transform, _currentLevel);
             Wallet wallet = new (_saveService);
             _currencyCalculator = new (_bounty, wallet);
-            InterstitialAdvertiseShower advertiseShower = new (_silencer);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
-            StickyAd.Show();
+            InterstitialAdvertiseShower advertiseShower = new (_silencer);
             advertiseShower.ShowAdvertise();
+            StickyAd.Show();
 #endif
 
             _startButton.interactable = true;
@@ -128,9 +130,9 @@ namespace EntryPoint
         private void OnPlayerWinning()
         {
             _playerBehaviour.Stop();
-            LeaderboardScoreSaver leaderboardScoreSaver = new ();
 
 #if UNITY_WEBGL && !UNITY_EDITOR
+            LeaderboardScoreSaver leaderboardScoreSaver = new ();
             leaderboardScoreSaver.SaveScore(_currentLevel);
 #endif
             _saveService.SaveLevel(++_currentLevel);

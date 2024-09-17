@@ -1,3 +1,4 @@
+#if UNITY_WEBGL && !UNITY_EDITOR
 using System;
 using Agava.YandexGames;
 using UnityEngine;
@@ -30,3 +31,4 @@ namespace Advertise
         }
     }
 }
+#endif

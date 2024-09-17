@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -22,7 +20,6 @@ namespace DestructionObject
 
         public event Action Waked;
 
-        public event Action<List<MeshRenderer>> Destroyed;
 
         private void Awake()
         {
@@ -45,13 +42,11 @@ namespace DestructionObject
             _panelDestruction.gameObject.SetActive(true);
             gameObject.SetActive(false);
 
-            if (Waked != null)
-            {
-                StopWaiting();
-                Waked.Invoke();
-            }
+            if (Waked == null)
+                return;
 
-            Destroyed?.Invoke(_panelDestruction.GetComponentsInChildren<MeshRenderer>().ToList());
+            StopWaiting();
+            Waked.Invoke();
         }
 
         public void StartWaking()

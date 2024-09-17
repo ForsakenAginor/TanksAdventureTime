@@ -40,14 +40,14 @@ namespace LearningGameMechanics
             _inputObject.gameObject.SetActive(false);
         }
 
-        public void OnInputActive(InputAction.CallbackContext callbackContext)
+        public void OnInputActive(InputAction.CallbackContext _)
         {
             _backGroundPanel.gameObject.SetActive(false);
             Time.timeScale = MaxTimeScale;
             TurnOff();
         }
 
-        public void OnCanceled(InputAction.CallbackContext context)
+        public void OnCanceled(InputAction.CallbackContext _)
         {
             Canceled?.Invoke();
         }
