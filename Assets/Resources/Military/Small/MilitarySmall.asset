@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MilitarySmall
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 3192236689103265673, guid: 30beb99738660e04ba80d5f5698a83e5, type: 3}
-  <Size>k__BackingField: 0
+  <Size>k__BackingField: 1

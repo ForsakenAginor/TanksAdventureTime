@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Point_4_Mortar_Cluster
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 5376531514978678257, guid: b928144b30cebf34096719d054e184a6, type: 3}
-  <Size>k__BackingField: 1
+  <Size>k__BackingField: 2

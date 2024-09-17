@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Point _Mortar_Triple
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 7314978044557511686, guid: dc394e60e65ac0a439a770ab56e7e331, type: 3}
-  <Size>k__BackingField: 1
+  <Size>k__BackingField: 2

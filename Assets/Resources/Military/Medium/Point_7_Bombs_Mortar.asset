@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Point_7_Bombs_Mortar
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 425427957947710349, guid: 4fef484cd33a4fe4f9df569bf442f21c, type: 3}
-  <Size>k__BackingField: 1
+  <Size>k__BackingField: 2

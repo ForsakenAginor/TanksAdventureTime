@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Point_3_Bombs_Soldiers
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 3819591120499041954, guid: f442c1b8008f9134db5d615b67402a87, type: 3}
-  <Size>k__BackingField: 0
+  <Size>k__BackingField: 1

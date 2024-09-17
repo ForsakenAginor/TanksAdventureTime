@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CIvilianSmall 3
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 7486811577369869955, guid: 6285b37aae56c3f4e91ce7bdaf1780cc, type: 3}
-  <Size>k__BackingField: 0
+  <Size>k__BackingField: 1
