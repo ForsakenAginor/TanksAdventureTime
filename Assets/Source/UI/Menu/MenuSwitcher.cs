@@ -5,8 +5,8 @@ namespace UI
 {
     public class MenuSwitcher : MonoBehaviour
     {
-        [SerializeField] private GameObject _targetPanel;
-        [SerializeField] private GameObject _holderPanel;
+        [SerializeField] private UserInterfaceElement _targetPanel;
+        [SerializeField] private UserInterfaceElement _holderPanel;
         [SerializeField] private Button _toggleButton;
 
         private void OnEnable()
@@ -21,8 +21,8 @@ namespace UI
 
         private void OnButtonClick()
         {
-            _holderPanel.SetActive(false);
-            _targetPanel.SetActive(true);
+            _holderPanel.Disable();
+            _targetPanel.Enable();
         }
     }
 }

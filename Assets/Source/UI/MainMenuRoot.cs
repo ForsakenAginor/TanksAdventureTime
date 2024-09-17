@@ -14,8 +14,8 @@ namespace UI
 {
     public class MainMenuRoot : MonoBehaviour
     {
-        [SerializeField] private GameObject _pcTutorialPanel;
-        [SerializeField] private GameObject _mobileTutorialPanel;
+        [SerializeField] private UserInterfaceElement _pcTutorialPanel;
+        [SerializeField] private UserInterfaceElement _mobileTutorialPanel;
         [SerializeField] private Button _endTutorialButton;
         [SerializeField] private SoundInitializer _soundInitializer;
         [SerializeField] private ShopSetup _shop;
@@ -41,9 +41,9 @@ namespace UI
             if (_saveService.CompletedTrainingOnComputer == CompletedTraining)
             {
                 if (Device.IsMobile)
-                    _mobileTutorialPanel.SetActive(true);
+                    _mobileTutorialPanel.Enable();
                 else
-                    _pcTutorialPanel.SetActive(true);
+                    _pcTutorialPanel.Enable();
             }
 
             _soundInitializer.Init();
