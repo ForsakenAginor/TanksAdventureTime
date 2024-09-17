@@ -81,7 +81,8 @@ namespace EntryPoint
             _currentLevel = _saveService.Level;
             DifficultySystem difficultySystem = new (_currentLevel);
 
-            if (difficultySystem.CurrentConfiguration.Bunkers > 0 && _saveService.HadHelper == false)
+            if (difficultySystem.CurrentConfiguration.PointsAmount[Difficulty.Point.Bunker] > 0 &&
+                _saveService.HadHelper == false)
             {
                 _uIManager.ShowHelperAttentionPanel();
                 _saveService.SavePlayerHelper((int)PlayerHelperTypes.MachineGun);

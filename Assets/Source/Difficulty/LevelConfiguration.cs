@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Difficulty
 {
     public class LevelConfiguration
     {
+        private Dictionary<Point, int> _pointsAmount = new Dictionary<Point, int>();
+
         public LevelConfiguration(
             int militarySmallBuildings,
             int militaryMediumBuildings,
@@ -11,27 +14,21 @@ namespace Difficulty
             int obstacles,
             int bunkers)
         {
-            MilitarySmallBuildings = militarySmallBuildings >= 0
-                ? militarySmallBuildings
-                : throw new ArgumentOutOfRangeException(nameof(militarySmallBuildings));
-            MilitaryMediumBuildings = militaryMediumBuildings >= 0
-                ? militaryMediumBuildings
-                : throw new ArgumentOutOfRangeException(nameof(militaryMediumBuildings));
-            MilitaryLargeBuildings = militaryLargeBuildings >= 0
-                ? militaryLargeBuildings
-                : throw new ArgumentOutOfRangeException(nameof(militaryLargeBuildings));
-            Obstacles = obstacles >= 0 ? obstacles : throw new ArgumentOutOfRangeException(nameof(obstacles));
-            Bunkers = bunkers >= 0 ? bunkers : throw new ArgumentOutOfRangeException(nameof(bunkers));
+            AddPointsAmount(militarySmallBuildings, Point.Small);
+            AddPointsAmount(militaryMediumBuildings, Point.Medium);
+            AddPointsAmount(militaryLargeBuildings, Point.Large);
+            AddPointsAmount(obstacles, Point.Obstacle);
+            AddPointsAmount(bunkers, Point.Bunker);
         }
 
-        public int MilitarySmallBuildings { get; }
+        public IReadOnlyDictionary<Point, int> PointsAmount => _pointsAmount;
 
-        public int MilitaryMediumBuildings { get; }
-
-        public int MilitaryLargeBuildings { get; }
-
-        public int Obstacles { get; }
-
-        public int Bunkers { get; }
+        private void AddPointsAmount(int amount, Point point)
+        {
+            if (amount >= 0)
+                _pointsAmount.Add(point, amount);
+            else
+                throw new ArgumentOutOfRangeException(nameof(amount));
+        }
     }
 }

@@ -47,10 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b61f64a5f6a724382ca42fabd6fb3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bunkers:
+  _enemies:
   - {fileID: 6682755236729643176}
   - {fileID: 1858543662143576946}
   - {fileID: 3184440176434531376}
+  _bombs: []
 --- !u!1001 &14400213391935761
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,11 +9,6 @@ namespace LevelGeneration
 {
     public class LevelGenerator
     {
-        private const string ConfigSmallMessage = "Wrong level configuration: not enough small spots";
-        private const string ConfigMediumMessage = "Wrong level configuration: not enough medium spots";
-        private const string ConfigLargeMessage = "Wrong level configuration: not enough large spots";
-        private const string ConfigObstaclesMessage = "Wrong level configuration: not enough obstacles spots";
-
         private readonly PointPresetCollection _presets;
         private readonly List<Transform> _smallSpots;
         private readonly List<Transform> _mediumSpots;
@@ -54,66 +49,59 @@ namespace LevelGeneration
             Action<AudioSource> audioSourceAddedCallBack,
             Action<IDamageableTarget> targetSpawnedCallback)
         {
-            MilitaryPoint[] smallMilitaryPresets = ChoseMilitaryPresets(PointPresetSize.Small);
-            MilitaryPoint[] mediumMilitaryPresets = ChoseMilitaryPresets(PointPresetSize.Medium);
-            MilitaryPoint[] largeMilitaryPresets = ChoseMilitaryPresets(PointPresetSize.Large);
+            Dictionary<Difficulty.Point, Point[]> dictionary = new Dictionary<Difficulty.Point, Point[]>()
+            {
+                {Difficulty.Point.Small, ChoseMilitaryPresets(PointPresetSize.Small) },
+                {Difficulty.Point.Medium, ChoseMilitaryPresets(PointPresetSize.Medium)},
+                {Difficulty.Point.Large, ChoseMilitaryPresets(PointPresetSize.Large) },
+                {Difficulty.Point.Obstacle, ChoseObstaclesPresets()},
+                {Difficulty.Point.Bunker, ChoseBunkerPresets() },
+            };
+
             CivilianPoint[] smallCivilianPresets = ChoseCivilianPresets(PointPresetSize.Small);
             CivilianPoint[] mediumCivilianPresets = ChoseCivilianPresets(PointPresetSize.Medium);
             CivilianPoint[] largeCivilianPresets = ChoseCivilianPresets(PointPresetSize.Large);
-            ObstaclesPoint[] obstaclesPresets = ChoseObstaclesPresets();
-            BunkerPoint[] bunkerPresets = ChoseBunkerPresets();
 
-            if (_smallSpots.Count < _configuration.MilitarySmallBuildings)
-                throw new Exception(ConfigSmallMessage);
+            GenerateMilitaryPoints(Difficulty.Point.Small, _smallSpots, dictionary[Difficulty.Point.Small],
+                audioSourceAddedCallBack, targetSpawnedCallback);
+            SpawnRandomBuildings(_smallSpots.Count, smallCivilianPresets, _smallSpots);
 
-            int amount = _configuration.MilitarySmallBuildings;
+            GenerateMilitaryPoints(Difficulty.Point.Medium, _mediumSpots, dictionary[Difficulty.Point.Medium],
+                audioSourceAddedCallBack, targetSpawnedCallback);
+            SpawnRandomBuildings(_mediumSpots.Count, mediumCivilianPresets, _mediumSpots);
+
+            GenerateMilitaryPoints(Difficulty.Point.Large, _largeSpots, dictionary[Difficulty.Point.Large],
+                audioSourceAddedCallBack, targetSpawnedCallback);
+            SpawnRandomBuildings(_largeSpots.Count, largeCivilianPresets, _largeSpots);
+
+            GenerateMilitaryPoints(Difficulty.Point.Obstacle, _obstaclesSpots, dictionary[Difficulty.Point.Obstacle],
+                audioSourceAddedCallBack, targetSpawnedCallback);
+
+            GenerateMilitaryPoints(Difficulty.Point.Bunker, _bunkerSpots, dictionary[Difficulty.Point.Bunker],
+                audioSourceAddedCallBack, targetSpawnedCallback);
+
+        }
+
+        private void GenerateMilitaryPoints(Difficulty.Point point,
+            List<Transform> spots,
+            Point[] presets,
+            Action<AudioSource> audioSourceAddedCallBack,
+            Action<IDamageableTarget> targetSpawnedCallback)
+        {
+            int amount = _configuration.PointsAmount[point];
+
+            if (spots.Count < amount)
+                throw new Exception($"Wrong level configuration: not enough {point} spots");
+
             InitializeMilitaryPoints(
-                SpawnRandomBuildings(amount, smallMilitaryPresets, _smallSpots),
-                audioSourceAddedCallBack,
-                targetSpawnedCallback);
-            amount = _smallSpots.Count;
-            SpawnRandomBuildings(amount, smallCivilianPresets, _smallSpots);
-
-            if (_mediumSpots.Count < _configuration.MilitaryMediumBuildings)
-                throw new Exception(ConfigMediumMessage);
-
-            amount = _configuration.MilitaryMediumBuildings;
-            InitializeMilitaryPoints(
-                SpawnRandomBuildings(amount, mediumMilitaryPresets, _mediumSpots),
-                audioSourceAddedCallBack,
-                targetSpawnedCallback);
-            amount = _mediumSpots.Count;
-            SpawnRandomBuildings(amount, mediumCivilianPresets, _mediumSpots);
-
-            if (_largeSpots.Count < _configuration.MilitaryLargeBuildings)
-                throw new Exception(ConfigLargeMessage);
-
-            amount = _configuration.MilitaryLargeBuildings;
-            InitializeMilitaryPoints(
-                SpawnRandomBuildings(amount, largeMilitaryPresets, _largeSpots),
-                audioSourceAddedCallBack,
-                targetSpawnedCallback);
-            amount = _largeSpots.Count;
-            SpawnRandomBuildings(amount, largeCivilianPresets, _largeSpots);
-
-            if (_obstaclesSpots.Count < _configuration.Obstacles)
-                throw new Exception(ConfigObstaclesMessage);
-
-            amount = _configuration.Obstacles;
-            InitializeObstaclesPoints(
-                SpawnRandomBuildings(amount, obstaclesPresets, _obstaclesSpots),
-                audioSourceAddedCallBack);
-
-            amount = _configuration.Bunkers;
-            InitializeBunkerPoints(
-                SpawnRandomBuildings(amount, bunkerPresets, _bunkerSpots),
+                SpawnRandomBuildings(amount, presets, spots),
                 audioSourceAddedCallBack,
                 targetSpawnedCallback);
         }
 
         private IEnumerable<Point> SpawnRandomBuildings(int amount, Point[] buildings, List<Transform> spots)
         {
-            List<Point> result = new ();
+            List<Point> result = new();
 
             while (amount > 0)
             {
@@ -166,25 +154,6 @@ namespace LevelGeneration
         {
             points
                 .Select(o => o as MilitaryPoint)
-                .ToList()
-                .ForEach(o => o.Init(_player, audioSourceAddedCallBack, targetSpawnedCallback));
-        }
-
-        private void InitializeObstaclesPoints(IEnumerable<Point> points, Action<AudioSource> audioSourceAddedCallBack)
-        {
-            points
-                .Select(o => o as ObstaclesPoint)
-                .ToList()
-                .ForEach(o => o.Init(_player, audioSourceAddedCallBack));
-        }
-
-        private void InitializeBunkerPoints(
-            IEnumerable<Point> points,
-            Action<AudioSource> audioSourceAddedCallBack,
-            Action<IDamageableTarget> targetSpawnedCallback)
-        {
-            points
-                .Select(o => o as BunkerPoint)
                 .ToList()
                 .ForEach(o => o.Init(_player, audioSourceAddedCallBack, targetSpawnedCallback));
         }
