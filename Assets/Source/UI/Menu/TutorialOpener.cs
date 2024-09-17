@@ -6,9 +6,9 @@ namespace UI
 {
     public class TutorialOpener : MonoBehaviour
     {
-        [SerializeField] private GameObject _pcPanel;
-        [SerializeField] private GameObject _mobilePanel;
-        [SerializeField] private GameObject _holderPanel;
+        [SerializeField] private UserInterfaceElement _pcPanel;
+        [SerializeField] private UserInterfaceElement _mobilePanel;
+        [SerializeField] private UserInterfaceElement _holderPanel;
         [SerializeField] private Button _toggleButton;
 
         private void OnEnable()
@@ -23,12 +23,12 @@ namespace UI
 
         private void OnButtonClick()
         {
-            _holderPanel.SetActive(false);
+            _holderPanel.Disable();
 
             if (Device.IsMobile)
-                _mobilePanel.SetActive(true);
+                _mobilePanel.Enable();
             else
-                _pcPanel.SetActive(true);
+                _pcPanel.Enable();
         }
     }
 }

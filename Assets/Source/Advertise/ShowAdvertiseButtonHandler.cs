@@ -1,5 +1,6 @@
 using System.Linq;
 using EntryPoint;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,9 +9,9 @@ namespace Advertise
     [RequireComponent(typeof(Button))]
     public class ShowAdvertiseButtonHandler : MonoBehaviour
     {
-        [SerializeField] private GameObject _holder;
-        [SerializeField] private GameObject _mobileInputCanvas;
-        [SerializeField] private GameObject[] _objectsThatWillBeEnabled;
+        [SerializeField] private UserInterfaceElement _holder;
+        [SerializeField] private UserInterfaceElement _mobileInputCanvas;
+        [SerializeField] private UserInterfaceElement[] _objectsThatWillBeEnabled;
         [SerializeField] private Root _root;
 
         private Button _button;
@@ -49,15 +50,15 @@ namespace Advertise
 
         private void OnRewardCallback()
         {
-            _holder.SetActive(false);
-            _objectsThatWillBeEnabled.ToList().ForEach(o => o.SetActive(true));
+            _holder.Disable();
+            _objectsThatWillBeEnabled.ToList().ForEach(o => o.Enable());
             _root.Respawn();
 
 #if !UNITY_EDITOR
         if (Device.IsMobile)
-            _mobileInputCanvas.SetActive(true);
+            _mobileInputCanvas.Enable();
 #else
-            _mobileInputCanvas.SetActive(true);
+            _mobileInputCanvas.Enable();
 #endif
         }
 

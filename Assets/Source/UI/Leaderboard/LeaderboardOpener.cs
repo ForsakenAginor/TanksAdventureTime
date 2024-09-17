@@ -1,5 +1,4 @@
 using Agava.YandexGames;
-using Difficulty;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +7,10 @@ namespace UI
     public class LeaderboardOpener : MonoBehaviour
     {
         [SerializeField] private YandexLeaderboard _leaderboard;
-        [SerializeField] private GameObject _leaderboardPanel;
+        [SerializeField] private UserInterfaceElement _leaderboardPanel;
         [SerializeField] private Button _openLeaderboardButton;
-        [SerializeField] private GameObject _holderPanel;
-        [SerializeField] private GameObject _autorizationPanel;
+        [SerializeField] private UserInterfaceElement _holderPanel;
+        [SerializeField] private UserInterfaceElement _autorizationPanel;
 
         private void OnEnable()
         {
@@ -36,15 +35,15 @@ namespace UI
             if (isAuthorized)
                 PlayerAccount.RequestPersonalProfileDataPermission(OnSuccessCallback, OnErrorCallback);
             else
-                _autorizationPanel.SetActive(true);
+                _autorizationPanel.Enable();
 
-            _holderPanel.SetActive(false);
+            _holderPanel.Disable();
         }
 
 #if UNITY_EDITOR
         public void ShowPanel()
         {
-            _leaderboardPanel.SetActive(true);
+            _leaderboardPanel.Enable();
         }
 #endif
 
@@ -61,7 +60,7 @@ namespace UI
         private void Fill()
         {
             _leaderboard.Fill();
-            _leaderboardPanel.SetActive(true);
+            _leaderboardPanel.Enable();
         }
     }
 }

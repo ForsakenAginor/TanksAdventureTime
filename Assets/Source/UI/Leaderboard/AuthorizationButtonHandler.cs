@@ -7,7 +7,7 @@ namespace UI
     public class AuthorizationButtonHandler : MonoBehaviour
     {
         [SerializeField] private LeaderboardOpener _leaderboardOpener;
-        [SerializeField] private GameObject _holderPanel;
+        [SerializeField] private UserInterfaceElement _holderPanel;
 
         private Button _button;
 
@@ -30,7 +30,7 @@ namespace UI
         {
 #if UNITY_EDITOR
             _leaderboardOpener.ShowPanel();
-            _holderPanel.SetActive(false);
+            _holderPanel.Disable();
 #else
             PlayerAccount.Authorize(OnSuccessAuthorize);
 #endif
@@ -39,7 +39,7 @@ namespace UI
         private void OnSuccessAuthorize()
         {
             _leaderboardOpener.OpenLeaderboard();
-            _holderPanel.SetActive(false);
+            _holderPanel.Disable();
         }
     }
 }

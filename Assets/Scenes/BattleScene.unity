@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 41569817}
   - component: {fileID: 41569816}
   - component: {fileID: 41569821}
+  - component: {fileID: 41569822}
   m_Layer: 5
   m_Name: ControlsCanvas
   m_TagString: Untagged
@@ -591,6 +592,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trainingMobilePlatform: {fileID: 847859058}
   _saveService: {fileID: 1658892150}
+--- !u!114 &41569822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41569815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928e80352cce8a94aab533e3ba7afe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &51076645
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,8 +695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b066dcc8dab6a4497f0e69caf2d9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPanel: {fileID: 1551521250372501945}
-  _holderPanel: {fileID: 217148097}
+  _targetPanel: {fileID: 4658416096755324135}
+  _holderPanel: {fileID: 217148101}
   _toggleButton: {fileID: 54333924}
 --- !u!114 &54333924
 MonoBehaviour:
@@ -1858,6 +1871,7 @@ GameObject:
   m_Component:
   - component: {fileID: 217148098}
   - component: {fileID: 217148100}
+  - component: {fileID: 217148101}
   m_Layer: 5
   m_Name: ButtonsPanel
   m_TagString: Untagged
@@ -1895,6 +1909,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217148097}
   m_CullTransparentMesh: 1
+--- !u!114 &217148101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217148097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928e80352cce8a94aab533e3ba7afe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &236397207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4927,6 +4953,7 @@ GameObject:
   - component: {fileID: 771216673}
   - component: {fileID: 771216672}
   - component: {fileID: 771216671}
+  - component: {fileID: 771216675}
   m_Layer: 5
   m_Name: HelperAttentionCanvas
   m_TagString: Untagged
@@ -5017,6 +5044,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &771216675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771216670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928e80352cce8a94aab533e3ba7afe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &784541256
 GameObject:
   m_ObjectHideFlags: 0
@@ -6326,8 +6365,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46f22376403b6634688c1871e2b34fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _holder: {fileID: 150650715008037050}
-  _mobileInputCanvas: {fileID: 41569815}
+  _holder: {fileID: 8974446121577521601}
+  _mobileInputCanvas: {fileID: 41569822}
   _objectsThatWillBeEnabled:
   - {fileID: 217148097}
   _root: {fileID: 2112200516}
@@ -7550,6 +7589,7 @@ GameObject:
   - component: {fileID: 1059111999}
   - component: {fileID: 1059112001}
   - component: {fileID: 1059112000}
+  - component: {fileID: 1059112002}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
@@ -7620,6 +7660,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059111998}
   m_CullTransparentMesh: 1
+--- !u!114 &1059112002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059111998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928e80352cce8a94aab533e3ba7afe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1064583673
 GameObject:
   m_ObjectHideFlags: 0
@@ -9809,6 +9861,7 @@ GameObject:
   - component: {fileID: 1390464375}
   - component: {fileID: 1390464374}
   - component: {fileID: 1390464373}
+  - component: {fileID: 1390464377}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -9904,6 +9957,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1390464377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390464372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928e80352cce8a94aab533e3ba7afe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1398632683
 GameObject:
   m_ObjectHideFlags: 0
@@ -14336,13 +14401,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e45f5c0763766942a0bcfa7b67ca8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _losingPanel: {fileID: 150650715008037050}
-  _winingPanel: {fileID: 1059111998}
-  _mobileInputCanvas: {fileID: 41569815}
-  _buttonsPanel: {fileID: 217148097}
+  _losingPanel: {fileID: 8974446121577521601}
+  _winingPanel: {fileID: 1059112002}
+  _mobileInputCanvas: {fileID: 41569822}
+  _buttonsPanel: {fileID: 217148101}
   _delay: 2
   _levelLabel: {fileID: 1608071033}
-  _helperAttentionPanel: {fileID: 771216670}
+  _helperAttentionPanel: {fileID: 771216675}
   _minDistance: 10
   _markerImage: {fileID: 1918082214}
 --- !u!114 &2112200518
@@ -16766,6 +16831,7 @@ GameObject:
   - component: {fileID: 8931089773564060514}
   - component: {fileID: 8974446121577521600}
   - component: {fileID: 6799642336337046414}
+  - component: {fileID: 8974446121577521601}
   m_Layer: 5
   m_Name: LosePanel
   m_TagString: Untagged
@@ -25133,6 +25199,7 @@ GameObject:
   - component: {fileID: 731479193129076288}
   - component: {fileID: 2808038557906056425}
   - component: {fileID: 4658416096755324134}
+  - component: {fileID: 4658416096755324135}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -34445,8 +34512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b066dcc8dab6a4497f0e69caf2d9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPanel: {fileID: 217148097}
-  _holderPanel: {fileID: 1551521250372501945}
+  _targetPanel: {fileID: 217148101}
+  _holderPanel: {fileID: 4658416096755324135}
   _toggleButton: {fileID: 7936624003406005487}
 --- !u!4 &3042514234578555950
 Transform:
@@ -43902,6 +43969,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4658416096755324135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551521250372501945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928e80352cce8a94aab533e3ba7afe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4659414492711709155
 GameObject:
   m_ObjectHideFlags: 0
@@ -54197,8 +54276,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46b066dcc8dab6a4497f0e69caf2d9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetPanel: {fileID: 1390464372}
-  _holderPanel: {fileID: 771216670}
+  _targetPanel: {fileID: 1390464377}
+  _holderPanel: {fileID: 771216675}
   _toggleButton: {fileID: 1311470698008698204}
 --- !u!1 &6558922182362481429
 GameObject:
@@ -67642,6 +67721,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150650715008037050}
   m_CullTransparentMesh: 1
+--- !u!114 &8974446121577521601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150650715008037050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928e80352cce8a94aab533e3ba7afe8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8975983881828165057
 Transform:
   m_ObjectHideFlags: 0
