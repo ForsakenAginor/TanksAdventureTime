@@ -18,7 +18,7 @@ namespace Player
             _playerInput = playerInput ?? throw new ArgumentNullException(nameof(playerInput));
             _playerWeapon = playerWeapon ?? throw new ArgumentNullException(nameof(playerWeapon));
             _shootDelay = shootDelay >= 0
-                ? TimeSpan.FromSeconds(shootDelay).Seconds
+                ? (int)TimeSpan.FromSeconds(shootDelay).TotalMilliseconds
                 : throw new ArgumentOutOfRangeException(nameof(shootDelay));
 
             _playerInput.FireInputReceived += OnInputReceived;
