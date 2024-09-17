@@ -5,7 +5,7 @@ namespace Difficulty
 {
     public class LevelConfiguration
     {
-        private Dictionary<Point, int> _pointsAmount = new Dictionary<Point, int>();
+        private readonly Dictionary<Point, int> _pointsAmount = new Dictionary<Point, int>();
 
         public LevelConfiguration(
             int militarySmallBuildings,
