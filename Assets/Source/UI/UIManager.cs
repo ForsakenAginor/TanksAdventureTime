@@ -8,13 +8,13 @@ namespace UI
     [RequireComponent(typeof(Marker))]
     public class UIManager : MonoBehaviour
     {
-        [SerializeField] private GameObject _losingPanel;
-        [SerializeField] private GameObject _winingPanel;
-        [SerializeField] private GameObject _mobileInputCanvas;
-        [SerializeField] private GameObject _buttonsPanel;
+        [SerializeField] private UserInterfaceElement _losingPanel;
+        [SerializeField] private UserInterfaceElement _winingPanel;
+        [SerializeField] private UserInterfaceElement _mobileInputCanvas;
+        [SerializeField] private UserInterfaceElement _buttonsPanel;
         [SerializeField] private float _delay;
         [SerializeField] private LevelLabel _levelLabel;
-        [SerializeField] private GameObject _helperAttentionPanel;
+        [SerializeField] private UserInterfaceElement _helperAttentionPanel;
 
         [Header("Marker")] [SerializeField]
         private float _minDistance;
@@ -31,7 +31,7 @@ namespace UI
         private void Start()
         {
             if(Device.IsMobile == false)
-                _mobileInputCanvas.SetActive(false);
+                _mobileInputCanvas.Disable();
         }
 #endif
 
@@ -52,21 +52,21 @@ namespace UI
 
         public void ShowLosingPanel()
         {
-            _buttonsPanel.SetActive(false);
-            _mobileInputCanvas.SetActive(false);
+            _buttonsPanel.Disable();
+            _mobileInputCanvas.Disable();
             StartCoroutine(DisplayLosingPanel());
         }
 
         public void ShowWiningPanel()
         {
-            _buttonsPanel.SetActive(false);
-            _mobileInputCanvas.SetActive(false);
-            _winingPanel.SetActive(true);
+            _buttonsPanel.Disable();
+            _mobileInputCanvas.Disable();
+            _winingPanel.Enable();
         }
 
         public void ShowHelperAttentionPanel()
         {
-            _helperAttentionPanel.SetActive(true);
+            _helperAttentionPanel.Enable();
         }
 
         private IEnumerator DisplayLosingPanel()
@@ -75,7 +75,7 @@ namespace UI
 
             yield return delay;
 
-            _losingPanel.SetActive(true);
+            _losingPanel.Enable();
         }
     }
 }

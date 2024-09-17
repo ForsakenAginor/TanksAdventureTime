@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class UserInterfaceElement : MonoBehaviour
+namespace UI
 {
-    public void Enable()
+    public class UserInterfaceElement : MonoBehaviour
     {
-        gameObject.SetActive(true);
-    }
+        public void Enable()
+        {
+            gameObject.SetActive(true);
+        }
 
-    public void Disable()
-    {
-        gameObject.SetActive(false);
+        public void Disable()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
