@@ -79,7 +79,6 @@ namespace LevelGeneration
 
             GenerateMilitaryPoints(Difficulty.Point.Bunker, _bunkerSpots, dictionary[Difficulty.Point.Bunker],
                 audioSourceAddedCallBack, targetSpawnedCallback);
-
         }
 
         private void GenerateMilitaryPoints(Difficulty.Point point,
