@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-#if UNITY_WEBGL && !UNITY_EDITOR
-using Advertise;
-#endif
 using Difficulty;
 using Enemies;
 using LevelGeneration;
@@ -53,7 +50,6 @@ namespace EntryPoint
         [Header("Other")]
         [SerializeField] private SaveService _saveService;
         [SerializeField] private Goods _goods;
-        [SerializeField] private Silencer _silencer;
         private Dictionary<GoodNames, object> _savedData;
 
         private Action _playerDied;
@@ -110,12 +106,6 @@ namespace EntryPoint
             Wallet wallet = new (_saveService);
             _currencyCalculator = new (_bounty, wallet);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-            InterstitialAdvertiseShower advertiseShower = new (_silencer);
-            advertiseShower.ShowAdvertise();
-            StickyAd.Show();
-#endif
-
             _startButton.interactable = true;
             Time.timeScale = 0f;
         }
@@ -132,10 +122,6 @@ namespace EntryPoint
         {
             _playerBehaviour.Stop();
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-            LeaderboardScoreSaver leaderboardScoreSaver = new ();
-            leaderboardScoreSaver.SaveScore(_currentLevel);
-#endif
             _saveService.SaveLevel(++_currentLevel);
             _uIManager.ShowWiningPanel();
             _victoryEffect.PlayEffect(_enemies.Count, _currencyCalculator.CalculateTotalBounty(_enemies.Count));

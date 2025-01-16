@@ -1,5 +1,4 @@
 using System.Collections;
-using Agava.YandexGames;
 using Localization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,23 +9,15 @@ namespace EntryPoint
     {
         private void Awake()
         {
-            YandexGamesSdk.CallbackLogging = true;
+            //YandexGamesSdk.CallbackLogging = true;
         }
 
         private IEnumerator Start()
         {
-            string language = "ru";
-
-#if UNITY_WEBGL && !UNITY_EDITOR
-            while (YandexGamesSdk.IsInitialized == false)
-                yield return YandexGamesSdk.Initialize();
-
-            language = YandexGamesSdk.Environment.i18n.lang;
-#else
+            string language = "en";
             yield return null;
-#endif
 
-            LocalizationInitializer localizationInitializer = new ();
+            LocalizationInitializer localizationInitializer = new();
             localizationInitializer.ApplyLocalization(language);
             SceneManager.LoadScene(Scenes.MainMenu.ToString());
         }

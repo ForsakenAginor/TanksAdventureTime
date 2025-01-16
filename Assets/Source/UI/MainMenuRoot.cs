@@ -1,7 +1,3 @@
-#if UNITY_WEBGL && !UNITY_EDITOR
-using Agava.YandexGames;
-#endif
-using Agava.WebUtility;
 using PlayerHelpers;
 using SavingProgress;
 using Shops;
@@ -40,7 +36,8 @@ namespace UI
 
             if (_saveService.CompletedTrainingOnComputer == CompletedTraining)
             {
-                if (Device.IsMobile)
+                bool isWebGLOnMobile = Application.isMobilePlatform && Application.platform == RuntimePlatform.WebGLPlayer;
+                if (isWebGLOnMobile)
                     _mobileTutorialPanel.Enable();
                 else
                     _pcTutorialPanel.Enable();
@@ -57,10 +54,6 @@ namespace UI
                 _saveService.GetPurchases(),
                 _saveService.HadHelper,
                 (PlayerHelperTypes)_saveService.Helper);
-
-#if UNITY_WEBGL && !UNITY_EDITOR
-            YandexGamesSdk.GameReady();
-#endif
         }
 
         private void CompleteTutorial()

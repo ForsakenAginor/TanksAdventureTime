@@ -1,4 +1,3 @@
-using Agava.WebUtility;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,8 +23,9 @@ namespace UI
         private void OnButtonClick()
         {
             _holderPanel.Disable();
+            bool isWebGLOnMobile = Application.isMobilePlatform && Application.platform == RuntimePlatform.WebGLPlayer;
 
-            if (Device.IsMobile)
+            if (isWebGLOnMobile)
                 _mobilePanel.Enable();
             else
                 _pcPanel.Enable();

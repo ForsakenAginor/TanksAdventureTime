@@ -1,6 +1,6 @@
 ﻿using System;
-using Agava.WebUtility;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Player
@@ -40,7 +40,9 @@ namespace Player
             if (_isWorking == false)
                 return;
 
-            if (Device.IsMobile == false && EventSystem.current.IsPointerOverGameObject())
+            bool isWebGLOnMobile = Application.isMobilePlatform && Application.platform == RuntimePlatform.WebGLPlayer;
+
+            if (isWebGLOnMobile == false && EventSystem.current.IsPointerOverGameObject())
                 return;
 
             Shoot();

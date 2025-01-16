@@ -6230,14 +6230,13 @@ GameObject:
   - component: {fileID: 929663042}
   - component: {fileID: 929663041}
   - component: {fileID: 929663040}
-  - component: {fileID: 929663044}
   m_Layer: 5
   m_Name: ShowAdButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &929663039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6353,23 +6352,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929663038}
   m_CullTransparentMesh: 1
---- !u!114 &929663044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929663038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46f22376403b6634688c1871e2b34fa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _holder: {fileID: 8974446121577521601}
-  _mobileInputCanvas: {fileID: 41569822}
-  _objectsThatWillBeEnabled:
-  - {fileID: 217148097}
-  _root: {fileID: 2112200516}
 --- !u!1 &938082619
 GameObject:
   m_ObjectHideFlags: 0
@@ -14388,7 +14370,6 @@ MonoBehaviour:
   _bounty: 100
   _saveService: {fileID: 1658892150}
   _goods: {fileID: 11400000, guid: 9970bf14542229e498c2167d6a46de0e, type: 2}
-  _silencer: {fileID: 2112200520}
 --- !u!114 &2112200517
 MonoBehaviour:
   m_ObjectHideFlags: 0
