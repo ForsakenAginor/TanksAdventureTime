@@ -30,7 +30,9 @@ namespace UI
 #if !UNITY_EDITOR
         private void Start()
         {
-            if(Device.IsMobile == false)
+            bool isWebGLOnMobile = Application.isMobilePlatform && Application.platform == RuntimePlatform.WebGLPlayer;
+
+            if (isWebGLOnMobile == false)
                 _mobileInputCanvas.Disable();
         }
 #endif
